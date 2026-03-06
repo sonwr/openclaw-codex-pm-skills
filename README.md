@@ -131,6 +131,7 @@ Current initial skill packs:
 - `pm-strategy-canvas`
 - `pm-prd-drafting`
 - `pm-prioritization-helper`
+- `web-qa-playwright`
 
 Current docs:
 
