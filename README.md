@@ -53,6 +53,7 @@ This repo provides that bridge.
 - `skills/` — skill packs in portable format
 - `examples/` — runnable prompt examples
 - `docs/` — install, architecture, compatibility
+- `docs/MAPPING_PM_SKILLS.md` — adaptation mapping from upstream concepts
 - `scripts/` — helper scripts for local setup
 
 ---
@@ -85,6 +86,11 @@ These are intentionally minimal and auditable.
 - v1.0: stable community PM skill pack for OpenClaw ecosystems
 
 ---
+
+## References
+
+- Source inspiration: [phuryn/pm-skills](https://github.com/phuryn/pm-skills)
+- This repository: community adaptation for OpenClaw + Codex-style workflows
 
 ## License
 
