@@ -4,6 +4,15 @@ Practical PM skill pack and migration guide for **OpenClaw + Codex-style agents*
 
 This repository helps teams adapt PM-oriented skill systems (e.g., marketplace-style skill collections) into an OpenClaw-compatible workflow that is easy to install, audit, and extend.
 
+## Origin and Scope
+
+This project is a practical adaptation layer for teams who want to use ideas and frameworks from [`phuryn/pm-skills`](https://github.com/phuryn/pm-skills) in **OpenClaw + Codex-style** environments.
+
+- It focuses on portability, reproducibility, and OpenClaw-friendly structure.
+- It does **not** attempt to replicate assistant-specific plugin runtime behavior one-to-one.
+- It is an independent community adaptation, not an official fork or affiliated release.
+
+
 ## Why this exists
 
 Most PM skill repositories are built around assistant-specific plugin systems.
