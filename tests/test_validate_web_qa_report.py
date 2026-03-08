@@ -126,6 +126,26 @@ class ValidateWebQaReportTests(unittest.TestCase):
         errors = validate_report_text(broken, strict=True)
         self.assertTrue(any("Failure classification:" in e for e in errors))
 
+    def test_validate_report_fails_when_next_action_does_not_reference_failed_check_id(self) -> None:
+        broken = FAILED_REPORT_WITH_RECOVERY + "- Next action: Investigate spinner timeout and update release checklist\n"
+        errors = validate_report_text(
+            broken,
+            require_next_action=True,
+            require_next_action_failed_check_ref=True,
+        )
+        self.assertTrue(any("failed check id" in e for e in errors))
+
+    def test_validate_report_passes_when_next_action_references_failed_check_id(self) -> None:
+        fixed = FAILED_REPORT_WITH_RECOVERY + "- Next action: Investigate F2 spinner timeout, capture new artifacts, and rerun login flow\n"
+        self.assertEqual(
+            validate_report_text(
+                fixed,
+                require_next_action=True,
+                require_next_action_failed_check_ref=True,
+            ),
+            [],
+        )
+
     def test_validate_report_fails_when_failure_timestamp_not_iso_utc(self) -> None:
         broken = FAILED_REPORT_WITH_RECOVERY.replace(
             "2026-03-07T04:10:00Z", "2026-03-07 04:10:00 UTC"

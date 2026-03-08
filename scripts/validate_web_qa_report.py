@@ -135,6 +135,10 @@ def _extract_next_action(text: str) -> str | None:
     return match.group(1).strip()
 
 
+def _extract_failed_check_ids(text: str) -> list[str]:
+    return [check_id for check_id, _ in _failed_check_blocks(text)]
+
+
 def _extract_failed_check_classifications(text: str) -> list[str]:
     failed_blocks = _failed_check_blocks(text)
     classifications: list[str] = []
@@ -213,6 +217,7 @@ def validate_report_text(
     require_signoff_section: bool = False,
     require_replay_readiness: bool = False,
     require_next_action: bool = False,
+    require_next_action_failed_check_ref: bool = False,
 ) -> list[str]:
     functional_block = _section_block(text, SECTION_TITLES["functional"])
     visual_block = _section_block(text, SECTION_TITLES["visual"])
@@ -545,8 +550,8 @@ def validate_report_text(
             "replay readiness: signoff must include 'Replay readiness: READY' or 'Replay readiness: BLOCKED'"
         )
 
+    next_action = _extract_next_action(text)
     if require_next_action:
-        next_action = _extract_next_action(text)
         if next_action is None:
             errors.append(
                 "next action: signoff must include 'Next action: ...' for explicit handoff"
@@ -554,6 +559,18 @@ def validate_report_text(
         elif len(next_action) < 8:
             errors.append(
                 "next action: signoff Next action line must be specific enough for the next run (>=8 chars)"
+            )
+
+    if require_next_action_failed_check_ref:
+        failed_check_ids = _extract_failed_check_ids(text)
+        if failed_check_ids and next_action is None:
+            errors.append(
+                "next action failed-check ref: signoff must include 'Next action: ...' when failed checks need a deterministic owner handoff"
+            )
+        elif failed_check_ids and not any(re.search(rf"\b{re.escape(check_id)}\b", next_action) for check_id in failed_check_ids):
+            errors.append(
+                "next action failed-check ref: Next action must reference at least one failed check id "
+                f"({', '.join(failed_check_ids)}) so recovery work stays traceable"
             )
 
     checkpoint_pairs = _extract_checkpoint_tails(text)
@@ -1041,6 +1058,11 @@ def main() -> None:
         action="store_true",
         help="Require signoff to include 'Next action: ...' so the next run has an explicit handoff step",
     )
+    parser.add_argument(
+        "--require-next-action-failed-check-ref",
+        action="store_true",
+        help="Require signoff Next action to reference at least one failed check id when regressions are present",
+    )
     args = parser.parse_args()
 
     profile_enabled = (
@@ -1088,6 +1110,7 @@ def main() -> None:
     require_signoff_section = args.require_signoff_section or profile_enabled
     require_replay_readiness = args.require_replay_readiness or profile_enabled
     require_next_action = args.require_next_action
+    require_next_action_failed_check_ref = args.require_next_action_failed_check_ref
 
     def resolve_profile_preset() -> str | None:
         if args.playwright_interactive_profile:
@@ -1136,6 +1159,7 @@ def main() -> None:
         require_signoff_section=require_signoff_section,
         require_replay_readiness=require_replay_readiness,
         require_next_action=require_next_action,
+        require_next_action_failed_check_ref=require_next_action_failed_check_ref,
     )
 
     def emit_json_payload(payload: dict[str, object]) -> None:
@@ -1180,6 +1204,7 @@ def main() -> None:
             "require_signoff_section": require_signoff_section,
             "require_replay_readiness": require_replay_readiness,
             "require_next_action": require_next_action,
+            "require_next_action_failed_check_ref": require_next_action_failed_check_ref,
             "file": str(report_path),
             "errors": errors,
             "error_count": len(errors),
@@ -1225,6 +1250,7 @@ def main() -> None:
         "require_signoff_section": require_signoff_section,
         "require_replay_readiness": require_replay_readiness,
         "require_next_action": require_next_action,
+        "require_next_action_failed_check_ref": require_next_action_failed_check_ref,
         "file": str(report_path),
         "counts": {
             "functional": 5,
@@ -1300,6 +1326,8 @@ def main() -> None:
         print("- replay readiness checks: enabled")
     if require_next_action:
         print("- next action handoff checks: enabled")
+    if require_next_action_failed_check_ref:
+        print("- next action failed-check traceability checks: enabled")
 
 
 if __name__ == "__main__":

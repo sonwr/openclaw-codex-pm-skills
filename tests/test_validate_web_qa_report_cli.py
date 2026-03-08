@@ -1059,6 +1059,59 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertTrue(payload["require_next_action"])
             self.assertTrue(any("next action" in err.lower() for err in payload["errors"]))
 
+    def test_cli_json_output_requires_failed_check_id_in_next_action(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            broken = VALID_REPORT.replace(
+                "- F2: PASS\n",
+                "- F2: FAIL\n"
+                "    - Expected: Login success toast appears within 2 seconds\n"
+                "    - Observed: Spinner persisted for 10 seconds\n"
+                "    - First failure timestamp: 2026-03-07T04:10:00Z\n"
+                "    - Retry: FAIL\n"
+                "    - Failure classification: product\n"
+                "    - Evidence: `artifacts/f2-failure.png`\n",
+            ).replace(
+                "- Functional checks (5/5 pass)",
+                "- Functional checks (4/5 pass)",
+            ).replace(
+                "- F2 checkpoint: Inline error panel rendered and focus moved to form alert\n",
+                "- F2 checkpoint: FAIL - Inline error panel missing after submit\n",
+            ).replace(
+                "- Regressions: 0\n",
+                "- Regressions: 1\n",
+            ).replace(
+                "- Merge recommendation: **APPROVE**\n",
+                "- Merge recommendation: **BLOCK**\n",
+            ).replace(
+                "- Replay readiness: **READY**\n",
+                "- Replay readiness: **BLOCKED**\n",
+            ).replace(
+                "- Next action: Archive artifacts and proceed to release signoff\n",
+                "- Next action: Investigate spinner timeout and rerun login flow\n",
+            )
+            report_path.write_text(broken, encoding="utf-8")
+
+            output = io.StringIO()
+            with self.assertRaises(SystemExit) as exc:
+                with mock.patch(
+                    "sys.argv",
+                    [
+                        "validate_web_qa_report.py",
+                        "--file",
+                        str(report_path),
+                        "--json",
+                        "--require-next-action",
+                        "--require-next-action-failed-check-ref",
+                    ],
+                ):
+                    with contextlib.redirect_stdout(output):
+                        validate_web_qa_report.main()
+            self.assertEqual(exc.exception.code, 1)
+            payload = json.loads(output.getvalue().strip())
+            self.assertTrue(payload["require_next_action_failed_check_ref"])
+            self.assertTrue(any("failed check id" in err.lower() for err in payload["errors"]))
+
 
 if __name__ == "__main__":
     unittest.main()

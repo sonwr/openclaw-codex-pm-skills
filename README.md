@@ -282,6 +282,7 @@ Playwright-interactive operating principles reflected in this preset and fixture
 3. **Step-by-step verification** — enforce execution-log shape plus QA inventory/checkpoint accounting instead of trusting free-form prose.
 4. **Failure recovery** — require artifact paths, failure classification, and recovery owner/plan metadata so broken runs remain actionable.
 5. **Explicit handoff (opt-in)** — enable `--require-next-action` when you want a concrete `Next action:` signoff line for the next deterministic rerun.
+6. **Failure-traceable handoff (opt-in)** — add `--require-next-action-failed-check-ref` when blocked runs must point the next owner to a failed check id such as `F2` or `V1`.
 - `--deterministic-replay-profile`: alias for `--playwright-interactive-profile` for teams that prefer deterministic replay wording in CI policies.
 - `--strict-replay-profile`: alias for `--playwright-interactive-profile` for teams that want explicit strict replay wording in CI presets.
 - `--ci-replay-profile`: alias for `--playwright-interactive-profile` for teams that prefer shorter replay-policy naming in CI jobs.
@@ -299,6 +300,7 @@ Playwright-interactive operating principles reflected in this preset and fixture
 - `--require-failure-recovery-plan`: require failed checks to include a `Recovery plan:` line with deterministic next-step recovery instructions.
 - `--require-failure-recovery-owner`: require failed checks to include a `Recovery owner:` line so ownership is explicit for follow-up recovery.
 - `--require-next-action`: require signoff to include a `Next action:` line so replay handoff remains explicit even on PASS runs.
+- `--require-next-action-failed-check-ref`: when regressions are present, require `Next action:` to mention at least one failed check id so the next rerun owner knows exactly which check to recover first.
 - `--enforce-failure-timestamp-order`: require failed-check `First failure timestamp` values to be monotonic in checklist order, preventing chronology drift in failure triage.
 - `--enforce-checkpoint-to-check-status-consistency`: require each checkpoint line to include `PASS`/`FAIL` and match the checklist status for that same check id (prevents replay-log/checklist drift).
 - `--require-failure-classification-summary`: require a signoff line in the form `Failure breakdown: selector=<n>, runtime=<n>, product=<n>` and validate it against failed-check classifications.
