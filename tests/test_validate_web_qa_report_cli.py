@@ -543,6 +543,30 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertIn("web-qa-playwright report validation: PASS", text)
             self.assertIn("- checkpoint artifact path checks: enabled", text)
 
+    def test_cli_stdout_reports_next_action_gates_when_enabled(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(VALID_REPORT, encoding="utf-8")
+
+            output = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--require-next-action",
+                    "--require-next-action-failed-check-ref",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+
+            text = output.getvalue()
+            self.assertIn("web-qa-playwright report validation: PASS", text)
+            self.assertIn("- next action handoff checks: enabled", text)
+            self.assertIn("- next action failed-check traceability checks: enabled", text)
+
     def test_cli_json_output_for_checkpoint_target_ref_requirement(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"
