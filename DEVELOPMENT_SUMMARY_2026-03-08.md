@@ -482,3 +482,27 @@
 
 ### Next
 - Consider surfacing the same malformed-vs-partial QA inventory split in machine-readable example payloads near the README fixture index.
+
+## Run @ 21:20 UTC (cron)
+
+### Plan
+- Consolidate replay-profile smoke coverage into one reusable script/CI entrypoint.
+- Add isolated Playwright-style failure checks for artifact-path capture and status-consistency drift.
+
+### Changes
+- Expanded `scripts/smoke_replay_profile_examples.sh` to assert two additional isolated strict-plus FAIL fixtures:
+  - missing artifact paths only
+  - checkpoint/check status inconsistency only
+- Updated `.github/workflows/ci.yml` to run the replay-profile smoke script directly.
+- Updated `README.md` to document the broader smoke coverage.
+
+### Verification
+- `python3 -m unittest tests.test_validate_web_qa_report tests.test_validate_web_qa_report_cli`
+- `./scripts/smoke_replay_profile_examples.sh`
+- Result: **PASS** (124 tests + replay-profile smoke pass)
+
+### Blockers
+- `pytest` is still unavailable in host PATH, so verification continues via `unittest` + shell smoke checks.
+
+### Next
+- Add one parser-facing smoke for isolated failure-recovery-owner drift so replay triage covers ownership metadata as well as evidence/status drift.

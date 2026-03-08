@@ -89,3 +89,35 @@ print('qa inventory malformed-vs-partial triage smoke: PASS')
 PYJSON
 
 echo 'replay profile smoke: PASS'
+
+
+ISOLATED_FAIL_FIXTURES=(
+  "examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md|missing_artifact_paths|checkpoint artifact paths|checkpoint_artifact_ref_count|9"
+  "examples/web_qa_playwright_strict_fail_status_inconsistency_only.md|status_inconsistency|checkpoint/check status consistency|checkpoint_target_ref_count|10"
+)
+
+for fixture_spec in "${ISOLATED_FAIL_FIXTURES[@]}"; do
+  IFS='|' read -r fixture slug expected_error metadata_key metadata_expected <<<"$fixture_spec"
+  out="$TMP_DIR/${slug}.json"
+  set +e
+  python3 scripts/validate_web_qa_report.py     --file "$fixture"     --strict-plus     --json-out "$out" >/dev/null
+  status=$?
+  set -e
+  if [[ "$status" -eq 0 ]]; then
+    echo "expected isolated strict-plus fixture to fail validation: $fixture" >&2
+    exit 1
+  fi
+  python3 - "$out" "$expected_error" "$metadata_key" "$metadata_expected" <<'PYJSON'
+import json
+import sys
+from pathlib import Path
+payload = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
+assert payload['status'] == 'FAIL', payload
+assert payload['error_count'] == 1, payload
+assert sys.argv[2] in payload['errors'][0], payload
+metadata = payload['report_metadata']
+key = sys.argv[3]
+expected = int(sys.argv[4])
+assert metadata[key] == expected, (key, metadata.get(key), expected)
+PYJSON
+done

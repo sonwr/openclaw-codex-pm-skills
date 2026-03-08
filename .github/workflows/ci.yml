@@ -72,6 +72,11 @@ jobs:
             --file examples/web_qa_playwright_strict_plus_pass.md \
             --deterministic-replay-profile
 
+      - name: Run replay-profile smoke script
+        run: |
+          chmod +x scripts/smoke_replay_profile_examples.sh
+          ./scripts/smoke_replay_profile_examples.sh
+
       - name: Assert Playwright interactive profile preset stays equivalent
         run: |
           set -euo pipefail
