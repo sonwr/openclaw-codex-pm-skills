@@ -48,6 +48,9 @@ payload = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
 assert payload['status'] == 'FAIL', payload
 assert payload['error_count'] == 1, payload
 assert 'qa inventory check refs' in payload['errors'][0], payload
+assert payload['report_metadata']['qa_inventory_check_ref_count'] == 10, payload
+assert payload['report_metadata']['qa_inventory_missing_check_ref_count'] == 0, payload
+assert payload['report_metadata']['checkpoint_section_counts'] == {'functional': 5, 'visual': 3, 'off_happy': 2}, payload
 PYJSON
 
 echo 'replay profile smoke: PASS'

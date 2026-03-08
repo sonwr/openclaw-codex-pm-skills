@@ -418,3 +418,27 @@
 
 ### Next
 - Add a symmetric FAIL smoke example for missing `Checks:` mappings so CI/docs show both recovery directions side-by-side.
+
+## Run @ 19:10 UTC (cron)
+
+### Plan
+- Tighten replay-profile smoke coverage around the opt-in QA inventory mapping failure path.
+- Keep the assertion aligned with the actual fixture semantics: format drift should fail without hiding the underlying 10-check coverage universe.
+
+### Changes
+- Updated `scripts/smoke_replay_profile_examples.sh` so the isolated missing-`Checks:` FAIL fixture now asserts:
+  - validation fails with exactly one mapping error,
+  - the full QA universe still resolves to 10 check refs,
+  - the 5/3/2 checkpoint split remains intact.
+- Updated `README.md` replay-profile notes to explain that the smoke script now distinguishes mapping-format drift from coverage drift.
+
+### Verification
+- `python3 -m unittest discover -s tests -q`
+- `bash scripts/smoke_replay_profile_examples.sh`
+- Result: **PASS**
+
+### Blockers
+- Initial smoke assertion assumed the FAIL fixture would emit zero extracted check refs; actual fixture semantics preserve the 10-check universe and fail on mapping-format validation instead. Adjusted the smoke check to match that behavior.
+
+### Next
+- Add a dedicated fixture or parser-facing snippet for partial QA-inventory mapping drift (some checks mapped, some unmapped) so CI can distinguish incomplete mappings from malformed mapping lines.
