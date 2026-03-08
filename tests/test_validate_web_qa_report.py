@@ -6,7 +6,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.validate_web_qa_report import validate_report_text
+from scripts.validate_web_qa_report import _build_report_metadata, validate_report_text
 
 
 VALID_REPORT = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n- Viewport: `1366x768`\n- Test account: `qa.user@example.test`\n\n## 2) Checklist execution summary\n- Functional checks (5/5 pass)\n  - F1: PASS\n  - F2: PASS\n  - F3: PASS\n  - F4: PASS\n  - F5: PASS\n- Visual checks (3/3 pass)\n  - V1: PASS `shots/v1.png`\n  - V2: PASS `shots/v2.png`\n  - V3: PASS `shots/v3.png`\n- Off-happy-path checks (2/2 pass)\n  - O1: PASS\n  - O2: PASS\n\n## 3) Execution log\n- F1 checkpoint: URL changed to `/dashboard`, user avatar visible\n- F2 checkpoint: Inline error panel rendered and focus moved to form alert\n- F3 checkpoint: Required-field validation blocked form submit\n- F4 checkpoint: Pressing Enter on password field triggered submit\n- F5 checkpoint: Logout redirected to `/login`\n- V1 checkpoint: Captured baseline layout screenshot\n- V2 checkpoint: Captured error-state screenshot\n- V3 checkpoint: Captured dashboard screenshot\n- O1 checkpoint: Wrong-password path stayed on `/login`\n- O2 checkpoint: Empty-password path showed client-side validation\n\n## 4) Signoff\n- Regressions: 0\n- Merge recommendation: **APPROVE**\n- Replay readiness: **READY**\n"""
@@ -145,6 +145,15 @@ class ValidateWebQaReportTests(unittest.TestCase):
             ),
             [],
         )
+
+
+    def test_report_metadata_exposes_next_action_failed_check_refs(self) -> None:
+        report = FAILED_REPORT_WITH_RECOVERY + "- Next action: Investigate F2 spinner timeout, capture new artifacts, and rerun login flow\n"
+        metadata = _build_report_metadata(report)
+
+        self.assertEqual(metadata["failed_check_ids"], ["F2"])
+        self.assertEqual(metadata["next_action_failed_check_refs"], ["F2"])
+        self.assertEqual(metadata["next_action_failed_check_ref_count"], 1)
 
     def test_validate_report_fails_when_failure_timestamp_not_iso_utc(self) -> None:
         broken = FAILED_REPORT_WITH_RECOVERY.replace(
