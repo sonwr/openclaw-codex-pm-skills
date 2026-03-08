@@ -187,6 +187,18 @@ def _extract_next_action_failed_check_refs(text: str) -> list[str]:
     return refs
 
 
+def _summarize_checkpoint_sections(checkpoint_order: list[str]) -> dict[str, int]:
+    counts = {"functional": 0, "visual": 0, "off_happy": 0}
+    for checkpoint_id in checkpoint_order:
+        if checkpoint_id.startswith("F"):
+            counts["functional"] += 1
+        elif checkpoint_id.startswith("V"):
+            counts["visual"] += 1
+        elif checkpoint_id.startswith("O"):
+            counts["off_happy"] += 1
+    return counts
+
+
 def _build_report_metadata(text: str) -> dict[str, object]:
     failed_check_ids = _extract_failed_check_ids(text)
     checkpoint_order = _extract_checkpoint_order(text)
@@ -197,6 +209,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     ]
     missing_checkpoint_ids = [checkpoint_id for checkpoint_id in expected_checkpoint_order if checkpoint_id not in checkpoint_order]
     unexpected_checkpoint_ids = [checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in expected_checkpoint_order]
+    checkpoint_section_counts = _summarize_checkpoint_sections(checkpoint_order)
     checkpoint_target_refs: list[str] = []
     checkpoint_artifact_refs: list[str] = []
     checkpoint_target_refs_by_id: dict[str, list[str]] = {}
@@ -259,6 +272,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
         "checkpoint_order": checkpoint_order,
         "checkpoint_count": len(checkpoint_order),
+        "checkpoint_section_counts": checkpoint_section_counts,
         "missing_checkpoint_ids": missing_checkpoint_ids,
         "missing_checkpoint_count": len(missing_checkpoint_ids),
         "unexpected_checkpoint_ids": unexpected_checkpoint_ids,

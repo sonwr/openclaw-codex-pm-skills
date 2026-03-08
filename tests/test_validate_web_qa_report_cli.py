@@ -50,6 +50,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["status"], "PASS")
             self.assertEqual(payload["report_metadata"]["checkpoint_order"][:2], ["F1", "F2"])
             self.assertEqual(payload["report_metadata"]["checkpoint_count"], 10)
+            self.assertEqual(payload["report_metadata"]["checkpoint_section_counts"], {"functional": 5, "visual": 3, "off_happy": 2})
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_ids"], [])
             self.assertEqual(payload["report_metadata"]["unexpected_checkpoint_ids"], [])
             self.assertEqual(payload["report_metadata"]["checkpoint_target_refs"], ["e12", "e44"])
