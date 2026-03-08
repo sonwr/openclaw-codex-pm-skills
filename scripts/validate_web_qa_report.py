@@ -144,6 +144,10 @@ def _extract_next_action(text: str) -> str | None:
     return match.group(1).strip()
 
 
+def _has_signoff_section(text: str) -> bool:
+    return re.search(r"(?mi)^##\s*4\)\s*Signoff\s*$", text) is not None
+
+
 def _extract_failed_check_ids(text: str) -> list[str]:
     return [check_id for check_id, _ in _failed_check_blocks(text)]
 
@@ -320,6 +324,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         len(next_action_failed_check_refs) / failed_check_count, 4
     ) if failed_check_count else 1.0
     return {
+        "has_signoff_section": _has_signoff_section(text),
         "has_next_action": next_action is not None,
         "next_action_text": next_action,
         "failed_check_ids": failed_check_ids,

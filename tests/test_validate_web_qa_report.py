@@ -161,6 +161,15 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["checkpoint_section_counts"], {"functional": 5, "visual": 3, "off_happy": 2})
 
 
+    def test_report_metadata_tracks_signoff_section_presence(self) -> None:
+        metadata = _build_report_metadata(VALID_REPORT)
+        self.assertTrue(metadata["has_signoff_section"])
+
+        without_signoff = VALID_REPORT.replace("## 4) Signoff\n", "")
+        metadata_without_signoff = _build_report_metadata(without_signoff)
+        self.assertFalse(metadata_without_signoff["has_signoff_section"])
+
+
     def test_report_metadata_marks_missing_next_action_for_clean_pass_reports(self) -> None:
         metadata = _build_report_metadata(VALID_REPORT)
 
