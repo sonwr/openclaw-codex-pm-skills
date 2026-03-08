@@ -85,6 +85,15 @@ This is the preferred failure-recovery pattern: isolate one broken invariant, ca
 - `checkpoint_artifact_refs_by_id`
 - `checkpoint_reused_target_refs`
 - `checkpoint_reused_artifact_refs`
+- `has_signoff_section`
+- `reported_regressions`
+- `merge_recommendation`
+- `replay_readiness`
+- `missing_signoff_fields`
+- `missing_signoff_field_count`
+- `signoff_field_coverage_rate`
+- `has_next_action`
+- `next_action_text`
 
 ---
 
@@ -134,3 +143,16 @@ If one of those answers is missing, tighten the validator flags before the next 
 - `checkpoint_target_ref_coverage_rate` and `checkpoint_artifact_ref_coverage_rate` show how much of the 10-checkpoint execution log carries explicit replay handles.
 - `checkpoint_timestamp_coverage_rate` plus `missing_checkpoint_timestamp_ids` show how much of the execution log is ready for timestamp-based replay ordering without re-parsing the markdown body.
 - `checkpoint_reused_target_ref_coverage_rate` and `checkpoint_reused_artifact_ref_coverage_rate` show how much of the checkpoint set is affected by duplicate handle reuse.
+
+## Signoff triage cues
+
+When a report is blocked because the closing signoff is incomplete, prefer the explicit counters instead of re-parsing prose:
+
+- `has_signoff_section` tells you whether the signoff block exists at all.
+- `missing_signoff_fields` lists the exact missing closure items.
+- `missing_signoff_field_count` lets CI branch on incomplete signoff without counting strings downstream.
+- `signoff_field_coverage_rate` is the fast replay/readiness ratio for dashboards.
+- `reported_regressions`, `merge_recommendation`, and `replay_readiness` give the structured closure state once the block is complete.
+- `has_next_action` plus `next_action_text` separate missing closure from a present-but-incomplete handoff note.
+
+This keeps the handoff aligned with Playwright-interactive-style step verification: inspect the explicit JSON closure fields first, then reopen the markdown only when a human needs narrative context.
