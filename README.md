@@ -359,6 +359,7 @@ This mirrors Playwright-interactive-style recovery: isolate a single failing inv
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
 CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
 - JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
+- JSON payloads also include `active_profile_preset` so downstream CI can tell which replay preset produced the result without inferring from multiple booleans.
 
 ---
 

@@ -960,6 +960,21 @@ def main() -> None:
     require_qa_inventory_section = args.require_qa_inventory_section or profile_enabled
     require_signoff_section = args.require_signoff_section or profile_enabled
 
+    def resolve_profile_preset() -> str | None:
+        if args.playwright_interactive_profile:
+            return "playwright-interactive-profile"
+        if args.deterministic_replay_profile:
+            return "deterministic-replay-profile"
+        if args.strict_replay_profile:
+            return "strict-replay-profile"
+        if args.ci_replay_profile:
+            return "ci-replay-profile"
+        if args.strict_plus:
+            return "strict-plus"
+        return None
+
+    active_profile_preset = resolve_profile_preset()
+
     report_path = Path(args.file)
     if not report_path.exists():
         print(f"error: report not found: {report_path}", file=sys.stderr)
@@ -1008,6 +1023,8 @@ def main() -> None:
             "deterministic_replay_profile": args.deterministic_replay_profile,
             "strict_replay_profile": args.strict_replay_profile,
             "ci_replay_profile": args.ci_replay_profile,
+        "active_profile_preset": active_profile_preset,
+            "active_profile_preset": active_profile_preset,
             "enforce_checkpoint_format": enforce_checkpoint_format,
             "require_checkpoint_timestamps": require_checkpoint_timestamps,
             "enforce_monotonic_checkpoint_timestamps": enforce_monotonic_checkpoint_timestamps,
@@ -1048,6 +1065,7 @@ def main() -> None:
         "deterministic_replay_profile": args.deterministic_replay_profile,
         "strict_replay_profile": args.strict_replay_profile,
         "ci_replay_profile": args.ci_replay_profile,
+        "active_profile_preset": active_profile_preset,
         "enforce_checkpoint_format": enforce_checkpoint_format,
         "require_checkpoint_timestamps": require_checkpoint_timestamps,
         "enforce_monotonic_checkpoint_timestamps": enforce_monotonic_checkpoint_timestamps,

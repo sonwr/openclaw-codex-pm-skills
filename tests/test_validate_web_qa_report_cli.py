@@ -44,6 +44,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertFalse(payload["require_checkpoint_timestamps"])
             self.assertFalse(payload["enforce_monotonic_checkpoint_timestamps"])
             self.assertEqual(payload["counts"]["functional"], 5)
+            self.assertIsNone(payload["active_profile_preset"])
 
     def test_cli_writes_json_payload_to_file_when_json_out_is_set(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -94,6 +95,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["status"], "FAIL")
             self.assertEqual(payload["validation_schema_version"], 1)
             self.assertTrue(payload["playwright_interactive_profile"])
+            self.assertEqual(payload["active_profile_preset"], "playwright-interactive-profile")
             self.assertTrue(payload["strict"])
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(payload["require_failure_recovery_plan"])
@@ -124,6 +126,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "FAIL")
             self.assertTrue(payload["deterministic_replay_profile"])
+            self.assertEqual(payload["active_profile_preset"], "deterministic-replay-profile")
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
 
@@ -151,6 +154,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "FAIL")
             self.assertTrue(payload["strict_replay_profile"])
+            self.assertEqual(payload["active_profile_preset"], "strict-replay-profile")
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
 
@@ -178,8 +182,31 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "FAIL")
             self.assertTrue(payload["ci_replay_profile"])
+            self.assertEqual(payload["active_profile_preset"], "ci-replay-profile")
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
+
+    def test_cli_json_output_strict_plus_sets_active_profile_preset(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        report_path = root / "examples" / "web_qa_playwright_strict_plus_pass.md"
+
+        output = io.StringIO()
+        with mock.patch(
+            "sys.argv",
+            [
+                "validate_web_qa_report.py",
+                "--file",
+                str(report_path),
+                "--strict-plus",
+                "--json",
+            ],
+        ):
+            with contextlib.redirect_stdout(output):
+                validate_web_qa_report.main()
+
+        payload = json.loads(output.getvalue().strip())
+        self.assertEqual(payload["status"], "PASS")
+        self.assertEqual(payload["active_profile_preset"], "strict-plus")
 
     def test_cli_json_output_for_fail(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

@@ -50,3 +50,6 @@ python3 scripts/validate_web_qa_report.py \
 ```
 
 Use the JSON payload when downstream automation needs machine-readable gating, and keep the markdown report readable enough for human triage.
+
+
+JSON payloads also expose `active_profile_preset` (`strict-plus`, `playwright-interactive-profile`, `deterministic-replay-profile`, `strict-replay-profile`, or `ci-replay-profile`) so downstream CI can branch on one stable preset label instead of recomputing it from several booleans.
