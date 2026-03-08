@@ -70,6 +70,8 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_artifact_ref_ids"][-2:], ["O1", "O2"])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs"], [])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs"], [])
+            self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owners"], {})
+            self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owners"], {})
 
     def test_cli_json_output_tracks_reused_checkpoint_refs_for_replay_triage(self) -> None:
         report = VALID_REPORT.replace(
@@ -1616,3 +1618,51 @@ if __name__ == "__main__":
             {"selector": 0, "runtime": 0, "product": 0},
         )
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 0)
+
+
+    def test_cli_json_output_exposes_recovery_owners_for_referenced_and_unresolved_failed_checks(self) -> None:
+        report = VALID_REPORT.replace(
+            "- F2: PASS",
+            "- F2: FAIL login error state is unstable\n    - Failure classification: selector\n    - Recovery owner: qa-ui\n    - Recovery plan: Refresh selectors and rerun the deterministic flow",
+        ).replace(
+            "- V2: PASS `shots/v2.png`",
+            "- V2: FAIL error banner spacing drifted `shots/v2.png`\n    - Failure classification: product\n    - Recovery owner: design-systems\n    - Recovery plan: Update spacing token and rerun the screenshot capture",
+        ).replace(
+            "- Regressions: 0",
+            "- Regressions: 2",
+        ).replace(
+            "- Merge recommendation: **APPROVE**",
+            "- Merge recommendation: **BLOCK**",
+        ).replace(
+            "- Replay readiness: **READY**",
+            "- Replay readiness: **BLOCKED**",
+        ).replace(
+            "- Next action: Archive artifacts and proceed to release signoff",
+            "- Next action: Fix F2 with qa-ui, then rerun deterministic replay before final signoff",
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(report, encoding="utf-8")
+
+            output = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--strict",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    with self.assertRaises(SystemExit) as exc:
+                        validate_web_qa_report.main()
+            self.assertEqual(exc.exception.code, 1)
+
+            payload = json.loads(output.getvalue().strip())
+            self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owners"], {"F2": "qa-ui"})
+            self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owner_count"], 1)
+            self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owners"], {"V2": "design-systems"})
+            self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owner_count"], 1)

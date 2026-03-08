@@ -291,6 +291,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     for classification in failed_check_classifications:
         failed_check_classification_counts[classification] += 1
     failed_check_recovery_owners = _extract_failed_check_recovery_owners(text)
+    next_action_failed_check_recovery_owners: dict[str, str] = {}
+    unresolved_failed_check_recovery_owners: dict[str, str] = {}
     next_action_failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
     next_action_failed_check_ids_by_classification = {"selector": [], "runtime": [], "product": []}
     unresolved_failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
@@ -308,6 +310,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
     for check_id in next_action_failed_check_refs:
         classification = failed_check_classifications_by_id.get(check_id)
+        owner = failed_check_recovery_owners.get(check_id)
+        if owner is not None:
+            next_action_failed_check_recovery_owners[check_id] = owner
         if classification is not None:
             next_action_failed_check_classification_counts[classification] += 1
             next_action_failed_check_ids_by_classification[classification].append(check_id)
@@ -317,6 +322,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     next_action_references_all_failed_checks = not unresolved_failed_check_ids
     for check_id in unresolved_failed_check_ids:
         classification = failed_check_classifications_by_id.get(check_id)
+        owner = failed_check_recovery_owners.get(check_id)
+        if owner is not None:
+            unresolved_failed_check_recovery_owners[check_id] = owner
         if classification is not None:
             unresolved_failed_check_classification_counts[classification] += 1
             unresolved_failed_check_ids_by_classification[classification].append(check_id)
@@ -381,11 +389,15 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_coverage_rate": next_action_failed_check_coverage_rate,
         "next_action_failed_check_classification_counts": next_action_failed_check_classification_counts,
         "next_action_failed_check_ids_by_classification": next_action_failed_check_ids_by_classification,
+        "next_action_failed_check_recovery_owners": next_action_failed_check_recovery_owners,
+        "next_action_failed_check_recovery_owner_count": len(next_action_failed_check_recovery_owners),
         "unresolved_failed_check_ids": unresolved_failed_check_ids,
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
         "next_action_references_all_failed_checks": next_action_references_all_failed_checks,
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "unresolved_failed_check_ids_by_classification": unresolved_failed_check_ids_by_classification,
+        "unresolved_failed_check_recovery_owners": unresolved_failed_check_recovery_owners,
+        "unresolved_failed_check_recovery_owner_count": len(unresolved_failed_check_recovery_owners),
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
         "qa_inventory_check_ref_coverage_rate": qa_inventory_check_ref_coverage_rate,
