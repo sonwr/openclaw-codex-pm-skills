@@ -442,3 +442,23 @@
 
 ### Next
 - Add a dedicated fixture or parser-facing snippet for partial QA-inventory mapping drift (some checks mapped, some unmapped) so CI can distinguish incomplete mappings from malformed mapping lines.
+
+## Run @ 19:45 UTC (cron)
+
+### Plan
+- Make replay-profile QA inventory triage more parser-friendly without changing validator semantics.
+- Re-run the validator test suite on a green baseline.
+
+### Changes
+- Updated `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` with a parser-facing QA inventory drift cheat sheet.
+- Documented how to distinguish malformed `Checks:` lines from partial checklist coverage loss by expected `error_count` and `report_metadata` shape.
+
+### Verification
+- `python3 -m unittest discover -s tests -q`
+- Result: **PASS** (122 tests)
+
+### Blockers
+- None.
+
+### Next
+- Consider exposing the same malformed-vs-partial QA inventory triage hints in README copy for operators who start from the repo landing page.

@@ -195,6 +195,19 @@ Use this when you need one deterministic fixture that proves the difference betw
 
 Recovery checklist: confirm `report_metadata.qa_inventory_missing_check_refs == ['O2']`, add the missing coverage back into the QA inventory bullets, then rerun until the count returns to `10`.
 
+### Parser-facing QA inventory drift triage cheat sheet
+
+- **Malformed mapping drift / 잘못된 `Checks:` 형식**
+  - Expected signal: `error_count == 1` and `"Checks:" in errors[0]`
+  - Metadata shape: `qa_inventory_check_ref_count == 10`, `qa_inventory_missing_check_ref_count == 0`
+  - Meaning: the full QA universe is still present, but at least one inventory bullet omitted the required `Checks:` label.
+- **Partial coverage drift / 일부 체크 누락**
+  - Expected signal: `error_count == 1` and `"missing: O2" in errors[0]`
+  - Metadata shape: `qa_inventory_check_ref_count == 9`, `qa_inventory_missing_check_ref_count == 1`, `qa_inventory_missing_check_refs == ['O2']`
+  - Meaning: the mapping format is valid, but one checklist id dropped out of the QA inventory coverage graph.
+
+Use this quick distinction when downstream CI or machine parsers need to decide whether to repair formatting or restore missing checklist coverage first.
+
 ## Alias smoke commands
 
 Use one deterministic PASS fixture to prove every replay-profile alias still resolves to the same Playwright-interactive contract.
