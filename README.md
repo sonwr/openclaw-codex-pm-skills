@@ -138,6 +138,7 @@ Current docs:
 - `docs/INSTALL_OPENCLAW.md`
 - `docs/COMPATIBILITY.md`
 - `docs/MAPPING_PM_SKILLS.md`
+- `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
 
 Current examples:
 
@@ -254,6 +255,8 @@ python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_samp
 ```
 
 For machine-readable CI output, add `--json` (stdout) or `--json-out <path>` (artifact file).
+
+For a reusable explanation of deterministic replay expectations and failure-recovery discipline, see `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`.
 
 `--strict` adds reproducibility gates aligned with Playwright-interactive principles:
 
