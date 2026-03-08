@@ -377,6 +377,7 @@ This mirrors Playwright-interactive-style recovery: isolate a single failing inv
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
 CI now also smoke-tests the isolated target-ref-uniqueness fixture so selector alias drift cannot silently bypass replay-policy coverage.
 Need a quick alias smoke check? `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes copy-paste commands that run the same PASS fixture through `--playwright-interactive-profile`, `--deterministic-replay-profile`, `--strict-replay-profile`, and `--ci-replay-profile` so CI owners can confirm alias parity without inventing new fixtures.
+Need an executable repo-local smoke check? Run `scripts/smoke_replay_profile_examples.sh` to verify all replay-profile aliases against the replay-ready PASS fixture plus the isolated missing-`Checks:` FAIL fixture.
 CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
 - JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
 - JSON payloads also include `active_profile_preset` so downstream CI can tell which replay preset produced the result without inferring from multiple booleans.
