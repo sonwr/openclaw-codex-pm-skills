@@ -164,6 +164,7 @@ Current examples:
 - web QA Playwright strict-plus pass fixture (deterministic replay gates all satisfied, including replay readiness signoff) (`examples/web_qa_playwright_strict_plus_pass.md`)
 - web QA Playwright strict-plus pass fixture with explicit QA inventory `Checks:` mappings for opt-in traceability validation (`examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`)
 - web QA Playwright strict-plus isolated missing-`Checks:` fail fixture for QA inventory mapping triage (`examples/web_qa_playwright_strict_fail_missing_check_refs_only.md`)
+- web QA Playwright strict-plus partial-coverage fail fixture for incomplete QA inventory mapping drift (`examples/web_qa_playwright_strict_fail_partial_check_refs_only.md`)
 - web QA Playwright strict-plus isolated artifact-ref reuse fail fixture for CI triage (`examples/web_qa_playwright_strict_fail_artifact_ref_reuse_only.md`)
 - web QA Playwright strict-plus isolated monotonic-timestamp fail fixture for replay-order triage (`examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md`)
 - web QA Playwright strict-plus isolated status-consistency fail fixture for checkpoint/check drift triage (`examples/web_qa_playwright_strict_fail_status_inconsistency_only.md`)
@@ -383,7 +384,7 @@ This mirrors Playwright-interactive-style recovery: isolate a single failing inv
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
 CI now also smoke-tests the isolated target-ref-uniqueness fixture so selector alias drift cannot silently bypass replay-policy coverage.
 Need a quick alias smoke check? `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes copy-paste commands that run the same PASS fixture through `--playwright-interactive-profile`, `--deterministic-replay-profile`, `--strict-replay-profile`, and `--ci-replay-profile` so CI owners can confirm alias parity without inventing new fixtures.
-Need an executable repo-local smoke check? Run `scripts/smoke_replay_profile_examples.sh` to verify all replay-profile aliases against the replay-ready PASS fixture plus the isolated missing-`Checks:` FAIL fixture.
+Need an executable repo-local smoke check? Run `scripts/smoke_replay_profile_examples.sh` to verify all replay-profile aliases against the replay-ready PASS fixture plus the isolated missing-`Checks:` and partial-coverage FAIL fixtures.
 CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
 - JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
 - JSON payloads also include `active_profile_preset` so downstream CI can tell which replay preset produced the result without inferring from multiple booleans. Replay metadata also separates first-seen checkpoint refs from `checkpoint_reused_target_refs` / `checkpoint_reused_artifact_refs` so strict handoff jobs can detect evidence reuse without recomputing it downstream. Replay metadata now also exposes `has_next_action` and raw `next_action_text`, so handoff jobs can branch on explicit owner guidance before parsing free-form markdown.

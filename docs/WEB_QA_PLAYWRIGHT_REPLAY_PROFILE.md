@@ -167,6 +167,34 @@ Use this when replay metadata is otherwise healthy and you want one deterministi
 
 Recovery checklist: confirm `report_metadata.qa_inventory_check_ref_count == 0`, add `Checks:` mappings to each QA inventory bullet, then rerun the same fixture until the count returns to `10` for the canonical pass example.
 
+### Copy-paste CI smoke for the isolated partial-coverage FAIL fixture
+
+```bash
+python3 scripts/validate_web_qa_report.py \
+  --file examples/web_qa_playwright_strict_fail_partial_check_refs_only.md \
+  --strict-plus \
+  --require-qa-inventory-check-refs \
+  --json-out .tmp/web-qa-partial-check-refs.json || true
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+payload = json.loads(Path('.tmp/web-qa-partial-check-refs.json').read_text(encoding='utf-8'))
+metadata = payload['report_metadata']
+assert payload['status'] == 'FAIL'
+assert payload['error_count'] == 1
+assert 'missing: O2' in payload['errors'][0]
+assert metadata['qa_inventory_check_ref_count'] == 9
+assert metadata['qa_inventory_missing_check_ref_count'] == 1
+assert metadata['qa_inventory_missing_check_refs'] == ['O2']
+print('qa inventory partial-coverage FAIL payload smoke: PASS')
+PY
+```
+
+Use this when you need one deterministic fixture that proves the difference between malformed `Checks:` lines and incomplete coverage.
+
+Recovery checklist: confirm `report_metadata.qa_inventory_missing_check_refs == ['O2']`, add the missing coverage back into the QA inventory bullets, then rerun until the count returns to `10`.
+
 ## Alias smoke commands
 
 Use one deterministic PASS fixture to prove every replay-profile alias still resolves to the same Playwright-interactive contract.
