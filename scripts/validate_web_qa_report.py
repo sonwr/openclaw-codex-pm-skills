@@ -1630,6 +1630,17 @@ def main() -> None:
         print("- next action handoff checks: enabled")
     if require_next_action_failed_check_ref:
         print("- next action failed-check traceability checks: enabled")
+    if report_metadata.get("has_signoff_section"):
+        print(
+            "- signoff field coverage: "
+            f"{report_metadata.get('signoff_field_coverage_rate', 0.0) * 100:.2f}% "
+            f"({len(report_metadata.get('missing_signoff_fields', []))} missing field(s))"
+        )
+    if report_metadata.get("missing_signoff_fields"):
+        print(
+            "- missing signoff fields: "
+            + ", ".join(report_metadata["missing_signoff_fields"])
+        )
     if report_metadata.get("failed_check_ids"):
         all_failed_refs = report_metadata.get("next_action_references_all_failed_checks", False)
         print(f"- next action covers all failed checks: {'yes' if all_failed_refs else 'no'}")
