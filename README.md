@@ -156,6 +156,7 @@ Current examples:
 - web QA Playwright strict-plus isolated artifact-ref reuse fail fixture for CI triage (`examples/web_qa_playwright_strict_fail_artifact_ref_reuse_only.md`)
 - web QA Playwright strict-plus isolated monotonic-timestamp fail fixture for replay-order triage (`examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md`)
 - web QA Playwright strict-plus isolated status-consistency fail fixture for checkpoint/check drift triage (`examples/web_qa_playwright_strict_fail_status_inconsistency_only.md`)
+- web QA Playwright strict-plus isolated missing-artifact-path fail fixture for evidence-capture triage (`examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md`)
 
 ---
 
@@ -299,6 +300,7 @@ python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_stri
 python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_execution_log_header.md --strict
 python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_malformed_failure_breakdown.md --strict --require-failure-classification-summary
 python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md --strict-plus
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md --strict-plus
 ```
 
 Expected outcomes:
@@ -307,6 +309,7 @@ Expected outcomes:
 - missing-classification fixture: `FAIL` with `failed check ... must include a Failure classification: line` error.
 - malformed-failure-breakdown fixture: `FAIL` with failure-classification-summary mismatch when `--require-failure-classification-summary` is enabled.
 - missing-execution-log-header fixture: `FAIL` with strict-mode `Execution log` section-header error.
+- missing-artifact-paths-only fixture: `FAIL` with exactly one strict-plus `checkpoint artifact paths` error for evidence-capture triage.
 - monotonic-timestamp-only fixture: `FAIL` with exactly one `checkpoint timestamp order` error under `--strict-plus`.
 
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
