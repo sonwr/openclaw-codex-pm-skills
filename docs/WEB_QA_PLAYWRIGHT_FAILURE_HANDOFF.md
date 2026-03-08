@@ -62,6 +62,8 @@ For a failing run, inspect these `report_metadata` keys first:
 - `failed_check_classifications_by_id`
 - `failed_check_recovery_owners`
 - `missing_failed_check_recovery_owner_ids`
+- `has_next_action`
+- `next_action_text`
 - `next_action_failed_check_refs`
 - `unresolved_failed_check_ids`
 - `checkpoint_target_refs_by_id`

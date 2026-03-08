@@ -152,10 +152,20 @@ class ValidateWebQaReportTests(unittest.TestCase):
         metadata = _build_report_metadata(report)
 
         self.assertEqual(metadata["failed_check_ids"], ["F2"])
+        self.assertTrue(metadata["has_next_action"])
+        self.assertEqual(metadata["next_action_text"], "Investigate F2 spinner timeout, capture new artifacts, and rerun login flow")
         self.assertEqual(metadata["next_action_failed_check_refs"], ["F2"])
         self.assertEqual(metadata["next_action_failed_check_ref_count"], 1)
         self.assertEqual(metadata["failed_check_classification_counts"], {"selector": 0, "runtime": 0, "product": 1})
         self.assertEqual(metadata["checkpoint_section_counts"], {"functional": 5, "visual": 3, "off_happy": 2})
+
+
+    def test_report_metadata_marks_missing_next_action_for_clean_pass_reports(self) -> None:
+        metadata = _build_report_metadata(VALID_REPORT)
+
+        self.assertFalse(metadata["has_next_action"])
+        self.assertIsNone(metadata["next_action_text"])
+        self.assertEqual(metadata["next_action_failed_check_refs"], [])
 
     def test_report_metadata_deduplicates_next_action_failed_check_refs(self) -> None:
         report = (

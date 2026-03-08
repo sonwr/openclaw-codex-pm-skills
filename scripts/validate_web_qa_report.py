@@ -258,6 +258,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     ]
     qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
     return {
+        "has_next_action": next_action is not None,
+        "next_action_text": next_action,
         "failed_check_ids": failed_check_ids,
         "failed_check_count": len(failed_check_ids),
         "failed_check_classifications": failed_check_classifications,
