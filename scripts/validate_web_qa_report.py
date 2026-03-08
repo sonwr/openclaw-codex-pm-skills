@@ -151,6 +151,26 @@ def _extract_failed_check_classifications(text: str) -> list[str]:
             classifications.append(match.group(1).lower())
     return classifications
 
+def _extract_next_action_failed_check_refs(text: str) -> list[str]:
+    next_action = _extract_next_action(text)
+    if next_action is None:
+        return []
+    return re.findall(r"\b([FVO]\d+)\b", next_action)
+
+
+def _build_report_metadata(text: str) -> dict[str, object]:
+    failed_check_ids = _extract_failed_check_ids(text)
+    next_action = _extract_next_action(text)
+    next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
+    return {
+        "failed_check_ids": failed_check_ids,
+        "failed_check_count": len(failed_check_ids),
+        "next_action": next_action,
+        "next_action_failed_check_refs": next_action_failed_check_refs,
+        "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
+    }
+
+
 
 def _extract_failure_breakdown_summary(text: str) -> dict[str, int] | None:
     match = re.search(
@@ -1161,6 +1181,7 @@ def main() -> None:
         require_next_action=require_next_action,
         require_next_action_failed_check_ref=require_next_action_failed_check_ref,
     )
+    report_metadata = _build_report_metadata(text)
 
     def emit_json_payload(payload: dict[str, object]) -> None:
         if args.json:
@@ -1208,6 +1229,7 @@ def main() -> None:
             "file": str(report_path),
             "errors": errors,
             "error_count": len(errors),
+            "report_metadata": report_metadata,
         }
         if args.json or args.json_out:
             emit_json_payload(payload)
@@ -1252,6 +1274,7 @@ def main() -> None:
         "require_next_action": require_next_action,
         "require_next_action_failed_check_ref": require_next_action_failed_check_ref,
         "file": str(report_path),
+        "report_metadata": report_metadata,
         "counts": {
             "functional": 5,
             "visual": 3,
