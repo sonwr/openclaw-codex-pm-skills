@@ -292,6 +292,7 @@ Playwright-interactive operating principles reflected in this preset and fixture
 - `--require-visual-checkpoint-evidence`: require each visual checkpoint line (`V1..V3`) to include an inline screenshot path for reproducible visual proof.
 - `--require-checkpoint-artifact-paths`: require every checkpoint line to include at least one inline artifact path (screenshot/video/log/trace) for post-failure replay and evidence auditing.
 - `--require-checkpoint-target-refs`: require every checkpoint line to include a stable target reference token (`ref=<id>`) so interactive replay can bind actions to deterministic UI targets.
+- `--enforce-checkpoint-target-ref-uniqueness`: require each checkpoint target ref to map to exactly one checkpoint, so replay selectors stay stable and unambiguous across retries.
 - `--enforce-checkpoint-artifact-ref-uniqueness`: require each inline artifact path to appear in only one checkpoint line, reducing ambiguous replay evidence mapping.
 - `--require-failure-evidence-artifact-paths`: require failed checks to include an inline artifact path on the `Evidence:` line, so triage links are machine-verifiable.
 - `--require-failure-recovery-plan`: require failed checks to include a `Recovery plan:` line with deterministic next-step recovery instructions.
@@ -334,6 +335,7 @@ Use these deterministic fixtures to isolate one replay drift at a time:
 - `web_qa_playwright_strict_fail_monotonic_timestamp_only.md` → replay-order drift (`checkpoint timestamp order`)
 - `web_qa_playwright_strict_fail_status_inconsistency_only.md` → checklist/log state drift (`status consistency`)
 - `web_qa_playwright_strict_fail_missing_target_refs.md` → selector-target traceability drift (`checkpoint target refs`)
+- `web_qa_playwright_strict_fail_target_ref_reuse_only.md` → selector alias drift (`target ref uniqueness`)
 - `web_qa_playwright_strict_fail_missing_artifact_paths_only.md` → evidence-capture drift (`checkpoint artifact paths`)
 
 Copy-paste recovery commands:
@@ -350,6 +352,9 @@ python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_stri
 
 # Selector traceability drift
 python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_target_refs.md --strict-plus --json-out .tmp/web-qa-missing-target-refs.json
+
+# Selector alias drift
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_target_ref_reuse_only.md --strict-plus --json-out .tmp/web-qa-target-ref-reuse.json
 
 # Evidence capture drift
 python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md --strict-plus --json-out .tmp/web-qa-missing-artifact-paths.json

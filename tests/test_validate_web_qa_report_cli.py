@@ -835,6 +835,36 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         self.assertNotIn("checkpoint timestamp order", "\n".join(payload["errors"]))
         self.assertNotIn("artifact ref", "\n".join(payload["errors"]))
 
+    def test_cli_strict_plus_target_ref_reuse_only_fixture_isolates_single_traceability_error(self) -> None:
+        fixture_path = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_target_ref_reuse_only.md"
+        )
+        output = io.StringIO()
+
+        with self.assertRaises(SystemExit) as exc:
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(fixture_path),
+                    "--strict-plus",
+                    "--enforce-checkpoint-target-ref-uniqueness",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+        self.assertEqual(exc.exception.code, 1)
+
+        payload = json.loads(output.getvalue().strip())
+        self.assertEqual(payload["status"], "FAIL")
+        self.assertEqual(payload["error_count"], 1)
+        self.assertIn("target ref uniqueness", payload["errors"][0])
+        self.assertNotIn("checkpoint artifact paths", "\n".join(payload["errors"]))
+
     def test_cli_strict_plus_missing_artifact_paths_only_fixture_isolates_single_repro_error(self) -> None:
         fixture_path = (
             Path(__file__).resolve().parents[1]

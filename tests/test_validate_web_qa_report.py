@@ -705,6 +705,36 @@ class ValidateWebQaReportTests(unittest.TestCase):
             [],
         )
 
+    def test_strict_plus_target_ref_reuse_only_fixture_isolates_single_traceability_error(self) -> None:
+        fixture_path = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_target_ref_reuse_only.md"
+        )
+        fixture_text = fixture_path.read_text(encoding="utf-8")
+        errors = validate_report_text(
+            fixture_text,
+            enforce_checkpoint_format=True,
+            require_checkpoint_timestamps=True,
+            enforce_monotonic_checkpoint_timestamps=True,
+            enforce_checkpoint_status_tokens=True,
+            require_visual_checkpoint_evidence=True,
+            require_checkpoint_artifact_paths=True,
+            require_checkpoint_target_refs=True,
+            enforce_checkpoint_target_ref_uniqueness=True,
+            enforce_checkpoint_artifact_ref_uniqueness=True,
+            require_failure_checkpoint_artifact_paths=True,
+            require_failure_evidence_artifact_paths=True,
+            require_failure_recovery_plan=True,
+            require_failure_recovery_owner=True,
+            enforce_checkpoint_to_check_status_consistency=True,
+            require_failure_classification_summary=True,
+            require_execution_log_step_count_match=True,
+            require_qa_inventory_section=True,
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("target ref uniqueness", errors[0])
+
     def test_validate_report_fails_when_checkpoint_target_refs_are_not_unique(self) -> None:
         with_duplicate_ref = (
             VALID_REPORT.replace("- F1 checkpoint:", "- F1 checkpoint: ref=shared-ref ")
