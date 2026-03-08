@@ -94,3 +94,17 @@ Use these snippets when you enable `--require-qa-inventory-check-refs` and want 
 ```
 
 Recovery rule: first compare `status`, then `require_qa_inventory_check_refs`, then the `report_metadata.qa_inventory_check_refs` list/count before reading the rest of the payload.
+
+
+## Alias smoke commands
+
+Use one deterministic PASS fixture to prove every replay-profile alias still resolves to the same Playwright-interactive contract.
+
+```bash
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md --playwright-interactive-profile --json-out .tmp/playwright-interactive-profile.json
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md --deterministic-replay-profile --json-out .tmp/deterministic-replay-profile.json
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md --strict-replay-profile --json-out .tmp/strict-replay-profile.json
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md --ci-replay-profile --json-out .tmp/ci-replay-profile.json
+```
+
+Check that each artifact reports the expected `active_profile_preset` value while preserving the same strict-plus validation surface.
