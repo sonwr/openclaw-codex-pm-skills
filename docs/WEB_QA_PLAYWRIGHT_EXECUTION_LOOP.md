@@ -42,3 +42,23 @@ python3 scripts/validate_web_qa_report.py   --file examples/web_qa_playwright_st
 ```
 
 This command gives both human-readable review output and machine-readable replay metadata for CI triage.
+
+
+## Profile selection quick map
+
+Use one preset name consistently in reports, CI, and review comments so reruns do not drift.
+
+- `--strict` — basic reproducibility gates (URL, viewport, account, screenshots, signoff).
+- `--strict-plus` — strict mode plus deterministic replay gates across checkpoints, artifacts, target refs, and recovery notes.
+- `--playwright-interactive-profile` — human-friendly alias for the full deterministic replay policy.
+- `--deterministic-replay-profile` / `--strict-replay-profile` / `--ci-replay-profile` — naming aliases for the same full profile, useful when teams want the switch name to match local workflow language.
+
+### Step-by-step recovery handoff
+
+1. Validate the report with one preset and save `--json-out artifacts/validation.json`.
+2. If the failure is `selector`, patch selectors and rerun only the affected checks first.
+3. If the failure is `runtime`, relaunch the browser/app entrypoint before rerunning the affected checks.
+4. If the failure is `product`, keep the failing evidence artifact, set signoff to `BLOCK`, and point `Next action:` at the failed check ids.
+5. Re-run the same preset without changing viewport/account/URL assumptions.
+
+This mirrors the Playwright-interactive habit of stable setup, stepwise verification, and explicit recovery ownership before broad reruns.
