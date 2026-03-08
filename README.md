@@ -374,6 +374,37 @@ CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream 
 - JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
 - JSON payloads also include `active_profile_preset` so downstream CI can tell which replay preset produced the result without inferring from multiple booleans.
 
+Parser-facing JSON snippets for downstream CI contracts:
+
+```json
+{
+  "status": "PASS",
+  "validation_schema_version": 1,
+  "active_profile_preset": "strict-plus",
+  "counts": {"functional": 5, "visual": 3, "off_happy_path": 2},
+  "report_metadata": {
+    "qa_inventory_check_refs": ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
+    "failed_check_ids": [],
+    "next_action_failed_check_refs": []
+  }
+}
+```
+
+```json
+{
+  "status": "FAIL",
+  "validation_schema_version": 1,
+  "errors": [
+    "qa inventory check refs: every QA inventory bullet must include 'Checks:' mapping"
+  ],
+  "report_metadata": {
+    "qa_inventory_check_refs": [],
+    "failed_check_ids": [],
+    "next_action_failed_check_refs": []
+  }
+}
+```
+
 ---
 
 ## Quality Standards

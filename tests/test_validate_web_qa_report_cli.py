@@ -210,6 +210,10 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         payload = json.loads(output.getvalue().strip())
         self.assertEqual(payload["status"], "PASS")
         self.assertTrue(payload["require_qa_inventory_check_refs"])
+        self.assertEqual(
+            payload["report_metadata"]["qa_inventory_check_refs"],
+            ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
+        )
 
     def test_cli_json_output_with_explicit_qa_inventory_check_refs_requirement(self) -> None:
         root = Path(__file__).resolve().parents[1]

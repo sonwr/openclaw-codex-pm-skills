@@ -177,6 +177,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     ]
     next_action = _extract_next_action(text)
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
+    qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
     return {
         "failed_check_ids": failed_check_ids,
         "failed_check_count": len(failed_check_ids),
@@ -188,6 +189,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action": next_action,
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
+        "qa_inventory_check_refs": qa_inventory_check_refs,
+        "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
     }
 
 
@@ -223,11 +226,16 @@ def _extract_qa_inventory_body(text: str) -> str:
 def _extract_qa_inventory_check_refs(text: str) -> list[str]:
     inventory_body = _extract_qa_inventory_body(text)
     refs: list[str] = []
+    seen: set[str] = set()
     for line in re.findall(r"(?mi)^\s*-\s+.+$", inventory_body):
         match = re.search(r"Checks:\s*([A-Z0-9, ]+)", line)
         if match is None:
             continue
-        refs.extend(re.findall(r"\b([FVO]\d+)\b", match.group(1)))
+        for ref in re.findall(r"\b([FVO]\d+)\b", match.group(1)):
+            if ref in seen:
+                continue
+            seen.add(ref)
+            refs.append(ref)
     return refs
 
 
