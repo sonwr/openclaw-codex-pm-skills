@@ -128,6 +128,13 @@ def _extract_replay_readiness(text: str) -> str | None:
     return match.group(1).upper()
 
 
+def _extract_next_action(text: str) -> str | None:
+    match = re.search(r"(?mi)^\s*-\s*Next action:\s*(.+)$", text)
+    if not match:
+        return None
+    return match.group(1).strip()
+
+
 def _extract_failed_check_classifications(text: str) -> list[str]:
     failed_blocks = _failed_check_blocks(text)
     classifications: list[str] = []
@@ -204,6 +211,7 @@ def validate_report_text(
     require_qa_inventory_check_refs: bool = False,
     require_signoff_section: bool = False,
     require_replay_readiness: bool = False,
+    require_next_action: bool = False,
 ) -> list[str]:
     functional_block = _section_block(text, SECTION_TITLES["functional"])
     visual_block = _section_block(text, SECTION_TITLES["visual"])
@@ -527,6 +535,17 @@ def validate_report_text(
         errors.append(
             "replay readiness: signoff must include 'Replay readiness: READY' or 'Replay readiness: BLOCKED'"
         )
+
+    if require_next_action:
+        next_action = _extract_next_action(text)
+        if next_action is None:
+            errors.append(
+                "next action: signoff must include 'Next action: ...' for explicit handoff"
+            )
+        elif len(next_action) < 8:
+            errors.append(
+                "next action: signoff Next action line must be specific enough for the next run (>=8 chars)"
+            )
 
     checkpoint_pairs = _extract_checkpoint_tails(text)
 
@@ -1003,6 +1022,11 @@ def main() -> None:
         action="store_true",
         help="Require signoff to include 'Replay readiness: READY/BLOCKED' for deterministic replay handoff",
     )
+    parser.add_argument(
+        "--require-next-action",
+        action="store_true",
+        help="Require signoff to include 'Next action: ...' so the next run has an explicit handoff step",
+    )
     args = parser.parse_args()
 
     profile_enabled = (
@@ -1048,6 +1072,7 @@ def main() -> None:
     require_qa_inventory_check_refs = args.require_qa_inventory_check_refs
     require_signoff_section = args.require_signoff_section or profile_enabled
     require_replay_readiness = args.require_replay_readiness or profile_enabled
+    require_next_action = args.require_next_action
 
     def resolve_profile_preset() -> str | None:
         if args.playwright_interactive_profile:
@@ -1094,6 +1119,7 @@ def main() -> None:
         require_qa_inventory_check_refs=require_qa_inventory_check_refs,
         require_signoff_section=require_signoff_section,
         require_replay_readiness=require_replay_readiness,
+        require_next_action=require_next_action,
     )
 
     def emit_json_payload(payload: dict[str, object]) -> None:
@@ -1136,6 +1162,7 @@ def main() -> None:
             "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
             "require_signoff_section": require_signoff_section,
             "require_replay_readiness": require_replay_readiness,
+            "require_next_action": require_next_action,
             "file": str(report_path),
             "errors": errors,
             "error_count": len(errors),
@@ -1179,6 +1206,7 @@ def main() -> None:
         "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
         "require_signoff_section": require_signoff_section,
         "require_replay_readiness": require_replay_readiness,
+        "require_next_action": require_next_action,
         "file": str(report_path),
         "counts": {
             "functional": 5,
@@ -1250,6 +1278,8 @@ def main() -> None:
         print("- signoff section checks: enabled")
     if require_replay_readiness:
         print("- replay readiness checks: enabled")
+    if require_next_action:
+        print("- next action handoff checks: enabled")
 
 
 if __name__ == "__main__":

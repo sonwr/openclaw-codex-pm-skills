@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts import validate_web_qa_report
 
 
-VALID_REPORT = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n- Viewport: `1366x768`\n- Test account: `qa.user@example.test`\n\n## 2) Checklist execution summary\n- Functional checks (5/5 pass)\n  - F1: PASS\n  - F2: PASS\n  - F3: PASS\n  - F4: PASS\n  - F5: PASS\n- Visual checks (3/3 pass)\n  - V1: PASS `shots/v1.png`\n  - V2: PASS `shots/v2.png`\n  - V3: PASS `shots/v3.png`\n- Off-happy-path checks (2/2 pass)\n  - O1: PASS\n  - O2: PASS\n\n## 3) Execution log\n- F1 checkpoint: URL changed to `/dashboard`, user avatar visible\n- F2 checkpoint: Inline error panel rendered and focus moved to form alert\n- F3 checkpoint: Required-field validation blocked form submit\n- F4 checkpoint: Pressing Enter on password field triggered submit\n- F5 checkpoint: Logout redirected to `/login`\n- V1 checkpoint: Captured baseline layout screenshot\n- V2 checkpoint: Captured error-state screenshot\n- V3 checkpoint: Captured dashboard screenshot\n- O1 checkpoint: Wrong-password path stayed on `/login`\n- O2 checkpoint: Empty-password path showed client-side validation\n\n## 4) Signoff\n- Regressions: 0\n- Merge recommendation: **APPROVE**\n- Replay readiness: **READY**\n"""
+VALID_REPORT = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n- Viewport: `1366x768`\n- Test account: `qa.user@example.test`\n\n## 2) Checklist execution summary\n- Functional checks (5/5 pass)\n  - F1: PASS\n  - F2: PASS\n  - F3: PASS\n  - F4: PASS\n  - F5: PASS\n- Visual checks (3/3 pass)\n  - V1: PASS `shots/v1.png`\n  - V2: PASS `shots/v2.png`\n  - V3: PASS `shots/v3.png`\n- Off-happy-path checks (2/2 pass)\n  - O1: PASS\n  - O2: PASS\n\n## 3) Execution log\n- F1 checkpoint: URL changed to `/dashboard`, user avatar visible\n- F2 checkpoint: Inline error panel rendered and focus moved to form alert\n- F3 checkpoint: Required-field validation blocked form submit\n- F4 checkpoint: Pressing Enter on password field triggered submit\n- F5 checkpoint: Logout redirected to `/login`\n- V1 checkpoint: Captured baseline layout screenshot\n- V2 checkpoint: Captured error-state screenshot\n- V3 checkpoint: Captured dashboard screenshot\n- O1 checkpoint: Wrong-password path stayed on `/login`\n- O2 checkpoint: Empty-password path showed client-side validation\n\n## 4) Signoff\n- Regressions: 0\n- Merge recommendation: **APPROVE**\n- Replay readiness: **READY**\n- Next action: Archive artifacts and proceed to release signoff\n"""
 
 
 class ValidateWebQaReportCliTests(unittest.TestCase):
@@ -976,6 +976,31 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload = json.loads(output.getvalue().strip())
             self.assertTrue(payload["require_replay_readiness"])
             self.assertTrue(any("Replay readiness" in err for err in payload["errors"]))
+
+    def test_cli_json_output_for_explicit_next_action_requirement(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            broken = VALID_REPORT.replace("- Next action: Archive artifacts and proceed to release signoff\n", "")
+            report_path.write_text(broken, encoding="utf-8")
+
+            output = io.StringIO()
+            with self.assertRaises(SystemExit) as exc:
+                with mock.patch(
+                    "sys.argv",
+                    [
+                        "validate_web_qa_report.py",
+                        "--file",
+                        str(report_path),
+                        "--json",
+                        "--require-next-action",
+                    ],
+                ):
+                    with contextlib.redirect_stdout(output):
+                        validate_web_qa_report.main()
+            self.assertEqual(exc.exception.code, 1)
+            payload = json.loads(output.getvalue().strip())
+            self.assertTrue(payload["require_next_action"])
+            self.assertTrue(any("next action" in err.lower() for err in payload["errors"]))
 
 
 if __name__ == "__main__":
