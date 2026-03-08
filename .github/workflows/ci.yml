@@ -79,6 +79,20 @@ jobs:
             --file examples/web_qa_playwright_strict_plus_pass.md \
             --playwright-interactive-profile
 
+      - name: Assert strict replay profile alias stays equivalent
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_plus_pass.md \
+            --strict-replay-profile
+
+      - name: Assert CI replay profile alias stays equivalent
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_plus_pass.md \
+            --ci-replay-profile
+
       - name: Assert strict-plus JSON payload shape for downstream CI parsers
         run: |
           set -euo pipefail
