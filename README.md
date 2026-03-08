@@ -304,6 +304,7 @@ Playwright-interactive operating principles reflected in this preset and fixture
 - `--require-failure-classification-summary`: require a signoff line in the form `Failure breakdown: selector=<n>, runtime=<n>, product=<n>` and validate it against failed-check classifications.
 - `--require-execution-log-step-count-match`: require the execution log to contain only checkpoint bullets and exactly 10 checkpoint lines (F1..F5, V1..V3, O1..O2), which tightens deterministic replay step accounting.
 - `--require-qa-inventory-section`: require the report to include a `## QA inventory` section with explicit environment/tool metadata for replayable incident audits.
+- `--require-qa-inventory-check-refs --require-qa-inventory-full-coverage`: tighten QA inventory mapping so every checklist id is referenced at least once and stdout explicitly reports the full-coverage gate when enabled.
 
 The validator always enforces the fixed structure rule (5 functional / 3 visual / 2 off-happy-path checks).
 

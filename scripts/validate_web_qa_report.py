@@ -1292,6 +1292,8 @@ def main() -> None:
         print("- qa inventory section checks: enabled")
     if require_qa_inventory_check_refs:
         print("- qa inventory check-ref mapping checks: enabled")
+    if require_qa_inventory_full_coverage:
+        print("- qa inventory full-coverage checks: enabled")
     if require_signoff_section:
         print("- signoff section checks: enabled")
     if require_replay_readiness:

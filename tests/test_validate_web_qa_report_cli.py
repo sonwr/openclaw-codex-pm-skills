@@ -444,6 +444,29 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertTrue(payload["require_checkpoint_artifact_paths"])
             self.assertTrue(any("checkpoint artifact paths" in err for err in payload["errors"]))
 
+    def test_cli_stdout_reports_qa_inventory_full_coverage_check_when_enabled(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        report_path = root / "examples" / "web_qa_playwright_strict_plus_pass.md"
+
+        output = io.StringIO()
+        with mock.patch(
+            "sys.argv",
+            [
+                "validate_web_qa_report.py",
+                "--file",
+                str(report_path),
+                "--strict-plus",
+                "--require-qa-inventory-check-refs",
+                "--require-qa-inventory-full-coverage",
+            ],
+        ):
+            with contextlib.redirect_stdout(output):
+                validate_web_qa_report.main()
+
+        text = output.getvalue()
+        self.assertIn("web-qa-playwright report validation: PASS", text)
+        self.assertIn("- qa inventory full-coverage checks: enabled", text)
+
     def test_cli_stdout_reports_checkpoint_artifact_path_check_when_enabled(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"
