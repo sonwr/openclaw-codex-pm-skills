@@ -18,6 +18,40 @@ VALID_REPORT = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n- V
 
 
 class ValidateWebQaReportCliTests(unittest.TestCase):
+
+    def test_cli_json_output_exposes_checkpoint_ref_metadata_for_replay_triage(self) -> None:
+        report = VALID_REPORT.replace(
+            "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
+            "- F1 checkpoint: PASS 2026-03-08T14:40:00Z ref=e12 URL changed to `/dashboard`, artifact `artifacts/f1.png` user avatar visible",
+        ).replace(
+            "- V1 checkpoint: Captured baseline layout screenshot",
+            "- V1 checkpoint: PASS 2026-03-08T14:41:00Z ref=e44 Captured baseline layout screenshot `artifacts/v1.png`",
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(report, encoding="utf-8")
+
+            output = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--strict",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+
+            payload = json.loads(output.getvalue().strip())
+            self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["report_metadata"]["checkpoint_target_refs"], ["e12", "e44"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_target_refs_by_id"]["F1"], ["e12"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs"], ["artifacts/f1.png", "artifacts/v1.png"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs_by_id"]["V1"], ["artifacts/v1.png"])
     def test_cli_json_output_for_pass(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"

@@ -140,7 +140,7 @@ Current docs:
 - `docs/MAPPING_PM_SKILLS.md`
 - `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
 - Canonical opt-in traceability example: `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`
-- Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, and QA inventory check refs) as a machine-readable artifact
+- Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, and checkpoint target/artifact refs for replay triage) as a machine-readable artifact
 
 Current examples:
 

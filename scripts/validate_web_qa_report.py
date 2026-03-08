@@ -182,6 +182,29 @@ def _extract_next_action_failed_check_refs(text: str) -> list[str]:
 
 def _build_report_metadata(text: str) -> dict[str, object]:
     failed_check_ids = _extract_failed_check_ids(text)
+    checkpoint_target_refs: list[str] = []
+    checkpoint_artifact_refs: list[str] = []
+    checkpoint_target_refs_by_id: dict[str, list[str]] = {}
+    checkpoint_artifact_refs_by_id: dict[str, list[str]] = {}
+    seen_target_refs: set[str] = set()
+    seen_artifact_refs: set[str] = set()
+    for checkpoint_id, tail in _extract_checkpoint_tails(text):
+        target_refs = _extract_checkpoint_target_refs(tail)
+        artifact_refs = _extract_checkpoint_artifact_refs(tail)
+        if target_refs:
+            checkpoint_target_refs_by_id[checkpoint_id] = target_refs
+        if artifact_refs:
+            checkpoint_artifact_refs_by_id[checkpoint_id] = artifact_refs
+        for target_ref in target_refs:
+            if target_ref in seen_target_refs:
+                continue
+            seen_target_refs.add(target_ref)
+            checkpoint_target_refs.append(target_ref)
+        for artifact_ref in artifact_refs:
+            if artifact_ref in seen_artifact_refs:
+                continue
+            seen_artifact_refs.add(artifact_ref)
+            checkpoint_artifact_refs.append(artifact_ref)
     failed_check_classifications = _extract_failed_check_classifications(text)
     failed_check_classifications_by_id = _extract_failed_check_classifications_by_id(text)
     failed_check_recovery_owners = _extract_failed_check_recovery_owners(text)
@@ -210,6 +233,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
+        "checkpoint_target_refs": checkpoint_target_refs,
+        "checkpoint_target_ref_count": len(checkpoint_target_refs),
+        "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,
+        "checkpoint_artifact_refs": checkpoint_artifact_refs,
+        "checkpoint_artifact_ref_count": len(checkpoint_artifact_refs),
+        "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
     }
 
 
