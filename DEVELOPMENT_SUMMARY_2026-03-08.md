@@ -20,6 +20,30 @@
 ### Next
 - Add a deterministic replay fixture that combines all strict-plus gates in one realistic failing report for faster CI triage.
 
+## Run @ 23:11 UTC (cron)
+
+### Plan
+- Tighten the README operator guidance so Playwright-interactive execution rules are easier to follow during reruns.
+- Re-run validator tests after the docs update.
+
+### Changes
+- Updated `README.md` with a concise four-step operator loop for interactive reruns:
+  - lock the replay preset,
+  - isolate one failing invariant,
+  - repair only that layer,
+  - re-run the canonical PASS fixture before broad handoff updates.
+- Explicitly tied the loop back to Playwright-interactive priorities: stability, reproducibility, step-by-step verification, and failure recovery.
+
+### Verification
+- `python3 -m unittest tests.test_validate_web_qa_report tests.test_validate_web_qa_report_cli`
+- Result: **PASS**
+
+### Blockers
+- `pytest` is still unavailable in host PATH, so validation continues via `unittest`.
+
+### Next
+- Add a copy-paste smoke recipe that pairs the operator loop with the existing strict-plus isolated FAIL fixtures.
+
 ## Run @ 05:23 UTC (cron)
 
 ### Plan

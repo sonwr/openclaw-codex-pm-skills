@@ -282,6 +282,15 @@ For a faster blocked-run triage workflow focused on `report_metadata`, owner han
 For machine-readable CI contracts and JSON artifact routing, see `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`.
 For a concise execution loop that mirrors Playwright-interactive principles (inventory -> bootstrap -> verify -> recover), see `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md`.
 
+Recommended operator loop before every interactive rerun:
+
+1. lock the replay preset (`--playwright-interactive-profile` / `--strict-plus`) and keep the same target refs/artifact naming scheme,
+2. validate one isolated drift fixture before broad reruns,
+3. repair only the failing invariant (selector, evidence, ordering, or status consistency),
+4. rerun the canonical PASS fixture to prove recovery before updating docs/CI handoff text.
+
+This keeps browser QA changes aligned with Playwright-interactive priorities: stability first, reproducible evidence, step-by-step verification, and explicit failure recovery.
+
 `--strict` adds reproducibility gates aligned with Playwright-interactive principles:
 
 - deterministic preconditions (URL, viewport, test account)
