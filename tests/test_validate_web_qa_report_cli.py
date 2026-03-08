@@ -154,6 +154,33 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
 
+    def test_cli_json_output_with_ci_replay_profile_alias(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(VALID_REPORT, encoding="utf-8")
+
+            output = io.StringIO()
+            with self.assertRaises(SystemExit) as exc:
+                with mock.patch(
+                    "sys.argv",
+                    [
+                        "validate_web_qa_report.py",
+                        "--file",
+                        str(report_path),
+                        "--json",
+                        "--ci-replay-profile",
+                    ],
+                ):
+                    with contextlib.redirect_stdout(output):
+                        validate_web_qa_report.main()
+            self.assertEqual(exc.exception.code, 1)
+
+            payload = json.loads(output.getvalue().strip())
+            self.assertEqual(payload["status"], "FAIL")
+            self.assertTrue(payload["ci_replay_profile"])
+            self.assertTrue(payload["require_checkpoint_timestamps"])
+            self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
+
     def test_cli_json_output_for_fail(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"

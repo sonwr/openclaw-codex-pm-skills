@@ -788,6 +788,14 @@ def main() -> None:
         ),
     )
     parser.add_argument(
+        "--ci-replay-profile",
+        action="store_true",
+        help=(
+            "Alias for --playwright-interactive-profile. "
+            "Use when CI jobs prefer short replay-policy naming."
+        ),
+    )
+    parser.add_argument(
         "--json",
         action="store_true",
         help="Emit machine-readable JSON output for CI parsers",
@@ -899,7 +907,11 @@ def main() -> None:
     args = parser.parse_args()
 
     profile_enabled = (
-        args.strict_plus or args.playwright_interactive_profile or args.deterministic_replay_profile or args.strict_replay_profile
+        args.strict_plus
+        or args.playwright_interactive_profile
+        or args.deterministic_replay_profile
+        or args.strict_replay_profile
+        or args.ci_replay_profile
     )
     strict_enabled = args.strict or profile_enabled
     enforce_checkpoint_format = args.enforce_checkpoint_format or profile_enabled
@@ -981,6 +993,7 @@ def main() -> None:
             "playwright_interactive_profile": args.playwright_interactive_profile,
             "deterministic_replay_profile": args.deterministic_replay_profile,
             "strict_replay_profile": args.strict_replay_profile,
+            "ci_replay_profile": args.ci_replay_profile,
             "enforce_checkpoint_format": enforce_checkpoint_format,
             "require_checkpoint_timestamps": require_checkpoint_timestamps,
             "enforce_monotonic_checkpoint_timestamps": enforce_monotonic_checkpoint_timestamps,
@@ -1019,6 +1032,7 @@ def main() -> None:
         "playwright_interactive_profile": args.playwright_interactive_profile,
         "deterministic_replay_profile": args.deterministic_replay_profile,
         "strict_replay_profile": args.strict_replay_profile,
+        "ci_replay_profile": args.ci_replay_profile,
         "enforce_checkpoint_format": enforce_checkpoint_format,
         "require_checkpoint_timestamps": require_checkpoint_timestamps,
         "enforce_monotonic_checkpoint_timestamps": enforce_monotonic_checkpoint_timestamps,
@@ -1064,6 +1078,8 @@ def main() -> None:
         print("- deterministic replay profile: enabled")
     if args.strict_replay_profile:
         print("- strict replay profile: enabled")
+    if args.ci_replay_profile:
+        print("- ci replay profile: enabled")
     if enforce_checkpoint_format:
         print("- checkpoint format checks: enabled")
     if require_checkpoint_timestamps:
