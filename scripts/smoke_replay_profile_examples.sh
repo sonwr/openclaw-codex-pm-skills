@@ -94,8 +94,12 @@ echo 'replay profile smoke: PASS'
 
 
 ISOLATED_FAIL_FIXTURES=(
-  "examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md|missing_artifact_paths|checkpoint artifact paths|checkpoint_artifact_ref_count|9"
+  "examples/web_qa_playwright_strict_fail_artifact_ref_reuse_only.md|artifact_ref_reuse|checkpoint artifact ref uniqueness|checkpoint_artifact_ref_count|9"
+  "examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md|monotonic_timestamp|checkpoint timestamp order|checkpoint_timestamp_count|10"
   "examples/web_qa_playwright_strict_fail_status_inconsistency_only.md|status_inconsistency|checkpoint/check status consistency|checkpoint_target_ref_count|10"
+  "examples/web_qa_playwright_strict_fail_missing_target_refs.md|missing_target_refs|checkpoint target refs|checkpoint_target_ref_count|0"
+  "examples/web_qa_playwright_strict_fail_target_ref_reuse_only.md|target_ref_reuse|checkpoint target ref uniqueness|checkpoint_target_ref_count|9"
+  "examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md|missing_artifact_paths|checkpoint artifact paths|checkpoint_artifact_ref_count|9"
 )
 
 for fixture_spec in "${ISOLATED_FAIL_FIXTURES[@]}"; do
