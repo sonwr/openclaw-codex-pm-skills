@@ -177,7 +177,14 @@ def _extract_next_action_failed_check_refs(text: str) -> list[str]:
     next_action = _extract_next_action(text)
     if next_action is None:
         return []
-    return re.findall(r"\b([FVO]\d+)\b", next_action)
+    refs: list[str] = []
+    seen: set[str] = set()
+    for ref in re.findall(r"\b([FVO]\d+)\b", next_action):
+        if ref in seen:
+            continue
+        seen.add(ref)
+        refs.append(ref)
+    return refs
 
 
 def _build_report_metadata(text: str) -> dict[str, object]:
