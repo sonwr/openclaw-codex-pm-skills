@@ -718,6 +718,37 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertIn("- next action handoff checks: enabled", text)
             self.assertIn("- next action failed-check traceability checks: enabled", text)
 
+    def test_cli_stdout_surfaces_unresolved_failed_checks_for_handoff_triage(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_text = VALID_REPORT.replace(
+                "- F1: PASS\n  - F2: PASS\n",
+                "- F1: FAIL\n    - Failure classification: product\n    - Recovery owner: pm\n  - F2: FAIL\n    - Failure classification: selector\n    - Recovery owner: qa\n",
+            ).replace(
+                "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible\n- F2 checkpoint: Inline error panel rendered and focus moved to form alert\n",
+                "- F1 checkpoint: FAIL URL changed to `/dashboard`, user avatar visible\n- F2 checkpoint: FAIL Inline error panel rendered and focus moved to form alert\n",
+            ).replace(
+                "- Regressions: 0\n- Merge recommendation: **APPROVE**\n- Replay readiness: **READY**\n- Next action: Archive artifacts and proceed to release signoff\n",
+                "- Regressions: 2\n- Merge recommendation: **BLOCK**\n- Replay readiness: **BLOCKED**\n- Next action: Fix F1 before replay signoff\n",
+            )
+            report_path.write_text(report_text, encoding="utf-8")
+
+            output = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+
+            text = output.getvalue()
+            self.assertIn("web-qa-playwright report validation: PASS", text)
+            self.assertIn("- unresolved failed checks: F2", text)
+
     def test_cli_json_output_for_checkpoint_target_ref_requirement(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"

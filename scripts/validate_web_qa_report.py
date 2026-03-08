@@ -1507,6 +1507,9 @@ def main() -> None:
         print("- next action handoff checks: enabled")
     if require_next_action_failed_check_ref:
         print("- next action failed-check traceability checks: enabled")
+    if report_metadata.get("unresolved_failed_check_ids"):
+        unresolved = ", ".join(report_metadata["unresolved_failed_check_ids"])
+        print(f"- unresolved failed checks: {unresolved}")
 
 
 if __name__ == "__main__":
