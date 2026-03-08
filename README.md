@@ -150,6 +150,7 @@ Current docs:
 - Replay-profile smoke script now asserts the missing-`Checks:` FAIL fixture still exposes the full 10-item QA universe and 5/3/2 checkpoint split while failing with exactly one mapping error, so CI triage can distinguish coverage drift from mapping-format drift immediately.
 - Replay-profile smoke script now also covers isolated missing-artifact-path and status-consistency FAIL fixtures, keeping Playwright-style evidence-capture and step-by-step verification drift parser-visible with a single reusable smoke entrypoint.
 - Partial QA-inventory drift now has an explicit landing-page triage cue: if `qa_inventory_check_ref_count` is non-zero but `qa_inventory_missing_check_ref_count` stays above `0`, treat it as incomplete coverage drift (for the isolated fixture: `9 mapped / 1 missing`), not malformed `Checks:` syntax.
+- Replay-profile smoke now also asserts the parser-facing coverage-rate split (`1.0` for malformed-but-complete mappings vs `0.9` for partial coverage drift), so CI can distinguish syntax repair from missing-check recovery without recomputing ratios.
 - Replay triage JSON now exposes `qa_inventory_check_ref_coverage_rate` and `next_action_failed_check_coverage_rate` so CI can spot partial mapping/handoff drift without recomputing ratios downstream.
 
 Current examples:

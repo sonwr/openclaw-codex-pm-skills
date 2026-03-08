@@ -51,6 +51,7 @@ assert payload['error_count'] == 1, payload
 assert 'qa inventory check refs' in payload['errors'][0], payload
 assert payload['report_metadata']['qa_inventory_check_ref_count'] == 10, payload
 assert payload['report_metadata']['qa_inventory_missing_check_ref_count'] == 0, payload
+assert payload['report_metadata']['qa_inventory_check_ref_coverage_rate'] == 1.0, payload
 assert payload['report_metadata']['checkpoint_section_counts'] == {'functional': 5, 'visual': 3, 'off_happy': 2}, payload
 PYJSON
 
@@ -72,6 +73,7 @@ assert payload['error_count'] == 1, payload
 assert 'missing: O2' in payload['errors'][0], payload
 assert payload['report_metadata']['qa_inventory_check_ref_count'] == 9, payload
 assert payload['report_metadata']['qa_inventory_missing_check_ref_count'] == 1, payload
+assert payload['report_metadata']['qa_inventory_check_ref_coverage_rate'] == 0.9, payload
 assert payload['report_metadata']['qa_inventory_missing_check_refs'] == ['O2'], payload
 PYJSON
 
