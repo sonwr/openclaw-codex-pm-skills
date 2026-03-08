@@ -245,6 +245,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     for classification in failed_check_classifications:
         failed_check_classification_counts[classification] += 1
     failed_check_recovery_owners = _extract_failed_check_recovery_owners(text)
+    next_action_failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
+    unresolved_failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
     missing_failed_check_classification_ids = [
         check_id for check_id in failed_check_ids if check_id not in _extract_failed_check_classifications_by_id(text)
     ]
@@ -253,9 +255,17 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     ]
     next_action = _extract_next_action(text)
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
+    for check_id in next_action_failed_check_refs:
+        classification = failed_check_classifications_by_id.get(check_id)
+        if classification is not None:
+            next_action_failed_check_classification_counts[classification] += 1
     unresolved_failed_check_ids = [
         check_id for check_id in failed_check_ids if check_id not in next_action_failed_check_refs
     ]
+    for check_id in unresolved_failed_check_ids:
+        classification = failed_check_classifications_by_id.get(check_id)
+        if classification is not None:
+            unresolved_failed_check_classification_counts[classification] += 1
     qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
     expected_check_ids = [
         "F1", "F2", "F3", "F4", "F5",
@@ -282,8 +292,10 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action": next_action,
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
+        "next_action_failed_check_classification_counts": next_action_failed_check_classification_counts,
         "unresolved_failed_check_ids": unresolved_failed_check_ids,
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
+        "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
         "qa_inventory_missing_check_refs": qa_inventory_missing_check_refs,

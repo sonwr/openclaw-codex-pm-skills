@@ -1387,8 +1387,16 @@ if __name__ == "__main__":
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], ["F1"])
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_refs"], ["F1"])
+        self.assertEqual(
+            payload["report_metadata"]["next_action_failed_check_classification_counts"],
+            {"selector": 0, "runtime": 0, "product": 1},
+        )
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_ref_count"], 1)
+        self.assertEqual(
+            payload["report_metadata"]["unresolved_failed_check_classification_counts"],
+            {"selector": 0, "runtime": 0, "product": 0},
+        )
 
 
     def test_cli_json_tracks_missing_and_present_recovery_owner_metadata(self) -> None:
@@ -1430,6 +1438,14 @@ if __name__ == "__main__":
         self.assertEqual(payload["report_metadata"]["failed_check_recovery_owner_count"], 1)
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], [])
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_count"], 0)
+        self.assertEqual(
+            payload["report_metadata"]["next_action_failed_check_classification_counts"],
+            {"selector": 0, "runtime": 0, "product": 1},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["unresolved_failed_check_classification_counts"],
+            {"selector": 0, "runtime": 0, "product": 0},
+        )
 
     def test_cli_json_includes_report_metadata_for_pass_report(self) -> None:
         completed = subprocess.run(
@@ -1459,4 +1475,12 @@ if __name__ == "__main__":
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], [])
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_count"], 0)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_refs"], [])
+        self.assertEqual(
+            payload["report_metadata"]["next_action_failed_check_classification_counts"],
+            {"selector": 0, "runtime": 0, "product": 0},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["unresolved_failed_check_classification_counts"],
+            {"selector": 0, "runtime": 0, "product": 0},
+        )
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 0)
