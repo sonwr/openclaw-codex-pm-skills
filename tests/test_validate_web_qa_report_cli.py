@@ -1265,6 +1265,9 @@ if __name__ == "__main__":
         payload = json.loads(completed.stdout)
         self.assertEqual(payload["report_metadata"]["failed_check_ids"], ["F1"])
         self.assertEqual(payload["report_metadata"]["failed_check_classifications"], ["product"])
+        self.assertEqual(payload["report_metadata"]["failed_check_classifications_by_id"], {"F1": "product"})
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_classification_ids"], [])
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_classification_count"], 0)
         self.assertEqual(payload["report_metadata"]["failed_check_recovery_owners"], {})
         self.assertEqual(payload["report_metadata"]["failed_check_recovery_owner_count"], 0)
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], ["F1"])
@@ -1302,6 +1305,9 @@ if __name__ == "__main__":
 
         self.assertEqual(completed.returncode, 0)
         payload = json.loads(completed.stdout)
+        self.assertEqual(payload["report_metadata"]["failed_check_classifications_by_id"], {"F2": "product"})
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_classification_ids"], [])
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_classification_count"], 0)
         self.assertEqual(
             payload["report_metadata"]["failed_check_recovery_owners"],
             {"F2": "qa-oncall@example.test"},
@@ -1329,6 +1335,9 @@ if __name__ == "__main__":
         payload = json.loads(completed.stdout)
         self.assertEqual(payload["report_metadata"]["failed_check_ids"], [])
         self.assertEqual(payload["report_metadata"]["failed_check_classifications"], [])
+        self.assertEqual(payload["report_metadata"]["failed_check_classifications_by_id"], {})
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_classification_ids"], [])
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_classification_count"], 0)
         self.assertEqual(payload["report_metadata"]["failed_check_recovery_owners"], {})
         self.assertEqual(payload["report_metadata"]["failed_check_recovery_owner_count"], 0)
         self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], [])

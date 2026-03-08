@@ -386,6 +386,8 @@ Parser-facing JSON snippets for downstream CI contracts:
   "report_metadata": {
     "qa_inventory_check_refs": ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
     "failed_check_ids": [],
+    "failed_check_classifications_by_id": {},
+    "missing_failed_check_classification_ids": [],
     "next_action_failed_check_refs": []
   }
 }
@@ -401,6 +403,8 @@ Parser-facing JSON snippets for downstream CI contracts:
   "report_metadata": {
     "qa_inventory_check_refs": [],
     "failed_check_ids": [],
+    "failed_check_classifications_by_id": {},
+    "missing_failed_check_classification_ids": [],
     "next_action_failed_check_refs": []
   }
 }
