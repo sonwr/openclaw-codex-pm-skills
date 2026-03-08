@@ -234,6 +234,29 @@ jobs:
           print('isolated status consistency JSON payload: PASS')
           PY
 
+      - name: Assert isolated target-ref-uniqueness fixture fails with exactly one parser-facing error
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp
+          if python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_fail_target_ref_reuse_only.md \
+            --strict-plus \
+            --json-out .tmp/web-qa-target-ref-reuse.json; then
+            echo "expected isolated target-ref-uniqueness fixture to fail strict-plus validation" >&2
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path('.tmp/web-qa-target-ref-reuse.json').read_text(encoding='utf-8'))
+          assert payload['status'] == 'FAIL'
+          assert payload['error_count'] == 1
+          assert len(payload['errors']) == 1
+          assert 'target ref uniqueness' in payload['errors'][0]
+          print('isolated target ref uniqueness JSON payload: PASS')
+          PY
+
       - name: Assert isolated missing-artifact-path fixture fails with exactly one parser-facing error
         run: |
           set -euo pipefail

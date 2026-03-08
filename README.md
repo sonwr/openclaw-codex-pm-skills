@@ -375,6 +375,7 @@ python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_stri
 This mirrors Playwright-interactive-style recovery: isolate a single failing invariant, verify it deterministically, then fix only that layer before broad reruns.
 
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
+CI now also smoke-tests the isolated target-ref-uniqueness fixture so selector alias drift cannot silently bypass replay-policy coverage.
 Need a quick alias smoke check? `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes copy-paste commands that run the same PASS fixture through `--playwright-interactive-profile`, `--deterministic-replay-profile`, `--strict-replay-profile`, and `--ci-replay-profile` so CI owners can confirm alias parity without inventing new fixtures.
 CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
 - JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
