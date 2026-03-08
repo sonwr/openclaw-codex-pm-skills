@@ -879,3 +879,22 @@ class ValidateWebQaReportTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+    def test_validate_report_fails_when_qa_inventory_bullet_has_no_checks_mapping(self) -> None:
+        with_inventory = VALID_REPORT.replace(
+            "## Scope\n",
+            "## 1) QA inventory\n- Claim: Login works for valid user\n\n## Scope\n",
+        )
+        errors = validate_report_text(with_inventory, require_qa_inventory_check_refs=True)
+        self.assertTrue(any("every QA inventory bullet must include 'Checks:' mapping" in e for e in errors))
+
+    def test_validate_report_passes_when_qa_inventory_checks_mapping_is_present(self) -> None:
+        with_inventory = VALID_REPORT.replace(
+            "## Scope\n",
+            "## 1) QA inventory\n- Claim: Login works for valid user -> Checks: F1, F4\n- Claim: Invalid password stays blocked -> Checks: O1, F2\n\n## Scope\n",
+        )
+        self.assertEqual(
+            validate_report_text(with_inventory, require_qa_inventory_check_refs=True),
+            [],
+        )

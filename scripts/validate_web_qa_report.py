@@ -152,6 +152,24 @@ def _extract_execution_log_body(text: str) -> str:
     return match.group("body")
 
 
+def _extract_qa_inventory_body(text: str) -> str:
+    match = re.search(r"(?ms)^##\s*1\)\s*QA inventory\s*$\n(?P<body>.*?)(?=^##\s|\Z)", text)
+    if match is None:
+        return ""
+    return match.group("body")
+
+
+def _extract_qa_inventory_check_refs(text: str) -> list[str]:
+    inventory_body = _extract_qa_inventory_body(text)
+    refs: list[str] = []
+    for line in re.findall(r"(?mi)^\s*-\s+.+$", inventory_body):
+        match = re.search(r"Checks:\s*([A-Z0-9, ]+)", line)
+        if match is None:
+            continue
+        refs.extend(re.findall(r"\b([FVO]\d+)\b", match.group(1)))
+    return refs
+
+
 def validate_report_text(
     text: str,
     strict: bool = False,
@@ -173,6 +191,7 @@ def validate_report_text(
     require_failure_classification_summary: bool = False,
     require_execution_log_step_count_match: bool = False,
     require_qa_inventory_section: bool = False,
+    require_qa_inventory_check_refs: bool = False,
     require_signoff_section: bool = False,
 ) -> list[str]:
     functional_block = _section_block(text, SECTION_TITLES["functional"])
@@ -447,6 +466,31 @@ def validate_report_text(
             errors.append(
                 "qa inventory: report must include an explicit '## 1) QA inventory' section header"
             )
+
+    if require_qa_inventory_check_refs:
+        inventory_body = _extract_qa_inventory_body(text)
+        inventory_lines = re.findall(r"(?mi)^\s*-\s+.+$", inventory_body)
+        if not inventory_body.strip():
+            errors.append(
+                "qa inventory check refs: report must include a non-empty '## 1) QA inventory' section"
+            )
+        else:
+            missing_checks_lines = [line.strip() for line in inventory_lines if "Checks:" not in line]
+            if missing_checks_lines:
+                errors.append(
+                    "qa inventory check refs: every QA inventory bullet must include 'Checks:' mapping"
+                )
+            inventory_refs = _extract_qa_inventory_check_refs(text)
+            unknown_refs = sorted({ref for ref in inventory_refs if ref not in {"F1","F2","F3","F4","F5","V1","V2","V3","O1","O2"}})
+            if unknown_refs:
+                errors.append(
+                    "qa inventory check refs: inventory must reference only known check ids F1..F5, V1..V3, O1..O2 "
+                    f"(unknown: {', '.join(unknown_refs)})"
+                )
+            if not inventory_refs:
+                errors.append(
+                    "qa inventory check refs: inventory must map claims to at least one checklist id via 'Checks:'"
+                )
 
     if require_signoff_section:
         if not re.search(r"(?mi)^##\s*4\)\s*Signoff\s*$", text):
@@ -904,6 +948,11 @@ def main() -> None:
         help="Require report to include explicit '## 1) QA inventory' section for claim-to-check coverage planning",
     )
     parser.add_argument(
+        "--require-qa-inventory-check-refs",
+        action="store_true",
+        help="Require every QA inventory bullet to include a Checks: mapping to known check ids for claim-to-check planning",
+    )
+    parser.add_argument(
         "--require-execution-log-step-count-match",
         action="store_true",
         help=(
@@ -958,6 +1007,7 @@ def main() -> None:
         args.require_execution_log_step_count_match or profile_enabled
     )
     require_qa_inventory_section = args.require_qa_inventory_section or profile_enabled
+    require_qa_inventory_check_refs = args.require_qa_inventory_check_refs
     require_signoff_section = args.require_signoff_section or profile_enabled
 
     def resolve_profile_preset() -> str | None:
@@ -1002,6 +1052,7 @@ def main() -> None:
         require_failure_classification_summary=require_failure_classification_summary,
         require_execution_log_step_count_match=require_execution_log_step_count_match,
         require_qa_inventory_section=require_qa_inventory_section,
+        require_qa_inventory_check_refs=require_qa_inventory_check_refs,
         require_signoff_section=require_signoff_section,
     )
 
@@ -1043,6 +1094,8 @@ def main() -> None:
             "require_failure_classification_summary": require_failure_classification_summary,
             "require_execution_log_step_count_match": require_execution_log_step_count_match,
             "require_qa_inventory_section": require_qa_inventory_section,
+        "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
+            "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
             "require_signoff_section": require_signoff_section,
             "file": str(report_path),
             "errors": errors,
@@ -1084,6 +1137,7 @@ def main() -> None:
         "require_failure_classification_summary": require_failure_classification_summary,
         "require_execution_log_step_count_match": require_execution_log_step_count_match,
         "require_qa_inventory_section": require_qa_inventory_section,
+        "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
             "require_signoff_section": require_signoff_section,
         "file": str(report_path),
         "counts": {
@@ -1150,6 +1204,8 @@ def main() -> None:
         print("- execution log step-count checks: enabled")
     if require_qa_inventory_section:
         print("- qa inventory section checks: enabled")
+    if require_qa_inventory_check_refs:
+        print("- qa inventory check-ref mapping checks: enabled")
     if require_signoff_section:
         print("- signoff section checks: enabled")
 

@@ -31,6 +31,7 @@ When contributors use the stricter replay aliases (`--playwright-interactive-pro
 - artifact references for failures and evidence capture,
 - target refs for replayable UI targeting,
 - signoff metadata that matches the checklist outcome.
+- QA inventory bullets that map each claim to explicit checklist ids via `Checks:` for plan-to-execution traceability.
 
 ## Recommended report-writing loop
 

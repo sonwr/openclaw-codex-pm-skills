@@ -353,3 +353,26 @@
 
 ### 다음 실행 우선순위
 - strict-plus/profile JSON payload에 parser-friendly preset label을 추가할지 검토.
+
+
+## Run @ 11:40 UTC (cron)
+
+### Plan
+- Add one QA-inventory traceability guard without breaking existing strict-plus replay fixtures.
+- Re-run validator unit suites and keep replay-profile docs aligned.
+
+### Changes
+- Added opt-in validator flag `--require-qa-inventory-check-refs` in `scripts/validate_web_qa_report.py`.
+  - Enforces `Checks:` mappings on QA inventory bullets so claims can be traced back to explicit checklist ids.
+- Added focused tests in `tests/test_validate_web_qa_report.py` for missing/present QA inventory mappings.
+- Updated `skills/web-qa-playwright/SKILL.md` and `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` to document claim-to-check traceability guidance.
+
+### Verification
+- `python3 -m unittest discover -s tests`
+- Result: **PASS** (100 tests)
+
+### Blockers
+- Kept the new QA-inventory mapping check opt-in instead of auto-enabling it for strict-plus, because enabling it by default broke existing isolated replay fixtures.
+
+### Next
+- Add one strict-plus-compatible pass fixture that demonstrates `Checks:` claim mapping so the stronger planning pattern has a canonical example.
