@@ -252,6 +252,8 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload["report_metadata"]["qa_inventory_check_refs"],
             ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
         )
+        self.assertEqual(payload["report_metadata"]["unresolved_failed_check_ids"], [])
+        self.assertEqual(payload["report_metadata"]["unresolved_failed_check_count"], 0)
 
     def test_cli_json_out_with_strict_plus_check_ref_pass_fixture_writes_metadata_file(self) -> None:
         root = Path(__file__).resolve().parents[1]

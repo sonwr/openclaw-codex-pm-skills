@@ -227,6 +227,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     ]
     next_action = _extract_next_action(text)
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
+    unresolved_failed_check_ids = [
+        check_id for check_id in failed_check_ids if check_id not in next_action_failed_check_refs
+    ]
     qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
     return {
         "failed_check_ids": failed_check_ids,
@@ -243,6 +246,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action": next_action,
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
+        "unresolved_failed_check_ids": unresolved_failed_check_ids,
+        "unresolved_failed_check_count": len(unresolved_failed_check_ids),
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
         "checkpoint_order": checkpoint_order,
