@@ -35,6 +35,18 @@ Interactive browser QA often fails for boring reasons: a missing precondition, a
 - Does every failed check include classification, evidence, owner, and next action?
 - Do checkpoint refs and artifact refs make the rerun path obvious?
 
+## Step contract for interactive runs
+
+Use this as the smallest repeatable unit when translating Playwright-interactive discipline into a markdown QA report.
+
+1. **Before acting** — name the target (`ref=`), the expectation, and the artifact you plan to capture.
+2. **Act once** — avoid chaining multiple meaningful UI transitions into one checkpoint.
+3. **Verify immediately** — confirm the post-action state in the same checkpoint line or paired failed-check block.
+4. **Capture recovery-ready evidence** — save a trace/screenshot/log path that uniquely belongs to that checkpoint.
+5. **Stop widening after failure** — write recovery owner + next action before touching adjacent checks.
+
+A good smell test: another reviewer should be able to replay one checkpoint in isolation without guessing the starting state, selector target, or proof artifact.
+
 ## Recommended command pattern
 
 ```bash
