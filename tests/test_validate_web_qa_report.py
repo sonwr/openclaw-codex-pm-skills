@@ -172,6 +172,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
         errors = validate_report_text(broken, strict=True)
         self.assertTrue(any("Execution log" in e for e in errors))
 
+    def test_validate_report_fails_when_signoff_section_header_missing(self) -> None:
+        broken = VALID_REPORT.replace("## 4) Signoff\n", "## 4) Final status\n")
+        errors = validate_report_text(broken, require_signoff_section=True)
+        self.assertTrue(any("signoff section" in e for e in errors))
+
+    def test_validate_report_passes_when_signoff_section_header_present(self) -> None:
+        self.assertEqual(validate_report_text(VALID_REPORT, require_signoff_section=True), [])
+
     def test_validate_report_fails_when_checkpoint_log_contains_duplicate_ids(self) -> None:
         broken = VALID_REPORT.replace(
             "- O2 checkpoint: Empty-password path showed client-side validation\n",

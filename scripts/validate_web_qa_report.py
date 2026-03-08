@@ -173,6 +173,7 @@ def validate_report_text(
     require_failure_classification_summary: bool = False,
     require_execution_log_step_count_match: bool = False,
     require_qa_inventory_section: bool = False,
+    require_signoff_section: bool = False,
 ) -> list[str]:
     functional_block = _section_block(text, SECTION_TITLES["functional"])
     visual_block = _section_block(text, SECTION_TITLES["visual"])
@@ -445,6 +446,12 @@ def validate_report_text(
         if not re.search(r"(?mi)^##\s*1\)\s*QA inventory\s*$", text):
             errors.append(
                 "qa inventory: report must include an explicit '## 1) QA inventory' section header"
+            )
+
+    if require_signoff_section:
+        if not re.search(r"(?mi)^##\s*4\)\s*Signoff\s*$", text):
+            errors.append(
+                "signoff section: report must include an explicit '## 4) Signoff' section header"
             )
 
     checkpoint_pairs = _extract_checkpoint_tails(text)
@@ -904,6 +911,11 @@ def main() -> None:
             "(F1..F5, V1..V3, O1..O2)."
         ),
     )
+    parser.add_argument(
+        "--require-signoff-section",
+        action="store_true",
+        help="Require report to include explicit '## 4) Signoff' section header for deterministic review closure",
+    )
     args = parser.parse_args()
 
     profile_enabled = (
@@ -946,6 +958,7 @@ def main() -> None:
         args.require_execution_log_step_count_match or profile_enabled
     )
     require_qa_inventory_section = args.require_qa_inventory_section or profile_enabled
+    require_signoff_section = args.require_signoff_section or profile_enabled
 
     report_path = Path(args.file)
     if not report_path.exists():
@@ -974,6 +987,7 @@ def main() -> None:
         require_failure_classification_summary=require_failure_classification_summary,
         require_execution_log_step_count_match=require_execution_log_step_count_match,
         require_qa_inventory_section=require_qa_inventory_section,
+        require_signoff_section=require_signoff_section,
     )
 
     def emit_json_payload(payload: dict[str, object]) -> None:
@@ -1012,6 +1026,7 @@ def main() -> None:
             "require_failure_classification_summary": require_failure_classification_summary,
             "require_execution_log_step_count_match": require_execution_log_step_count_match,
             "require_qa_inventory_section": require_qa_inventory_section,
+            "require_signoff_section": require_signoff_section,
             "file": str(report_path),
             "errors": errors,
             "error_count": len(errors),
@@ -1051,6 +1066,7 @@ def main() -> None:
         "require_failure_classification_summary": require_failure_classification_summary,
         "require_execution_log_step_count_match": require_execution_log_step_count_match,
         "require_qa_inventory_section": require_qa_inventory_section,
+            "require_signoff_section": require_signoff_section,
         "file": str(report_path),
         "counts": {
             "functional": 5,
@@ -1116,6 +1132,8 @@ def main() -> None:
         print("- execution log step-count checks: enabled")
     if require_qa_inventory_section:
         print("- qa inventory section checks: enabled")
+    if require_signoff_section:
+        print("- signoff section checks: enabled")
 
 
 if __name__ == "__main__":
