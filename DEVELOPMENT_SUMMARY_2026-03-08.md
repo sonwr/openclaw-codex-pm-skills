@@ -286,3 +286,24 @@
 
 ### Next
 - Add one isolated strict-plus fixture for missing checkpoint artifact paths so evidence-capture drift can be triaged independently from selector traceability drift.
+
+
+## Run @ 10:20 UTC (cron)
+
+### Plan
+- Tighten operator-facing docs for strict-plus triage so isolated replay failures map to the right fixture faster.
+- Re-run repository tests to ensure the documentation-only change ships on a green baseline.
+
+### Changes
+- Added a `Strict-plus isolated triage matrix` to `README.md` that maps each deterministic replay drift to its dedicated fail fixture.
+- Explicitly framed the matrix around isolate-one-invariant recovery, matching the interactive QA skill workflow.
+
+### Verification
+- `python3 -m unittest discover -s tests -v`
+- Result: **PASS**
+
+### Blockers
+- `pytest` remains unavailable in host PATH, so validation continues via `unittest`.
+
+### Next
+- Add one copy-paste troubleshooting command block per isolated fixture so CI triage steps can be lifted directly into local debugging.

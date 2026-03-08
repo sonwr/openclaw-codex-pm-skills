@@ -312,6 +312,18 @@ Expected outcomes:
 - missing-artifact-paths-only fixture: `FAIL` with exactly one strict-plus `checkpoint artifact paths` error for evidence-capture triage.
 - monotonic-timestamp-only fixture: `FAIL` with exactly one `checkpoint timestamp order` error under `--strict-plus`.
 
+### Strict-plus isolated triage matrix
+
+Use these deterministic fixtures to isolate one replay drift at a time:
+
+- `web_qa_playwright_strict_fail_artifact_ref_reuse_only.md` → artifact mapping drift (`checkpoint artifact refs`)
+- `web_qa_playwright_strict_fail_monotonic_timestamp_only.md` → replay-order drift (`checkpoint timestamp order`)
+- `web_qa_playwright_strict_fail_status_inconsistency_only.md` → checklist/log state drift (`status consistency`)
+- `web_qa_playwright_strict_fail_missing_target_refs.md` → selector-target traceability drift (`checkpoint target refs`)
+- `web_qa_playwright_strict_fail_missing_artifact_paths_only.md` → evidence-capture drift (`checkpoint artifact paths`)
+
+This mirrors Playwright-interactive-style recovery: isolate a single failing invariant, verify it deterministically, then fix only that layer before broad reruns.
+
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
 CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
 - JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
