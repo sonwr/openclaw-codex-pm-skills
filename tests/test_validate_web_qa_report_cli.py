@@ -59,6 +59,44 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs"], ["artifacts/f1.png", "artifacts/v1.png"])
             self.assertEqual(payload["report_metadata"]["checkpoint_artifact_ref_id_count"], 2)
             self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs_by_id"]["V1"], ["artifacts/v1.png"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs"], [])
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs"], [])
+
+    def test_cli_json_output_tracks_reused_checkpoint_refs_for_replay_triage(self) -> None:
+        report = VALID_REPORT.replace(
+            "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
+            "- F1 checkpoint: PASS 2026-03-08T14:40:00Z ref=e12 URL changed to `/dashboard`, artifact `artifacts/shared-login.png` user avatar visible",
+        ).replace(
+            "- F2 checkpoint: Inline error panel rendered and focus moved to form alert",
+            "- F2 checkpoint: PASS 2026-03-08T14:40:30Z ref=e12 Inline error panel rendered, artifact `artifacts/shared-login.png` focus moved to form alert",
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(report, encoding="utf-8")
+
+            output = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--strict",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+
+            payload = json.loads(output.getvalue().strip())
+            self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["report_metadata"]["checkpoint_target_refs"], ["e12"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs"], ["e12"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_ref_count"], 1)
+            self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs"], ["artifacts/shared-login.png"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs"], ["artifacts/shared-login.png"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_count"], 1)
     def test_cli_json_output_for_pass(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"

@@ -141,7 +141,7 @@ Current docs:
 - `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - Canonical opt-in traceability example: `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`
-- Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, unresolved failed-check coverage, deduplicated next-action failed-check refs, checkpoint target/artifact refs, and per-checkpoint ref coverage counts for replay triage) as a machine-readable artifact
+- Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, unresolved failed-check coverage, deduplicated next-action failed-check refs, checkpoint target/artifact refs, reused checkpoint refs, and per-checkpoint ref coverage counts for replay triage) as a machine-readable artifact
 - Parser-facing QA inventory mapping examples: `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes PASS/FAIL JSON snippets for the opt-in `--require-qa-inventory-check-refs` contract so downstream CI can compare payload shape directly.
 
 Current examples:
@@ -380,7 +380,7 @@ Need a quick alias smoke check? `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now i
 Need an executable repo-local smoke check? Run `scripts/smoke_replay_profile_examples.sh` to verify all replay-profile aliases against the replay-ready PASS fixture plus the isolated missing-`Checks:` FAIL fixture.
 CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
 - JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
-- JSON payloads also include `active_profile_preset` so downstream CI can tell which replay preset produced the result without inferring from multiple booleans.
+- JSON payloads also include `active_profile_preset` so downstream CI can tell which replay preset produced the result without inferring from multiple booleans. Replay metadata also separates first-seen checkpoint refs from `checkpoint_reused_target_refs` / `checkpoint_reused_artifact_refs` so strict handoff jobs can detect evidence reuse without recomputing it downstream.
 
 Parser-facing JSON snippets for downstream CI contracts:
 
