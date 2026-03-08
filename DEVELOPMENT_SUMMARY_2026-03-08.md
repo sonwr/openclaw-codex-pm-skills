@@ -307,3 +307,28 @@
 
 ### Next
 - Add one copy-paste troubleshooting command block per isolated fixture so CI triage steps can be lifted directly into local debugging.
+
+## Run @ 10:30 UTC (cron)
+
+### Plan
+- Turn the strict-plus triage matrix into a copy-paste recovery surface for local incident debugging.
+- Re-run full unittest discovery to keep docs-only changes on a green baseline.
+
+### Changes
+- Updated `README.md` strict-plus isolated triage matrix with dedicated copy-paste commands for:
+  - artifact-ref reuse drift,
+  - monotonic timestamp drift,
+  - status-consistency drift,
+  - missing target-ref drift,
+  - missing artifact-path drift.
+- Each command now writes a deterministic JSON artifact under `.tmp/` so local debugging matches CI parser inputs.
+
+### Verification
+- `python3 -m unittest discover -s tests -v`
+- Result: **PASS** (94 tests)
+
+### Blockers
+- `pytest` remains unavailable in host PATH, so validation continues via `unittest`.
+
+### Next
+- Add one parser-facing example snippet that shows the expected `error_count`/`errors[0]` shape for each isolated fixture.

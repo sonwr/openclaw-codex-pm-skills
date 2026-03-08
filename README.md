@@ -322,6 +322,25 @@ Use these deterministic fixtures to isolate one replay drift at a time:
 - `web_qa_playwright_strict_fail_missing_target_refs.md` → selector-target traceability drift (`checkpoint target refs`)
 - `web_qa_playwright_strict_fail_missing_artifact_paths_only.md` → evidence-capture drift (`checkpoint artifact paths`)
 
+Copy-paste recovery commands:
+
+```bash
+# Artifact mapping drift
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_artifact_ref_reuse_only.md --strict-plus --json-out .tmp/web-qa-artifact-ref-reuse.json
+
+# Replay-order drift
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md --strict-plus --json-out .tmp/web-qa-monotonic-only.json
+
+# Checklist/log status drift
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_status_inconsistency_only.md --strict-plus --json-out .tmp/web-qa-status-inconsistency.json
+
+# Selector traceability drift
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_target_refs.md --strict-plus --json-out .tmp/web-qa-missing-target-refs.json
+
+# Evidence capture drift
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md --strict-plus --json-out .tmp/web-qa-missing-artifact-paths.json
+```
+
 This mirrors Playwright-interactive-style recovery: isolate a single failing invariant, verify it deterministically, then fix only that layer before broad reruns.
 
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
