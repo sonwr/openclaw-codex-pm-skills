@@ -980,7 +980,10 @@ def main() -> None:
     parser.add_argument(
         "--require-qa-inventory-check-refs",
         action="store_true",
-        help="Require every QA inventory bullet to include a Checks: mapping to known check ids for claim-to-check planning",
+        help=(
+            "Require every QA inventory bullet to include a Checks: mapping to known check ids "
+            "for claim-to-check planning and deterministic replay coverage"
+        ),
     )
     parser.add_argument(
         "--require-execution-log-step-count-match",

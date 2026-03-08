@@ -100,6 +100,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertTrue(payload["strict"])
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(payload["require_failure_recovery_plan"])
+            self.assertFalse(payload["require_qa_inventory_check_refs"])
             self.assertTrue(payload["require_failure_recovery_owner"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
 
@@ -186,6 +187,29 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["active_profile_preset"], "ci-replay-profile")
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
+
+    def test_cli_json_output_with_explicit_qa_inventory_check_refs_requirement(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        report_path = root / "examples" / "web_qa_playwright_strict_plus_pass.md"
+
+        output = io.StringIO()
+        with mock.patch(
+            "sys.argv",
+            [
+                "validate_web_qa_report.py",
+                "--file",
+                str(report_path),
+                "--strict-plus",
+                "--require-qa-inventory-check-refs",
+                "--json",
+            ],
+        ):
+            with contextlib.redirect_stdout(output):
+                validate_web_qa_report.main()
+
+        payload = json.loads(output.getvalue().strip())
+        self.assertEqual(payload["status"], "PASS")
+        self.assertTrue(payload["require_qa_inventory_check_refs"])
 
     def test_cli_json_output_strict_plus_sets_active_profile_preset(self) -> None:
         root = Path(__file__).resolve().parents[1]
