@@ -462,3 +462,23 @@
 
 ### Next
 - Consider exposing the same malformed-vs-partial QA inventory triage hints in README copy for operators who start from the repo landing page.
+
+## Run @ 20:55 UTC (cron)
+
+### Plan
+- Tighten replay-profile smoke coverage so QA inventory format drift and partial coverage drift stay machine-distinguishable.
+- Refresh the landing-page docs with the same parser-facing cue.
+
+### Changes
+- Extended `scripts/smoke_replay_profile_examples.sh` with an explicit malformed-vs-partial QA inventory triage assertion.
+- Updated `README.md` to document the `10 mapped / 0 missing` vs `9 mapped / 1 missing` recovery split for smoke users.
+
+### Verification
+- `python3 -m unittest discover -s tests -q`
+- `bash scripts/smoke_replay_profile_examples.sh`
+
+### Blockers
+- None.
+
+### Next
+- Consider surfacing the same malformed-vs-partial QA inventory split in machine-readable example payloads near the README fixture index.

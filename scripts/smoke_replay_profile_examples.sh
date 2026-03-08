@@ -75,4 +75,17 @@ assert payload['report_metadata']['qa_inventory_missing_check_ref_count'] == 1, 
 assert payload['report_metadata']['qa_inventory_missing_check_refs'] == ['O2'], payload
 PYJSON
 
+python3 - "$TMP_DIR/fail.json" "$TMP_DIR/partial-fail.json" <<'PYJSON'
+import json
+import sys
+from pathlib import Path
+malformed = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
+partial = json.loads(Path(sys.argv[2]).read_text(encoding='utf-8'))
+assert malformed['report_metadata']['qa_inventory_check_ref_count'] == 10, malformed
+assert malformed['report_metadata']['qa_inventory_missing_check_ref_count'] == 0, malformed
+assert partial['report_metadata']['qa_inventory_check_ref_count'] == 9, partial
+assert partial['report_metadata']['qa_inventory_missing_check_ref_count'] == 1, partial
+print('qa inventory malformed-vs-partial triage smoke: PASS')
+PYJSON
+
 echo 'replay profile smoke: PASS'
