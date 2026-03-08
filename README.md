@@ -139,6 +139,7 @@ Current docs:
 - `docs/COMPATIBILITY.md`
 - `docs/MAPPING_PM_SKILLS.md`
 - `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
+- `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - Canonical opt-in traceability example: `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`
 - Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, unresolved failed-check coverage, deduplicated next-action failed-check refs, checkpoint target/artifact refs, and per-checkpoint ref coverage counts for replay triage) as a machine-readable artifact
 - Parser-facing QA inventory mapping examples: `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes PASS/FAIL JSON snippets for the opt-in `--require-qa-inventory-check-refs` contract so downstream CI can compare payload shape directly.
@@ -262,6 +263,7 @@ python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_samp
 For machine-readable CI output, add `--json` (stdout) or `--json-out <path>` (artifact file).
 
 For a reusable explanation of deterministic replay expectations and failure-recovery discipline, see `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`.
+For a faster blocked-run triage workflow focused on `report_metadata`, owner handoff, and failed-check reruns, see `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`.
 
 `--strict` adds reproducibility gates aligned with Playwright-interactive principles:
 
