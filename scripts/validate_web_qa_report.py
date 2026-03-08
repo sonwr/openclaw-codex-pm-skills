@@ -265,9 +265,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "unexpected_checkpoint_count": len(unexpected_checkpoint_ids),
         "checkpoint_target_refs": checkpoint_target_refs,
         "checkpoint_target_ref_count": len(checkpoint_target_refs),
+        "checkpoint_target_ref_id_count": len(checkpoint_target_refs_by_id),
         "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,
         "checkpoint_artifact_refs": checkpoint_artifact_refs,
         "checkpoint_artifact_ref_count": len(checkpoint_artifact_refs),
+        "checkpoint_artifact_ref_id_count": len(checkpoint_artifact_refs_by_id),
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
     }
 

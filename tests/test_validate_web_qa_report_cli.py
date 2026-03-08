@@ -53,8 +53,10 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_ids"], [])
             self.assertEqual(payload["report_metadata"]["unexpected_checkpoint_ids"], [])
             self.assertEqual(payload["report_metadata"]["checkpoint_target_refs"], ["e12", "e44"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_target_ref_id_count"], 2)
             self.assertEqual(payload["report_metadata"]["checkpoint_target_refs_by_id"]["F1"], ["e12"])
             self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs"], ["artifacts/f1.png", "artifacts/v1.png"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_artifact_ref_id_count"], 2)
             self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs_by_id"]["V1"], ["artifacts/v1.png"])
     def test_cli_json_output_for_pass(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
