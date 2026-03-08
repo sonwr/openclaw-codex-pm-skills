@@ -1418,6 +1418,12 @@ if __name__ == "__main__":
 
         self.assertEqual(completed.returncode, 1)
         payload = json.loads(completed.stdout)
+        self.assertEqual(payload["report_metadata"]["reported_regressions"], 1)
+        self.assertEqual(payload["report_metadata"]["merge_recommendation"], "BLOCK")
+        self.assertEqual(payload["report_metadata"]["replay_readiness"], "BLOCKED")
+        self.assertEqual(payload["report_metadata"]["missing_signoff_fields"], [])
+        self.assertEqual(payload["report_metadata"]["missing_signoff_field_count"], 0)
+        self.assertEqual(payload["report_metadata"]["signoff_field_coverage_rate"], 1.0)
         self.assertEqual(payload["report_metadata"]["failed_check_ids"], ["F1"])
         self.assertEqual(payload["report_metadata"]["failed_check_classifications"], ["product"])
         self.assertEqual(payload["report_metadata"]["failed_check_classifications_by_id"], {"F1": "product"})
@@ -1443,6 +1449,68 @@ if __name__ == "__main__":
             {"selector": 0, "runtime": 0, "product": 0},
         )
 
+
+    def test_cli_json_tracks_missing_signoff_fields_for_incomplete_blocked_reports(self) -> None:
+        report = self._write_temp_report(
+            """# Web QA Report
+
+## 1) QA inventory
+- Claim: Checkout blocks invalid coupon codes. Checks: F1
+- Functional checks (4 / 5 pass)
+  - F1: FAIL - Invalid coupon is accepted
+    - Failure classification: product
+    - Failure evidence: coupon error missing
+  - F2: PASS - Cart subtotal is visible
+  - F3: PASS - Shipping estimate is visible
+  - F4: PASS - CTA remains enabled
+  - F5: PASS - Success banner appears
+- Visual checks (3 / 3 pass)
+  - V1: PASS - Modal spacing is stable
+  - V2: PASS - Error copy aligns with field
+  - V3: PASS - Summary card stays within viewport
+- Off-happy-path checks (2 / 2 pass)
+  - O1: PASS - Empty cart stays blocked
+  - O2: PASS - Session timeout returns to login
+
+## 3) Execution log
+- F1 checkpoint: FAIL ref=e12 `artifacts/f1-fail.png` 2026-03-08T13:00:00Z
+- F2 checkpoint: PASS ref=e13 `artifacts/f2-pass.png` 2026-03-08T13:01:00Z
+- F3 checkpoint: PASS ref=e14 `artifacts/f3-pass.png` 2026-03-08T13:02:00Z
+- F4 checkpoint: PASS ref=e15 `artifacts/f4-pass.png` 2026-03-08T13:03:00Z
+- F5 checkpoint: PASS ref=e16 `artifacts/f5-pass.png` 2026-03-08T13:04:00Z
+- V1 checkpoint: PASS ref=e17 `artifacts/v1-pass.png` 2026-03-08T13:05:00Z
+- V2 checkpoint: PASS ref=e18 `artifacts/v2-pass.png` 2026-03-08T13:06:00Z
+- V3 checkpoint: PASS ref=e19 `artifacts/v3-pass.png` 2026-03-08T13:07:00Z
+- O1 checkpoint: PASS ref=e20 `artifacts/o1-pass.png` 2026-03-08T13:08:00Z
+- O2 checkpoint: PASS ref=e21 `artifacts/o2-pass.png` 2026-03-08T13:09:00Z
+
+## 4) Signoff
+- Replay readiness: BLOCKED
+"""
+        )
+
+        completed = subprocess.run(
+            [
+                sys.executable,
+                str(SCRIPT_PATH),
+                "--file",
+                str(report),
+                "--ci-replay-profile",
+                "--json",
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        self.assertEqual(completed.returncode, 1)
+        payload = json.loads(completed.stdout)
+        self.assertEqual(payload["report_metadata"]["reported_regressions"], None)
+        self.assertEqual(payload["report_metadata"]["merge_recommendation"], None)
+        self.assertEqual(payload["report_metadata"]["replay_readiness"], "BLOCKED")
+        self.assertEqual(payload["report_metadata"]["missing_signoff_fields"], ["regressions", "merge_recommendation", "next_action"])
+        self.assertEqual(payload["report_metadata"]["missing_signoff_field_count"], 3)
+        self.assertEqual(payload["report_metadata"]["signoff_field_coverage_rate"], 0.25)
 
     def test_cli_json_tracks_missing_and_present_recovery_owner_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

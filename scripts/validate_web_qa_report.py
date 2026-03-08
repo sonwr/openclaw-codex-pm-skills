@@ -287,6 +287,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     missing_failed_check_recovery_owner_ids = [
         check_id for check_id in failed_check_ids if check_id not in failed_check_recovery_owners
     ]
+    reported_regressions = _extract_reported_regressions(text)
+    merge_recommendation = _extract_merge_recommendation(text)
+    replay_readiness = _extract_replay_readiness(text)
     next_action = _extract_next_action(text)
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
     for check_id in next_action_failed_check_refs:
@@ -323,8 +326,24 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     next_action_failed_check_coverage_rate = round(
         len(next_action_failed_check_refs) / failed_check_count, 4
     ) if failed_check_count else 1.0
+    signoff_field_values = {
+        "regressions": reported_regressions,
+        "merge_recommendation": merge_recommendation,
+        "replay_readiness": replay_readiness,
+        "next_action": next_action,
+    }
+    missing_signoff_fields = [field for field, value in signoff_field_values.items() if value is None]
+    signoff_field_coverage_rate = round(
+        (len(signoff_field_values) - len(missing_signoff_fields)) / len(signoff_field_values), 4
+    ) if signoff_field_values else 1.0
     return {
         "has_signoff_section": _has_signoff_section(text),
+        "reported_regressions": reported_regressions,
+        "merge_recommendation": merge_recommendation,
+        "replay_readiness": replay_readiness,
+        "missing_signoff_fields": missing_signoff_fields,
+        "missing_signoff_field_count": len(missing_signoff_fields),
+        "signoff_field_coverage_rate": signoff_field_coverage_rate,
         "has_next_action": next_action is not None,
         "next_action_text": next_action,
         "failed_check_ids": failed_check_ids,
