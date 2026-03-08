@@ -271,6 +271,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             checkpoint_artifact_refs.append(artifact_ref)
     checkpoint_target_ref_coverage_rate = (len(checkpoint_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_artifact_ref_coverage_rate = (len(checkpoint_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
+    checkpoint_evidence_ref_ids = [
+        checkpoint_id
+        for checkpoint_id in checkpoint_order
+        if checkpoint_id in checkpoint_target_refs_by_id and checkpoint_id in checkpoint_artifact_refs_by_id
+    ]
+    checkpoint_evidence_ref_coverage_rate = (len(checkpoint_evidence_ref_ids) / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_reused_target_ref_coverage_rate = (len(checkpoint_reused_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_reused_artifact_ref_coverage_rate = (len(checkpoint_reused_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     missing_checkpoint_target_ref_ids = [
@@ -413,6 +419,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_artifact_ref_count": len(checkpoint_artifact_refs),
         "checkpoint_artifact_ref_id_count": len(checkpoint_artifact_refs_by_id),
         "checkpoint_artifact_ref_coverage_rate": checkpoint_artifact_ref_coverage_rate,
+        "checkpoint_evidence_ref_ids": checkpoint_evidence_ref_ids,
+        "checkpoint_evidence_ref_count": len(checkpoint_evidence_ref_ids),
+        "checkpoint_evidence_ref_coverage_rate": checkpoint_evidence_ref_coverage_rate,
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
         "missing_checkpoint_artifact_ref_ids": missing_checkpoint_artifact_ref_ids,
         "missing_checkpoint_artifact_ref_count": len(missing_checkpoint_artifact_ref_ids),

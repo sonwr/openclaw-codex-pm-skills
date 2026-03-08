@@ -155,6 +155,7 @@ Current docs:
 - Replay triage JSON now exposes `qa_inventory_check_ref_coverage_rate` and `next_action_failed_check_coverage_rate` so CI can spot partial mapping/handoff drift without recomputing ratios downstream.
 - Failure handoff JSON now also groups both referenced and unresolved failed check ids by classification (`next_action_failed_check_ids_by_classification`, `unresolved_failed_check_ids_by_classification`) so follow-up reruns can route selector/runtime/product fixes without rebuilding that map downstream.
 - Checkpoint replay metadata now includes `missing_checkpoint_target_ref_ids` and `missing_checkpoint_artifact_ref_ids`, letting CI distinguish “checkpoint exists but lacks stable ref/artifact evidence” from ordering/count drift without re-parsing the markdown.
+- Replay JSON now also exposes `checkpoint_evidence_ref_ids` plus `checkpoint_evidence_ref_coverage_rate`, so CI can see which checkpoints already carry both a stable UI target ref and an artifact path before triggering a replay.
 
 Current examples:
 
