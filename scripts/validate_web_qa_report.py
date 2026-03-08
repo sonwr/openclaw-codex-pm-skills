@@ -172,6 +172,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     failed_check_ids = _extract_failed_check_ids(text)
     failed_check_classifications = _extract_failed_check_classifications(text)
     failed_check_recovery_owners = _extract_failed_check_recovery_owners(text)
+    missing_failed_check_recovery_owner_ids = [
+        check_id for check_id in failed_check_ids if check_id not in failed_check_recovery_owners
+    ]
     next_action = _extract_next_action(text)
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
     return {
@@ -179,6 +182,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "failed_check_count": len(failed_check_ids),
         "failed_check_classifications": failed_check_classifications,
         "failed_check_recovery_owners": failed_check_recovery_owners,
+        "failed_check_recovery_owner_count": len(failed_check_recovery_owners),
+        "missing_failed_check_recovery_owner_ids": missing_failed_check_recovery_owner_ids,
+        "missing_failed_check_recovery_owner_count": len(missing_failed_check_recovery_owner_ids),
         "next_action": next_action,
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),

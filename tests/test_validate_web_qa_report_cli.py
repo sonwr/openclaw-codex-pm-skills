@@ -1228,9 +1228,49 @@ if __name__ == "__main__":
         self.assertEqual(payload["report_metadata"]["failed_check_ids"], ["F1"])
         self.assertEqual(payload["report_metadata"]["failed_check_classifications"], ["product"])
         self.assertEqual(payload["report_metadata"]["failed_check_recovery_owners"], {})
+        self.assertEqual(payload["report_metadata"]["failed_check_recovery_owner_count"], 0)
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], ["F1"])
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_refs"], ["F1"])
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_ref_count"], 1)
+
+
+    def test_cli_json_tracks_missing_and_present_recovery_owner_metadata(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(
+                FAILED_REPORT_WITH_RECOVERY.replace(
+                    "    - Evidence: `artifacts/f2-failure.png`\n",
+                    "    - Evidence: `artifacts/f2-failure.png`\n    - Recovery owner: qa-oncall@example.test\n",
+                )
+                + "- Next action: Investigate F2 spinner timeout and rerun the login flow\n",
+                encoding="utf-8",
+            )
+
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT_PATH),
+                    "--file",
+                    str(report_path),
+                    "--ci-replay-profile",
+                    "--json",
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+        self.assertEqual(completed.returncode, 0)
+        payload = json.loads(completed.stdout)
+        self.assertEqual(
+            payload["report_metadata"]["failed_check_recovery_owners"],
+            {"F2": "qa-oncall@example.test"},
+        )
+        self.assertEqual(payload["report_metadata"]["failed_check_recovery_owner_count"], 1)
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], [])
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_count"], 0)
 
     def test_cli_json_includes_report_metadata_for_pass_report(self) -> None:
         completed = subprocess.run(
@@ -1252,5 +1292,8 @@ if __name__ == "__main__":
         self.assertEqual(payload["report_metadata"]["failed_check_ids"], [])
         self.assertEqual(payload["report_metadata"]["failed_check_classifications"], [])
         self.assertEqual(payload["report_metadata"]["failed_check_recovery_owners"], {})
+        self.assertEqual(payload["report_metadata"]["failed_check_recovery_owner_count"], 0)
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_ids"], [])
+        self.assertEqual(payload["report_metadata"]["missing_failed_check_recovery_owner_count"], 0)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_refs"], [])
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 0)
