@@ -216,6 +216,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     checkpoint_artifact_refs_by_id: dict[str, list[str]] = {}
     checkpoint_reused_target_refs: list[str] = []
     checkpoint_reused_artifact_refs: list[str] = []
+    checkpoint_reused_target_refs_by_id: dict[str, list[str]] = {}
+    checkpoint_reused_artifact_refs_by_id: dict[str, list[str]] = {}
     seen_target_refs: set[str] = set()
     seen_artifact_refs: set[str] = set()
     for checkpoint_id, tail in _extract_checkpoint_tails(text):
@@ -229,6 +231,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             if target_ref in seen_target_refs:
                 if target_ref not in checkpoint_reused_target_refs:
                     checkpoint_reused_target_refs.append(target_ref)
+                checkpoint_reused_target_refs_by_id.setdefault(checkpoint_id, [])
+                if target_ref not in checkpoint_reused_target_refs_by_id[checkpoint_id]:
+                    checkpoint_reused_target_refs_by_id[checkpoint_id].append(target_ref)
                 continue
             seen_target_refs.add(target_ref)
             checkpoint_target_refs.append(target_ref)
@@ -236,6 +241,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             if artifact_ref in seen_artifact_refs:
                 if artifact_ref not in checkpoint_reused_artifact_refs:
                     checkpoint_reused_artifact_refs.append(artifact_ref)
+                checkpoint_reused_artifact_refs_by_id.setdefault(checkpoint_id, [])
+                if artifact_ref not in checkpoint_reused_artifact_refs_by_id[checkpoint_id]:
+                    checkpoint_reused_artifact_refs_by_id[checkpoint_id].append(artifact_ref)
                 continue
             seen_artifact_refs.add(artifact_ref)
             checkpoint_artifact_refs.append(artifact_ref)
@@ -315,12 +323,16 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,
         "checkpoint_reused_target_refs": checkpoint_reused_target_refs,
         "checkpoint_reused_target_ref_count": len(checkpoint_reused_target_refs),
+        "checkpoint_reused_target_ref_id_count": len(checkpoint_reused_target_refs_by_id),
+        "checkpoint_reused_target_refs_by_id": checkpoint_reused_target_refs_by_id,
         "checkpoint_artifact_refs": checkpoint_artifact_refs,
         "checkpoint_artifact_ref_count": len(checkpoint_artifact_refs),
         "checkpoint_artifact_ref_id_count": len(checkpoint_artifact_refs_by_id),
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
         "checkpoint_reused_artifact_refs": checkpoint_reused_artifact_refs,
         "checkpoint_reused_artifact_ref_count": len(checkpoint_reused_artifact_refs),
+        "checkpoint_reused_artifact_ref_id_count": len(checkpoint_reused_artifact_refs_by_id),
+        "checkpoint_reused_artifact_refs_by_id": checkpoint_reused_artifact_refs_by_id,
     }
 
 
