@@ -125,3 +125,9 @@ Before sending a blocked run to the next owner, confirm that the artifact answer
 5. Is there any unresolved checklist-to-checkpoint drift?
 
 If one of those answers is missing, tighten the validator flags before the next rerun.
+
+
+## Coverage-rate cues
+
+- `checkpoint_target_ref_coverage_rate` and `checkpoint_artifact_ref_coverage_rate` show how much of the 10-checkpoint execution log carries explicit replay handles.
+- `checkpoint_reused_target_ref_coverage_rate` and `checkpoint_reused_artifact_ref_coverage_rate` show how much of the checkpoint set is affected by duplicate handle reuse.

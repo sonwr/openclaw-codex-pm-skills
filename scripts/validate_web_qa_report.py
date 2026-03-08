@@ -247,6 +247,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
                 continue
             seen_artifact_refs.add(artifact_ref)
             checkpoint_artifact_refs.append(artifact_ref)
+    checkpoint_count = len(checkpoint_order)
+    checkpoint_target_ref_coverage_rate = (len(checkpoint_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
+    checkpoint_artifact_ref_coverage_rate = (len(checkpoint_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
+    checkpoint_reused_target_ref_coverage_rate = (len(checkpoint_reused_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
+    checkpoint_reused_artifact_ref_coverage_rate = (len(checkpoint_reused_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     failed_check_classifications = _extract_failed_check_classifications(text)
     failed_check_classifications_by_id = _extract_failed_check_classifications_by_id(text)
     failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
@@ -320,7 +325,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "qa_inventory_missing_check_refs": qa_inventory_missing_check_refs,
         "qa_inventory_missing_check_ref_count": len(qa_inventory_missing_check_refs),
         "checkpoint_order": checkpoint_order,
-        "checkpoint_count": len(checkpoint_order),
+        "checkpoint_count": checkpoint_count,
         "checkpoint_section_counts": checkpoint_section_counts,
         "missing_checkpoint_ids": missing_checkpoint_ids,
         "missing_checkpoint_count": len(missing_checkpoint_ids),
@@ -329,18 +334,22 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_target_refs": checkpoint_target_refs,
         "checkpoint_target_ref_count": len(checkpoint_target_refs),
         "checkpoint_target_ref_id_count": len(checkpoint_target_refs_by_id),
+        "checkpoint_target_ref_coverage_rate": checkpoint_target_ref_coverage_rate,
         "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,
         "checkpoint_reused_target_refs": checkpoint_reused_target_refs,
         "checkpoint_reused_target_ref_count": len(checkpoint_reused_target_refs),
         "checkpoint_reused_target_ref_id_count": len(checkpoint_reused_target_refs_by_id),
+        "checkpoint_reused_target_ref_coverage_rate": checkpoint_reused_target_ref_coverage_rate,
         "checkpoint_reused_target_refs_by_id": checkpoint_reused_target_refs_by_id,
         "checkpoint_artifact_refs": checkpoint_artifact_refs,
         "checkpoint_artifact_ref_count": len(checkpoint_artifact_refs),
         "checkpoint_artifact_ref_id_count": len(checkpoint_artifact_refs_by_id),
+        "checkpoint_artifact_ref_coverage_rate": checkpoint_artifact_ref_coverage_rate,
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
         "checkpoint_reused_artifact_refs": checkpoint_reused_artifact_refs,
         "checkpoint_reused_artifact_ref_count": len(checkpoint_reused_artifact_refs),
         "checkpoint_reused_artifact_ref_id_count": len(checkpoint_reused_artifact_refs_by_id),
+        "checkpoint_reused_artifact_ref_coverage_rate": checkpoint_reused_artifact_ref_coverage_rate,
         "checkpoint_reused_artifact_refs_by_id": checkpoint_reused_artifact_refs_by_id,
     }
 
