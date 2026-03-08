@@ -310,6 +310,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     qa_inventory_check_ref_coverage_rate = round(
         ((len(expected_check_ids) - len(qa_inventory_missing_check_refs)) / len(expected_check_ids)), 4
     ) if expected_check_ids else 0.0
+    failed_check_classification_coverage_rate = round(
+        len(failed_check_classifications_by_id) / failed_check_count, 4
+    ) if failed_check_count else 1.0
+    failed_check_recovery_owner_coverage_rate = round(
+        len(failed_check_recovery_owners) / failed_check_count, 4
+    ) if failed_check_count else 1.0
     next_action_failed_check_coverage_rate = round(
         len(next_action_failed_check_refs) / failed_check_count, 4
     ) if failed_check_count else 1.0
@@ -321,10 +327,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "failed_check_classifications": failed_check_classifications,
         "failed_check_classifications_by_id": failed_check_classifications_by_id,
         "failed_check_classification_counts": failed_check_classification_counts,
+        "failed_check_classification_coverage_rate": failed_check_classification_coverage_rate,
         "missing_failed_check_classification_ids": missing_failed_check_classification_ids,
         "missing_failed_check_classification_count": len(missing_failed_check_classification_ids),
         "failed_check_recovery_owners": failed_check_recovery_owners,
         "failed_check_recovery_owner_count": len(failed_check_recovery_owners),
+        "failed_check_recovery_owner_coverage_rate": failed_check_recovery_owner_coverage_rate,
         "missing_failed_check_recovery_owner_ids": missing_failed_check_recovery_owner_ids,
         "missing_failed_check_recovery_owner_count": len(missing_failed_check_recovery_owner_ids),
         "next_action": next_action,
