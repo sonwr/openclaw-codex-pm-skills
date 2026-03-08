@@ -211,6 +211,40 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         self.assertEqual(payload["status"], "PASS")
         self.assertTrue(payload["require_qa_inventory_check_refs"])
 
+
+    def test_cli_json_output_requires_full_qa_inventory_coverage(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(
+                VALID_REPORT.replace(
+                    "## 3) Execution log",
+                    "## 1) QA inventory\n- Browser/runtime: Playwright Chromium (headless) | Checks: F1, F2, F3, F4, F5, V1, V2, V3, O1\n\n## 3) Execution log",
+                ),
+                encoding="utf-8",
+            )
+
+            output = io.StringIO()
+            with self.assertRaises(SystemExit) as exc:
+                with mock.patch(
+                    "sys.argv",
+                    [
+                        "validate_web_qa_report.py",
+                        "--file",
+                        str(report_path),
+                        "--require-qa-inventory-check-refs",
+                        "--require-qa-inventory-full-coverage",
+                        "--json",
+                    ],
+                ):
+                    with contextlib.redirect_stdout(output):
+                        validate_web_qa_report.main()
+            self.assertEqual(exc.exception.code, 1)
+
+            payload = json.loads(output.getvalue().strip())
+            self.assertEqual(payload["status"], "FAIL")
+            self.assertTrue(payload["require_qa_inventory_full_coverage"])
+            self.assertTrue(any("missing: O2" in err for err in payload["errors"]))
+
     def test_cli_json_output_strict_plus_sets_active_profile_preset(self) -> None:
         root = Path(__file__).resolve().parents[1]
         report_path = root / "examples" / "web_qa_playwright_strict_plus_pass.md"

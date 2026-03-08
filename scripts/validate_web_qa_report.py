@@ -209,6 +209,7 @@ def validate_report_text(
     require_execution_log_step_count_match: bool = False,
     require_qa_inventory_section: bool = False,
     require_qa_inventory_check_refs: bool = False,
+    require_qa_inventory_full_coverage: bool = False,
     require_signoff_section: bool = False,
     require_replay_readiness: bool = False,
     require_next_action: bool = False,
@@ -524,6 +525,14 @@ def validate_report_text(
                 errors.append(
                     "qa inventory check refs: inventory must map claims to at least one checklist id via 'Checks:'"
                 )
+            if require_qa_inventory_full_coverage and inventory_refs:
+                expected_inventory_refs = {"F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"}
+                missing_inventory_refs = sorted(expected_inventory_refs - set(inventory_refs))
+                if missing_inventory_refs:
+                    errors.append(
+                        "qa inventory full coverage: inventory must reference every checklist id at least once "
+                        f"(missing: {', '.join(missing_inventory_refs)})"
+                    )
 
     if require_signoff_section:
         if not re.search(r"(?mi)^##\s*4\)\s*Signoff\s*$", text):
@@ -1005,6 +1014,11 @@ def main() -> None:
         ),
     )
     parser.add_argument(
+        "--require-qa-inventory-full-coverage",
+        action="store_true",
+        help="Require the QA inventory to reference every checklist id F1..F5, V1..V3, O1..O2 at least once",
+    )
+    parser.add_argument(
         "--require-execution-log-step-count-match",
         action="store_true",
         help=(
@@ -1070,6 +1084,7 @@ def main() -> None:
     )
     require_qa_inventory_section = args.require_qa_inventory_section or profile_enabled
     require_qa_inventory_check_refs = args.require_qa_inventory_check_refs
+    require_qa_inventory_full_coverage = args.require_qa_inventory_full_coverage or args.strict_plus
     require_signoff_section = args.require_signoff_section or profile_enabled
     require_replay_readiness = args.require_replay_readiness or profile_enabled
     require_next_action = args.require_next_action
@@ -1117,6 +1132,7 @@ def main() -> None:
         require_execution_log_step_count_match=require_execution_log_step_count_match,
         require_qa_inventory_section=require_qa_inventory_section,
         require_qa_inventory_check_refs=require_qa_inventory_check_refs,
+        require_qa_inventory_full_coverage=require_qa_inventory_full_coverage,
         require_signoff_section=require_signoff_section,
         require_replay_readiness=require_replay_readiness,
         require_next_action=require_next_action,
@@ -1160,6 +1176,7 @@ def main() -> None:
             "require_execution_log_step_count_match": require_execution_log_step_count_match,
             "require_qa_inventory_section": require_qa_inventory_section,
             "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
+            "require_qa_inventory_full_coverage": require_qa_inventory_full_coverage,
             "require_signoff_section": require_signoff_section,
             "require_replay_readiness": require_replay_readiness,
             "require_next_action": require_next_action,
@@ -1204,6 +1221,7 @@ def main() -> None:
         "require_execution_log_step_count_match": require_execution_log_step_count_match,
         "require_qa_inventory_section": require_qa_inventory_section,
         "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
+        "require_qa_inventory_full_coverage": require_qa_inventory_full_coverage,
         "require_signoff_section": require_signoff_section,
         "require_replay_readiness": require_replay_readiness,
         "require_next_action": require_next_action,
