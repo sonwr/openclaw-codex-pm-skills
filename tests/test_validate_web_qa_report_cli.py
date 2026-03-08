@@ -297,6 +297,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         self.assertEqual(payload["report_metadata"]["qa_inventory_missing_check_ref_count"], 0)
         self.assertEqual(payload["report_metadata"]["unresolved_failed_check_ids"], [])
         self.assertEqual(payload["report_metadata"]["unresolved_failed_check_count"], 0)
+        self.assertTrue(payload["report_metadata"]["next_action_references_all_failed_checks"])
 
     def test_cli_json_out_with_strict_plus_check_ref_pass_fixture_writes_metadata_file(self) -> None:
         root = Path(__file__).resolve().parents[1]
@@ -747,6 +748,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
 
             text = output.getvalue()
             self.assertIn("web-qa-playwright report validation: PASS", text)
+            self.assertIn("- next action covers all failed checks: no", text)
             self.assertIn("- unresolved failed checks: F2", text)
 
     def test_cli_json_output_for_checkpoint_target_ref_requirement(self) -> None:

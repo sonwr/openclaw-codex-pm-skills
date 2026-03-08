@@ -262,6 +262,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     unresolved_failed_check_ids = [
         check_id for check_id in failed_check_ids if check_id not in next_action_failed_check_refs
     ]
+    next_action_references_all_failed_checks = not unresolved_failed_check_ids
     for check_id in unresolved_failed_check_ids:
         classification = failed_check_classifications_by_id.get(check_id)
         if classification is not None:
@@ -295,6 +296,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_classification_counts": next_action_failed_check_classification_counts,
         "unresolved_failed_check_ids": unresolved_failed_check_ids,
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
+        "next_action_references_all_failed_checks": next_action_references_all_failed_checks,
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
@@ -1507,6 +1509,9 @@ def main() -> None:
         print("- next action handoff checks: enabled")
     if require_next_action_failed_check_ref:
         print("- next action failed-check traceability checks: enabled")
+    if report_metadata.get("failed_check_ids"):
+        all_failed_refs = report_metadata.get("next_action_references_all_failed_checks", False)
+        print(f"- next action covers all failed checks: {'yes' if all_failed_refs else 'no'}")
     if report_metadata.get("unresolved_failed_check_ids"):
         unresolved = ", ".join(report_metadata["unresolved_failed_check_ids"])
         print(f"- unresolved failed checks: {unresolved}")
