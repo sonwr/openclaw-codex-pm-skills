@@ -151,6 +151,16 @@ def _extract_failed_check_classifications(text: str) -> list[str]:
             classifications.append(match.group(1).lower())
     return classifications
 
+
+def _extract_failed_check_recovery_owners(text: str) -> dict[str, str]:
+    owners: dict[str, str] = {}
+    for check_id, block in _failed_check_blocks(text):
+        match = re.search(r"(?mi)^\s*-\s*Recovery owner:\s*(.+)$", block)
+        if match is not None:
+            owners[check_id] = match.group(1).strip()
+    return owners
+
+
 def _extract_next_action_failed_check_refs(text: str) -> list[str]:
     next_action = _extract_next_action(text)
     if next_action is None:
@@ -160,11 +170,15 @@ def _extract_next_action_failed_check_refs(text: str) -> list[str]:
 
 def _build_report_metadata(text: str) -> dict[str, object]:
     failed_check_ids = _extract_failed_check_ids(text)
+    failed_check_classifications = _extract_failed_check_classifications(text)
+    failed_check_recovery_owners = _extract_failed_check_recovery_owners(text)
     next_action = _extract_next_action(text)
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
     return {
         "failed_check_ids": failed_check_ids,
         "failed_check_count": len(failed_check_ids),
+        "failed_check_classifications": failed_check_classifications,
+        "failed_check_recovery_owners": failed_check_recovery_owners,
         "next_action": next_action,
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
