@@ -314,6 +314,7 @@ Expected outcomes:
 
 CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
 CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
+- JSON payloads now include `validation_schema_version` so CI parsers can detect contract changes explicitly.
 
 ---
 

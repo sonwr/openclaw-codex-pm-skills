@@ -9,6 +9,8 @@ from datetime import datetime
 from pathlib import Path
 
 
+VALIDATION_SCHEMA_VERSION = 1
+
 SECTION_TITLES = {
     "functional": r"Functional checks",
     "visual": r"Visual checks",
@@ -973,6 +975,7 @@ def main() -> None:
     if errors:
         payload = {
             "status": "FAIL",
+            "validation_schema_version": VALIDATION_SCHEMA_VERSION,
             "strict": strict_enabled,
             "strict_plus": args.strict_plus,
             "playwright_interactive_profile": args.playwright_interactive_profile,
@@ -1010,6 +1013,7 @@ def main() -> None:
 
     payload = {
         "status": "PASS",
+        "validation_schema_version": VALIDATION_SCHEMA_VERSION,
         "strict": strict_enabled,
         "strict_plus": args.strict_plus,
         "playwright_interactive_profile": args.playwright_interactive_profile,

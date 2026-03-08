@@ -39,6 +39,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
 
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["validation_schema_version"], 1)
             self.assertTrue(payload["strict"])
             self.assertFalse(payload["require_checkpoint_timestamps"])
             self.assertFalse(payload["enforce_monotonic_checkpoint_timestamps"])
@@ -91,6 +92,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
 
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "FAIL")
+            self.assertEqual(payload["validation_schema_version"], 1)
             self.assertTrue(payload["playwright_interactive_profile"])
             self.assertTrue(payload["strict"])
             self.assertTrue(payload["require_checkpoint_timestamps"])
