@@ -268,6 +268,7 @@ For machine-readable CI output, add `--json` (stdout) or `--json-out <path>` (ar
 For a reusable explanation of deterministic replay expectations and failure-recovery discipline, see `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`.
 For a faster blocked-run triage workflow focused on `report_metadata`, owner handoff, and failed-check reruns, see `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`.
 For machine-readable CI contracts and JSON artifact routing, see `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`.
+For a concise execution loop that mirrors Playwright-interactive principles (inventory -> bootstrap -> verify -> recover), see `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md`.
 
 `--strict` adds reproducibility gates aligned with Playwright-interactive principles:
 
