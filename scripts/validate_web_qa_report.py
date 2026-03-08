@@ -215,6 +215,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             checkpoint_artifact_refs.append(artifact_ref)
     failed_check_classifications = _extract_failed_check_classifications(text)
     failed_check_classifications_by_id = _extract_failed_check_classifications_by_id(text)
+    failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
+    for classification in failed_check_classifications:
+        failed_check_classification_counts[classification] += 1
     failed_check_recovery_owners = _extract_failed_check_recovery_owners(text)
     missing_failed_check_classification_ids = [
         check_id for check_id in failed_check_ids if check_id not in _extract_failed_check_classifications_by_id(text)
@@ -230,6 +233,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "failed_check_count": len(failed_check_ids),
         "failed_check_classifications": failed_check_classifications,
         "failed_check_classifications_by_id": failed_check_classifications_by_id,
+        "failed_check_classification_counts": failed_check_classification_counts,
         "missing_failed_check_classification_ids": missing_failed_check_classification_ids,
         "missing_failed_check_classification_count": len(missing_failed_check_classification_ids),
         "failed_check_recovery_owners": failed_check_recovery_owners,

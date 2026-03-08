@@ -154,6 +154,7 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["failed_check_ids"], ["F2"])
         self.assertEqual(metadata["next_action_failed_check_refs"], ["F2"])
         self.assertEqual(metadata["next_action_failed_check_ref_count"], 1)
+        self.assertEqual(metadata["failed_check_classification_counts"], {"selector": 0, "runtime": 0, "product": 1})
 
     def test_validate_report_fails_when_failure_timestamp_not_iso_utc(self) -> None:
         broken = FAILED_REPORT_WITH_RECOVERY.replace(
