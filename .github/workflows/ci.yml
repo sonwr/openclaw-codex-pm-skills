@@ -140,6 +140,36 @@ jobs:
           print('QA inventory check-ref PASS metadata: PASS')
           PY
 
+      - name: Assert paired QA inventory check-ref smoke commands show both recovery directions
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp
+          python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md \
+            --strict-plus \
+            --require-qa-inventory-check-refs \
+            --json-out .tmp/web-qa-check-refs-side-by-side-pass.json
+          if python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_fail_missing_check_refs_only.md \
+            --strict-plus \
+            --require-qa-inventory-check-refs \
+            --json-out .tmp/web-qa-check-refs-side-by-side-fail.json; then
+            echo "expected isolated missing-check-refs fixture to fail in paired smoke step" >&2
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          passed = json.loads(Path('.tmp/web-qa-check-refs-side-by-side-pass.json').read_text(encoding='utf-8'))
+          failed = json.loads(Path('.tmp/web-qa-check-refs-side-by-side-fail.json').read_text(encoding='utf-8'))
+          assert passed['status'] == 'PASS'
+          assert failed['status'] == 'FAIL'
+          assert passed['report_metadata']['qa_inventory_check_ref_count'] == 10
+          assert failed['report_metadata']['qa_inventory_check_ref_count'] == 0
+          print('paired QA inventory smoke commands: PASS')
+          PY
+
       - name: Assert isolated missing-check-refs fixture fails with exactly one parser-facing error
         run: |
           set -euo pipefail

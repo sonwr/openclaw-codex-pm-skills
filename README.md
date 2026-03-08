@@ -144,6 +144,7 @@ Current docs:
 - Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, unresolved failed-check coverage, deduplicated next-action failed-check refs, checkpoint target/artifact refs, reused checkpoint refs, and per-checkpoint ref coverage counts for replay triage) as a machine-readable artifact
 - Parser-facing QA inventory mapping examples: `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes PASS/FAIL JSON snippets for the opt-in `--require-qa-inventory-check-refs` contract so downstream CI can compare payload shape directly.
 - Missing-`Checks:` recovery guidance: the replay-profile doc now pairs the isolated FAIL fixture with a count-based recovery checklist (`qa_inventory_check_ref_count` should move from `0` back to `10`) so CI triage can be resolved deterministically.
+- Side-by-side PASS/FAIL smoke commands: `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now keeps paired copy/paste commands for the canonical PASS fixture and the isolated missing-`Checks:` FAIL fixture so replay triage can confirm both validation and recovery paths quickly.
 
 Current examples:
 

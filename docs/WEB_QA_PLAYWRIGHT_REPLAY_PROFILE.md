@@ -59,6 +59,28 @@ JSON payloads also expose `active_profile_preset` (`strict-plus`, `playwright-in
 
 Use these snippets when you enable `--require-qa-inventory-check-refs` and want CI to compare the parser-facing shape directly.
 
+### PASS vs FAIL smoke commands (copy/paste)
+
+Use these paired commands when you want the Playwright-interactive traceability rule to show both the green path and the recovery path side-by-side.
+
+```bash
+python3 scripts/validate_web_qa_report.py \
+  --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md \
+  --strict-plus \
+  --require-qa-inventory-check-refs \
+  --json-out .tmp/web-qa-check-refs-pass.json
+
+python3 scripts/validate_web_qa_report.py \
+  --file examples/web_qa_playwright_strict_fail_missing_check_refs_only.md \
+  --strict-plus \
+  --require-qa-inventory-check-refs \
+  --json-out .tmp/web-qa-missing-check-refs.json || true
+```
+
+Expected recovery signal:
+- PASS fixture restores `qa_inventory_check_ref_count == 10`.
+- FAIL fixture stays at `qa_inventory_check_ref_count == 0` until each QA inventory bullet carries `Checks:` ids again.
+
 ### PASS shape (`examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`)
 
 ```json
