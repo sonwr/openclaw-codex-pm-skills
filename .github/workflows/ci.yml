@@ -140,6 +140,31 @@ jobs:
           print('QA inventory check-ref PASS metadata: PASS')
           PY
 
+      - name: Assert isolated missing-check-refs fixture fails with exactly one parser-facing error
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp
+          if python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_fail_missing_check_refs_only.md \
+            --strict-plus \
+            --require-qa-inventory-check-refs \
+            --json-out .tmp/web-qa-missing-check-refs.json; then
+            echo "expected isolated missing-check-refs fixture to fail strict-plus validation" >&2
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path('.tmp/web-qa-missing-check-refs.json').read_text(encoding='utf-8'))
+          assert payload['status'] == 'FAIL'
+          assert payload['error_count'] == 1
+          assert len(payload['errors']) == 1
+          assert 'qa inventory check refs' in payload['errors'][0]
+          assert 'Checks:' in payload['errors'][0]
+          print('QA inventory check-ref FAIL metadata: PASS')
+          PY
+
       - name: Assert isolated monotonic-timestamp fixture fails with exactly one parser-facing error
         run: |
           set -euo pipefail

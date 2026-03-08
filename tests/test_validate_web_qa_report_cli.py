@@ -314,6 +314,34 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         self.assertEqual(payload["status"], "PASS")
         self.assertTrue(payload["require_qa_inventory_check_refs"])
 
+    def test_cli_strict_plus_missing_check_refs_only_fixture_isolates_single_mapping_error(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        report_path = root / "examples" / "web_qa_playwright_strict_fail_missing_check_refs_only.md"
+
+        output = io.StringIO()
+        with self.assertRaises(SystemExit) as exc:
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--strict-plus",
+                    "--require-qa-inventory-check-refs",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+        self.assertEqual(exc.exception.code, 1)
+
+        payload = json.loads(output.getvalue().strip())
+        self.assertEqual(payload["status"], "FAIL")
+        self.assertEqual(payload["error_count"], 1)
+        self.assertIn("qa inventory check refs", payload["errors"][0])
+        self.assertIn("Checks:", payload["errors"][0])
+        self.assertNotIn("checkpoint timestamp", "\n".join(payload["errors"]))
+        self.assertNotIn("artifact ref", "\n".join(payload["errors"]))
 
     def test_cli_json_output_requires_full_qa_inventory_coverage(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

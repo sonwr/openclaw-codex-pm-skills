@@ -120,6 +120,28 @@ PY
 
 Use this when you want a parser-facing guard that the QA plan still maps every inventory bullet back to explicit checklist ids before signoff.
 
+### Copy-paste CI smoke for the isolated missing-`Checks:` FAIL fixture
+
+```bash
+python3 scripts/validate_web_qa_report.py \
+  --file examples/web_qa_playwright_strict_fail_missing_check_refs_only.md \
+  --strict-plus \
+  --require-qa-inventory-check-refs \
+  --json-out .tmp/web-qa-missing-check-refs.json || true
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+payload = json.loads(Path('.tmp/web-qa-missing-check-refs.json').read_text(encoding='utf-8'))
+assert payload['status'] == 'FAIL'
+assert payload['error_count'] == 1
+assert "qa inventory check refs" in payload['errors'][0]
+assert "Checks:" in payload['errors'][0]
+print('qa inventory FAIL payload smoke: PASS')
+PY
+```
+
+Use this when replay metadata is otherwise healthy and you want one deterministic example that fails only the QA inventory `Checks:` mapping rule.
 
 ## Alias smoke commands
 
