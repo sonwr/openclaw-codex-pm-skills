@@ -54,3 +54,43 @@ Use the JSON payload when downstream automation needs machine-readable gating, a
 
 
 JSON payloads also expose `active_profile_preset` (`strict-plus`, `playwright-interactive-profile`, `deterministic-replay-profile`, `strict-replay-profile`, or `ci-replay-profile`) so downstream CI can branch on one stable preset label instead of recomputing it from several booleans.
+
+## QA inventory mapping contract examples
+
+Use these snippets when you enable `--require-qa-inventory-check-refs` and want CI to compare the parser-facing shape directly.
+
+### PASS shape (`examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`)
+
+```json
+{
+  "status": "PASS",
+  "active_profile_preset": "strict-plus",
+  "require_qa_inventory_check_refs": true,
+  "report_metadata": {
+    "qa_inventory_check_refs": ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
+    "qa_inventory_check_ref_count": 10,
+    "missing_checkpoint_ids": [],
+    "next_action_failed_check_refs": []
+  }
+}
+```
+
+### FAIL shape (same flag against a report without `Checks:` mappings)
+
+```json
+{
+  "status": "FAIL",
+  "active_profile_preset": "strict-plus",
+  "require_qa_inventory_check_refs": true,
+  "errors": [
+    "qa inventory check refs: every QA inventory bullet must include 'Checks:' mapping"
+  ],
+  "report_metadata": {
+    "qa_inventory_check_refs": [],
+    "qa_inventory_check_ref_count": 0,
+    "next_action_failed_check_refs": []
+  }
+}
+```
+
+Recovery rule: first compare `status`, then `require_qa_inventory_check_refs`, then the `report_metadata.qa_inventory_check_refs` list/count before reading the rest of the payload.
