@@ -208,6 +208,57 @@ Recovery checklist: confirm `report_metadata.qa_inventory_missing_check_refs == 
 
 Use this quick distinction when downstream CI or machine parsers need to decide whether to repair formatting or restore missing checklist coverage first.
 
+### Parser-facing JSON snippets for QA inventory triage
+
+Use these minimal payload shapes when downstream CI needs a quick fixture-to-parser contract reference without rerunning the full walkthroughs.
+
+**Malformed mapping drift (`examples/web_qa_playwright_strict_fail_missing_check_refs_only.md`)**
+
+```json
+{
+  "status": "FAIL",
+  "error_count": 1,
+  "errors": [
+    "QA inventory check refs are required; add `Checks:` mappings to each QA inventory bullet."
+  ],
+  "report_metadata": {
+    "qa_inventory_check_ref_count": 10,
+    "qa_inventory_missing_check_ref_count": 0
+  }
+}
+```
+
+**Partial coverage drift (`examples/web_qa_playwright_strict_fail_partial_check_refs_only.md`)**
+
+```json
+{
+  "status": "FAIL",
+  "error_count": 1,
+  "errors": [
+    "QA inventory check refs are incomplete; missing: O2"
+  ],
+  "report_metadata": {
+    "qa_inventory_check_ref_count": 9,
+    "qa_inventory_missing_check_ref_count": 1,
+    "qa_inventory_missing_check_refs": ["O2"]
+  }
+}
+```
+
+**Recovered PASS mapping (`examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`)**
+
+```json
+{
+  "status": "PASS",
+  "require_qa_inventory_check_refs": true,
+  "report_metadata": {
+    "qa_inventory_check_ref_count": 10,
+    "qa_inventory_missing_check_ref_count": 0,
+    "next_action_failed_check_ref_count": 0
+  }
+}
+```
+
 ## Alias smoke commands
 
 Use one deterministic PASS fixture to prove every replay-profile alias still resolves to the same Playwright-interactive contract.
