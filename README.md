@@ -318,6 +318,7 @@ Expected outcomes:
 - missing-classification fixture: `FAIL` with `failed check ... must include a Failure classification: line` error.
 - malformed-failure-breakdown fixture: `FAIL` with failure-classification-summary mismatch when `--require-failure-classification-summary` is enabled.
 - missing-execution-log-header fixture: `FAIL` with strict-mode `Execution log` section-header error.
+- missing-target-refs fixture: `FAIL` with exactly one strict-plus `checkpoint target refs` error for selector traceability triage.
 - missing-artifact-paths-only fixture: `FAIL` with exactly one strict-plus `checkpoint artifact paths` error for evidence-capture triage.
 - monotonic-timestamp-only fixture: `FAIL` with exactly one `checkpoint timestamp order` error under `--strict-plus`.
 

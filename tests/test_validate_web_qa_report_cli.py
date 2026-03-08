@@ -813,6 +813,36 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         self.assertNotIn("artifact ref", "\n".join(payload["errors"]))
         self.assertNotIn("target refs", "\n".join(payload["errors"]))
 
+    def test_cli_strict_plus_missing_target_refs_fixture_isolates_single_traceability_error(self) -> None:
+        fixture_path = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_missing_target_refs.md"
+        )
+        output = io.StringIO()
+
+        with self.assertRaises(SystemExit) as exc:
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(fixture_path),
+                    "--strict-plus",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+        self.assertEqual(exc.exception.code, 1)
+
+        payload = json.loads(output.getvalue().strip())
+        self.assertEqual(payload["status"], "FAIL")
+        self.assertEqual(payload["error_count"], 1)
+        self.assertIn("checkpoint target refs", payload["errors"][0])
+        self.assertNotIn("artifact ref", "\n".join(payload["errors"]))
+        self.assertNotIn("checkpoint artifact paths", "\n".join(payload["errors"]))
+
     def test_cli_writes_fail_json_payload_to_json_out(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"

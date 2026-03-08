@@ -553,6 +553,35 @@ class ValidateWebQaReportTests(unittest.TestCase):
         errors = validate_report_text(VALID_REPORT, require_checkpoint_artifact_paths=True)
         self.assertTrue(any("checkpoint artifact paths" in e for e in errors))
 
+    def test_strict_plus_missing_target_refs_only_fixture_isolates_single_traceability_error(self) -> None:
+        fixture_path = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_missing_target_refs.md"
+        )
+        fixture_text = fixture_path.read_text(encoding="utf-8")
+        errors = validate_report_text(
+            fixture_text,
+            enforce_checkpoint_format=True,
+            require_checkpoint_timestamps=True,
+            enforce_monotonic_checkpoint_timestamps=True,
+            enforce_checkpoint_status_tokens=True,
+            require_visual_checkpoint_evidence=True,
+            require_checkpoint_artifact_paths=True,
+            require_checkpoint_target_refs=True,
+            enforce_checkpoint_artifact_ref_uniqueness=True,
+            require_failure_checkpoint_artifact_paths=True,
+            require_failure_evidence_artifact_paths=True,
+            require_failure_recovery_plan=True,
+            require_failure_recovery_owner=True,
+            enforce_checkpoint_to_check_status_consistency=True,
+            require_failure_classification_summary=True,
+            require_execution_log_step_count_match=True,
+            require_qa_inventory_section=True,
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("checkpoint target refs", errors[0])
+
     def test_validate_report_accepts_video_artifact_paths_for_checkpoint_replay(self) -> None:
         with_video_artifact = VALID_REPORT.replace(
             "- V1 checkpoint: Captured baseline layout screenshot",
