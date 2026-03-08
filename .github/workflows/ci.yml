@@ -117,6 +117,29 @@ jobs:
           print('strict-plus JSON payload shape: PASS')
           PY
 
+      - name: Assert QA inventory check-ref profile emits parser-friendly PASS metadata
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp
+          python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md \
+            --strict-plus \
+            --require-qa-inventory-check-refs \
+            --json-out .tmp/web-qa-check-refs-pass.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path('.tmp/web-qa-check-refs-pass.json').read_text(encoding='utf-8'))
+          metadata = payload['report_metadata']
+          assert payload['status'] == 'PASS'
+          assert payload['require_qa_inventory_check_refs'] is True
+          assert metadata['qa_inventory_check_ref_count'] == 10
+          assert metadata['qa_inventory_check_refs'] == ['F1', 'F2', 'F3', 'F4', 'F5', 'V1', 'V2', 'V3', 'O1', 'O2']
+          assert metadata['next_action_failed_check_ref_count'] == 0
+          print('QA inventory check-ref PASS metadata: PASS')
+          PY
+
       - name: Assert isolated monotonic-timestamp fixture fails with exactly one parser-facing error
         run: |
           set -euo pipefail

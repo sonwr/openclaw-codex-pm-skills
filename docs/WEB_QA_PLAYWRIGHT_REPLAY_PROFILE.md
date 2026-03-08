@@ -95,6 +95,31 @@ Use these snippets when you enable `--require-qa-inventory-check-refs` and want 
 
 Recovery rule: first compare `status`, then `require_qa_inventory_check_refs`, then the `report_metadata.qa_inventory_check_refs` list/count before reading the rest of the payload.
 
+### Copy-paste CI smoke for the PASS mapping fixture
+
+```bash
+python3 scripts/validate_web_qa_report.py \
+  --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md \
+  --strict-plus \
+  --require-qa-inventory-check-refs \
+  --json-out .tmp/web-qa-check-refs-pass.json
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+payload = json.loads(Path('.tmp/web-qa-check-refs-pass.json').read_text(encoding='utf-8'))
+metadata = payload['report_metadata']
+assert payload['status'] == 'PASS'
+assert payload['require_qa_inventory_check_refs'] is True
+assert metadata['qa_inventory_check_ref_count'] == 10
+assert metadata['qa_inventory_check_refs'] == ['F1', 'F2', 'F3', 'F4', 'F5', 'V1', 'V2', 'V3', 'O1', 'O2']
+assert metadata['next_action_failed_check_ref_count'] == 0
+print('qa inventory PASS payload smoke: PASS')
+PY
+```
+
+Use this when you want a parser-facing guard that the QA plan still maps every inventory bullet back to explicit checklist ids before signoff.
+
 
 ## Alias smoke commands
 

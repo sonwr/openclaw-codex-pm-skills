@@ -397,3 +397,24 @@
 
 ### Next
 - Add one parser-facing JSON example snippet for the opt-in QA inventory mapping rule so downstream CI users can compare expected FAIL payload shapes quickly.
+
+## Run @ 15:50 UTC (cron)
+
+### Plan
+- Promote the opt-in QA inventory `Checks:` mapping flow from docs-only guidance into a reproducible CI smoke guard.
+- Keep Playwright-interactive replay metadata parser-friendly for downstream triage.
+
+### Changes
+- Updated `.github/workflows/ci.yml` with a PASS smoke step for `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md` under `--require-qa-inventory-check-refs`.
+- Updated `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` with a copy-paste PASS smoke command that asserts `qa_inventory_check_ref_count == 10` and `next_action_failed_check_ref_count == 0`.
+
+### Verification
+- `python3 -m unittest discover -s tests -p 'test_*.py' -v`
+- `python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_plus_with_check_refs_pass.md --strict-plus --require-qa-inventory-check-refs --json-out .tmp/web-qa-check-refs-pass.json`
+- Result: **PASS** (117 tests + PASS metadata smoke)
+
+### Blockers
+- None.
+
+### Next
+- Add a symmetric FAIL smoke example for missing `Checks:` mappings so CI/docs show both recovery directions side-by-side.
