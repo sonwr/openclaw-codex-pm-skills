@@ -188,6 +188,29 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
 
+    def test_cli_strict_plus_check_ref_pass_fixture_satisfies_opt_in_mapping_rule(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        report_path = root / "examples" / "web_qa_playwright_strict_plus_with_check_refs_pass.md"
+
+        output = io.StringIO()
+        with mock.patch(
+            "sys.argv",
+            [
+                "validate_web_qa_report.py",
+                "--file",
+                str(report_path),
+                "--strict-plus",
+                "--require-qa-inventory-check-refs",
+                "--json",
+            ],
+        ):
+            with contextlib.redirect_stdout(output):
+                validate_web_qa_report.main()
+
+        payload = json.loads(output.getvalue().strip())
+        self.assertEqual(payload["status"], "PASS")
+        self.assertTrue(payload["require_qa_inventory_check_refs"])
+
     def test_cli_json_output_with_explicit_qa_inventory_check_refs_requirement(self) -> None:
         root = Path(__file__).resolve().parents[1]
         report_path = root / "examples" / "web_qa_playwright_strict_plus_pass.md"

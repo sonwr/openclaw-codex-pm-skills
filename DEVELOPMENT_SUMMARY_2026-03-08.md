@@ -376,3 +376,24 @@
 
 ### Next
 - Add one strict-plus-compatible pass fixture that demonstrates `Checks:` claim mapping so the stronger planning pattern has a canonical example.
+
+## Run @ 13:30 UTC (cron)
+
+### Plan
+- Add one canonical strict-plus PASS fixture for opt-in QA inventory traceability mappings.
+- Lock it with CLI coverage and refresh README navigation.
+
+### Changes
+- Added `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md` as a canonical PASS fixture where every QA inventory bullet includes explicit `Checks:` mappings.
+- Added `test_cli_strict_plus_check_ref_pass_fixture_satisfies_opt_in_mapping_rule` in `tests/test_validate_web_qa_report_cli.py`.
+- Updated `README.md` fixture inventory and replay-profile docs navigation to point at the new traceability example.
+
+### Verification
+- `python3 -m unittest discover -s tests -v`
+- Result: **PASS** (113 tests)
+
+### Blockers
+- None.
+
+### Next
+- Add one parser-facing JSON example snippet for the opt-in QA inventory mapping rule so downstream CI users can compare expected FAIL payload shapes quickly.
