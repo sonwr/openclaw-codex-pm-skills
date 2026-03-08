@@ -38,3 +38,4 @@
 ## 4) Signoff
 - Regressions: 1
 - Merge recommendation: **BLOCK**
+- Replay readiness: **BLOCKED**

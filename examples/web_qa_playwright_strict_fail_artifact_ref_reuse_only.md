@@ -42,3 +42,4 @@
 - Regressions: 0
 - Failure breakdown: selector=0, runtime=0, product=0
 - Merge recommendation: **APPROVE**
+- Replay readiness: **READY**

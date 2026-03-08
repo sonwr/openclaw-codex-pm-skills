@@ -118,6 +118,16 @@ def _extract_merge_recommendation(text: str) -> str | None:
     return match.group(1).upper()
 
 
+def _extract_replay_readiness(text: str) -> str | None:
+    match = re.search(
+        r"(?mi)^\s*-\s*Replay readiness:\s*(?:\*\*)?(READY|BLOCKED)(?:\*\*)?\s*$",
+        text,
+    )
+    if not match:
+        return None
+    return match.group(1).upper()
+
+
 def _extract_failed_check_classifications(text: str) -> list[str]:
     failed_blocks = _failed_check_blocks(text)
     classifications: list[str] = []
@@ -193,6 +203,7 @@ def validate_report_text(
     require_qa_inventory_section: bool = False,
     require_qa_inventory_check_refs: bool = False,
     require_signoff_section: bool = False,
+    require_replay_readiness: bool = False,
 ) -> list[str]:
     functional_block = _section_block(text, SECTION_TITLES["functional"])
     visual_block = _section_block(text, SECTION_TITLES["visual"])
@@ -314,6 +325,10 @@ def validate_report_text(
         if merge_recommendation is None:
             errors.append("strict mode: signoff must include merge recommendation (APPROVE/BLOCK)")
 
+        replay_readiness = _extract_replay_readiness(text)
+        if replay_readiness is None:
+            errors.append("strict mode: signoff must include replay readiness (READY/BLOCKED)")
+
         checklist_body = "\n".join([functional_block, visual_block, off_happy_block])
         failed_check_count = len(
             re.findall(r"(?mi)^\s*-\s*[FVO]\d+:\s*.*\bFAIL\b", checklist_body)
@@ -332,6 +347,16 @@ def validate_report_text(
             if reported_regressions > 0 and merge_recommendation != "BLOCK":
                 errors.append(
                     "strict mode: merge recommendation must be BLOCK when regressions are present"
+                )
+
+        if reported_regressions is not None and replay_readiness is not None:
+            if reported_regressions == 0 and replay_readiness != "READY":
+                errors.append(
+                    "strict mode: replay readiness must be READY when regressions are 0"
+                )
+            if reported_regressions > 0 and replay_readiness != "BLOCKED":
+                errors.append(
+                    "strict mode: replay readiness must be BLOCKED when regressions are present"
                 )
 
         if not re.search(r"(?mi)^##\s*3\)\s*Execution log\s*$", text):
@@ -497,6 +522,11 @@ def validate_report_text(
             errors.append(
                 "signoff section: report must include an explicit '## 4) Signoff' section header"
             )
+
+    if require_replay_readiness and _extract_replay_readiness(text) is None:
+        errors.append(
+            "replay readiness: signoff must include 'Replay readiness: READY' or 'Replay readiness: BLOCKED'"
+        )
 
     checkpoint_pairs = _extract_checkpoint_tails(text)
 
@@ -965,6 +995,11 @@ def main() -> None:
         action="store_true",
         help="Require report to include explicit '## 4) Signoff' section header for deterministic review closure",
     )
+    parser.add_argument(
+        "--require-replay-readiness",
+        action="store_true",
+        help="Require signoff to include 'Replay readiness: READY/BLOCKED' for deterministic replay handoff",
+    )
     args = parser.parse_args()
 
     profile_enabled = (
@@ -1009,6 +1044,7 @@ def main() -> None:
     require_qa_inventory_section = args.require_qa_inventory_section or profile_enabled
     require_qa_inventory_check_refs = args.require_qa_inventory_check_refs
     require_signoff_section = args.require_signoff_section or profile_enabled
+    require_replay_readiness = args.require_replay_readiness or profile_enabled
 
     def resolve_profile_preset() -> str | None:
         if args.playwright_interactive_profile:
@@ -1054,6 +1090,7 @@ def main() -> None:
         require_qa_inventory_section=require_qa_inventory_section,
         require_qa_inventory_check_refs=require_qa_inventory_check_refs,
         require_signoff_section=require_signoff_section,
+        require_replay_readiness=require_replay_readiness,
     )
 
     def emit_json_payload(payload: dict[str, object]) -> None:
@@ -1097,6 +1134,8 @@ def main() -> None:
         "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
             "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
             "require_signoff_section": require_signoff_section,
+        "require_replay_readiness": require_replay_readiness,
+            "require_replay_readiness": require_replay_readiness,
             "file": str(report_path),
             "errors": errors,
             "error_count": len(errors),
@@ -1139,6 +1178,8 @@ def main() -> None:
         "require_qa_inventory_section": require_qa_inventory_section,
         "require_qa_inventory_check_refs": require_qa_inventory_check_refs,
             "require_signoff_section": require_signoff_section,
+        "require_replay_readiness": require_replay_readiness,
+            "require_replay_readiness": require_replay_readiness,
         "file": str(report_path),
         "counts": {
             "functional": 5,
@@ -1208,6 +1249,8 @@ def main() -> None:
         print("- qa inventory check-ref mapping checks: enabled")
     if require_signoff_section:
         print("- signoff section checks: enabled")
+    if require_replay_readiness:
+        print("- replay readiness checks: enabled")
 
 
 if __name__ == "__main__":

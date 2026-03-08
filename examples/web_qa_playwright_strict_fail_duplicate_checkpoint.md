@@ -44,3 +44,4 @@
 ## 4) Signoff
 - Regressions: 0
 - Merge recommendation: **APPROVE**
+- Replay readiness: **READY**

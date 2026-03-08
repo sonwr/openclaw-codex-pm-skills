@@ -41,4 +41,5 @@
 ## 4) Signoff
 - Regressions: 0
 - Merge recommendation: **APPROVE**
+- Replay readiness: **READY**
 - Failure breakdown: selector=0, runtime=0, product=0
