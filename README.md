@@ -141,6 +141,7 @@ Current docs:
 - `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`
+- `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md` (now explicitly documents Playwright-interactive-style stability, reproducibility, step-by-step verification, and failure-recovery rules)
 - Canonical opt-in traceability example: `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`
 - Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, QA inventory missing-check coverage, unresolved failed-check coverage, deduplicated next-action failed-check refs, checkpoint target/artifact refs, reused checkpoint refs, and per-checkpoint ref coverage counts for replay triage) as a machine-readable artifact
 - Parser-facing QA inventory mapping examples: `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes PASS/FAIL JSON snippets for the opt-in `--require-qa-inventory-check-refs` contract so downstream CI can compare payload shape directly.

@@ -43,6 +43,22 @@ python3 scripts/validate_web_qa_report.py   --file examples/web_qa_playwright_st
 
 This command gives both human-readable review output and machine-readable replay metadata for CI triage.
 
+## Playwright-interactive operating principles
+
+These are the guardrails we want contributors to follow whenever browser automation is involved.
+
+1. **Stability first**
+   - Reuse one preset/profile name per run so report expectations, CI, and replay payloads stay aligned.
+   - Do not switch viewport/account/seed data halfway through a signoff loop.
+2. **Reproducibility over cleverness**
+   - Prefer copyable setup, explicit checkpoints, and saved JSON artifacts over memory-based summaries.
+   - If a reviewer cannot rerun the same check sequence from the report, the loop is not done.
+3. **Step-by-step verification**
+   - After every meaningful action, verify the state before continuing.
+   - Treat each checkpoint as a mini assertion, not as narrative filler.
+4. **Failure recovery before expansion**
+   - Repair the failing precondition/check first, rerun the affected scope, then widen back out.
+   - Avoid broad reruns until selector/runtime/product ownership is written down.
 
 ## Profile selection quick map
 
