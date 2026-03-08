@@ -131,7 +131,7 @@ Current initial skill packs:
 - `pm-strategy-canvas`
 - `pm-prd-drafting`
 - `pm-prioritization-helper`
-- `web-qa-playwright`
+- `web-qa-playwright` (now includes QA inventory + failure-recovery references for interactive browser testing)
 
 Current docs:
 
@@ -145,6 +145,17 @@ Current examples:
 - strategy prompt example
 - PRD prompt example
 - prioritization prompt example
+- web QA Playwright sample interactive run (`examples/web_qa_playwright_sample_run.md`)
+- web QA Playwright strict-fail fixture for duplicate checkpoints (`examples/web_qa_playwright_strict_fail_duplicate_checkpoint.md`)
+- web QA Playwright strict-fail fixture for missing failure evidence (`examples/web_qa_playwright_strict_fail_missing_evidence.md`)
+- web QA Playwright strict-fail fixture for missing failure classification (`examples/web_qa_playwright_strict_fail_missing_classification.md`)
+- web QA Playwright strict-fail fixture for malformed failure breakdown summary (`examples/web_qa_playwright_strict_fail_malformed_failure_breakdown.md`)
+- web QA Playwright strict-fail fixture for missing `## 3) Execution log` header (`examples/web_qa_playwright_strict_fail_missing_execution_log_header.md`)
+- web QA Playwright strict-plus combined fail fixture (duplicate checkpoints + missing failure metadata in one report) (`examples/web_qa_playwright_strict_plus_combined_fail.md`)
+- web QA Playwright strict-plus pass fixture (deterministic replay gates all satisfied) (`examples/web_qa_playwright_strict_plus_pass.md`)
+- web QA Playwright strict-plus isolated artifact-ref reuse fail fixture for CI triage (`examples/web_qa_playwright_strict_fail_artifact_ref_reuse_only.md`)
+- web QA Playwright strict-plus isolated monotonic-timestamp fail fixture for replay-order triage (`examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md`)
+- web QA Playwright strict-plus isolated status-consistency fail fixture for checkpoint/check drift triage (`examples/web_qa_playwright_strict_fail_status_inconsistency_only.md`)
 
 ---
 
@@ -175,7 +186,8 @@ openclaw-codex-pm-skills/
 │  └─ MAPPING_PM_SKILLS.md      # Upstream concept mapping
 ├─ examples/                    # Real prompt usage examples
 ├─ scripts/
-│  └─ install_local.sh          # Local installation helper
+│  ├─ install_local.sh          # Local installation helper
+│  └─ validate_web_qa_report.py # Fixed-count QA report validator (5/3/2)
 └─ .github/workflows/ci.yml     # Minimal structural validation
 ```
 
@@ -232,6 +244,73 @@ Use `pm-prioritization-helper` to produce:
 - weighted rankings
 - exclusion rationale
 - revisit triggers
+
+### 5) Browser QA signoff discipline
+Use `web-qa-playwright` and validate the final markdown run artifact:
+
+```bash
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_sample_run.md --strict
+```
+
+For machine-readable CI output, add `--json` (stdout) or `--json-out <path>` (artifact file).
+
+`--strict` adds reproducibility gates aligned with Playwright-interactive principles:
+
+- deterministic preconditions (URL, viewport, test account)
+- deterministic check labeling (F1..F5 / V1..V3 / O1..O2)
+- screenshot evidence density for visual checks (at least one inline shot per V-check)
+- normalized status tokens on every check row (`PASS`/`FAIL`)
+- explicit signoff fields (regression count + merge recommendation)
+- signoff-check consistency (reported regression count must equal checklist `FAIL` line count)
+- section summary ratio consistency (`x/y pass`) vs detailed PASS/FAIL lines
+- step-by-step execution log checkpoints for all fixed check ids (F1..F5, V1..V3, O1..O2) in deterministic order
+- failure recovery traceability for failed checks (`Expected`/`Observed`/`First failure timestamp`/`Retry`)
+
+Optional hardening flags:
+
+- `--strict-plus`: enable `--strict` and all hardening flags below as a single CI preset for deterministic replay and failure recovery.
+- `--playwright-interactive-profile`: apply a Playwright-interactive reliability preset (strict-plus equivalent) to prioritize stability, reproducibility, step verification, and failure recovery in one flag.
+- `--deterministic-replay-profile`: alias for `--playwright-interactive-profile` for teams that prefer deterministic replay wording in CI policies.
+- `--enforce-checkpoint-format`: require each checkpoint line to use `action -> verification` format for clearer step-level reproducibility.
+- `--require-checkpoint-timestamps`: require each checkpoint line to include an ISO-8601 UTC timestamp (`YYYY-MM-DDTHH:MM:SSZ`) for deterministic replay timelines.
+- `--enforce-monotonic-checkpoint-timestamps`: require checkpoint timestamps to be monotonic in execution-log order, making replay order drift visible in CI.
+- `--enforce-checkpoint-status-tokens`: require each checkpoint line to include explicit `PASS`/`FAIL` token for parser-safe replay traces.
+- `--require-visual-checkpoint-evidence`: require each visual checkpoint line (`V1..V3`) to include an inline screenshot path for reproducible visual proof.
+- `--require-checkpoint-artifact-paths`: require every checkpoint line to include at least one inline artifact path (screenshot/video/log/trace) for post-failure replay and evidence auditing.
+- `--require-checkpoint-target-refs`: require every checkpoint line to include a stable target reference token (`ref=<id>`) so interactive replay can bind actions to deterministic UI targets.
+- `--enforce-checkpoint-artifact-ref-uniqueness`: require each inline artifact path to appear in only one checkpoint line, reducing ambiguous replay evidence mapping.
+- `--require-failure-evidence-artifact-paths`: require failed checks to include an inline artifact path on the `Evidence:` line, so triage links are machine-verifiable.
+- `--require-failure-recovery-plan`: require failed checks to include a `Recovery plan:` line with deterministic next-step recovery instructions.
+- `--require-failure-recovery-owner`: require failed checks to include a `Recovery owner:` line so ownership is explicit for follow-up recovery.
+- `--enforce-failure-timestamp-order`: require failed-check `First failure timestamp` values to be monotonic in checklist order, preventing chronology drift in failure triage.
+- `--enforce-checkpoint-to-check-status-consistency`: require each checkpoint line to include `PASS`/`FAIL` and match the checklist status for that same check id (prevents replay-log/checklist drift).
+- `--require-failure-classification-summary`: require a signoff line in the form `Failure breakdown: selector=<n>, runtime=<n>, product=<n>` and validate it against failed-check classifications.
+- `--require-execution-log-step-count-match`: require the execution log to contain only checkpoint bullets and exactly 10 checkpoint lines (F1..F5, V1..V3, O1..O2), which tightens deterministic replay step accounting.
+- `--require-qa-inventory-section`: require the report to include a `## QA inventory` section with explicit environment/tool metadata for replayable incident audits.
+
+The validator always enforces the fixed structure rule (5 functional / 3 visual / 2 off-happy-path checks).
+
+Troubleshooting fixture commands:
+
+```bash
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_duplicate_checkpoint.md --strict
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_evidence.md --strict
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_classification.md --strict
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_missing_execution_log_header.md --strict
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_malformed_failure_breakdown.md --strict --require-failure-classification-summary
+python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md --strict-plus
+```
+
+Expected outcomes:
+- duplicate-checkpoint fixture: `FAIL` with `duplicate checkpoint ids` error.
+- missing-evidence fixture: `FAIL` with `failed check ... must include an Evidence: line` error.
+- missing-classification fixture: `FAIL` with `failed check ... must include a Failure classification: line` error.
+- malformed-failure-breakdown fixture: `FAIL` with failure-classification-summary mismatch when `--require-failure-classification-summary` is enabled.
+- missing-execution-log-header fixture: `FAIL` with strict-mode `Execution log` section-header error.
+- monotonic-timestamp-only fixture: `FAIL` with exactly one `checkpoint timestamp order` error under `--strict-plus`.
+
+CI now includes a negative-fixture guard: each strict-fail fixture must fail validation so policy regressions are caught early.
+CI also snapshots a strict-plus PASS fixture to JSON and asserts the downstream parser-facing payload shape (`status`, enabled gates, and fixed `counts`).
 
 ---
 
