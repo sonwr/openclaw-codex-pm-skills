@@ -257,6 +257,14 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         check_id for check_id in failed_check_ids if check_id not in next_action_failed_check_refs
     ]
     qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
+    expected_check_ids = [
+        "F1", "F2", "F3", "F4", "F5",
+        "V1", "V2", "V3",
+        "O1", "O2",
+    ]
+    qa_inventory_missing_check_refs = [
+        check_id for check_id in expected_check_ids if check_id not in qa_inventory_check_refs
+    ]
     return {
         "has_next_action": next_action is not None,
         "next_action_text": next_action,
@@ -278,6 +286,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
+        "qa_inventory_missing_check_refs": qa_inventory_missing_check_refs,
+        "qa_inventory_missing_check_ref_count": len(qa_inventory_missing_check_refs),
         "checkpoint_order": checkpoint_order,
         "checkpoint_count": len(checkpoint_order),
         "checkpoint_section_counts": checkpoint_section_counts,
