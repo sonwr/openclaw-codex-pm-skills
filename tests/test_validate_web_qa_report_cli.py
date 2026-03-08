@@ -215,6 +215,40 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
         )
 
+    def test_cli_json_out_with_strict_plus_check_ref_pass_fixture_writes_metadata_file(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        report_path = root / "examples" / "web_qa_playwright_strict_plus_with_check_refs_pass.md"
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            json_path = Path(tmpdir) / "artifacts" / "strict-plus.validation.json"
+
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--strict-plus",
+                    "--require-qa-inventory-check-refs",
+                    "--json-out",
+                    str(json_path),
+                ],
+            ):
+                validate_web_qa_report.main()
+
+            payload = json.loads(json_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["status"], "PASS")
+            self.assertTrue(payload["strict_plus"])
+            self.assertTrue(payload["require_qa_inventory_check_refs"])
+            self.assertEqual(payload["active_profile_preset"], "strict-plus")
+            self.assertEqual(payload["counts"]["functional"], 5)
+            self.assertEqual(payload["counts"]["visual"], 3)
+            self.assertEqual(payload["counts"]["off_happy"], 2)
+            self.assertEqual(
+                payload["report_metadata"]["qa_inventory_check_refs"],
+                ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
+            )
+
     def test_cli_json_output_with_explicit_qa_inventory_check_refs_requirement(self) -> None:
         root = Path(__file__).resolve().parents[1]
         report_path = root / "examples" / "web_qa_playwright_strict_plus_pass.md"
