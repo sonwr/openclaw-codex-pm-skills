@@ -143,6 +143,8 @@ PY
 
 Use this when replay metadata is otherwise healthy and you want one deterministic example that fails only the QA inventory `Checks:` mapping rule.
 
+Recovery checklist: confirm `report_metadata.qa_inventory_check_ref_count == 0`, add `Checks:` mappings to each QA inventory bullet, then rerun the same fixture until the count returns to `10` for the canonical pass example.
+
 ## Alias smoke commands
 
 Use one deterministic PASS fixture to prove every replay-profile alias still resolves to the same Playwright-interactive contract.

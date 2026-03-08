@@ -162,6 +162,10 @@ jobs:
           assert len(payload['errors']) == 1
           assert 'qa inventory check refs' in payload['errors'][0]
           assert 'Checks:' in payload['errors'][0]
+          metadata = payload['report_metadata']
+          assert metadata['qa_inventory_check_ref_count'] == 0
+          assert metadata['qa_inventory_check_refs'] == []
+          assert metadata['next_action_failed_check_ref_count'] == 0
           print('QA inventory check-ref FAIL metadata: PASS')
           PY
 
