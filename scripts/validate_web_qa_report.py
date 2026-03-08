@@ -72,6 +72,15 @@ def _extract_checkpoint_tails(text: str) -> list[tuple[str, str]]:
     return re.findall(r"(?mi)^\s*-\s*([FVO]\d+)\s+checkpoint:\s*(.+)$", text)
 
 
+def _extract_checkpoint_timestamps_by_id(text: str) -> dict[str, str]:
+    timestamps: dict[str, str] = {}
+    for checkpoint_id, tail in _extract_checkpoint_tails(text):
+        match = re.search(r"\b(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)\b", tail)
+        if match is not None:
+            timestamps[checkpoint_id] = match.group(1)
+    return timestamps
+
+
 def _extract_checkpoint_target_refs(tail: str) -> list[str]:
     return re.findall(r"\bref=([A-Za-z0-9_.:-]+)\b", tail)
 
@@ -210,6 +219,15 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     missing_checkpoint_ids = [checkpoint_id for checkpoint_id in expected_checkpoint_order if checkpoint_id not in checkpoint_order]
     unexpected_checkpoint_ids = [checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in expected_checkpoint_order]
     checkpoint_section_counts = _summarize_checkpoint_sections(checkpoint_order)
+    checkpoint_count = len(checkpoint_order)
+    checkpoint_timestamps_by_id = _extract_checkpoint_timestamps_by_id(text)
+    missing_checkpoint_timestamp_ids = [
+        checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in checkpoint_timestamps_by_id
+    ]
+    checkpoint_timestamp_count = len(checkpoint_timestamps_by_id)
+    checkpoint_timestamp_coverage_rate = round(
+        checkpoint_timestamp_count / checkpoint_count, 4
+    ) if checkpoint_count else 0.0
     checkpoint_target_refs: list[str] = []
     checkpoint_artifact_refs: list[str] = []
     checkpoint_target_refs_by_id: dict[str, list[str]] = {}
@@ -247,7 +265,6 @@ def _build_report_metadata(text: str) -> dict[str, object]:
                 continue
             seen_artifact_refs.add(artifact_ref)
             checkpoint_artifact_refs.append(artifact_ref)
-    checkpoint_count = len(checkpoint_order)
     checkpoint_target_ref_coverage_rate = (len(checkpoint_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_artifact_ref_coverage_rate = (len(checkpoint_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_reused_target_ref_coverage_rate = (len(checkpoint_reused_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
@@ -326,6 +343,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "qa_inventory_missing_check_ref_count": len(qa_inventory_missing_check_refs),
         "checkpoint_order": checkpoint_order,
         "checkpoint_count": checkpoint_count,
+        "checkpoint_timestamps_by_id": checkpoint_timestamps_by_id,
+        "checkpoint_timestamp_count": checkpoint_timestamp_count,
+        "missing_checkpoint_timestamp_ids": missing_checkpoint_timestamp_ids,
+        "missing_checkpoint_timestamp_count": len(missing_checkpoint_timestamp_ids),
+        "checkpoint_timestamp_coverage_rate": checkpoint_timestamp_coverage_rate,
         "checkpoint_section_counts": checkpoint_section_counts,
         "missing_checkpoint_ids": missing_checkpoint_ids,
         "missing_checkpoint_count": len(missing_checkpoint_ids),

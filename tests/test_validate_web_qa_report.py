@@ -198,6 +198,28 @@ class ValidateWebQaReportTests(unittest.TestCase):
         errors = validate_report_text(broken, strict=True)
         self.assertTrue(any("ISO-8601 UTC timestamp format" in e for e in errors))
 
+    def test_report_metadata_exposes_checkpoint_timestamp_coverage_for_replay_triage(self) -> None:
+        timestamped = VALID_REPORT.replace(
+            "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
+            "- F1 checkpoint: PASS 2026-03-08T14:40:00Z URL changed to `/dashboard`, user avatar visible",
+        ).replace(
+            "- V1 checkpoint: Captured baseline layout screenshot",
+            "- V1 checkpoint: PASS 2026-03-08T14:41:00Z Captured baseline layout screenshot",
+        )
+        metadata = _build_report_metadata(timestamped)
+
+        self.assertEqual(
+            metadata["checkpoint_timestamps_by_id"],
+            {"F1": "2026-03-08T14:40:00Z", "V1": "2026-03-08T14:41:00Z"},
+        )
+        self.assertEqual(metadata["checkpoint_timestamp_count"], 2)
+        self.assertEqual(
+            metadata["missing_checkpoint_timestamp_ids"],
+            ["F2", "F3", "F4", "F5", "V2", "V3", "O1", "O2"],
+        )
+        self.assertEqual(metadata["missing_checkpoint_timestamp_count"], 8)
+        self.assertEqual(metadata["checkpoint_timestamp_coverage_rate"], 0.2)
+
     def test_validate_report_fails_when_failure_timestamps_are_not_monotonic(self) -> None:
         broken = FAILED_REPORT_WITH_RECOVERY.replace(
             "  - F3: PASS\n",
