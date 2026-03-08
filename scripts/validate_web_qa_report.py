@@ -182,6 +182,14 @@ def _extract_next_action_failed_check_refs(text: str) -> list[str]:
 
 def _build_report_metadata(text: str) -> dict[str, object]:
     failed_check_ids = _extract_failed_check_ids(text)
+    checkpoint_order = _extract_checkpoint_order(text)
+    expected_checkpoint_order = [
+        "F1", "F2", "F3", "F4", "F5",
+        "V1", "V2", "V3",
+        "O1", "O2",
+    ]
+    missing_checkpoint_ids = [checkpoint_id for checkpoint_id in expected_checkpoint_order if checkpoint_id not in checkpoint_order]
+    unexpected_checkpoint_ids = [checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in expected_checkpoint_order]
     checkpoint_target_refs: list[str] = []
     checkpoint_artifact_refs: list[str] = []
     checkpoint_target_refs_by_id: dict[str, list[str]] = {}
@@ -233,6 +241,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
+        "checkpoint_order": checkpoint_order,
+        "checkpoint_count": len(checkpoint_order),
+        "missing_checkpoint_ids": missing_checkpoint_ids,
+        "missing_checkpoint_count": len(missing_checkpoint_ids),
+        "unexpected_checkpoint_ids": unexpected_checkpoint_ids,
+        "unexpected_checkpoint_count": len(unexpected_checkpoint_ids),
         "checkpoint_target_refs": checkpoint_target_refs,
         "checkpoint_target_ref_count": len(checkpoint_target_refs),
         "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,

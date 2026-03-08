@@ -48,6 +48,10 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
 
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["report_metadata"]["checkpoint_order"][:2], ["F1", "F2"])
+            self.assertEqual(payload["report_metadata"]["checkpoint_count"], 10)
+            self.assertEqual(payload["report_metadata"]["missing_checkpoint_ids"], [])
+            self.assertEqual(payload["report_metadata"]["unexpected_checkpoint_ids"], [])
             self.assertEqual(payload["report_metadata"]["checkpoint_target_refs"], ["e12", "e44"])
             self.assertEqual(payload["report_metadata"]["checkpoint_target_refs_by_id"]["F1"], ["e12"])
             self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs"], ["artifacts/f1.png", "artifacts/v1.png"])
