@@ -332,3 +332,24 @@
 
 ### Next
 - Add one parser-facing example snippet that shows the expected `error_count`/`errors[0]` shape for each isolated fixture.
+
+## 실행 @ 10:40 UTC (cron)
+
+### 계획
+- Playwright-interactive 원칙이 실제 CI preset/문서에 같이 고정되도록 smoke coverage를 추가한다.
+- strict-plus PASS fixture가 profile alias에서도 그대로 통과하는지 재확인한다.
+
+### 변경 사항
+- `.github/workflows/ci.yml`에 `--playwright-interactive-profile` PASS smoke step 추가.
+- `README.md`에 Playwright-interactive preset이 반영하는 4가지 원칙(안정성, 재현성, 단계별 검증, 실패 복구)을 명시.
+
+### 검증
+- `python3 -m unittest discover -s tests -v`
+- `python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_strict_plus_pass.md --playwright-interactive-profile`
+- 결과: **PASS**
+
+### 막힘/리스크
+- 없음.
+
+### 다음 실행 우선순위
+- strict-plus/profile JSON payload에 parser-friendly preset label을 추가할지 검토.

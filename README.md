@@ -271,6 +271,13 @@ Optional hardening flags:
 
 - `--strict-plus`: enable `--strict` and all hardening flags below as a single CI preset for deterministic replay and failure recovery.
 - `--playwright-interactive-profile`: apply a Playwright-interactive reliability preset (strict-plus equivalent) to prioritize stability, reproducibility, step verification, and failure recovery in one flag.
+
+Playwright-interactive operating principles reflected in this preset and fixture set:
+
+1. **Stability first** — require explicit checkpoint timestamps/status tokens/target refs so repeated runs stay comparable.
+2. **Reproducibility first** — keep deterministic replay artifacts (`--json-out`, isolated fail fixtures, PASS fixture) available for CI and triage.
+3. **Step-by-step verification** — enforce execution-log shape plus QA inventory/checkpoint accounting instead of trusting free-form prose.
+4. **Failure recovery** — require artifact paths, failure classification, and recovery owner/plan metadata so broken runs remain actionable.
 - `--deterministic-replay-profile`: alias for `--playwright-interactive-profile` for teams that prefer deterministic replay wording in CI policies.
 - `--enforce-checkpoint-format`: require each checkpoint line to use `action -> verification` format for clearer step-level reproducibility.
 - `--require-checkpoint-timestamps`: require each checkpoint line to include an ISO-8601 UTC timestamp (`YYYY-MM-DDTHH:MM:SSZ`) for deterministic replay timelines.

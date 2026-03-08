@@ -72,6 +72,13 @@ jobs:
             --file examples/web_qa_playwright_strict_plus_pass.md \
             --deterministic-replay-profile
 
+      - name: Assert Playwright interactive profile preset stays equivalent
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_web_qa_report.py \
+            --file examples/web_qa_playwright_strict_plus_pass.md \
+            --playwright-interactive-profile
+
       - name: Assert strict-plus JSON payload shape for downstream CI parsers
         run: |
           set -euo pipefail
