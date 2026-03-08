@@ -280,7 +280,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         failed_check_classification_counts[classification] += 1
     failed_check_recovery_owners = _extract_failed_check_recovery_owners(text)
     next_action_failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
+    next_action_failed_check_ids_by_classification = {"selector": [], "runtime": [], "product": []}
     unresolved_failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
+    unresolved_failed_check_ids_by_classification = {"selector": [], "runtime": [], "product": []}
     missing_failed_check_classification_ids = [
         check_id for check_id in failed_check_ids if check_id not in _extract_failed_check_classifications_by_id(text)
     ]
@@ -296,6 +298,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         classification = failed_check_classifications_by_id.get(check_id)
         if classification is not None:
             next_action_failed_check_classification_counts[classification] += 1
+            next_action_failed_check_ids_by_classification[classification].append(check_id)
     unresolved_failed_check_ids = [
         check_id for check_id in failed_check_ids if check_id not in next_action_failed_check_refs
     ]
@@ -304,6 +307,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         classification = failed_check_classifications_by_id.get(check_id)
         if classification is not None:
             unresolved_failed_check_classification_counts[classification] += 1
+            unresolved_failed_check_ids_by_classification[classification].append(check_id)
     qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
     expected_check_ids = [
         "F1", "F2", "F3", "F4", "F5",
@@ -364,10 +368,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
         "next_action_failed_check_coverage_rate": next_action_failed_check_coverage_rate,
         "next_action_failed_check_classification_counts": next_action_failed_check_classification_counts,
+        "next_action_failed_check_ids_by_classification": next_action_failed_check_ids_by_classification,
         "unresolved_failed_check_ids": unresolved_failed_check_ids,
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
         "next_action_references_all_failed_checks": next_action_references_all_failed_checks,
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
+        "unresolved_failed_check_ids_by_classification": unresolved_failed_check_ids_by_classification,
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
         "qa_inventory_check_ref_coverage_rate": qa_inventory_check_ref_coverage_rate,

@@ -153,6 +153,7 @@ Current docs:
 - Partial QA-inventory drift now has an explicit landing-page triage cue: if `qa_inventory_check_ref_count` is non-zero but `qa_inventory_missing_check_ref_count` stays above `0`, treat it as incomplete coverage drift (for the isolated fixture: `9 mapped / 1 missing`), not malformed `Checks:` syntax.
 - Replay-profile smoke now also asserts the parser-facing coverage-rate split (`1.0` for malformed-but-complete mappings vs `0.9` for partial coverage drift), so CI can distinguish syntax repair from missing-check recovery without recomputing ratios.
 - Replay triage JSON now exposes `qa_inventory_check_ref_coverage_rate` and `next_action_failed_check_coverage_rate` so CI can spot partial mapping/handoff drift without recomputing ratios downstream.
+- Failure handoff JSON now also groups both referenced and unresolved failed check ids by classification (`next_action_failed_check_ids_by_classification`, `unresolved_failed_check_ids_by_classification`) so follow-up reruns can route selector/runtime/product fixes without rebuilding that map downstream.
 
 Current examples:
 

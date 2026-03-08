@@ -1441,12 +1441,20 @@ if __name__ == "__main__":
             payload["report_metadata"]["next_action_failed_check_classification_counts"],
             {"selector": 0, "runtime": 0, "product": 1},
         )
+        self.assertEqual(
+            payload["report_metadata"]["next_action_failed_check_ids_by_classification"],
+            {"selector": [], "runtime": [], "product": ["F1"]},
+        )
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_ref_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_coverage_rate"], 1.0)
         self.assertEqual(
             payload["report_metadata"]["unresolved_failed_check_classification_counts"],
             {"selector": 0, "runtime": 0, "product": 0},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["unresolved_failed_check_ids_by_classification"],
+            {"selector": [], "runtime": [], "product": []},
         )
 
 
