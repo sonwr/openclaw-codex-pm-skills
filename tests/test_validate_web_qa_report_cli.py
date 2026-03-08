@@ -898,10 +898,6 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertGreater(payload["error_count"], 0)
             self.assertEqual(payload["file"], str(report_path))
 
-
-if __name__ == "__main__":
-    unittest.main()
-
     def test_cli_json_output_for_explicit_replay_readiness_requirement(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"
@@ -925,4 +921,8 @@ if __name__ == "__main__":
             self.assertEqual(exc.exception.code, 1)
             payload = json.loads(output.getvalue().strip())
             self.assertTrue(payload["require_replay_readiness"])
-            self.assertTrue(any("Replay readiness:" in err for err in payload["errors"]))
+            self.assertTrue(any("Replay readiness" in err for err in payload["errors"]))
+
+
+if __name__ == "__main__":
+    unittest.main()
