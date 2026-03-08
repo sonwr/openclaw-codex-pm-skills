@@ -273,6 +273,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     checkpoint_artifact_ref_coverage_rate = (len(checkpoint_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_reused_target_ref_coverage_rate = (len(checkpoint_reused_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_reused_artifact_ref_coverage_rate = (len(checkpoint_reused_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
+    missing_checkpoint_target_ref_ids = [
+        checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in checkpoint_target_refs_by_id
+    ]
+    missing_checkpoint_artifact_ref_ids = [
+        checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in checkpoint_artifact_refs_by_id
+    ]
     failed_check_classifications = _extract_failed_check_classifications(text)
     failed_check_classifications_by_id = _extract_failed_check_classifications_by_id(text)
     failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
@@ -396,6 +402,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_target_ref_id_count": len(checkpoint_target_refs_by_id),
         "checkpoint_target_ref_coverage_rate": checkpoint_target_ref_coverage_rate,
         "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,
+        "missing_checkpoint_target_ref_ids": missing_checkpoint_target_ref_ids,
+        "missing_checkpoint_target_ref_count": len(missing_checkpoint_target_ref_ids),
         "checkpoint_reused_target_refs": checkpoint_reused_target_refs,
         "checkpoint_reused_target_ref_count": len(checkpoint_reused_target_refs),
         "checkpoint_reused_target_ref_id_count": len(checkpoint_reused_target_refs_by_id),
@@ -406,6 +414,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_artifact_ref_id_count": len(checkpoint_artifact_refs_by_id),
         "checkpoint_artifact_ref_coverage_rate": checkpoint_artifact_ref_coverage_rate,
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
+        "missing_checkpoint_artifact_ref_ids": missing_checkpoint_artifact_ref_ids,
+        "missing_checkpoint_artifact_ref_count": len(missing_checkpoint_artifact_ref_ids),
         "checkpoint_reused_artifact_refs": checkpoint_reused_artifact_refs,
         "checkpoint_reused_artifact_ref_count": len(checkpoint_reused_artifact_refs),
         "checkpoint_reused_artifact_ref_id_count": len(checkpoint_reused_artifact_refs_by_id),
