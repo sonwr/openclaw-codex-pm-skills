@@ -284,11 +284,18 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     qa_inventory_missing_check_refs = [
         check_id for check_id in expected_check_ids if check_id not in qa_inventory_check_refs
     ]
+    failed_check_count = len(failed_check_ids)
+    qa_inventory_check_ref_coverage_rate = round(
+        ((len(expected_check_ids) - len(qa_inventory_missing_check_refs)) / len(expected_check_ids)), 4
+    ) if expected_check_ids else 0.0
+    next_action_failed_check_coverage_rate = round(
+        len(next_action_failed_check_refs) / failed_check_count, 4
+    ) if failed_check_count else 1.0
     return {
         "has_next_action": next_action is not None,
         "next_action_text": next_action,
         "failed_check_ids": failed_check_ids,
-        "failed_check_count": len(failed_check_ids),
+        "failed_check_count": failed_check_count,
         "failed_check_classifications": failed_check_classifications,
         "failed_check_classifications_by_id": failed_check_classifications_by_id,
         "failed_check_classification_counts": failed_check_classification_counts,
@@ -301,6 +308,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action": next_action,
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
+        "next_action_failed_check_coverage_rate": next_action_failed_check_coverage_rate,
         "next_action_failed_check_classification_counts": next_action_failed_check_classification_counts,
         "unresolved_failed_check_ids": unresolved_failed_check_ids,
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
@@ -308,6 +316,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),
+        "qa_inventory_check_ref_coverage_rate": qa_inventory_check_ref_coverage_rate,
         "qa_inventory_missing_check_refs": qa_inventory_missing_check_refs,
         "qa_inventory_missing_check_ref_count": len(qa_inventory_missing_check_refs),
         "checkpoint_order": checkpoint_order,

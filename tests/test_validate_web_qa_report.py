@@ -156,6 +156,7 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["next_action_text"], "Investigate F2 spinner timeout, capture new artifacts, and rerun login flow")
         self.assertEqual(metadata["next_action_failed_check_refs"], ["F2"])
         self.assertEqual(metadata["next_action_failed_check_ref_count"], 1)
+        self.assertEqual(metadata["next_action_failed_check_coverage_rate"], 1.0)
         self.assertEqual(metadata["failed_check_classification_counts"], {"selector": 0, "runtime": 0, "product": 1})
         self.assertEqual(metadata["checkpoint_section_counts"], {"functional": 5, "visual": 3, "off_happy": 2})
 
@@ -186,6 +187,7 @@ class ValidateWebQaReportTests(unittest.TestCase):
         metadata = _build_report_metadata(fixture_path.read_text(encoding="utf-8"))
 
         self.assertEqual(metadata["qa_inventory_check_ref_count"], 9)
+        self.assertEqual(metadata["qa_inventory_check_ref_coverage_rate"], 0.9)
         self.assertEqual(metadata["qa_inventory_missing_check_refs"], ["O2"])
         self.assertEqual(metadata["qa_inventory_missing_check_ref_count"], 1)
 

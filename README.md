@@ -148,6 +148,7 @@ Current docs:
 - Side-by-side PASS/FAIL smoke commands: `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now keeps paired copy/paste commands for the canonical PASS fixture and the isolated missing-`Checks:` FAIL fixture so replay triage can confirm both validation and recovery paths quickly.
 - Replay-profile smoke script now asserts the missing-`Checks:` FAIL fixture still exposes the full 10-item QA universe and 5/3/2 checkpoint split while failing with exactly one mapping error, so CI triage can distinguish coverage drift from mapping-format drift immediately.
 - Partial QA-inventory drift now has an explicit landing-page triage cue: if `qa_inventory_check_ref_count` is non-zero but `qa_inventory_missing_check_ref_count` stays above `0`, treat it as incomplete coverage drift (for the isolated fixture: `9 mapped / 1 missing`), not malformed `Checks:` syntax.
+- Replay triage JSON now exposes `qa_inventory_check_ref_coverage_rate` and `next_action_failed_check_coverage_rate` so CI can spot partial mapping/handoff drift without recomputing ratios downstream.
 
 Current examples:
 

@@ -299,6 +299,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         )
         self.assertEqual(payload["report_metadata"]["qa_inventory_missing_check_refs"], [])
         self.assertEqual(payload["report_metadata"]["qa_inventory_missing_check_ref_count"], 0)
+        self.assertEqual(payload["report_metadata"]["qa_inventory_check_ref_coverage_rate"], 1.0)
         self.assertEqual(payload["report_metadata"]["unresolved_failed_check_ids"], [])
         self.assertEqual(payload["report_metadata"]["unresolved_failed_check_count"], 0)
         self.assertTrue(payload["report_metadata"]["next_action_references_all_failed_checks"])
@@ -1430,6 +1431,7 @@ if __name__ == "__main__":
         )
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_ref_count"], 1)
+        self.assertEqual(payload["report_metadata"]["next_action_failed_check_coverage_rate"], 1.0)
         self.assertEqual(
             payload["report_metadata"]["unresolved_failed_check_classification_counts"],
             {"selector": 0, "runtime": 0, "product": 0},
