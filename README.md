@@ -289,6 +289,12 @@ For a faster blocked-run triage workflow focused on `report_metadata`, owner han
 For machine-readable CI contracts and JSON artifact routing, see `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`.
 For reviewer-facing merge rules and copy-paste PASS/blocked-run commands, see `docs/PR_MERGE_POLICY.md`.
 For a concise execution loop that mirrors Playwright-interactive principles (inventory -> bootstrap -> verify -> recover), see `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md`.
+
+Practical rule of thumb for browser automation signoff:
+- lock one reproducible preset/profile for the whole run,
+- verify each meaningful UI transition before moving on,
+- capture evidence in the exact state being signed off,
+- and write failure owner + next action before widening reruns.
 For a shorter operator handoff that freezes profile/refs before reruns, see `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md`.
 
 Recommended operator loop before every interactive rerun:
