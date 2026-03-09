@@ -548,32 +548,50 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         or (replay_readiness_reference_regressions > 0 and replay_readiness == "BLOCKED")
     )
     replay_readiness_blockers: list[str] = []
+    replay_readiness_blocker_keys: list[str] = []
     if replay_readiness_reference_regressions == 0 and replay_readiness == "BLOCKED":
         replay_readiness_blockers.append("regressions=0 but replay_readiness=BLOCKED")
+        replay_readiness_blocker_keys.append("blocked_without_regressions")
     if replay_readiness_reference_regressions > 0 and replay_readiness == "READY":
         replay_readiness_blockers.append(
             f"regressions={replay_readiness_reference_regressions} but replay_readiness=READY"
         )
+        replay_readiness_blocker_keys.append("ready_with_regressions")
     if replay_readiness == "READY" and missing_checkpoint_target_ref_ids:
         replay_readiness_blockers.append(
             "replay_readiness=READY but checkpoint target refs are missing for "
             + ", ".join(missing_checkpoint_target_ref_ids)
         )
+        replay_readiness_blocker_keys.append("missing_target_refs")
     if replay_readiness == "READY" and missing_checkpoint_artifact_ref_ids:
         replay_readiness_blockers.append(
             "replay_readiness=READY but checkpoint artifact refs are missing for "
             + ", ".join(missing_checkpoint_artifact_ref_ids)
         )
+        replay_readiness_blocker_keys.append("missing_artifact_refs")
     if replay_readiness == "READY" and missing_checkpoint_evidence_ref_ids:
         replay_readiness_blockers.append(
             "replay_readiness=READY but checkpoint evidence refs are incomplete for "
             + ", ".join(missing_checkpoint_evidence_ref_ids)
         )
+        replay_readiness_blocker_keys.append("incomplete_evidence_refs")
     if replay_readiness == "READY" and missing_checkpoint_timestamp_ids:
         replay_readiness_blockers.append(
             "replay_readiness=READY but checkpoint timestamps are missing for "
             + ", ".join(missing_checkpoint_timestamp_ids)
         )
+        replay_readiness_blocker_keys.append("missing_timestamps")
+    replay_readiness_blocker_counts = {
+        blocker_key: replay_readiness_blocker_keys.count(blocker_key)
+        for blocker_key in [
+            "blocked_without_regressions",
+            "ready_with_regressions",
+            "missing_target_refs",
+            "missing_artifact_refs",
+            "incomplete_evidence_refs",
+            "missing_timestamps",
+        ]
+    }
     return {
         "has_signoff_section": _has_signoff_section(text),
         "reported_regressions": reported_regressions,
@@ -582,6 +600,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "replay_readiness_reference_regressions": replay_readiness_reference_regressions,
         "replay_readiness_consistent_with_failed_checks": replay_readiness_consistent_with_failed_checks,
         "replay_readiness_blockers": replay_readiness_blockers,
+        "replay_readiness_blocker_keys": replay_readiness_blocker_keys,
+        "replay_readiness_blocker_counts": replay_readiness_blocker_counts,
         "replay_readiness_blocker_count": len(replay_readiness_blockers),
         "signoff_field_values": signoff_field_values,
         "signoff_field_status": signoff_field_status,

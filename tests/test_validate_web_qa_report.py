@@ -243,6 +243,21 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertFalse(metadata["replay_readiness_consistent_with_failed_checks"] is False)
         self.assertIn("replay_readiness=READY but checkpoint target refs are missing for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", metadata["replay_readiness_blockers"])
         self.assertIn("replay_readiness=READY but checkpoint evidence refs are incomplete for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", metadata["replay_readiness_blockers"])
+        self.assertEqual(
+            metadata["replay_readiness_blocker_keys"],
+            ["missing_target_refs", "incomplete_evidence_refs"],
+        )
+        self.assertEqual(
+            metadata["replay_readiness_blocker_counts"],
+            {
+                "blocked_without_regressions": 0,
+                "ready_with_regressions": 0,
+                "missing_target_refs": 1,
+                "missing_artifact_refs": 0,
+                "incomplete_evidence_refs": 1,
+                "missing_timestamps": 0,
+            },
+        )
         self.assertEqual(metadata["replay_readiness_blocker_count"], 2)
 
 
