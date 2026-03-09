@@ -762,6 +762,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_mentions_rerun": next_action_mentions_rerun,
         "next_action_failed_check_classification_counts": next_action_failed_check_classification_counts,
         "next_action_failed_check_ids_by_classification": next_action_failed_check_ids_by_classification,
+        "next_action_failed_check_classifications_by_id": {
+            check_id: failed_check_classifications_by_id[check_id]
+            for check_id in next_action_failed_check_refs
+            if check_id in failed_check_classifications_by_id
+        },
         "next_action_failed_check_coverage_rate_by_classification": next_action_failed_check_coverage_rate_by_classification,
         "next_action_failed_check_recovery_owners": next_action_failed_check_recovery_owners,
         "next_action_failed_check_recovery_owner_count": len(next_action_failed_check_recovery_owners),
@@ -770,6 +775,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_references_all_failed_checks": next_action_references_all_failed_checks,
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "unresolved_failed_check_ids_by_classification": unresolved_failed_check_ids_by_classification,
+        "unresolved_failed_check_classifications_by_id": {
+            check_id: failed_check_classifications_by_id[check_id]
+            for check_id in unresolved_failed_check_ids
+            if check_id in failed_check_classifications_by_id
+        },
         "unresolved_failed_check_coverage_rate_by_classification": unresolved_failed_check_coverage_rate_by_classification,
         "unresolved_failed_check_recovery_owners": unresolved_failed_check_recovery_owners,
         "unresolved_failed_check_recovery_owner_count": len(unresolved_failed_check_recovery_owners),

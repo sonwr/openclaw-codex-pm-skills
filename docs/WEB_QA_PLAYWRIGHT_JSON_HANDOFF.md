@@ -81,6 +81,8 @@ This is the preferred failure-recovery pattern: isolate one broken invariant, ca
 - `failed_check_classification_coverage_rate`
 - `failed_check_recovery_owner_coverage_rate`
 - `next_action_failed_check_refs`
+- `next_action_failed_check_classifications_by_id`
+- `unresolved_failed_check_classifications_by_id`
 - `checkpoint_target_refs_by_id`
 - `checkpoint_artifact_refs_by_id`
 - `checkpoint_reused_target_refs`

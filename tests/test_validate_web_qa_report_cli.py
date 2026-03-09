@@ -2026,7 +2026,9 @@ if __name__ == "__main__":
             self.assertEqual(exc.exception.code, 1)
 
             payload = json.loads(output.getvalue().strip())
+            self.assertEqual(payload["report_metadata"]["next_action_failed_check_classifications_by_id"], {"F2": "selector"})
             self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owners"], {"F2": "qa-ui"})
             self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owner_count"], 1)
+            self.assertEqual(payload["report_metadata"]["unresolved_failed_check_classifications_by_id"], {"V2": "product"})
             self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owners"], {"V2": "design-systems"})
             self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owner_count"], 1)
