@@ -138,6 +138,7 @@ Current docs:
 - `docs/INSTALL_OPENCLAW.md`
 - `docs/COMPATIBILITY.md`
 - `docs/MAPPING_PM_SKILLS.md`
+- `docs/PR_MERGE_POLICY.md`
 - `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`
@@ -280,6 +281,7 @@ For machine-readable CI output, add `--json` (stdout) or `--json-out <path>` (ar
 For a reusable explanation of deterministic replay expectations and failure-recovery discipline, see `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`.
 For a faster blocked-run triage workflow focused on `report_metadata`, owner handoff, and failed-check reruns, see `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`.
 For machine-readable CI contracts and JSON artifact routing, see `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`.
+For reviewer-facing merge rules and copy-paste PASS/blocked-run commands, see `docs/PR_MERGE_POLICY.md`.
 For a concise execution loop that mirrors Playwright-interactive principles (inventory -> bootstrap -> verify -> recover), see `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md`.
 
 Recommended operator loop before every interactive rerun:
