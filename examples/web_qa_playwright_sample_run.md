@@ -56,17 +56,7 @@ This sample demonstrates a deterministic QA run with inventory + checklist flow.
   - O1: Wrong password path (PASS)
   - O2: Empty password path (PASS)
 
-## 3) Failure recovery note (template example)
-
-- First failure timestamp: `2026-03-07T00:11:43Z`
-- Step: F2 click submit with invalid password
-- Expected: inline error panel visible
-- Observed: no error panel rendered
-- Single retry: page reload + repeat F2
-- Retry result: PASS
-- Isolation: transient runtime timing issue (not selector/product)
-
-## 4) Execution log
+## 3) Execution log
 
 - F1 checkpoint: Redirect confirmed to `/dashboard`; profile menu visible.
 - F2 checkpoint: Inline auth error rendered after invalid credential submit.
@@ -79,7 +69,8 @@ This sample demonstrates a deterministic QA run with inventory + checklist flow.
 - O1 checkpoint: Wrong-password scenario remained on `/login` with error feedback.
 - O2 checkpoint: Empty-password scenario showed required-field validation.
 
-## 5) Signoff
+## 4) Signoff
 
 - Regressions: 0
 - Merge recommendation: **APPROVE**
+- Replay readiness: **READY**
