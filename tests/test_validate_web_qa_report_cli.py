@@ -1981,6 +1981,10 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                 payload["report_metadata"]["effective_replay_readiness_hotspot_tied_section_labels"],
                 ["functional", "visual"],
             )
+            tie_summary = payload["report_metadata"]["effective_replay_readiness_hotspot_tie_summary"]
+            self.assertIn("functional:", tie_summary)
+            self.assertIn("visual:", tie_summary)
+            self.assertIn("missing_timestamps", tie_summary)
 
 
 if __name__ == "__main__":

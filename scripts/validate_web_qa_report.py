@@ -1163,6 +1163,15 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         section.replace("_", "-")
         for section in effective_replay_readiness_hotspot_tied_sections
     ]
+    effective_replay_readiness_hotspot_tie_summary = (
+        " | ".join(
+            f"{section}: {effective_replay_readiness_hotspot_next_step_by_section[section]}"
+            for section in hotspot_sections
+            if effective_replay_readiness_hotspot_next_step_by_section.get(section)
+        )
+        if effective_replay_readiness_hotspot_has_ties
+        else None
+    )
     effective_replay_readiness_blocker_keys = list(replay_readiness_blocker_keys)
     effective_replay_readiness_blocker_counts = dict(replay_readiness_blocker_counts)
     if replay_readiness == "READY" and replay_readiness_reference_regressions > 0:
@@ -1207,8 +1216,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_has_ties": effective_replay_readiness_hotspot_has_ties,
         "effective_replay_readiness_hotspot_tied_sections": effective_replay_readiness_hotspot_tied_sections,
         "effective_replay_readiness_hotspot_tied_section_labels": effective_replay_readiness_hotspot_tied_section_labels,
-        "effective_replay_readiness_hotspot_tied_sections": effective_replay_readiness_hotspot_tied_sections,
-        "effective_replay_readiness_hotspot_tied_section_labels": effective_replay_readiness_hotspot_tied_section_labels,
+        "effective_replay_readiness_hotspot_tie_summary": effective_replay_readiness_hotspot_tie_summary,
         "effective_replay_readiness_hotspot_blocker_count_total": effective_replay_readiness_hotspot_blocker_count_total,
         "effective_replay_readiness_hotspot_blocker_share_by_key": effective_replay_readiness_hotspot_blocker_share_by_key,
         "effective_replay_readiness_hotspot_blocker_key_frequency": effective_replay_readiness_hotspot_blocker_key_frequency,
