@@ -730,6 +730,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         for section in hotspot_sections
     }
     effective_replay_readiness_hotspot_checkpoint_count = len(effective_replay_readiness_hotspot_checkpoint_ids)
+    effective_replay_readiness_hotspot_tie_count = len(hotspot_sections)
+    effective_replay_readiness_hotspot_has_ties = effective_replay_readiness_hotspot_tie_count > 1
     effective_replay_readiness_hotspot_checkpoint_share_by_section = {
         section: round(
             len(checkpoint_ids_by_section[section]) / checkpoint_section_counts[section],
@@ -746,6 +748,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             "coverage_rate": effective_replay_readiness_blocker_coverage_rate_by_section[section],
             "blocker_keys": list(effective_replay_readiness_blocker_keys_by_section[section]),
             "checkpoint_ids": list(checkpoint_ids_by_section[section]),
+            "checkpoint_count": len(checkpoint_ids_by_section[section]),
+            "checkpoint_share": round(
+                len(checkpoint_ids_by_section[section]) / checkpoint_section_counts[section],
+                4,
+            ) if checkpoint_section_counts[section] else 0.0,
         }
         for section in hotspot_sections
     ]
@@ -786,6 +793,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_section": effective_replay_readiness_hotspot_section,
         "effective_replay_readiness_hotspot_sections": effective_replay_readiness_hotspot_sections,
         "effective_replay_readiness_hotspot_count": effective_replay_readiness_hotspot_count,
+        "effective_replay_readiness_hotspot_tie_count": effective_replay_readiness_hotspot_tie_count,
+        "effective_replay_readiness_hotspot_has_ties": effective_replay_readiness_hotspot_has_ties,
         "effective_replay_readiness_hotspot_blocker_keys": effective_replay_readiness_hotspot_blocker_keys,
         "effective_replay_readiness_hotspot_checkpoint_ids": effective_replay_readiness_hotspot_checkpoint_ids,
         "effective_replay_readiness_hotspot_checkpoint_ids_by_section": effective_replay_readiness_hotspot_checkpoint_ids_by_section,

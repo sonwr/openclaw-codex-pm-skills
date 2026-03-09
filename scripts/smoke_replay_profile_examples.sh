@@ -144,8 +144,10 @@ if slug == 'missing_target_refs':
     assert metadata['effective_replay_readiness_hotspot_checkpoint_count'] == 5, metadata
     assert metadata['effective_replay_readiness_hotspot_checkpoint_ids_by_section'] == {'functional': ['F1', 'F2', 'F3', 'F4', 'F5']}, metadata
     assert metadata['effective_replay_readiness_hotspot_checkpoint_count_by_section'] == {'functional': 5}, metadata
+    assert metadata['effective_replay_readiness_hotspot_tie_count'] == 1, metadata
+    assert metadata['effective_replay_readiness_hotspot_has_ties'] is False, metadata
     assert metadata['effective_replay_readiness_hotspot_checkpoint_share_by_section'] == {'functional': 1.0}, metadata
-    assert metadata['effective_replay_readiness_hotspot_summaries'] == [{'section': 'functional', 'count': 10, 'coverage_rate': 2.0, 'blocker_keys': ['missing_target_refs', 'incomplete_evidence_refs'], 'checkpoint_ids': ['F1', 'F2', 'F3', 'F4', 'F5']}], metadata
+    assert metadata['effective_replay_readiness_hotspot_summaries'] == [{'section': 'functional', 'count': 10, 'coverage_rate': 2.0, 'blocker_keys': ['missing_target_refs', 'incomplete_evidence_refs'], 'checkpoint_ids': ['F1', 'F2', 'F3', 'F4', 'F5'], 'checkpoint_count': 5, 'checkpoint_share': 1.0}], metadata
     assert metadata['replay_readiness_effective_changed'] is True, metadata
     assert metadata['effective_replay_readiness_added_blocker_keys_by_section'] == {'functional': [], 'visual': [], 'off_happy': []}, metadata
     assert metadata['effective_replay_readiness_blocker_delta_by_section'] == {'functional': 0, 'visual': 0, 'off_happy': 0}, metadata

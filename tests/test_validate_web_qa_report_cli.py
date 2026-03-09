@@ -231,6 +231,8 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                     "coverage_rate": 2.0,
                     "blocker_keys": ["missing_target_refs", "incomplete_evidence_refs"],
                     "checkpoint_ids": ["F1", "F2", "F3", "F4", "F5"],
+                    "checkpoint_count": 5,
+                    "checkpoint_share": 1.0,
                 }],
             )
 
@@ -1763,6 +1765,8 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                         "incomplete_evidence_refs",
                     ],
                     "checkpoint_ids": ["F1", "F2", "F3", "F4", "F5"],
+                    "checkpoint_count": 5,
+                    "checkpoint_share": 1.0,
                 }
             ],
         )
