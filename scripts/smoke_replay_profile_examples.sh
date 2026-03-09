@@ -129,8 +129,14 @@ assert metadata[key] == expected, (key, metadata.get(key), expected)
 if slug == 'missing_target_refs':
     assert metadata['missing_checkpoint_target_ref_ids'] == ['F1', 'F2', 'F3', 'F4', 'F5', 'V1', 'V2', 'V3', 'O1', 'O2'], metadata
     assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.0, metadata
+    assert metadata['missing_checkpoint_evidence_ref_count_by_section'] == {'functional': 5, 'visual': 3, 'off_happy': 2}, metadata
 if slug == 'missing_artifact_paths':
     assert metadata['missing_checkpoint_artifact_ref_ids'] == ['F3'], metadata
     assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.9, metadata
+    assert metadata['missing_checkpoint_evidence_ref_ids'] == ['F3'], metadata
+if slug == 'artifact_ref_reuse':
+    assert metadata['checkpoint_reused_artifact_ref_count_by_section'] == {'functional': 0, 'visual': 1, 'off_happy': 0}, metadata
+if slug == 'target_ref_reuse':
+    assert metadata['checkpoint_reused_target_ref_count_by_section'] == {'functional': 1, 'visual': 0, 'off_happy': 0}, metadata
 PYJSON
 done

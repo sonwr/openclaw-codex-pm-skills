@@ -160,6 +160,7 @@ Current docs:
 - Failure handoff JSON now also mirrors recovery owners for both referenced and unresolved failed checks (`next_action_failed_check_recovery_owners`, `unresolved_failed_check_recovery_owners`) so rerun routing can go straight to the right owner without reparsing markdown blocks.
 - Checkpoint replay metadata now includes `missing_checkpoint_target_ref_ids` and `missing_checkpoint_artifact_ref_ids`, letting CI distinguish “checkpoint exists but lacks stable ref/artifact evidence” from ordering/count drift without re-parsing the markdown.
 - Replay JSON now also exposes `checkpoint_evidence_ref_ids` plus `checkpoint_evidence_ref_coverage_rate`, so CI can see which checkpoints already carry both a stable UI target ref and an artifact path before triggering a replay.
+- Section-based evidence triage is now documented end-to-end: the smoke script asserts missing/reused evidence coverage by `functional` / `visual` / `off_happy`, and `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md` explains how to repair those sections in a deterministic order.
 
 Current examples:
 
