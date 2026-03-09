@@ -1035,6 +1035,14 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         and effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids
         else None
     )
+    effective_replay_readiness_hotspot_primary_blocker_repair_summary = (
+        effective_replay_readiness_hotspot_primary_blocker_summary
+        + " -> "
+        + effective_replay_readiness_hotspot_next_step
+        if effective_replay_readiness_hotspot_primary_blocker_summary is not None
+        and effective_replay_readiness_hotspot_next_step is not None
+        else effective_replay_readiness_hotspot_primary_blocker_summary
+    )
     effective_replay_readiness_hotspot_primary_blocker_summary_by_section = {
         section: (
             f"{effective_replay_readiness_hotspot_primary_blocker_key_by_section[section]}: "
@@ -1171,6 +1179,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_primary_blocker_by_section": effective_replay_readiness_hotspot_primary_blocker_by_section,
         "effective_replay_readiness_hotspot_next_step": effective_replay_readiness_hotspot_next_step,
         "effective_replay_readiness_hotspot_primary_blocker_summary": effective_replay_readiness_hotspot_primary_blocker_summary,
+        "effective_replay_readiness_hotspot_primary_blocker_repair_summary": effective_replay_readiness_hotspot_primary_blocker_repair_summary,
         "effective_replay_readiness_hotspot_primary_blocker_summary_by_section": effective_replay_readiness_hotspot_primary_blocker_summary_by_section,
         "effective_replay_ready_sections": effective_replay_ready_sections,
         "effective_replay_blocked_sections": effective_replay_blocked_sections,

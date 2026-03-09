@@ -1905,6 +1905,10 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             "ready_with_regressions: F1, F2, F3, F4, F5 (100.00% of hotspot checkpoints)",
         )
         self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_repair_summary"],
+            "ready_with_regressions: F1, F2, F3, F4, F5 (100.00% of hotspot checkpoints) -> Repair `ready_with_regressions` across hotspot checkpoints: F1, F2, F3, F4, F5",
+        )
+        self.assertEqual(
             payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_summary_by_section"],
             {"functional": "ready_with_regressions: F1, F2, F3, F4, F5 (100.00% of section checkpoints)"},
         )
