@@ -1106,6 +1106,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         for section in effective_replay_readiness_section_priority
         if effective_replay_readiness_hotspot_next_step_by_section.get(section)
     ]
+    effective_replay_readiness_section_priority_summary = [
+        section + ": " + str(effective_replay_readiness_hotspot_primary_blocker_summary_by_section[section])
+        for section in effective_replay_readiness_section_priority
+        if effective_replay_readiness_hotspot_primary_blocker_summary_by_section.get(section)
+    ]
     effective_replay_readiness_hotspot_summaries = [
         {
             "section": section,
@@ -1168,6 +1173,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_added_blocker_keys_by_section": effective_replay_readiness_added_blocker_keys_by_section,
         "effective_replay_readiness_blocker_delta_by_section": effective_replay_readiness_blocker_delta_by_section,
         "effective_replay_readiness_section_priority": effective_replay_readiness_section_priority,
+        "effective_replay_readiness_section_priority_summary": effective_replay_readiness_section_priority_summary,
         "effective_replay_readiness_next_steps_by_priority": effective_replay_readiness_next_steps_by_priority,
         "effective_replay_readiness_hotspot_section": effective_replay_readiness_hotspot_section,
         "effective_replay_readiness_hotspot_sections": effective_replay_readiness_hotspot_sections,

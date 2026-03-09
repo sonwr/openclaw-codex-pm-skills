@@ -259,6 +259,12 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                 },
             )
             self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_section_priority_summary"],
+                [
+                    "functional: missing_target_refs: F1, F2, F3, F4, F5 (100.00% of section checkpoints)",
+                ],
+            )
+            self.assertEqual(
                 payload["report_metadata"]["effective_replay_readiness_section_priority"],
                 ["functional", "visual", "off_happy"],
             )
