@@ -605,6 +605,16 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         if unresolved_failed_check_first_id is not None
         else None
     )
+    unresolved_failed_check_handoff_summary = (
+        f"{unresolved_failed_check_first_id}: {unresolved_failed_check_first_classification or 'unclassified'}"
+        + (
+            f" -> {unresolved_failed_check_first_recovery_owner}"
+            if unresolved_failed_check_first_recovery_owner is not None
+            else ""
+        )
+        if unresolved_failed_check_first_id is not None
+        else None
+    )
     qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
     expected_check_ids = [
         "F1", "F2", "F3", "F4", "F5",
@@ -1272,6 +1282,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "unresolved_failed_check_first_classification": unresolved_failed_check_first_classification,
         "unresolved_failed_check_first_recovery_owner": unresolved_failed_check_first_recovery_owner,
         "unresolved_failed_check_next_step": unresolved_failed_check_next_step,
+        "unresolved_failed_check_handoff_summary": unresolved_failed_check_handoff_summary,
         "next_action_references_all_failed_checks": next_action_references_all_failed_checks,
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "unresolved_failed_check_ids_by_classification": unresolved_failed_check_ids_by_classification,
