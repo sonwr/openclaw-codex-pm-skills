@@ -1591,6 +1591,18 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload["report_metadata"]["effective_replay_readiness_blocker_coverage_rate_by_section"],
             {"functional": 5.0, "visual": 5.0, "off_happy": 5.0},
         )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_added_blocker_keys_by_section"],
+            {
+                "functional": ["ready_with_regressions"],
+                "visual": ["ready_with_regressions"],
+                "off_happy": ["ready_with_regressions"],
+            },
+        )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_blocker_delta_by_section"],
+            {"functional": 5, "visual": 3, "off_happy": 2},
+        )
 
 
 if __name__ == "__main__":

@@ -641,6 +641,21 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         ) if checkpoint_section_counts[section] else 0.0
         for section in checkpoint_section_counts
     }
+    effective_replay_readiness_added_blocker_keys_by_section = {
+        section: [
+            key
+            for key in effective_replay_readiness_blocker_keys_by_section[section]
+            if key not in replay_readiness_blocker_keys_by_section[section]
+        ]
+        for section in checkpoint_section_counts
+    }
+    effective_replay_readiness_blocker_delta_by_section = {
+        section: (
+            effective_replay_readiness_blocker_count_by_section[section]
+            - replay_readiness_blocker_count_by_section[section]
+        )
+        for section in checkpoint_section_counts
+    }
     effective_replay_readiness = replay_readiness
     if replay_readiness == "READY" and replay_readiness_blockers:
         effective_replay_readiness = "BLOCKED"
@@ -663,6 +678,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_blocker_keys_by_section": effective_replay_readiness_blocker_keys_by_section,
         "effective_replay_readiness_blocker_count_by_section": effective_replay_readiness_blocker_count_by_section,
         "effective_replay_readiness_blocker_coverage_rate_by_section": effective_replay_readiness_blocker_coverage_rate_by_section,
+        "effective_replay_readiness_added_blocker_keys_by_section": effective_replay_readiness_added_blocker_keys_by_section,
+        "effective_replay_readiness_blocker_delta_by_section": effective_replay_readiness_blocker_delta_by_section,
         "replay_readiness_blocker_count": len(replay_readiness_blockers),
         "signoff_field_values": signoff_field_values,
         "signoff_field_status": signoff_field_status,

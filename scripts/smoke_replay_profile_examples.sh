@@ -140,6 +140,8 @@ if slug == 'missing_target_refs':
     assert metadata['replay_readiness_blocker_coverage_rate_by_section'] == {'functional': 2.0, 'visual': 2.0, 'off_happy': 2.0}, metadata
     assert metadata['effective_replay_readiness'] == 'BLOCKED', metadata
     assert metadata['replay_readiness_effective_changed'] is True, metadata
+    assert metadata['effective_replay_readiness_added_blocker_keys_by_section'] == {'functional': [], 'visual': [], 'off_happy': []}, metadata
+    assert metadata['effective_replay_readiness_blocker_delta_by_section'] == {'functional': 0, 'visual': 0, 'off_happy': 0}, metadata
 if slug == 'missing_artifact_paths':
     assert metadata['missing_checkpoint_artifact_ref_ids'] == ['F3'], metadata
     assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.9, metadata
