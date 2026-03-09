@@ -562,6 +562,15 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         else 0.0
         for classification in unresolved_failed_check_classification_counts
     }
+    next_action_failed_check_gap_count = len(unresolved_failed_check_ids)
+    next_action_failed_check_gap_count_by_classification = {
+        classification: unresolved_failed_check_classification_counts[classification]
+        for classification in unresolved_failed_check_classification_counts
+    }
+    next_action_failed_check_gap_rate_by_classification = {
+        classification: unresolved_failed_check_coverage_rate_by_classification[classification]
+        for classification in unresolved_failed_check_coverage_rate_by_classification
+    }
     replay_readiness_reference_regressions = (
         reported_regressions if reported_regressions is not None else failed_check_count
     )
@@ -833,6 +842,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
         "next_action_failed_check_coverage_rate": next_action_failed_check_coverage_rate,
+        "next_action_failed_check_gap_count": next_action_failed_check_gap_count,
+        "next_action_failed_check_gap_count_by_classification": next_action_failed_check_gap_count_by_classification,
+        "next_action_failed_check_gap_rate_by_classification": next_action_failed_check_gap_rate_by_classification,
         "next_action_target_refs": next_action_target_refs,
         "next_action_target_ref_count": len(next_action_target_refs),
         "next_action_artifact_refs": next_action_artifact_refs,

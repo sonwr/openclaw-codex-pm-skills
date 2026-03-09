@@ -140,6 +140,15 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs"], [])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs"], [])
             self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owners"], {})
+            self.assertEqual(payload["report_metadata"]["next_action_failed_check_gap_count"], 0)
+            self.assertEqual(
+                payload["report_metadata"]["next_action_failed_check_gap_count_by_classification"],
+                {"selector": 0, "runtime": 0, "product": 0},
+            )
+            self.assertEqual(
+                payload["report_metadata"]["next_action_failed_check_gap_rate_by_classification"],
+                {"selector": 0.0, "runtime": 0.0, "product": 0.0},
+            )
             self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owners"], {})
 
     def test_cli_json_output_tracks_reused_checkpoint_refs_for_replay_triage(self) -> None:
@@ -1877,6 +1886,15 @@ if __name__ == "__main__":
         self.assertEqual(payload["report_metadata"]["failed_check_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_ref_count"], 1)
         self.assertEqual(payload["report_metadata"]["next_action_failed_check_coverage_rate"], 1.0)
+        self.assertEqual(payload["report_metadata"]["next_action_failed_check_gap_count"], 0)
+        self.assertEqual(
+            payload["report_metadata"]["next_action_failed_check_gap_count_by_classification"],
+            {"selector": 0, "runtime": 0, "product": 0},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["next_action_failed_check_gap_rate_by_classification"],
+            {"selector": 0.0, "runtime": 0.0, "product": 0.0},
+        )
         self.assertEqual(
             payload["report_metadata"]["unresolved_failed_check_classification_counts"],
             {"selector": 0, "runtime": 0, "product": 0},
