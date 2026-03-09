@@ -296,6 +296,35 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertTrue(payload["require_checkpoint_timestamps"])
             self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
 
+    def test_cli_json_out_with_ci_replay_profile_alias_writes_failure_payload(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            json_path = Path(tmpdir) / "artifacts" / "ci-replay.validation.json"
+            report_path.write_text(VALID_REPORT, encoding="utf-8")
+
+            with self.assertRaises(SystemExit) as exc:
+                with mock.patch(
+                    "sys.argv",
+                    [
+                        "validate_web_qa_report.py",
+                        "--file",
+                        str(report_path),
+                        "--ci-replay-profile",
+                        "--json-out",
+                        str(json_path),
+                    ],
+                ):
+                    validate_web_qa_report.main()
+            self.assertEqual(exc.exception.code, 1)
+
+            payload = json.loads(json_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["status"], "FAIL")
+            self.assertTrue(payload["ci_replay_profile"])
+            self.assertEqual(payload["active_profile_preset"], "ci-replay-profile")
+            self.assertTrue(payload["require_checkpoint_timestamps"])
+            self.assertTrue(payload["require_failure_recovery_plan"])
+            self.assertTrue(any("checkpoint timestamps" in err for err in payload["errors"]))
+
     def test_cli_strict_plus_check_ref_pass_fixture_satisfies_opt_in_mapping_rule(self) -> None:
         root = Path(__file__).resolve().parents[1]
         report_path = root / "examples" / "web_qa_playwright_strict_plus_with_check_refs_pass.md"
