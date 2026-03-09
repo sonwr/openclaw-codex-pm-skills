@@ -158,6 +158,7 @@ When a report is blocked because the closing signoff is incomplete, prefer the e
 - `missing_signoff_field_count` lets CI branch on incomplete signoff without counting strings downstream.
 - `signoff_field_coverage_rate` is the fast replay/readiness ratio for dashboards.
 - `reported_regressions`, `merge_recommendation`, and `replay_readiness` give the structured closure state once the block is complete.
+- `replay_readiness_blocker_count_by_section` and `replay_readiness_blocker_coverage_rate_by_section` show how much replay-recovery work remains per section, so CI can route follow-up without re-deriving blocker density from individual missing-ref lists.
 - `has_next_action` plus `next_action_text` separate missing closure from a present-but-incomplete handoff note.
 
 This keeps the handoff aligned with Playwright-interactive-style step verification: inspect the explicit JSON closure fields first, then reopen the markdown only when a human needs narrative context.

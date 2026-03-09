@@ -132,6 +132,8 @@ if slug == 'missing_target_refs':
     assert metadata['missing_checkpoint_target_ref_ids'] == ['F1', 'F2', 'F3', 'F4', 'F5', 'V1', 'V2', 'V3', 'O1', 'O2'], metadata
     assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.0, metadata
     assert metadata['missing_checkpoint_evidence_ref_count_by_section'] == {'functional': 5, 'visual': 3, 'off_happy': 2}, metadata
+    assert metadata['replay_readiness_blocker_count_by_section'] == {'functional': 10, 'visual': 6, 'off_happy': 4}, metadata
+    assert metadata['replay_readiness_blocker_coverage_rate_by_section'] == {'functional': 2.0, 'visual': 2.0, 'off_happy': 2.0}, metadata
     assert metadata['effective_replay_readiness'] == 'BLOCKED', metadata
     assert metadata['replay_readiness_effective_changed'] is True, metadata
 if slug == 'missing_artifact_paths':

@@ -261,6 +261,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
             },
         )
         self.assertEqual(metadata["replay_readiness_blocker_count"], 2)
+        self.assertEqual(
+            metadata["replay_readiness_blocker_count_by_section"],
+            {"functional": 10, "visual": 6, "off_happy": 4},
+        )
+        self.assertEqual(
+            metadata["replay_readiness_blocker_coverage_rate_by_section"],
+            {"functional": 2.0, "visual": 2.0, "off_happy": 2.0},
+        )
 
 
     def test_report_metadata_marks_missing_next_action_for_clean_pass_reports(self) -> None:
