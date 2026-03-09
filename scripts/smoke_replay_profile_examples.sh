@@ -149,7 +149,7 @@ from pathlib import Path
 payload = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
 metadata = payload['report_metadata']
 slug = sys.argv[2]
-expected = 'READY'
+expected = 'BLOCKED'
 assert metadata['replay_readiness'] == expected, metadata
 print('next-action recovery smoke: PASS')
 PYNEXT

@@ -231,6 +231,20 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(fail_metadata["present_signoff_field_count"], 4)
         self.assertEqual(fail_metadata["signoff_field_coverage_rate"], 1.0)
 
+    def test_report_metadata_blocks_ready_signoff_when_checkpoint_refs_are_missing(self) -> None:
+        fixture_path = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_missing_target_refs.md"
+        )
+        metadata = _build_report_metadata(fixture_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(metadata["replay_readiness"], "READY")
+        self.assertFalse(metadata["replay_readiness_consistent_with_failed_checks"] is False)
+        self.assertIn("replay_readiness=READY but checkpoint target refs are missing for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", metadata["replay_readiness_blockers"])
+        self.assertIn("replay_readiness=READY but checkpoint evidence refs are incomplete for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", metadata["replay_readiness_blockers"])
+        self.assertEqual(metadata["replay_readiness_blocker_count"], 2)
+
 
     def test_report_metadata_marks_missing_next_action_for_clean_pass_reports(self) -> None:
         metadata = _build_report_metadata(VALID_REPORT)

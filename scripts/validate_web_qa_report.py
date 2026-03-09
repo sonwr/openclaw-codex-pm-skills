@@ -554,6 +554,26 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         replay_readiness_blockers.append(
             f"regressions={replay_readiness_reference_regressions} but replay_readiness=READY"
         )
+    if replay_readiness == "READY" and missing_checkpoint_target_ref_ids:
+        replay_readiness_blockers.append(
+            "replay_readiness=READY but checkpoint target refs are missing for "
+            + ", ".join(missing_checkpoint_target_ref_ids)
+        )
+    if replay_readiness == "READY" and missing_checkpoint_artifact_ref_ids:
+        replay_readiness_blockers.append(
+            "replay_readiness=READY but checkpoint artifact refs are missing for "
+            + ", ".join(missing_checkpoint_artifact_ref_ids)
+        )
+    if replay_readiness == "READY" and missing_checkpoint_evidence_ref_ids:
+        replay_readiness_blockers.append(
+            "replay_readiness=READY but checkpoint evidence refs are incomplete for "
+            + ", ".join(missing_checkpoint_evidence_ref_ids)
+        )
+    if replay_readiness == "READY" and missing_checkpoint_timestamp_ids:
+        replay_readiness_blockers.append(
+            "replay_readiness=READY but checkpoint timestamps are missing for "
+            + ", ".join(missing_checkpoint_timestamp_ids)
+        )
     return {
         "has_signoff_section": _has_signoff_section(text),
         "reported_regressions": reported_regressions,
