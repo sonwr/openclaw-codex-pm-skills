@@ -292,6 +292,19 @@ class ValidateWebQaReportTests(unittest.TestCase):
             metadata["replay_readiness_blocker_coverage_rate_by_section"],
             {"functional": 2.0, "visual": 2.0, "off_happy": 2.0},
         )
+        self.assertEqual(metadata["effective_replay_readiness_blocker_keys"], ["missing_target_refs", "incomplete_evidence_refs"])
+        self.assertEqual(
+            metadata["effective_replay_readiness_blocker_counts"],
+            {
+                "blocked_without_regressions": 0,
+                "ready_with_regressions": 0,
+                "missing_target_refs": 1,
+                "missing_artifact_refs": 0,
+                "incomplete_evidence_refs": 1,
+                "missing_timestamps": 0,
+            },
+        )
+        self.assertEqual(metadata["effective_replay_readiness_blocker_count"], 2)
         self.assertEqual(
             metadata["effective_replay_readiness_blocker_keys_by_section"],
             {

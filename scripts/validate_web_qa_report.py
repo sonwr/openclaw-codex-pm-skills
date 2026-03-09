@@ -656,6 +656,13 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         )
         for section in checkpoint_section_counts
     }
+    effective_replay_readiness_blocker_keys = list(replay_readiness_blocker_keys)
+    effective_replay_readiness_blocker_counts = dict(replay_readiness_blocker_counts)
+    if replay_readiness == "READY" and replay_readiness_reference_regressions > 0:
+        if "ready_with_regressions" not in effective_replay_readiness_blocker_keys:
+            effective_replay_readiness_blocker_keys.insert(0, "ready_with_regressions")
+        effective_replay_readiness_blocker_counts["ready_with_regressions"] = 1
+    effective_replay_readiness_blocker_count = len(effective_replay_readiness_blocker_keys)
     effective_replay_readiness = replay_readiness
     if replay_readiness == "READY" and replay_readiness_blockers:
         effective_replay_readiness = "BLOCKED"
@@ -675,6 +682,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "replay_readiness_blocker_count_by_section": replay_readiness_blocker_count_by_section,
         "replay_readiness_blocker_keys_by_section": replay_readiness_blocker_keys_by_section,
         "replay_readiness_blocker_coverage_rate_by_section": replay_readiness_blocker_coverage_rate_by_section,
+        "effective_replay_readiness_blocker_keys": effective_replay_readiness_blocker_keys,
+        "effective_replay_readiness_blocker_counts": effective_replay_readiness_blocker_counts,
+        "effective_replay_readiness_blocker_count": effective_replay_readiness_blocker_count,
         "effective_replay_readiness_blocker_keys_by_section": effective_replay_readiness_blocker_keys_by_section,
         "effective_replay_readiness_blocker_count_by_section": effective_replay_readiness_blocker_count_by_section,
         "effective_replay_readiness_blocker_coverage_rate_by_section": effective_replay_readiness_blocker_coverage_rate_by_section,
