@@ -321,8 +321,20 @@ def _build_report_metadata(text: str) -> dict[str, object]:
                 continue
             seen_artifact_refs.add(artifact_ref)
             checkpoint_artifact_refs.append(artifact_ref)
-    checkpoint_target_ref_coverage_rate = (len(checkpoint_target_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
-    checkpoint_artifact_ref_coverage_rate = (len(checkpoint_artifact_refs_by_id) / checkpoint_count) if checkpoint_count else 0.0
+    checkpoint_target_ref_id_count = len(checkpoint_target_refs_by_id)
+    checkpoint_target_ref_id_count_by_section = {
+        "functional": sum(1 for checkpoint_id in checkpoint_target_refs_by_id if checkpoint_id.startswith("F")),
+        "visual": sum(1 for checkpoint_id in checkpoint_target_refs_by_id if checkpoint_id.startswith("V")),
+        "off_happy": sum(1 for checkpoint_id in checkpoint_target_refs_by_id if checkpoint_id.startswith("O")),
+    }
+    checkpoint_target_ref_coverage_rate = (checkpoint_target_ref_id_count / checkpoint_count) if checkpoint_count else 0.0
+    checkpoint_artifact_ref_id_count = len(checkpoint_artifact_refs_by_id)
+    checkpoint_artifact_ref_id_count_by_section = {
+        "functional": sum(1 for checkpoint_id in checkpoint_artifact_refs_by_id if checkpoint_id.startswith("F")),
+        "visual": sum(1 for checkpoint_id in checkpoint_artifact_refs_by_id if checkpoint_id.startswith("V")),
+        "off_happy": sum(1 for checkpoint_id in checkpoint_artifact_refs_by_id if checkpoint_id.startswith("O")),
+    }
+    checkpoint_artifact_ref_coverage_rate = (checkpoint_artifact_ref_id_count / checkpoint_count) if checkpoint_count else 0.0
     checkpoint_evidence_ref_ids = [
         checkpoint_id
         for checkpoint_id in checkpoint_order
@@ -613,7 +625,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "unexpected_checkpoint_count": len(unexpected_checkpoint_ids),
         "checkpoint_target_refs": checkpoint_target_refs,
         "checkpoint_target_ref_count": len(checkpoint_target_refs),
-        "checkpoint_target_ref_id_count": len(checkpoint_target_refs_by_id),
+        "checkpoint_target_ref_id_count": checkpoint_target_ref_id_count,
+        "checkpoint_target_ref_id_count_by_section": checkpoint_target_ref_id_count_by_section,
         "checkpoint_target_ref_coverage_rate": checkpoint_target_ref_coverage_rate,
         "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,
         "missing_checkpoint_target_ref_ids": missing_checkpoint_target_ref_ids,
@@ -629,7 +642,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_reused_target_refs_by_id": checkpoint_reused_target_refs_by_id,
         "checkpoint_artifact_refs": checkpoint_artifact_refs,
         "checkpoint_artifact_ref_count": len(checkpoint_artifact_refs),
-        "checkpoint_artifact_ref_id_count": len(checkpoint_artifact_refs_by_id),
+        "checkpoint_artifact_ref_id_count": checkpoint_artifact_ref_id_count,
+        "checkpoint_artifact_ref_id_count_by_section": checkpoint_artifact_ref_id_count_by_section,
         "checkpoint_artifact_ref_coverage_rate": checkpoint_artifact_ref_coverage_rate,
         "checkpoint_evidence_ref_ids": checkpoint_evidence_ref_ids,
         "checkpoint_evidence_ref_ids_by_section": checkpoint_evidence_ref_ids_by_section,
