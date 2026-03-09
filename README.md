@@ -25,6 +25,7 @@ This project is designed for teams who want practical, reusable product-manageme
 - [How to Install](#how-to-install)
 - [How to Use in Real Work](#how-to-use-in-real-work)
 - [Quality Standards](#quality-standards)
+- [Playwright Interactive Execution Principles](#playwright-interactive-execution-principles)
 - [Contributing Guide](#contributing-guide)
 - [Governance and Decision-Making](#governance-and-decision-making)
 - [Compatibility Notes](#compatibility-notes)
@@ -475,6 +476,29 @@ A skill should be merged only if it is:
 - **Testable**: has at least one realistic usage example.
 - **Safe**: no hidden destructive instructions.
 - **Maintainable**: concise, readable, and versionable.
+
+For browser automation and interactive QA work, this repository also follows a local Playwright-interactive operating loop:
+
+- stabilize the target before acting,
+- verify each action step-by-step,
+- capture evidence on the same checkpoint,
+- classify failures for deterministic recovery,
+- and hand off the next action clearly for replay.
+
+Primary reference: `docs/PLAYWRIGHT_INTERACTIVE_EXECUTION_PRINCIPLES.md`
+
+---
+
+## Playwright Interactive Execution Principles
+
+If you are updating web QA prompts, fixtures, or report validation rules, read:
+
+- `docs/PLAYWRIGHT_INTERACTIVE_EXECUTION_PRINCIPLES.md`
+- `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
+- `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md`
+- `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
+
+These docs keep browser automation work aligned with deterministic replay, step-by-step verification, and failure-recovery handoff expectations.
 
 ---
 
