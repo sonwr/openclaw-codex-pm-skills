@@ -98,6 +98,11 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                 payload["report_metadata"]["checkpoint_evidence_ref_coverage_rate_by_section"],
                 {"functional": 0.2, "visual": 0.3333, "off_happy": 0.0},
             )
+            self.assertEqual(payload["report_metadata"]["missing_checkpoint_evidence_ref_count"], 8)
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_evidence_ref_count_by_section"],
+                {"functional": 4, "visual": 2, "off_happy": 2},
+            )
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_artifact_ref_count"], 8)
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_artifact_ref_ids"][-2:], ["O1", "O2"])
             self.assertEqual(

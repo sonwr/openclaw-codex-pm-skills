@@ -142,6 +142,7 @@ If one of those answers is missing, tighten the validator flags before the next 
 
 - `checkpoint_target_ref_coverage_rate` and `checkpoint_artifact_ref_coverage_rate` show how much of the 10-checkpoint execution log carries explicit replay handles.
 - `checkpoint_evidence_ref_ids_by_section`, `checkpoint_evidence_ref_count_by_section`, and `checkpoint_evidence_ref_coverage_rate_by_section` show which `functional` / `visual` / `off_happy` bands already carry both stable target refs and artifact paths, so replay owners can focus repair on the weakest section first.
+- `missing_checkpoint_evidence_ref_ids`, `missing_checkpoint_evidence_ref_count_by_section`, and `missing_checkpoint_evidence_ref_coverage_rate_by_section` mirror that view from the gap side, making it easier to assign replay-recovery work by section without recomputing missing evidence coverage in CI.
 - `checkpoint_timestamp_coverage_rate` plus `missing_checkpoint_timestamp_ids` show how much of the execution log is ready for timestamp-based replay ordering without re-parsing the markdown body.
 - `missing_checkpoint_timestamp_ids_by_section` groups timestamp gaps into `functional` / `visual` / `off_happy`, so replay triage can tell whether ordering evidence drift is concentrated in one checklist band before opening the markdown report.
 - `checkpoint_reused_target_ref_coverage_rate` and `checkpoint_reused_artifact_ref_coverage_rate` show how much of the checkpoint set is affected by duplicate handle reuse.

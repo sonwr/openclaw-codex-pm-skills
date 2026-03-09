@@ -293,6 +293,11 @@ class ValidateWebQaReportTests(unittest.TestCase):
         )
         self.assertEqual(missing_target["checkpoint_target_ref_count"], 0)
         self.assertEqual(missing_target["checkpoint_evidence_ref_coverage_rate"], 0.0)
+        self.assertEqual(missing_target["missing_checkpoint_evidence_ref_count"], 10)
+        self.assertEqual(
+            missing_target["missing_checkpoint_evidence_ref_count_by_section"],
+            {"functional": 5, "visual": 3, "off_happy": 2},
+        )
         self.assertEqual(
             missing_target["missing_checkpoint_target_ref_count_by_section"],
             {"functional": 5, "visual": 3, "off_happy": 2},
@@ -310,6 +315,11 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(missing_artifact["missing_checkpoint_artifact_ref_ids"], ["F3"])
         self.assertEqual(missing_artifact["checkpoint_artifact_ref_count"], 9)
         self.assertEqual(missing_artifact["checkpoint_evidence_ref_coverage_rate"], 0.9)
+        self.assertEqual(missing_artifact["missing_checkpoint_evidence_ref_ids"], ["F3"])
+        self.assertEqual(
+            missing_artifact["missing_checkpoint_evidence_ref_count_by_section"],
+            {"functional": 1, "visual": 0, "off_happy": 0},
+        )
         self.assertEqual(
             missing_artifact["missing_checkpoint_artifact_ref_count_by_section"],
             {"functional": 1, "visual": 0, "off_happy": 0},

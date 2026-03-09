@@ -345,6 +345,25 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         ) if checkpoint_section_counts[section] else 0.0
         for section in checkpoint_section_counts
     }
+    missing_checkpoint_evidence_ref_ids = [
+        checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in checkpoint_evidence_ref_ids
+    ]
+    missing_checkpoint_evidence_ref_ids_by_section = {
+        "functional": [checkpoint_id for checkpoint_id in missing_checkpoint_evidence_ref_ids if checkpoint_id.startswith("F")],
+        "visual": [checkpoint_id for checkpoint_id in missing_checkpoint_evidence_ref_ids if checkpoint_id.startswith("V")],
+        "off_happy": [checkpoint_id for checkpoint_id in missing_checkpoint_evidence_ref_ids if checkpoint_id.startswith("O")],
+    }
+    missing_checkpoint_evidence_ref_count_by_section = {
+        section: len(missing_checkpoint_evidence_ref_ids_by_section[section])
+        for section in missing_checkpoint_evidence_ref_ids_by_section
+    }
+    missing_checkpoint_evidence_ref_coverage_rate_by_section = {
+        section: round(
+            missing_checkpoint_evidence_ref_count_by_section[section] / checkpoint_section_counts[section],
+            4,
+        ) if checkpoint_section_counts[section] else 0.0
+        for section in checkpoint_section_counts
+    }
     checkpoint_reused_target_ref_count_by_section = {
         "functional": sum(1 for checkpoint_id in checkpoint_reused_target_refs_by_id if checkpoint_id.startswith("F")),
         "visual": sum(1 for checkpoint_id in checkpoint_reused_target_refs_by_id if checkpoint_id.startswith("V")),
@@ -603,6 +622,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_evidence_ref_count_by_section": checkpoint_evidence_ref_count_by_section,
         "checkpoint_evidence_ref_coverage_rate": checkpoint_evidence_ref_coverage_rate,
         "checkpoint_evidence_ref_coverage_rate_by_section": checkpoint_evidence_ref_coverage_rate_by_section,
+        "missing_checkpoint_evidence_ref_ids": missing_checkpoint_evidence_ref_ids,
+        "missing_checkpoint_evidence_ref_count": len(missing_checkpoint_evidence_ref_ids),
+        "missing_checkpoint_evidence_ref_ids_by_section": missing_checkpoint_evidence_ref_ids_by_section,
+        "missing_checkpoint_evidence_ref_count_by_section": missing_checkpoint_evidence_ref_count_by_section,
+        "missing_checkpoint_evidence_ref_coverage_rate_by_section": missing_checkpoint_evidence_ref_coverage_rate_by_section,
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
         "missing_checkpoint_artifact_ref_ids": missing_checkpoint_artifact_ref_ids,
         "missing_checkpoint_artifact_ref_count": len(missing_checkpoint_artifact_ref_ids),
