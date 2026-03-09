@@ -2162,6 +2162,18 @@ if __name__ == "__main__":
             payload["report_metadata"]["unresolved_failed_check_handoff_summary"],
             "F1: product -> checkout-team",
         )
+        self.assertEqual(
+            payload["report_metadata"]["failed_check_handoff_summary_by_recovery_owner"],
+            {"checkout-team": "F1"},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["next_action_failed_check_handoff_summary_by_recovery_owner"],
+            {},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["unresolved_failed_check_handoff_summary_by_recovery_owner"],
+            {"checkout-team": "F1"},
+        )
 
 
     def test_cli_stdout_renders_unresolved_failed_check_handoff_summary(self) -> None:

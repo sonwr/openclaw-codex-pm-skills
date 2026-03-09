@@ -195,6 +195,10 @@ def _group_check_ids_by_recovery_owner(check_ids: list[str], recovery_owners: di
     return grouped
 
 
+def _summarize_check_ids_by_recovery_owner(grouped: dict[str, list[str]]) -> dict[str, str]:
+    return {owner: ", ".join(check_ids) for owner, check_ids in grouped.items()}
+
+
 
 def _extract_next_action_failed_check_refs(text: str) -> list[str]:
     next_action = _extract_next_action(text)
@@ -664,6 +668,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     failed_check_ids_by_recovery_owner = _group_check_ids_by_recovery_owner(failed_check_ids, failed_check_recovery_owners)
     next_action_failed_check_ids_by_recovery_owner = _group_check_ids_by_recovery_owner(next_action_failed_check_refs, failed_check_recovery_owners)
     unresolved_failed_check_ids_by_recovery_owner = _group_check_ids_by_recovery_owner(unresolved_failed_check_ids, failed_check_recovery_owners)
+    failed_check_handoff_summary_by_recovery_owner = _summarize_check_ids_by_recovery_owner(failed_check_ids_by_recovery_owner)
+    next_action_failed_check_handoff_summary_by_recovery_owner = _summarize_check_ids_by_recovery_owner(next_action_failed_check_ids_by_recovery_owner)
+    unresolved_failed_check_handoff_summary_by_recovery_owner = _summarize_check_ids_by_recovery_owner(unresolved_failed_check_ids_by_recovery_owner)
     failed_check_count_by_recovery_owner = {
         owner: len(check_ids)
         for owner, check_ids in failed_check_ids_by_recovery_owner.items()
@@ -1228,6 +1235,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "missing_failed_check_classification_count": len(missing_failed_check_classification_ids),
         "failed_check_recovery_owners": failed_check_recovery_owners,
         "failed_check_ids_by_recovery_owner": failed_check_ids_by_recovery_owner,
+        "failed_check_handoff_summary_by_recovery_owner": failed_check_handoff_summary_by_recovery_owner,
         "failed_check_count_by_recovery_owner": failed_check_count_by_recovery_owner,
         "failed_check_recovery_owner_count": len(failed_check_recovery_owners),
         "failed_check_recovery_owner_coverage_rate": failed_check_recovery_owner_coverage_rate,
@@ -1273,6 +1281,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_coverage_rate_by_classification": next_action_failed_check_coverage_rate_by_classification,
         "next_action_failed_check_recovery_owners": next_action_failed_check_recovery_owners,
         "next_action_failed_check_ids_by_recovery_owner": next_action_failed_check_ids_by_recovery_owner,
+        "next_action_failed_check_handoff_summary_by_recovery_owner": next_action_failed_check_handoff_summary_by_recovery_owner,
         "next_action_failed_check_count_by_recovery_owner": next_action_failed_check_count_by_recovery_owner,
         "next_action_failed_check_coverage_rate_by_recovery_owner": next_action_failed_check_coverage_rate_by_recovery_owner,
         "next_action_failed_check_recovery_owner_count": len(next_action_failed_check_recovery_owners),
@@ -1283,6 +1292,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "unresolved_failed_check_first_recovery_owner": unresolved_failed_check_first_recovery_owner,
         "unresolved_failed_check_next_step": unresolved_failed_check_next_step,
         "unresolved_failed_check_handoff_summary": unresolved_failed_check_handoff_summary,
+        "unresolved_failed_check_handoff_summary_by_recovery_owner": unresolved_failed_check_handoff_summary_by_recovery_owner,
         "next_action_references_all_failed_checks": next_action_references_all_failed_checks,
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "unresolved_failed_check_ids_by_classification": unresolved_failed_check_ids_by_classification,
