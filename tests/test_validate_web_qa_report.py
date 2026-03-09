@@ -157,6 +157,11 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["next_action_failed_check_refs"], ["F2"])
         self.assertEqual(metadata["next_action_failed_check_ref_count"], 1)
         self.assertEqual(metadata["next_action_failed_check_coverage_rate"], 1.0)
+        self.assertEqual(metadata["next_action_target_refs"], [])
+        self.assertEqual(metadata["next_action_target_ref_count"], 0)
+        self.assertEqual(metadata["next_action_artifact_refs"], [])
+        self.assertEqual(metadata["next_action_artifact_ref_count"], 0)
+        self.assertTrue(metadata["next_action_mentions_rerun"])
         self.assertEqual(metadata["failed_check_classification_counts"], {"selector": 0, "runtime": 0, "product": 1})
         self.assertEqual(metadata["checkpoint_section_counts"], {"functional": 5, "visual": 3, "off_happy": 2})
 
@@ -186,6 +191,19 @@ class ValidateWebQaReportTests(unittest.TestCase):
 
         self.assertEqual(metadata["next_action_failed_check_refs"], ["F2"])
         self.assertEqual(metadata["next_action_failed_check_ref_count"], 1)
+
+    def test_report_metadata_exposes_next_action_refs_and_artifacts_for_replay_handoff(self) -> None:
+        report = (
+            FAILED_REPORT_WITH_RECOVERY
+            + "- Next action: Re-run F2 using ref=e12, compare against ref=e44, attach `artifacts/f2-rerun.png` and `artifacts/f2-trace.zip`, then retry login\n"
+        )
+        metadata = _build_report_metadata(report)
+
+        self.assertEqual(metadata["next_action_target_refs"], ["e12", "e44"])
+        self.assertEqual(metadata["next_action_target_ref_count"], 2)
+        self.assertEqual(metadata["next_action_artifact_refs"], ["artifacts/f2-rerun.png", "artifacts/f2-trace.zip"])
+        self.assertEqual(metadata["next_action_artifact_ref_count"], 2)
+        self.assertTrue(metadata["next_action_mentions_rerun"])
 
     def test_report_metadata_exposes_partial_qa_inventory_coverage_for_triage(self) -> None:
         fixture_path = (

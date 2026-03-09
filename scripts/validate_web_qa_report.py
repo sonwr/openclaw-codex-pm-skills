@@ -200,6 +200,41 @@ def _extract_next_action_failed_check_refs(text: str) -> list[str]:
     return refs
 
 
+def _extract_next_action_target_refs(text: str) -> list[str]:
+    next_action = _extract_next_action(text)
+    if next_action is None:
+        return []
+    refs: list[str] = []
+    seen: set[str] = set()
+    for ref in _extract_checkpoint_target_refs(next_action):
+        if ref in seen:
+            continue
+        seen.add(ref)
+        refs.append(ref)
+    return refs
+
+
+def _extract_next_action_artifact_refs(text: str) -> list[str]:
+    next_action = _extract_next_action(text)
+    if next_action is None:
+        return []
+    refs: list[str] = []
+    seen: set[str] = set()
+    for ref in _extract_checkpoint_artifact_refs(next_action):
+        if ref in seen:
+            continue
+        seen.add(ref)
+        refs.append(ref)
+    return refs
+
+
+def _next_action_mentions_rerun(text: str) -> bool:
+    next_action = _extract_next_action(text)
+    if next_action is None:
+        return False
+    return re.search(r"\b(rerun|re-run|replay|re-test|retest|retry)\b", next_action, flags=re.IGNORECASE) is not None
+
+
 def _summarize_checkpoint_sections(checkpoint_order: list[str]) -> dict[str, int]:
     counts = {"functional": 0, "visual": 0, "off_happy": 0}
     for checkpoint_id in checkpoint_order:
@@ -325,6 +360,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     replay_readiness = _extract_replay_readiness(text)
     next_action = _extract_next_action(text)
     next_action_failed_check_refs = _extract_next_action_failed_check_refs(text)
+    next_action_target_refs = _extract_next_action_target_refs(text)
+    next_action_artifact_refs = _extract_next_action_artifact_refs(text)
+    next_action_mentions_rerun = _next_action_mentions_rerun(text)
     for check_id in next_action_failed_check_refs:
         classification = failed_check_classifications_by_id.get(check_id)
         owner = failed_check_recovery_owners.get(check_id)
@@ -404,6 +442,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_refs": next_action_failed_check_refs,
         "next_action_failed_check_ref_count": len(next_action_failed_check_refs),
         "next_action_failed_check_coverage_rate": next_action_failed_check_coverage_rate,
+        "next_action_target_refs": next_action_target_refs,
+        "next_action_target_ref_count": len(next_action_target_refs),
+        "next_action_artifact_refs": next_action_artifact_refs,
+        "next_action_artifact_ref_count": len(next_action_artifact_refs),
+        "next_action_mentions_rerun": next_action_mentions_rerun,
         "next_action_failed_check_classification_counts": next_action_failed_check_classification_counts,
         "next_action_failed_check_ids_by_classification": next_action_failed_check_ids_by_classification,
         "next_action_failed_check_recovery_owners": next_action_failed_check_recovery_owners,
