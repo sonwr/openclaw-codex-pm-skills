@@ -360,6 +360,44 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     missing_checkpoint_evidence_ref_ids = [
         checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in checkpoint_evidence_ref_ids
     ]
+    missing_checkpoint_evidence_dimensions_by_id = {
+        checkpoint_id: [
+            dimension
+            for dimension, present in (
+                ("target_ref", checkpoint_id in checkpoint_target_refs_by_id),
+                ("artifact_ref", checkpoint_id in checkpoint_artifact_refs_by_id),
+                ("timestamp", checkpoint_id in checkpoint_timestamps_by_id),
+            )
+            if not present
+        ]
+        for checkpoint_id in checkpoint_order
+    }
+    missing_checkpoint_evidence_dimensions_count_by_id = {
+        checkpoint_id: len(dimensions)
+        for checkpoint_id, dimensions in missing_checkpoint_evidence_dimensions_by_id.items()
+    }
+    missing_checkpoint_evidence_dimensions_by_section = {
+        "functional": {
+            checkpoint_id: missing_checkpoint_evidence_dimensions_by_id[checkpoint_id]
+            for checkpoint_id in checkpoint_order
+            if checkpoint_id.startswith("F") and missing_checkpoint_evidence_dimensions_by_id[checkpoint_id]
+        },
+        "visual": {
+            checkpoint_id: missing_checkpoint_evidence_dimensions_by_id[checkpoint_id]
+            for checkpoint_id in checkpoint_order
+            if checkpoint_id.startswith("V") and missing_checkpoint_evidence_dimensions_by_id[checkpoint_id]
+        },
+        "off_happy": {
+            checkpoint_id: missing_checkpoint_evidence_dimensions_by_id[checkpoint_id]
+            for checkpoint_id in checkpoint_order
+            if checkpoint_id.startswith("O") and missing_checkpoint_evidence_dimensions_by_id[checkpoint_id]
+        },
+    }
+    missing_checkpoint_evidence_dimension_counts = {
+        "target_ref": sum(1 for dimensions in missing_checkpoint_evidence_dimensions_by_id.values() if "target_ref" in dimensions),
+        "artifact_ref": sum(1 for dimensions in missing_checkpoint_evidence_dimensions_by_id.values() if "artifact_ref" in dimensions),
+        "timestamp": sum(1 for dimensions in missing_checkpoint_evidence_dimensions_by_id.values() if "timestamp" in dimensions),
+    }
     missing_checkpoint_evidence_ref_ids_by_section = {
         "functional": [checkpoint_id for checkpoint_id in missing_checkpoint_evidence_ref_ids if checkpoint_id.startswith("F")],
         "visual": [checkpoint_id for checkpoint_id in missing_checkpoint_evidence_ref_ids if checkpoint_id.startswith("V")],
@@ -803,6 +841,10 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "missing_checkpoint_evidence_ref_ids_by_section": missing_checkpoint_evidence_ref_ids_by_section,
         "missing_checkpoint_evidence_ref_count_by_section": missing_checkpoint_evidence_ref_count_by_section,
         "missing_checkpoint_evidence_ref_coverage_rate_by_section": missing_checkpoint_evidence_ref_coverage_rate_by_section,
+        "missing_checkpoint_evidence_dimensions_by_id": missing_checkpoint_evidence_dimensions_by_id,
+        "missing_checkpoint_evidence_dimensions_count_by_id": missing_checkpoint_evidence_dimensions_count_by_id,
+        "missing_checkpoint_evidence_dimensions_by_section": missing_checkpoint_evidence_dimensions_by_section,
+        "missing_checkpoint_evidence_dimension_counts": missing_checkpoint_evidence_dimension_counts,
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
         "missing_checkpoint_artifact_ref_ids": missing_checkpoint_artifact_ref_ids,
         "missing_checkpoint_artifact_ref_count": len(missing_checkpoint_artifact_ref_ids),

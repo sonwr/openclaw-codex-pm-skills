@@ -329,6 +329,26 @@ class ValidateWebQaReportTests(unittest.TestCase):
             metadata["effective_replay_readiness_blocker_delta_by_section"],
             {"functional": 0, "visual": 0, "off_happy": 0},
         )
+        self.assertEqual(
+            metadata["missing_checkpoint_evidence_dimensions_by_id"]["F1"],
+            ["target_ref"],
+        )
+        self.assertEqual(
+            metadata["missing_checkpoint_evidence_dimensions_by_id"]["V1"],
+            ["target_ref"],
+        )
+        self.assertEqual(
+            metadata["missing_checkpoint_evidence_dimensions_count_by_id"]["F1"],
+            1,
+        )
+        self.assertEqual(
+            metadata["missing_checkpoint_evidence_dimensions_by_section"]["functional"]["F1"],
+            ["target_ref"],
+        )
+        self.assertEqual(
+            metadata["missing_checkpoint_evidence_dimension_counts"],
+            {"target_ref": 10, "artifact_ref": 0, "timestamp": 0},
+        )
 
 
     def test_report_metadata_marks_missing_next_action_for_clean_pass_reports(self) -> None:

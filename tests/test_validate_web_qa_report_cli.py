@@ -187,6 +187,48 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertAlmostEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_coverage_rate"], 0.1)
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_coverage_rate_by_section"], {"functional": 0.2, "visual": 0.0, "off_happy": 0.0})
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs_by_id"], {"F2": ["artifacts/shared-login.png"]})
+    def test_cli_json_output_tracks_missing_evidence_dimensions_by_checkpoint(self) -> None:
+        fixture_path = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_missing_target_refs.md"
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(fixture_path.read_text(encoding="utf-8"), encoding="utf-8")
+
+            output = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--strict",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+
+            payload = json.loads(output.getvalue().strip())
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_evidence_dimensions_by_id"]["F1"],
+                ["target_ref"],
+            )
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_evidence_dimensions_count_by_id"]["F1"],
+                1,
+            )
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_evidence_dimensions_by_section"]["functional"]["F1"],
+                ["target_ref"],
+            )
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_evidence_dimension_counts"],
+                {"target_ref": 10, "artifact_ref": 0, "timestamp": 0},
+            )
     def test_cli_json_output_for_pass(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             report_path = Path(tmpdir) / "report.md"
