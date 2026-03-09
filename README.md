@@ -320,6 +320,7 @@ Practical rule of thumb for browser automation signoff:
 For a shorter operator handoff that freezes profile/refs before reruns, see `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md`.
 For a JSON-first READY-vs-BLOCKED triage note that tells operators which replay lane to repair next, see `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_LANES.md`.
 For a shorter “which blocker do I repair first?” operator note, see `docs/WEB_QA_PLAYWRIGHT_BLOCKER_PRIORITY.md`.
+For hotspot-first section repair when replay metadata points at one blocked lane, see `docs/WEB_QA_PLAYWRIGHT_SECTION_HOTSPOT_REPAIR.md`.
 
 Recommended operator loop before every interactive rerun:
 
