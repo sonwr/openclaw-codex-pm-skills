@@ -2343,3 +2343,57 @@ if __name__ == "__main__":
             self.assertEqual(payload["report_metadata"]["unresolved_failed_check_classifications_by_id"], {"V2": "product"})
             self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owners"], {"V2": "design-systems"})
             self.assertEqual(payload["report_metadata"]["unresolved_failed_check_recovery_owner_count"], 1)
+
+    def test_cli_stdout_surfaces_effective_replay_hotspot_summary(self) -> None:
+        report = VALID_REPORT.replace(
+            "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
+            "- F1 checkpoint: PASS - URL changed to `/dashboard` `artifacts/f1.png`",
+        ).replace(
+            "- F2 checkpoint: Inline error panel rendered and focus moved to form alert",
+            "- F2 checkpoint: FAIL - Inline error panel rendered and focus moved to form alert `artifacts/f2.png`",
+        ).replace(
+            "- F3 checkpoint: Required-field validation blocked form submit",
+            "- F3 checkpoint: FAIL - Required-field validation blocked form submit `artifacts/f3.png`",
+        ).replace(
+            "- F4 checkpoint: Pressing Enter on password field triggered submit",
+            "- F4 checkpoint: PASS - Pressing Enter on password field triggered submit `artifacts/f4.png`",
+        ).replace(
+            "- F5 checkpoint: Logout redirected to `/login`",
+            "- F5 checkpoint: PASS - Logout redirected to `/login` `artifacts/f5.png`",
+        ).replace(
+            "- V1 checkpoint: Captured baseline layout screenshot",
+            "- V1 checkpoint: PASS - Captured baseline layout screenshot `shots/v1.png` ref=login-form",
+        ).replace(
+            "- V2 checkpoint: Captured error-state screenshot",
+            "- V2 checkpoint: PASS - Captured error-state screenshot `shots/v2.png` ref=error-banner",
+        ).replace(
+            "- V3 checkpoint: Captured dashboard screenshot",
+            "- V3 checkpoint: PASS - Captured dashboard screenshot `shots/v3.png` ref=dashboard-shell",
+        ).replace(
+            "- O1 checkpoint: Wrong-password path stayed on `/login`",
+            "- O1 checkpoint: PASS - Wrong-password path stayed on `/login` `artifacts/o1.log` ref=login-form",
+        ).replace(
+            "- O2 checkpoint: Empty-password path showed client-side validation",
+            "- O2 checkpoint: PASS - Empty-password path showed client-side validation `artifacts/o2.log` ref=password-field",
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(report, encoding="utf-8")
+
+            stdout = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--playwright-interactive-profile",
+                ],
+            ):
+                with contextlib.redirect_stdout(stdout):
+                    validate_web_qa_report.main()
+
+        rendered = stdout.getvalue()
+        self.assertIn("- effective replay hotspot: functional (4 blocker(s); checkpoints: F2, F3)", rendered)
+        self.assertIn("- effective replay hotspot next step: Repair `missing_target_refs` across hotspot checkpoints: F2, F3", rendered)

@@ -2569,6 +2569,17 @@ def main() -> None:
     if report_metadata.get("unresolved_failed_check_ids"):
         unresolved = ", ".join(report_metadata["unresolved_failed_check_ids"])
         print(f"- unresolved failed checks: {unresolved}")
+    hotspot_section = report_metadata.get("effective_replay_readiness_hotspot_section")
+    hotspot_next_step = report_metadata.get("effective_replay_readiness_hotspot_next_step")
+    if hotspot_section:
+        hotspot_count = report_metadata.get("effective_replay_readiness_hotspot_count", 0)
+        hotspot_checkpoints = ", ".join(report_metadata.get("effective_replay_readiness_hotspot_checkpoint_ids", []))
+        print(
+            "- effective replay hotspot: "
+            f"{hotspot_section} ({hotspot_count} blocker(s); checkpoints: {hotspot_checkpoints})"
+        )
+    if hotspot_next_step:
+        print(f"- effective replay hotspot next step: {hotspot_next_step}")
 
 
 if __name__ == "__main__":
