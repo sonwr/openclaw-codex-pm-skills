@@ -143,6 +143,7 @@ Current docs:
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md` (now explicitly documents Playwright-interactive-style stability, reproducibility, step-by-step verification, and failure-recovery rules)
+- `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md` (condenses the same principles into a fast operator rerun checklist for blocked interactive runs)
 - Canonical opt-in traceability example: `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`
 - Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, QA inventory missing-check coverage, unresolved failed-check coverage, deduplicated next-action failed-check refs, checkpoint target/artifact refs, reused checkpoint refs, per-checkpoint ref coverage counts, and section-level checkpoint timestamp coverage (`functional`/`visual`/`off_happy`) for replay triage) as a machine-readable artifact
 - Parser-facing QA inventory mapping examples: `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md` now includes PASS/FAIL JSON snippets for the opt-in `--require-qa-inventory-check-refs` contract so downstream CI can compare payload shape directly.
@@ -288,6 +289,7 @@ For a faster blocked-run triage workflow focused on `report_metadata`, owner han
 For machine-readable CI contracts and JSON artifact routing, see `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`.
 For reviewer-facing merge rules and copy-paste PASS/blocked-run commands, see `docs/PR_MERGE_POLICY.md`.
 For a concise execution loop that mirrors Playwright-interactive principles (inventory -> bootstrap -> verify -> recover), see `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md`.
+For a shorter operator handoff that freezes profile/refs before reruns, see `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md`.
 
 Recommended operator loop before every interactive rerun:
 
