@@ -1736,6 +1736,14 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             {"functional": ["F1", "F2", "F3", "F4", "F5"]},
         )
         self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_checkpoint_count_by_section"],
+            {"functional": 5},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_checkpoint_share_by_section"],
+            {"functional": 1.0},
+        )
+        self.assertEqual(
             payload["report_metadata"]["effective_replay_readiness_hotspot_summaries"],
             [
                 {
