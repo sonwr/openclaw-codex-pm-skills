@@ -711,12 +711,22 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         if effective_replay_readiness_hotspot_section is not None
         else []
     )
+    checkpoint_ids_by_section = {
+        "functional": [checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id.startswith("F")],
+        "visual": [checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id.startswith("V")],
+        "off_happy": [checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id.startswith("O")],
+    }
+    effective_replay_readiness_hotspot_checkpoint_ids_by_section = {
+        section: list(checkpoint_ids_by_section[section])
+        for section in hotspot_sections
+    }
     effective_replay_readiness_hotspot_summaries = [
         {
             "section": section,
             "count": effective_replay_readiness_blocker_count_by_section[section],
             "coverage_rate": effective_replay_readiness_blocker_coverage_rate_by_section[section],
             "blocker_keys": list(effective_replay_readiness_blocker_keys_by_section[section]),
+            "checkpoint_ids": list(checkpoint_ids_by_section[section]),
         }
         for section in hotspot_sections
     ]
@@ -758,6 +768,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_sections": effective_replay_readiness_hotspot_sections,
         "effective_replay_readiness_hotspot_count": effective_replay_readiness_hotspot_count,
         "effective_replay_readiness_hotspot_blocker_keys": effective_replay_readiness_hotspot_blocker_keys,
+        "effective_replay_readiness_hotspot_checkpoint_ids_by_section": effective_replay_readiness_hotspot_checkpoint_ids_by_section,
         "effective_replay_readiness_hotspot_summaries": effective_replay_readiness_hotspot_summaries,
         "replay_readiness_blocker_count": len(replay_readiness_blockers),
         "signoff_field_values": signoff_field_values,
