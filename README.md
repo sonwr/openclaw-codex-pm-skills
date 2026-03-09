@@ -517,6 +517,7 @@ If you are updating web QA prompts, fixtures, or report validation rules, read:
 - `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md`
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 
+- `docs/WEB_QA_PLAYWRIGHT_SECTION_RERUN_CHECKLIST.md` (adds a section-by-section rerun order so operators repair one blocked lane at a time before widening replay scope)
 These docs keep browser automation work aligned with deterministic replay, step-by-step verification, and failure-recovery handoff expectations.
 
 ---
