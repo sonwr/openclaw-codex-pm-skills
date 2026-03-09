@@ -148,6 +148,7 @@ Current docs:
 - `docs/PLAYWRIGHT_FAILURE_RECOVERY_HANDOFF.md` (adds a compact repair-order checklist for target refs -> evidence -> chronology -> recovery prose handoff)
 - `docs/PLAYWRIGHT_INTERACTIVE_REPAIR_LOOP.md` (adds a concise rerun playbook for stabilizing the session, repairing one checkpoint at a time, restoring evidence, and confirming recovery before signoff)
 - `docs/WEB_QA_PLAYWRIGHT_STEP_TEMPLATE.md` (adds a copyable single-checkpoint template so interactive QA reports keep one action, one verification step, one evidence artifact, and one recovery note per checkpoint)
+- `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_LANES.md` (adds a READY-vs-BLOCKED section triage note so operators can choose the next deterministic replay lane directly from strict-plus JSON)
 - `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md` (condenses the same principles into a fast operator rerun checklist for blocked interactive runs)
 - Canonical opt-in traceability example: `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`
 - Deterministic replay validation contract: use `--strict-plus --require-qa-inventory-check-refs --json-out artifacts/validation.json` so CI stores replay-ready metadata (`active_profile_preset`, 5/3/2 counts, QA inventory check refs, QA inventory missing-check coverage, unresolved failed-check coverage, deduplicated next-action failed-check refs, checkpoint target/artifact refs, reused checkpoint refs, per-checkpoint ref coverage counts, and section-level checkpoint timestamp coverage (`functional`/`visual`/`off_happy`) plus per-section replay-readiness blocker counts/coverage for replay triage) as a machine-readable artifact
@@ -312,6 +313,7 @@ Practical rule of thumb for browser automation signoff:
 - capture evidence in the exact state being signed off,
 - and write failure owner + next action before widening reruns.
 For a shorter operator handoff that freezes profile/refs before reruns, see `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md`.
+For a JSON-first READY-vs-BLOCKED triage note that tells operators which replay lane to repair next, see `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_LANES.md`.
 
 Recommended operator loop before every interactive rerun:
 
