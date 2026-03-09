@@ -741,6 +741,21 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     effective_replay_readiness_hotspot_checkpoint_count = len(effective_replay_readiness_hotspot_checkpoint_ids)
     effective_replay_readiness_hotspot_tie_count = len(hotspot_sections)
     effective_replay_readiness_hotspot_has_ties = effective_replay_readiness_hotspot_tie_count > 1
+    effective_replay_readiness_hotspot_blocker_count_total = sum(
+        effective_replay_readiness_blocker_count_by_section[section]
+        for section in hotspot_sections
+    )
+    effective_replay_readiness_hotspot_blocker_key_frequency = {
+        blocker_key: sum(
+            effective_replay_readiness_blocker_keys_by_section[section].count(blocker_key)
+            for section in hotspot_sections
+        )
+        for blocker_key in dict.fromkeys(
+            blocker_key
+            for section in hotspot_sections
+            for blocker_key in effective_replay_readiness_blocker_keys_by_section[section]
+        )
+    }
     effective_replay_readiness_hotspot_checkpoint_share_by_section = {
         section: round(
             len(checkpoint_ids_by_section[section]) / checkpoint_section_counts[section],
@@ -826,6 +841,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_count": effective_replay_readiness_hotspot_count,
         "effective_replay_readiness_hotspot_tie_count": effective_replay_readiness_hotspot_tie_count,
         "effective_replay_readiness_hotspot_has_ties": effective_replay_readiness_hotspot_has_ties,
+        "effective_replay_readiness_hotspot_blocker_count_total": effective_replay_readiness_hotspot_blocker_count_total,
+        "effective_replay_readiness_hotspot_blocker_key_frequency": effective_replay_readiness_hotspot_blocker_key_frequency,
         "effective_replay_ready_sections": effective_replay_ready_sections,
         "effective_replay_blocked_sections": effective_replay_blocked_sections,
         "effective_replay_section_status": effective_replay_section_status,
