@@ -694,6 +694,18 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         )
         for section in checkpoint_section_counts
     }
+    hotspot_sections = [
+        section
+        for section, count in effective_replay_readiness_blocker_count_by_section.items()
+        if count == max(effective_replay_readiness_blocker_count_by_section.values(), default=0) and count > 0
+    ]
+    effective_replay_readiness_hotspot_section = hotspot_sections[0] if hotspot_sections else None
+    effective_replay_readiness_hotspot_sections = hotspot_sections
+    effective_replay_readiness_hotspot_count = (
+        effective_replay_readiness_blocker_count_by_section[effective_replay_readiness_hotspot_section]
+        if effective_replay_readiness_hotspot_section is not None
+        else 0
+    )
     effective_replay_readiness_blocker_keys = list(replay_readiness_blocker_keys)
     effective_replay_readiness_blocker_counts = dict(replay_readiness_blocker_counts)
     if replay_readiness == "READY" and replay_readiness_reference_regressions > 0:
@@ -728,6 +740,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_blocker_coverage_rate_by_section": effective_replay_readiness_blocker_coverage_rate_by_section,
         "effective_replay_readiness_added_blocker_keys_by_section": effective_replay_readiness_added_blocker_keys_by_section,
         "effective_replay_readiness_blocker_delta_by_section": effective_replay_readiness_blocker_delta_by_section,
+        "effective_replay_readiness_hotspot_section": effective_replay_readiness_hotspot_section,
+        "effective_replay_readiness_hotspot_sections": effective_replay_readiness_hotspot_sections,
+        "effective_replay_readiness_hotspot_count": effective_replay_readiness_hotspot_count,
         "replay_readiness_blocker_count": len(replay_readiness_blockers),
         "signoff_field_values": signoff_field_values,
         "signoff_field_status": signoff_field_status,

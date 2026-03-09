@@ -1667,6 +1667,18 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload["report_metadata"]["effective_replay_readiness_blocker_delta_by_section"],
             {"functional": 5, "visual": 3, "off_happy": 2},
         )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_section"],
+            "functional",
+        )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_sections"],
+            ["functional"],
+        )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_count"],
+            25,
+        )
 
 
 if __name__ == "__main__":
