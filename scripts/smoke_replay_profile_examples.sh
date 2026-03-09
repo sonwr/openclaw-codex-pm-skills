@@ -29,6 +29,8 @@ assert payload['status'] == 'PASS', payload
 assert payload['report_metadata']['qa_inventory_check_refs'] == ['F1','F2','F3','F4','F5','V1','V2','V3','O1','O2'], payload
 assert payload['report_metadata']['qa_inventory_check_ref_count'] == 10, payload
 assert payload['report_metadata']['checkpoint_section_counts'] == {'functional': 5, 'visual': 3, 'off_happy': 2}, payload
+assert payload['report_metadata']['signoff_field_coverage_rate'] == 0.75, payload
+assert payload['report_metadata']['missing_signoff_fields'] == ['next_action'], payload
 assert payload['report_metadata']['unresolved_failed_check_ids'] == [], payload
 PYJSON
 done

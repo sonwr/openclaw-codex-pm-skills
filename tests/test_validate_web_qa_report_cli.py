@@ -262,6 +262,8 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["status"], "PASS")
             self.assertTrue(payload["strict"])
             self.assertEqual(payload["file"], str(report_path))
+            self.assertEqual(payload["report_metadata"]["signoff_field_coverage_rate"], 1.0)
+            self.assertEqual(payload["report_metadata"]["missing_signoff_fields"], [])
 
     def test_cli_json_output_with_playwright_profile(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
