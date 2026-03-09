@@ -139,6 +139,8 @@ if slug == 'missing_target_refs':
     assert metadata['replay_readiness_blocker_count_by_section'] == {'functional': 10, 'visual': 6, 'off_happy': 4}, metadata
     assert metadata['replay_readiness_blocker_coverage_rate_by_section'] == {'functional': 2.0, 'visual': 2.0, 'off_happy': 2.0}, metadata
     assert metadata['effective_replay_readiness'] == 'BLOCKED', metadata
+    assert metadata['effective_replay_readiness_hotspot_blocker_keys'] == ['missing_target_refs', 'incomplete_evidence_refs'], metadata
+    assert metadata['effective_replay_readiness_hotspot_summaries'] == [{'section': 'functional', 'count': 10, 'coverage_rate': 2.0, 'blocker_keys': ['missing_target_refs', 'incomplete_evidence_refs']}], metadata
     assert metadata['replay_readiness_effective_changed'] is True, metadata
     assert metadata['effective_replay_readiness_added_blocker_keys_by_section'] == {'functional': [], 'visual': [], 'off_happy': []}, metadata
     assert metadata['effective_replay_readiness_blocker_delta_by_section'] == {'functional': 0, 'visual': 0, 'off_happy': 0}, metadata

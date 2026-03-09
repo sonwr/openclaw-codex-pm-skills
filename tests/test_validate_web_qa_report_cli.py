@@ -1679,6 +1679,33 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload["report_metadata"]["effective_replay_readiness_hotspot_count"],
             25,
         )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_blocker_keys"],
+            [
+                "ready_with_regressions",
+                "missing_target_refs",
+                "missing_artifact_refs",
+                "missing_timestamps",
+                "incomplete_evidence_refs",
+            ],
+        )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_summaries"],
+            [
+                {
+                    "section": "functional",
+                    "count": 25,
+                    "coverage_rate": 5.0,
+                    "blocker_keys": [
+                        "ready_with_regressions",
+                        "missing_target_refs",
+                        "missing_artifact_refs",
+                        "missing_timestamps",
+                        "incomplete_evidence_refs",
+                    ],
+                }
+            ],
+        )
 
 
 if __name__ == "__main__":
