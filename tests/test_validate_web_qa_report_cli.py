@@ -1555,6 +1555,32 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         self.assertIn("replay_readiness=READY but checkpoint evidence refs are incomplete for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", payload["report_metadata"]["replay_readiness_blockers"])
         self.assertIn("replay_readiness=READY but checkpoint timestamps are missing for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", payload["report_metadata"]["replay_readiness_blockers"])
         self.assertEqual(payload["report_metadata"]["replay_readiness_blocker_count"], 5)
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_blocker_keys_by_section"],
+            {
+                "functional": [
+                    "ready_with_regressions",
+                    "missing_target_refs",
+                    "missing_artifact_refs",
+                    "missing_timestamps",
+                    "incomplete_evidence_refs",
+                ],
+                "visual": [
+                    "ready_with_regressions",
+                    "missing_target_refs",
+                    "missing_artifact_refs",
+                    "missing_timestamps",
+                    "incomplete_evidence_refs",
+                ],
+                "off_happy": [
+                    "ready_with_regressions",
+                    "missing_target_refs",
+                    "missing_artifact_refs",
+                    "missing_timestamps",
+                    "incomplete_evidence_refs",
+                ],
+            },
+        )
 
 
 if __name__ == "__main__":
