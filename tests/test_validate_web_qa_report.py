@@ -69,6 +69,21 @@ class ValidateWebQaReportTests(unittest.TestCase):
         errors = validate_report_text(fixture_text, strict=True)
         self.assertTrue(any("Execution log" in e for e in errors))
 
+    def test_strict_plus_fixture_reports_missing_checkpoint_timestamp_only(self) -> None:
+        fixture_path = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_missing_timestamp_only.md"
+        )
+        fixture_text = fixture_path.read_text(encoding="utf-8")
+        errors = validate_report_text(
+            fixture_text,
+            strict=True,
+            require_checkpoint_timestamps=True,
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertTrue(any("checkpoint timestamps" in e for e in errors))
+
     def test_validate_report_passes_in_strict_mode_for_valid_report(self) -> None:
         self.assertEqual(validate_report_text(VALID_REPORT, strict=True), [])
 

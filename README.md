@@ -163,6 +163,7 @@ Current docs:
 - Replay JSON now also exposes `checkpoint_evidence_ref_ids` plus `checkpoint_evidence_ref_coverage_rate`, so CI can see which checkpoints already carry both a stable UI target ref and an artifact path before triggering a replay.
 - Section-based evidence triage is now documented end-to-end: the smoke script asserts missing/reused evidence coverage by `functional` / `visual` / `off_happy`, and `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md` explains how to repair those sections in a deterministic order.
 - Replay JSON now also exposes `missing_checkpoint_timestamp_count_by_section` and `missing_checkpoint_timestamp_coverage_rate_by_section`, so deterministic rerun triage can see which section still lacks timestamped checkpoints before replaying the full report.
+- An isolated strict-plus missing-timestamp fixture (`examples/web_qa_playwright_strict_fail_missing_timestamp_only.md`) now keeps chronology repair reproducible without mixing it with monotonic-order drift.
 
 Current examples:
 
@@ -183,6 +184,7 @@ Current examples:
 - web QA Playwright strict-plus partial-coverage fail fixture for incomplete QA inventory mapping drift (`examples/web_qa_playwright_strict_fail_partial_check_refs_only.md`)
 - web QA Playwright strict-plus isolated artifact-ref reuse fail fixture for CI triage (`examples/web_qa_playwright_strict_fail_artifact_ref_reuse_only.md`)
 - web QA Playwright strict-plus isolated monotonic-timestamp fail fixture for replay-order triage (`examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md`)
+- web QA Playwright strict-plus isolated missing-timestamp fail fixture for chronology-field triage (`examples/web_qa_playwright_strict_fail_missing_timestamp_only.md`)
 - web QA Playwright strict-plus isolated status-consistency fail fixture for checkpoint/check drift triage (`examples/web_qa_playwright_strict_fail_status_inconsistency_only.md`)
 - web QA Playwright strict-plus isolated missing-artifact-path fail fixture for evidence-capture triage (`examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md`)
 

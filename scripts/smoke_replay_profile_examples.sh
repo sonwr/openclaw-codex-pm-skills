@@ -98,6 +98,7 @@ echo 'replay profile smoke: PASS'
 ISOLATED_FAIL_FIXTURES=(
   "examples/web_qa_playwright_strict_fail_artifact_ref_reuse_only.md|artifact_ref_reuse|checkpoint artifact ref uniqueness|checkpoint_artifact_ref_count|9"
   "examples/web_qa_playwright_strict_fail_monotonic_timestamp_only.md|monotonic_timestamp|checkpoint timestamp order|checkpoint_timestamp_count|10"
+  "examples/web_qa_playwright_strict_fail_missing_timestamp_only.md|missing_timestamp|checkpoint timestamps|checkpoint_timestamp_count|9"
   "examples/web_qa_playwright_strict_fail_status_inconsistency_only.md|status_inconsistency|checkpoint/check status consistency|checkpoint_target_ref_count|10"
   "examples/web_qa_playwright_strict_fail_missing_target_refs.md|missing_target_refs|checkpoint target refs|checkpoint_target_ref_count|0"
   "examples/web_qa_playwright_strict_fail_target_ref_reuse_only.md|target_ref_reuse|checkpoint target ref uniqueness|checkpoint_target_ref_count|9"
@@ -121,12 +122,13 @@ import sys
 from pathlib import Path
 payload = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
 assert payload['status'] == 'FAIL', payload
-assert payload['error_count'] == 1, payload
+slug = sys.argv[5]
+expected_error_count = 2 if slug == 'missing_timestamp' else 1
+assert payload['error_count'] == expected_error_count, payload
 assert sys.argv[2] in payload['errors'][0], payload
 metadata = payload['report_metadata']
 key = sys.argv[3]
 expected = int(sys.argv[4])
-slug = sys.argv[5]
 assert metadata[key] == expected, (key, metadata.get(key), expected)
 if slug == 'missing_target_refs':
     assert metadata['missing_checkpoint_target_ref_ids'] == ['F1', 'F2', 'F3', 'F4', 'F5', 'V1', 'V2', 'V3', 'O1', 'O2'], metadata
@@ -140,6 +142,11 @@ if slug == 'missing_artifact_paths':
     assert metadata['missing_checkpoint_artifact_ref_ids'] == ['F3'], metadata
     assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.9, metadata
     assert metadata['missing_checkpoint_evidence_ref_ids'] == ['F3'], metadata
+if slug == 'missing_timestamp':
+    assert metadata['missing_checkpoint_timestamp_ids'] == ['O2'], metadata
+    assert metadata['missing_checkpoint_timestamp_count_by_section'] == {'functional': 0, 'visual': 0, 'off_happy': 1}, metadata
+    assert metadata['missing_checkpoint_timestamp_coverage_rate_by_section'] == {'functional': 0.0, 'visual': 0.0, 'off_happy': 0.5}, metadata
+    assert metadata['replay_readiness_blocker_keys_by_section'] == {'functional': [], 'visual': [], 'off_happy': ['missing_timestamps']}, metadata
 if slug == 'artifact_ref_reuse':
     assert metadata['checkpoint_reused_artifact_ref_count_by_section'] == {'functional': 0, 'visual': 1, 'off_happy': 0}, metadata
 if slug == 'target_ref_reuse':
