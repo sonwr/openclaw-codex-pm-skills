@@ -782,6 +782,19 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             for blocker_key in effective_replay_readiness_blocker_keys_by_section[section]
         )
     }
+    effective_replay_readiness_hotspot_checkpoint_ids_by_blocker_key = {
+        blocker_key: [
+            checkpoint_id
+            for section in hotspot_sections
+            for checkpoint_id in checkpoint_ids_by_section[section]
+            if blocker_key in effective_replay_readiness_blocker_keys_by_section[section]
+        ]
+        for blocker_key in effective_replay_readiness_hotspot_blocker_key_frequency
+    }
+    effective_replay_readiness_hotspot_checkpoint_count_by_blocker_key = {
+        blocker_key: len(checkpoint_ids)
+        for blocker_key, checkpoint_ids in effective_replay_readiness_hotspot_checkpoint_ids_by_blocker_key.items()
+    }
     effective_replay_readiness_hotspot_checkpoint_share_by_section = {
         section: round(
             len(checkpoint_ids_by_section[section]) / checkpoint_section_counts[section],
@@ -889,6 +902,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_has_ties": effective_replay_readiness_hotspot_has_ties,
         "effective_replay_readiness_hotspot_blocker_count_total": effective_replay_readiness_hotspot_blocker_count_total,
         "effective_replay_readiness_hotspot_blocker_key_frequency": effective_replay_readiness_hotspot_blocker_key_frequency,
+        "effective_replay_readiness_hotspot_checkpoint_ids_by_blocker_key": effective_replay_readiness_hotspot_checkpoint_ids_by_blocker_key,
+        "effective_replay_readiness_hotspot_checkpoint_count_by_blocker_key": effective_replay_readiness_hotspot_checkpoint_count_by_blocker_key,
         "effective_replay_readiness_hotspot_primary_blocker_key": effective_replay_readiness_hotspot_primary_blocker_key,
         "effective_replay_readiness_hotspot_primary_blocker_count": effective_replay_readiness_hotspot_primary_blocker_count,
         "effective_replay_readiness_hotspot_next_step": effective_replay_readiness_hotspot_next_step,
