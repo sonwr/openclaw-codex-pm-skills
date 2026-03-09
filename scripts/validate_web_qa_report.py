@@ -817,11 +817,22 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         if effective_replay_readiness_hotspot_primary_blocker_key is not None
         else 0
     )
+    effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids = (
+        effective_replay_readiness_hotspot_checkpoint_ids_by_blocker_key.get(
+            effective_replay_readiness_hotspot_primary_blocker_key,
+            [],
+        )
+        if effective_replay_readiness_hotspot_primary_blocker_key is not None
+        else []
+    )
+    effective_replay_readiness_hotspot_primary_blocker_checkpoint_count = len(
+        effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids
+    )
     effective_replay_readiness_hotspot_next_step = (
         f"Repair `{effective_replay_readiness_hotspot_primary_blocker_key}` across hotspot checkpoints: "
-        + ", ".join(effective_replay_readiness_hotspot_checkpoint_ids)
+        + ", ".join(effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids)
         if effective_replay_readiness_hotspot_primary_blocker_key is not None
-        and effective_replay_readiness_hotspot_checkpoint_ids
+        and effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids
         else None
     )
     effective_replay_ready_sections = [
@@ -906,6 +917,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_checkpoint_count_by_blocker_key": effective_replay_readiness_hotspot_checkpoint_count_by_blocker_key,
         "effective_replay_readiness_hotspot_primary_blocker_key": effective_replay_readiness_hotspot_primary_blocker_key,
         "effective_replay_readiness_hotspot_primary_blocker_count": effective_replay_readiness_hotspot_primary_blocker_count,
+        "effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids": effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids,
+        "effective_replay_readiness_hotspot_primary_blocker_checkpoint_count": effective_replay_readiness_hotspot_primary_blocker_checkpoint_count,
         "effective_replay_readiness_hotspot_next_step": effective_replay_readiness_hotspot_next_step,
         "effective_replay_ready_sections": effective_replay_ready_sections,
         "effective_replay_blocked_sections": effective_replay_blocked_sections,
