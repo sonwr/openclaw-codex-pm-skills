@@ -1,10 +1,11 @@
 # Web QA Playwright — Strict-Plus Missing Artifact Paths Only FAIL Fixture
 
 ## 1) QA inventory
-- Browser/runtime: Playwright Chromium (headless)
-- Build/version under test: app@2026.03.08-2
-- Test account: `qa.user@example.test`
-- Deterministic replay profile: strict-plus
+- Browser/runtime: Playwright Chromium (headless) | Checks: F1, F2, F3, F4, F5, V1, V2, V3, O1, O2
+- Build/version under test: app@2026.03.08-2 | Checks: F1, V1, V2, V3
+- Test account: `qa.user@example.test` | Checks: F1, F2, O1, O2
+- Deterministic replay profile: strict-plus | Checks: F1, F2, F3, F4, F5, V1, V2, V3, O1, O2
+- Planned coverage map: login success, validation recovery, and evidence capture are pre-mapped before execution | Checks: F1, F2, F3, F4, F5, V1, V2, V3, O1, O2
 
 ## Scope
 - URL: `https://example.test/login`

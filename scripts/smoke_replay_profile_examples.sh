@@ -87,6 +87,8 @@ assert malformed['report_metadata']['qa_inventory_check_ref_count'] == 10, malfo
 assert malformed['report_metadata']['qa_inventory_missing_check_ref_count'] == 0, malformed
 assert partial['report_metadata']['qa_inventory_check_ref_count'] == 9, partial
 assert partial['report_metadata']['qa_inventory_missing_check_ref_count'] == 1, partial
+assert malformed['report_metadata']['next_action_failed_check_refs'] == [], malformed
+assert partial['report_metadata']['next_action_failed_check_refs'] == [], partial
 print('qa inventory malformed-vs-partial triage smoke: PASS')
 PYJSON
 
@@ -139,4 +141,17 @@ if slug == 'artifact_ref_reuse':
 if slug == 'target_ref_reuse':
     assert metadata['checkpoint_reused_target_ref_count_by_section'] == {'functional': 1, 'visual': 0, 'off_happy': 0}, metadata
 PYJSON
+  if [[ "$slug" == "missing_target_refs" || "$slug" == "missing_artifact_paths" ]]; then
+    python3 - "$out" "$slug" <<'PYNEXT'
+import json
+import sys
+from pathlib import Path
+payload = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
+metadata = payload['report_metadata']
+slug = sys.argv[2]
+expected = 'READY'
+assert metadata['replay_readiness'] == expected, metadata
+print('next-action recovery smoke: PASS')
+PYNEXT
+  fi
 done
