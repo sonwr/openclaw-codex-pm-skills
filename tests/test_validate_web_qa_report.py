@@ -174,6 +174,32 @@ class ValidateWebQaReportTests(unittest.TestCase):
         metadata_without_signoff = _build_report_metadata(without_signoff)
         self.assertFalse(metadata_without_signoff["has_signoff_section"])
 
+    def test_report_metadata_tracks_signoff_field_status_and_coverage(self) -> None:
+        pass_metadata = _build_report_metadata(VALID_REPORT)
+        self.assertEqual(
+            pass_metadata["signoff_field_status"],
+            {
+                "regressions": "present",
+                "merge_recommendation": "present",
+                "replay_readiness": "present",
+                "next_action": "missing",
+            },
+        )
+        self.assertEqual(
+            pass_metadata["present_signoff_fields"],
+            ["regressions", "merge_recommendation", "replay_readiness"],
+        )
+        self.assertEqual(pass_metadata["missing_signoff_fields"], ["next_action"])
+        self.assertEqual(pass_metadata["signoff_field_coverage_rate"], 0.75)
+
+        fail_metadata = _build_report_metadata(
+            FAILED_REPORT_WITH_RECOVERY
+            + "- Next action: Investigate F2 spinner timeout, capture new artifacts, and rerun login flow\n"
+        )
+        self.assertEqual(fail_metadata["missing_signoff_fields"], [])
+        self.assertEqual(fail_metadata["present_signoff_field_count"], 4)
+        self.assertEqual(fail_metadata["signoff_field_coverage_rate"], 1.0)
+
 
     def test_report_metadata_marks_missing_next_action_for_clean_pass_reports(self) -> None:
         metadata = _build_report_metadata(VALID_REPORT)
