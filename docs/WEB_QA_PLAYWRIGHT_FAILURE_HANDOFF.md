@@ -14,6 +14,7 @@ A failed run should answer four questions immediately:
 4. What exact next rerun should happen?
 
 The validator already surfaces this in `report_metadata`; this document turns that into an operator playbook.
+If the handoff also needs a named recovery queue, pair this guide with `docs/WEB_QA_PLAYWRIGHT_RECOVERY_OWNER_DRILL.md` so each failed check keeps a replay-ready recovery owner and rerun note.
 
 ## Fast failure triage order
 
