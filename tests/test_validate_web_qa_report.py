@@ -258,6 +258,12 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["effective_replay_readiness"], "BLOCKED")
         self.assertTrue(metadata["replay_readiness_effective_changed"])
         self.assertFalse(metadata["replay_readiness_consistent_with_failed_checks"] is False)
+        self.assertEqual(metadata["effective_replay_ready_sections"], [])
+        self.assertEqual(metadata["effective_replay_blocked_sections"], ["functional", "visual", "off_happy"])
+        self.assertEqual(
+            metadata["effective_replay_section_status"],
+            {"functional": "BLOCKED", "visual": "BLOCKED", "off_happy": "BLOCKED"},
+        )
         self.assertIn("replay_readiness=READY but checkpoint target refs are missing for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", metadata["replay_readiness_blockers"])
         self.assertIn("replay_readiness=READY but checkpoint evidence refs are incomplete for F1, F2, F3, F4, F5, V1, V2, V3, O1, O2", metadata["replay_readiness_blockers"])
         self.assertEqual(

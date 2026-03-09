@@ -750,6 +750,24 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         else 0.0
         for section in hotspot_sections
     }
+    effective_replay_ready_sections = [
+        section
+        for section, count in effective_replay_readiness_blocker_count_by_section.items()
+        if count == 0
+    ]
+    effective_replay_blocked_sections = [
+        section
+        for section, count in effective_replay_readiness_blocker_count_by_section.items()
+        if count > 0
+    ]
+    effective_replay_section_status = {
+        section: (
+            "READY"
+            if effective_replay_readiness_blocker_count_by_section[section] == 0
+            else "BLOCKED"
+        )
+        for section in checkpoint_section_counts
+    }
     effective_replay_readiness_hotspot_summaries = [
         {
             "section": section,
@@ -808,6 +826,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_count": effective_replay_readiness_hotspot_count,
         "effective_replay_readiness_hotspot_tie_count": effective_replay_readiness_hotspot_tie_count,
         "effective_replay_readiness_hotspot_has_ties": effective_replay_readiness_hotspot_has_ties,
+        "effective_replay_ready_sections": effective_replay_ready_sections,
+        "effective_replay_blocked_sections": effective_replay_blocked_sections,
+        "effective_replay_section_status": effective_replay_section_status,
         "effective_replay_readiness_hotspot_blocker_keys": effective_replay_readiness_hotspot_blocker_keys,
         "effective_replay_readiness_hotspot_checkpoint_ids": effective_replay_readiness_hotspot_checkpoint_ids,
         "effective_replay_readiness_hotspot_checkpoint_ids_by_section": effective_replay_readiness_hotspot_checkpoint_ids_by_section,
