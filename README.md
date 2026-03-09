@@ -194,6 +194,7 @@ Current examples:
 - web QA Playwright strict-plus isolated missing-timestamp fail fixture for chronology-field triage (`examples/web_qa_playwright_strict_fail_missing_timestamp_only.md`)
 - web QA Playwright strict-plus isolated status-consistency fail fixture for checkpoint/check drift triage (`examples/web_qa_playwright_strict_fail_status_inconsistency_only.md`)
 - web QA Playwright strict-plus isolated missing-artifact-path fail fixture for evidence-capture triage (`examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md`)
+- web QA Playwright strict-plus isolated missing-recovery-owner fail fixture for explicit owner-handoff triage (`examples/web_qa_playwright_strict_fail_missing_recovery_owner_only.md`)
 
 ---
 
