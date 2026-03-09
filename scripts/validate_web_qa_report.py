@@ -747,6 +747,10 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             "count": effective_replay_readiness_blocker_count_by_section[section],
             "coverage_rate": effective_replay_readiness_blocker_coverage_rate_by_section[section],
             "blocker_keys": list(effective_replay_readiness_blocker_keys_by_section[section]),
+            "blocker_counts": {
+                blocker_key: effective_replay_readiness_blocker_keys_by_section[section].count(blocker_key)
+                for blocker_key in effective_replay_readiness_blocker_keys_by_section[section]
+            },
             "checkpoint_ids": list(checkpoint_ids_by_section[section]),
             "checkpoint_count": len(checkpoint_ids_by_section[section]),
             "checkpoint_share": round(
