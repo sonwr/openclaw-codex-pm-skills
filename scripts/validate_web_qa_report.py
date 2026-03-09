@@ -232,6 +232,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     checkpoint_timestamp_coverage_rate = round(
         checkpoint_timestamp_count / checkpoint_count, 4
     ) if checkpoint_count else 0.0
+    missing_checkpoint_timestamp_ids_by_section = {
+        "functional": [checkpoint_id for checkpoint_id in missing_checkpoint_timestamp_ids if checkpoint_id.startswith("F")],
+        "visual": [checkpoint_id for checkpoint_id in missing_checkpoint_timestamp_ids if checkpoint_id.startswith("V")],
+        "off_happy": [checkpoint_id for checkpoint_id in missing_checkpoint_timestamp_ids if checkpoint_id.startswith("O")],
+    }
     checkpoint_target_refs: list[str] = []
     checkpoint_artifact_refs: list[str] = []
     checkpoint_target_refs_by_id: dict[str, list[str]] = {}
@@ -409,6 +414,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_timestamp_count": checkpoint_timestamp_count,
         "missing_checkpoint_timestamp_ids": missing_checkpoint_timestamp_ids,
         "missing_checkpoint_timestamp_count": len(missing_checkpoint_timestamp_ids),
+        "missing_checkpoint_timestamp_ids_by_section": missing_checkpoint_timestamp_ids_by_section,
         "checkpoint_timestamp_coverage_rate": checkpoint_timestamp_coverage_rate,
         "checkpoint_section_counts": checkpoint_section_counts,
         "missing_checkpoint_ids": missing_checkpoint_ids,
