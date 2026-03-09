@@ -130,13 +130,17 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs"], ["e12"])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_ref_count"], 1)
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_ref_id_count"], 1)
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_ref_count_by_section"], {"functional": 1, "visual": 0, "off_happy": 0})
             self.assertAlmostEqual(payload["report_metadata"]["checkpoint_reused_target_ref_coverage_rate"], 0.1)
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_ref_coverage_rate_by_section"], {"functional": 0.2, "visual": 0.0, "off_happy": 0.0})
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs_by_id"], {"F2": ["e12"]})
             self.assertEqual(payload["report_metadata"]["checkpoint_artifact_refs"], ["artifacts/shared-login.png"])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs"], ["artifacts/shared-login.png"])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_count"], 1)
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_id_count"], 1)
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_count_by_section"], {"functional": 1, "visual": 0, "off_happy": 0})
             self.assertAlmostEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_coverage_rate"], 0.1)
+            self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_ref_coverage_rate_by_section"], {"functional": 0.2, "visual": 0.0, "off_happy": 0.0})
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs_by_id"], {"F2": ["artifacts/shared-login.png"]})
     def test_cli_json_output_for_pass(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
