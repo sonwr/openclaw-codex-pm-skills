@@ -592,11 +592,17 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             "missing_timestamps",
         ]
     }
+    effective_replay_readiness = replay_readiness
+    if replay_readiness == "READY" and replay_readiness_blockers:
+        effective_replay_readiness = "BLOCKED"
+    replay_readiness_effective_changed = effective_replay_readiness != replay_readiness
     return {
         "has_signoff_section": _has_signoff_section(text),
         "reported_regressions": reported_regressions,
         "merge_recommendation": merge_recommendation,
         "replay_readiness": replay_readiness,
+        "effective_replay_readiness": effective_replay_readiness,
+        "replay_readiness_effective_changed": replay_readiness_effective_changed,
         "replay_readiness_reference_regressions": replay_readiness_reference_regressions,
         "replay_readiness_consistent_with_failed_checks": replay_readiness_consistent_with_failed_checks,
         "replay_readiness_blockers": replay_readiness_blockers,

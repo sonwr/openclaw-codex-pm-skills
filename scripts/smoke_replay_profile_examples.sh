@@ -132,6 +132,8 @@ if slug == 'missing_target_refs':
     assert metadata['missing_checkpoint_target_ref_ids'] == ['F1', 'F2', 'F3', 'F4', 'F5', 'V1', 'V2', 'V3', 'O1', 'O2'], metadata
     assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.0, metadata
     assert metadata['missing_checkpoint_evidence_ref_count_by_section'] == {'functional': 5, 'visual': 3, 'off_happy': 2}, metadata
+    assert metadata['effective_replay_readiness'] == 'BLOCKED', metadata
+    assert metadata['replay_readiness_effective_changed'] is True, metadata
 if slug == 'missing_artifact_paths':
     assert metadata['missing_checkpoint_artifact_ref_ids'] == ['F3'], metadata
     assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.9, metadata
@@ -149,8 +151,11 @@ from pathlib import Path
 payload = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
 metadata = payload['report_metadata']
 slug = sys.argv[2]
-expected = 'BLOCKED'
-assert metadata['replay_readiness'] == expected, metadata
+if slug in {'missing_target_refs', 'missing_artifact_paths'}:
+    assert metadata['replay_readiness'] == 'READY', metadata
+    assert metadata['effective_replay_readiness'] == 'BLOCKED', metadata
+else:
+    assert metadata['effective_replay_readiness'] == 'BLOCKED', metadata
 print('next-action recovery smoke: PASS')
 PYNEXT
   fi
