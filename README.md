@@ -145,6 +145,7 @@ Current docs:
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md` (now explicitly documents Playwright-interactive-style stability, reproducibility, step-by-step verification, and failure-recovery rules)
+- `docs/WEB_QA_PLAYWRIGHT_CHECKPOINT_EVIDENCE_LADDER.md` (adds a compact target -> action -> verification -> artifact -> recovery ladder so each interactive checkpoint stays replay-ready)
 - `docs/PLAYWRIGHT_FAILURE_RECOVERY_HANDOFF.md` (adds a compact repair-order checklist for target refs -> evidence -> chronology -> recovery prose handoff)
 - `docs/PLAYWRIGHT_INTERACTIVE_REPAIR_LOOP.md` (adds a concise rerun playbook for stabilizing the session, repairing one checkpoint at a time, restoring evidence, and confirming recovery before signoff)
 - `docs/WEB_QA_PLAYWRIGHT_STEP_TEMPLATE.md` (adds a copyable single-checkpoint template so interactive QA reports keep one action, one verification step, one evidence artifact, and one recovery note per checkpoint)
