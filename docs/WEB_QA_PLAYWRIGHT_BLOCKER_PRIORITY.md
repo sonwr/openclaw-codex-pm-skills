@@ -35,6 +35,7 @@ Repair exactly one blocker class at a time, rerun the isolated fixture that prov
 
 ## Related docs
 
+- `docs/WEB_QA_PLAYWRIGHT_REPAIR_SEQUENCE_CARD.md`
 - `docs/PLAYWRIGHT_INTERACTIVE_EXECUTION_PRINCIPLES.md`
 - `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md`
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
