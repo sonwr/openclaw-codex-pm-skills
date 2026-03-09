@@ -2665,6 +2665,17 @@ def main() -> None:
     if report_metadata.get("unresolved_failed_check_ids"):
         unresolved = ", ".join(report_metadata["unresolved_failed_check_ids"])
         print(f"- unresolved failed checks: {unresolved}")
+    unresolved_handoff = report_metadata.get("unresolved_failed_check_handoff_summary")
+    if unresolved_handoff:
+        print(f"- unresolved failed check handoff: {unresolved_handoff}")
+    unresolved_handoff_by_owner = report_metadata.get("unresolved_failed_check_handoff_summary_by_recovery_owner", {})
+    if unresolved_handoff_by_owner:
+        print(
+            "- unresolved failed check handoff by recovery owner: "
+            + " | ".join(
+                f"{owner}: {summary}" for owner, summary in unresolved_handoff_by_owner.items()
+            )
+        )
     hotspot_section = report_metadata.get("effective_replay_readiness_hotspot_section")
     hotspot_next_step = report_metadata.get("effective_replay_readiness_hotspot_next_step")
     if hotspot_section:

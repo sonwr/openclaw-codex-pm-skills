@@ -2243,6 +2243,7 @@ if __name__ == "__main__":
 
         self.assertEqual(completed.returncode, 1)
         self.assertIn("- unresolved failed check handoff: F1: product -> checkout-team", completed.stdout)
+        self.assertIn("- unresolved failed check handoff by recovery owner: checkout-team: F1", completed.stdout)
 
 
     def test_cli_json_tracks_missing_signoff_fields_for_incomplete_blocked_reports(self) -> None:
