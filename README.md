@@ -141,6 +141,7 @@ Current docs:
 - `docs/MAPPING_PM_SKILLS.md`
 - `docs/PR_MERGE_POLICY.md`
 - `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
+- `docs/WEB_QA_PLAYWRIGHT_PRECHECK.md` (adds a 1-minute pre-run stability/reproducibility checklist before the first interactive step)
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_EXECUTION_LOOP.md` (now explicitly documents Playwright-interactive-style stability, reproducibility, step-by-step verification, and failure-recovery rules)
@@ -287,6 +288,7 @@ python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_samp
 For machine-readable CI output, add `--json` (stdout) or `--json-out <path>` (artifact file).
 
 For a reusable explanation of deterministic replay expectations and failure-recovery discipline, see `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`.
+For a 1-minute pre-run checklist that freezes target/profile/evidence before the first click, see `docs/WEB_QA_PLAYWRIGHT_PRECHECK.md`.
 That note now also documents a stepwise replay recovery order: restore stable target refs first, replay evidence second, checkpoint chronology third, and human recovery notes last.
 For a faster blocked-run triage workflow focused on `report_metadata`, owner handoff, and failed-check reruns, see `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`.
 For machine-readable CI contracts and JSON artifact routing, see `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`.
