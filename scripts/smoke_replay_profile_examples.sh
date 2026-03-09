@@ -113,7 +113,7 @@ for fixture_spec in "${ISOLATED_FAIL_FIXTURES[@]}"; do
     echo "expected isolated strict-plus fixture to fail validation: $fixture" >&2
     exit 1
   fi
-  python3 - "$out" "$expected_error" "$metadata_key" "$metadata_expected" <<'PYJSON'
+  python3 - "$out" "$expected_error" "$metadata_key" "$metadata_expected" "$slug" <<'PYJSON'
 import json
 import sys
 from pathlib import Path
@@ -124,6 +124,13 @@ assert sys.argv[2] in payload['errors'][0], payload
 metadata = payload['report_metadata']
 key = sys.argv[3]
 expected = int(sys.argv[4])
+slug = sys.argv[5]
 assert metadata[key] == expected, (key, metadata.get(key), expected)
+if slug == 'missing_target_refs':
+    assert metadata['missing_checkpoint_target_ref_ids'] == ['F1', 'F2', 'F3', 'F4', 'F5', 'V1', 'V2', 'V3', 'O1', 'O2'], metadata
+    assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.0, metadata
+if slug == 'missing_artifact_paths':
+    assert metadata['missing_checkpoint_artifact_ref_ids'] == ['F3'], metadata
+    assert metadata['checkpoint_evidence_ref_coverage_rate'] == 0.9, metadata
 PYJSON
 done
