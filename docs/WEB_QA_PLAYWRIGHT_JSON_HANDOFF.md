@@ -81,6 +81,7 @@ This is the preferred failure-recovery pattern: isolate one broken invariant, ca
 - `failed_check_classification_coverage_rate`
 - `failed_check_recovery_owner_coverage_rate`
 - `next_action_failed_check_refs`
+- `next_action_replay_support_summary`
 - `next_action_failed_check_classifications_by_id`
 - `unresolved_failed_check_classifications_by_id`
 - `checkpoint_target_refs_by_id`
@@ -160,6 +161,7 @@ When a report is blocked because the closing signoff is incomplete, prefer the e
 - `missing_signoff_field_count` lets CI branch on incomplete signoff without counting strings downstream.
 - `signoff_field_coverage_rate` is the fast replay/readiness ratio for dashboards.
 - `reported_regressions`, `merge_recommendation`, and `replay_readiness` give the structured closure state once the block is complete.
+- `next_action_replay_support_summary` gives a one-line handoff sentence (`failed checks | targets | artifacts | rerun cue`) that can be pasted into CI logs or ticket bodies without reconstructing the replay context from separate fields.
 - `replay_readiness_blocker_count_by_section`, `effective_replay_readiness_blocker_keys_by_section`, and `replay_readiness_blocker_coverage_rate_by_section` show how much replay-recovery work remains per section, so CI can route follow-up without re-deriving blocker density from individual missing-ref lists.
 - `effective_replay_readiness_hotspot_section`, `effective_replay_readiness_hotspot_sections`, `effective_replay_readiness_hotspot_count`, `effective_replay_readiness_hotspot_blocker_keys`, `effective_replay_readiness_hotspot_checkpoint_ids`, `effective_replay_readiness_hotspot_checkpoint_count`, `effective_replay_readiness_hotspot_summaries`, and `effective_replay_readiness_hotspot_blocker_counts_by_section` expose the section with the heaviest blocker load (with tie awareness) plus the exact blocker mix/coverage and flattened checkpoint rerun list already attached to that hotspot, so Playwright-style rerun recovery can start with the noisiest band first instead of re-sorting or reverse-mapping blocker keys downstream.
 - `effective_replay_readiness_hotspot_blocker_count_total` and `effective_replay_readiness_hotspot_blocker_key_frequency` aggregate blocker volume/key frequency across all tied hotspots, which means a replay bot can pick the dominant repair theme first even when multiple sections share the same blocker load.

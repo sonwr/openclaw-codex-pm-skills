@@ -240,6 +240,29 @@ def _summarize_next_action_replay_support(target_refs: list[str], artifact_refs:
     return "none"
 
 
+def _describe_next_action_replay_support(
+    failed_check_refs: list[str],
+    target_refs: list[str],
+    artifact_refs: list[str],
+    mentions_rerun: bool,
+) -> str:
+    parts: list[str] = []
+    if failed_check_refs:
+        parts.append(f"failed checks: {', '.join(failed_check_refs)}")
+    else:
+        parts.append("failed checks: none")
+    if target_refs:
+        parts.append(f"targets: {', '.join(target_refs)}")
+    else:
+        parts.append("targets: missing")
+    if artifact_refs:
+        parts.append(f"artifacts: {', '.join(artifact_refs)}")
+    else:
+        parts.append("artifacts: missing")
+    parts.append("rerun cue: yes" if mentions_rerun else "rerun cue: no")
+    return " | ".join(parts)
+
+
 def _next_action_mentions_rerun(text: str) -> bool:
     next_action = _extract_next_action(text)
     if next_action is None:
@@ -1054,6 +1077,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_artifact_refs": next_action_artifact_refs,
         "next_action_artifact_ref_count": len(next_action_artifact_refs),
         "next_action_replay_support_level": _summarize_next_action_replay_support(next_action_target_refs, next_action_artifact_refs),
+        "next_action_replay_support_summary": _describe_next_action_replay_support(
+            next_action_failed_check_refs,
+            next_action_target_refs,
+            next_action_artifact_refs,
+            next_action_mentions_rerun,
+        ),
         "next_action_has_target_refs": bool(next_action_target_refs),
         "next_action_has_artifact_refs": bool(next_action_artifact_refs),
         "next_action_has_replay_refs": bool(next_action_target_refs or next_action_artifact_refs),
