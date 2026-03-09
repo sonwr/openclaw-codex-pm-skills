@@ -250,6 +250,24 @@ def _summarize_next_action_replay_support(target_refs: list[str], artifact_refs:
     return "none"
 
 
+def _replay_support_dimensions_present(target_refs: list[str], artifact_refs: list[str]) -> list[str]:
+    dimensions: list[str] = []
+    if target_refs:
+        dimensions.append("target_refs")
+    if artifact_refs:
+        dimensions.append("artifact_refs")
+    return dimensions
+
+
+def _replay_support_missing_dimensions(target_refs: list[str], artifact_refs: list[str]) -> list[str]:
+    missing: list[str] = []
+    if not target_refs:
+        missing.append("target_refs")
+    if not artifact_refs:
+        missing.append("artifact_refs")
+    return missing
+
+
 def _describe_next_action_replay_support(
     failed_check_refs: list[str],
     target_refs: list[str],
@@ -1167,6 +1185,14 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_artifact_refs": next_action_artifact_refs,
         "next_action_artifact_ref_count": len(next_action_artifact_refs),
         "next_action_replay_support_level": _summarize_next_action_replay_support(next_action_target_refs, next_action_artifact_refs),
+        "next_action_replay_support_dimensions_present": _replay_support_dimensions_present(
+            next_action_target_refs,
+            next_action_artifact_refs,
+        ),
+        "next_action_replay_support_missing_dimensions": _replay_support_missing_dimensions(
+            next_action_target_refs,
+            next_action_artifact_refs,
+        ),
         "next_action_replay_support_summary": _describe_next_action_replay_support(
             next_action_failed_check_refs,
             next_action_target_refs,

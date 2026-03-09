@@ -192,6 +192,11 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertFalse(metadata["next_action_has_artifact_refs"])
         self.assertFalse(metadata["next_action_has_replay_refs"])
         self.assertEqual(metadata["next_action_replay_support_level"], "none")
+        self.assertEqual(metadata["next_action_replay_support_dimensions_present"], [])
+        self.assertEqual(
+            metadata["next_action_replay_support_missing_dimensions"],
+            ["target_refs", "artifact_refs"],
+        )
         self.assertEqual(
             metadata["next_action_replay_support_summary"],
             "failed checks: F2 | targets: missing | artifacts: missing | rerun cue: yes",
@@ -234,6 +239,11 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertTrue(metadata["next_action_has_artifact_refs"])
         self.assertTrue(metadata["next_action_has_replay_refs"])
         self.assertEqual(metadata["next_action_replay_support_level"], "target_and_artifact_refs")
+        self.assertEqual(
+            metadata["next_action_replay_support_dimensions_present"],
+            ["target_refs", "artifact_refs"],
+        )
+        self.assertEqual(metadata["next_action_replay_support_missing_dimensions"], [])
         self.assertEqual(
             metadata["next_action_replay_support_summary"],
             "failed checks: F2 | targets: login.submit | artifacts: artifacts/f2-rerun.png, artifacts/f2-rerun.log | rerun cue: yes",
