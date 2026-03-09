@@ -828,6 +828,15 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     effective_replay_readiness_hotspot_primary_blocker_checkpoint_count = len(
         effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids
     )
+    effective_replay_readiness_hotspot_primary_blocker_checkpoint_share = (
+        round(
+            effective_replay_readiness_hotspot_primary_blocker_checkpoint_count
+            / effective_replay_readiness_hotspot_checkpoint_count,
+            4,
+        )
+        if effective_replay_readiness_hotspot_checkpoint_count
+        else 0.0
+    )
     effective_replay_readiness_hotspot_next_step = (
         f"Repair `{effective_replay_readiness_hotspot_primary_blocker_key}` across hotspot checkpoints: "
         + ", ".join(effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids)
@@ -919,6 +928,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_primary_blocker_count": effective_replay_readiness_hotspot_primary_blocker_count,
         "effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids": effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids,
         "effective_replay_readiness_hotspot_primary_blocker_checkpoint_count": effective_replay_readiness_hotspot_primary_blocker_checkpoint_count,
+        "effective_replay_readiness_hotspot_primary_blocker_checkpoint_share": effective_replay_readiness_hotspot_primary_blocker_checkpoint_share,
         "effective_replay_readiness_hotspot_next_step": effective_replay_readiness_hotspot_next_step,
         "effective_replay_ready_sections": effective_replay_ready_sections,
         "effective_replay_blocked_sections": effective_replay_blocked_sections,
