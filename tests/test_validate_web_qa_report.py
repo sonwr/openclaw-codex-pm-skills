@@ -201,6 +201,10 @@ class ValidateWebQaReportTests(unittest.TestCase):
             metadata["next_action_replay_support_summary"],
             "failed checks: F2 | targets: missing | artifacts: missing | rerun cue: yes",
         )
+        self.assertEqual(
+            metadata["next_action_replay_handoff_card"],
+            "checks=F2; targets=missing; artifacts=missing; rerun=yes",
+        )
         self.assertTrue(metadata["next_action_mentions_rerun"])
         self.assertEqual(metadata["failed_check_classification_counts"], {"selector": 0, "runtime": 0, "product": 1})
         self.assertEqual(
@@ -250,6 +254,10 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(
             metadata["next_action_replay_support_summary"],
             "failed checks: F2 | targets: login.submit | artifacts: artifacts/f2-rerun.png, artifacts/f2-rerun.log | rerun cue: yes",
+        )
+        self.assertEqual(
+            metadata["next_action_replay_handoff_card"],
+            "checks=F2; targets=login.submit; artifacts=artifacts/f2-rerun.png,artifacts/f2-rerun.log; rerun=yes",
         )
 
     def test_report_metadata_tracks_partial_next_action_coverage_by_classification(self) -> None:

@@ -295,6 +295,20 @@ def _describe_next_action_replay_support(
     return " | ".join(parts)
 
 
+def _format_next_action_replay_handoff_card(
+    failed_check_refs: list[str],
+    target_refs: list[str],
+    artifact_refs: list[str],
+    mentions_rerun: bool,
+) -> str:
+    return (
+        f"checks={','.join(failed_check_refs) if failed_check_refs else 'missing'}; "
+        f"targets={','.join(target_refs) if target_refs else 'missing'}; "
+        f"artifacts={','.join(artifact_refs) if artifact_refs else 'missing'}; "
+        f"rerun={'yes' if mentions_rerun else 'no'}"
+    )
+
+
 def _next_action_mentions_rerun(text: str) -> bool:
     next_action = _extract_next_action(text)
     if next_action is None:
@@ -1268,6 +1282,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
             next_action_artifact_refs,
         ),
         "next_action_replay_support_summary": _describe_next_action_replay_support(
+            next_action_failed_check_refs,
+            next_action_target_refs,
+            next_action_artifact_refs,
+            next_action_mentions_rerun,
+        ),
+        "next_action_replay_handoff_card": _format_next_action_replay_handoff_card(
             next_action_failed_check_refs,
             next_action_target_refs,
             next_action_artifact_refs,
