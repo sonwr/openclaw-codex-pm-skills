@@ -148,6 +148,29 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "PASS")
             self.assertEqual(payload["validation_schema_version"], 1)
+            self.assertEqual(
+                payload["report_metadata"]["signoff_field_values"],
+                {
+                    "regressions": 0,
+                    "merge_recommendation": "APPROVE",
+                    "replay_readiness": "READY",
+                    "next_action": "Archive artifacts and proceed to release signoff",
+                },
+            )
+            self.assertEqual(
+                payload["report_metadata"]["signoff_field_status"],
+                {
+                    "regressions": "present",
+                    "merge_recommendation": "present",
+                    "replay_readiness": "present",
+                    "next_action": "present",
+                },
+            )
+            self.assertEqual(
+                payload["report_metadata"]["present_signoff_fields"],
+                ["regressions", "merge_recommendation", "replay_readiness", "next_action"],
+            )
+            self.assertEqual(payload["report_metadata"]["present_signoff_field_count"], 4)
             self.assertFalse(payload["require_replay_readiness"])
             self.assertTrue(payload["strict"])
             self.assertFalse(payload["require_checkpoint_timestamps"])

@@ -412,6 +412,11 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action": next_action,
     }
     missing_signoff_fields = [field for field, value in signoff_field_values.items() if value is None]
+    present_signoff_fields = [field for field, value in signoff_field_values.items() if value is not None]
+    signoff_field_status = {
+        field: ("present" if value is not None else "missing")
+        for field, value in signoff_field_values.items()
+    }
     signoff_field_coverage_rate = round(
         (len(signoff_field_values) - len(missing_signoff_fields)) / len(signoff_field_values), 4
     ) if signoff_field_values else 1.0
@@ -420,6 +425,10 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "reported_regressions": reported_regressions,
         "merge_recommendation": merge_recommendation,
         "replay_readiness": replay_readiness,
+        "signoff_field_values": signoff_field_values,
+        "signoff_field_status": signoff_field_status,
+        "present_signoff_fields": present_signoff_fields,
+        "present_signoff_field_count": len(present_signoff_fields),
         "missing_signoff_fields": missing_signoff_fields,
         "missing_signoff_field_count": len(missing_signoff_fields),
         "signoff_field_coverage_rate": signoff_field_coverage_rate,
