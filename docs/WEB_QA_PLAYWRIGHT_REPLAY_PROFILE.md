@@ -41,6 +41,22 @@ When contributors use the stricter replay aliases (`--playwright-interactive-pro
 4. For failed checks, record classification + recovery details before signoff.
 5. Re-run the validator before publishing the report to CI or PR comments.
 
+## Stepwise replay recovery order
+
+When a strict replay report fails, repair it in this order so the next rerun stays deterministic instead of introducing new drift:
+
+1. **Restore stable target identity first** — fix missing/reused `ref=<id>` markers before touching screenshots or signoff text.
+2. **Restore per-step evidence second** — make sure each failed or asserted checkpoint still points to the matching screenshot/log/trace artifact.
+3. **Reconcile checkpoint chronology third** — verify timestamps remain monotonic and the execution log still accounts for the same F/V/O step set.
+4. **Refresh failure recovery metadata last** — update classification, recovery owner, recovery plan, and next action only after the replay path is stable again.
+
+Why this order matters:
+- broken target refs make later screenshots ambiguous,
+- missing artifacts hide whether the step actually reproduced,
+- and editing recovery prose before the replay path is stable often creates misleading handoff notes.
+
+This mirrors Playwright-interactive discipline: stabilize selectors/targets first, verify step-by-step evidence second, then publish the human-facing recovery plan.
+
 ## Practical use
 
 ```bash

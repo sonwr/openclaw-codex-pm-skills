@@ -283,6 +283,7 @@ python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_samp
 For machine-readable CI output, add `--json` (stdout) or `--json-out <path>` (artifact file).
 
 For a reusable explanation of deterministic replay expectations and failure-recovery discipline, see `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`.
+That note now also documents a stepwise replay recovery order: restore stable target refs first, replay evidence second, checkpoint chronology third, and human recovery notes last.
 For a faster blocked-run triage workflow focused on `report_metadata`, owner handoff, and failed-check reruns, see `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`.
 For machine-readable CI contracts and JSON artifact routing, see `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`.
 For reviewer-facing merge rules and copy-paste PASS/blocked-run commands, see `docs/PR_MERGE_POLICY.md`.
