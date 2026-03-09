@@ -595,15 +595,26 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     replay_readiness_blocker_count_by_section = {
         section: 0 for section in checkpoint_section_counts
     }
+    replay_readiness_blocker_keys_by_section = {
+        section: [] for section in checkpoint_section_counts
+    }
     if replay_readiness == "READY":
         for section, count in missing_checkpoint_target_ref_count_by_section.items():
             replay_readiness_blocker_count_by_section[section] += count
+            if count:
+                replay_readiness_blocker_keys_by_section[section].append("missing_target_refs")
         for section, count in missing_checkpoint_artifact_ref_count_by_section.items():
             replay_readiness_blocker_count_by_section[section] += count
+            if count:
+                replay_readiness_blocker_keys_by_section[section].append("missing_artifact_refs")
         for section, count in missing_checkpoint_timestamp_ids_by_section.items():
             replay_readiness_blocker_count_by_section[section] += len(count)
+            if count:
+                replay_readiness_blocker_keys_by_section[section].append("missing_timestamps")
         for section, count in missing_checkpoint_evidence_ref_count_by_section.items():
             replay_readiness_blocker_count_by_section[section] += count
+            if count:
+                replay_readiness_blocker_keys_by_section[section].append("incomplete_evidence_refs")
     replay_readiness_blocker_coverage_rate_by_section = {
         section: round(
             replay_readiness_blocker_count_by_section[section] / checkpoint_section_counts[section],
@@ -628,6 +639,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "replay_readiness_blocker_keys": replay_readiness_blocker_keys,
         "replay_readiness_blocker_counts": replay_readiness_blocker_counts,
         "replay_readiness_blocker_count_by_section": replay_readiness_blocker_count_by_section,
+        "replay_readiness_blocker_keys_by_section": replay_readiness_blocker_keys_by_section,
         "replay_readiness_blocker_coverage_rate_by_section": replay_readiness_blocker_coverage_rate_by_section,
         "replay_readiness_blocker_count": len(replay_readiness_blockers),
         "signoff_field_values": signoff_field_values,
