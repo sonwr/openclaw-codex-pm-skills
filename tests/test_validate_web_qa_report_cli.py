@@ -1892,6 +1892,10 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                 }
             ],
         )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_summary"],
+            "ready_with_regressions: F1, F2, F3, F4, F5 (100.00% of hotspot checkpoints)",
+        )
 
 
 if __name__ == "__main__":
