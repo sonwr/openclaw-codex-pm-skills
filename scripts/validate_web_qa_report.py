@@ -516,6 +516,32 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         if classification is not None:
             unresolved_failed_check_classification_counts[classification] += 1
             unresolved_failed_check_ids_by_classification[classification].append(check_id)
+    unresolved_failed_check_first_id = unresolved_failed_check_ids[0] if unresolved_failed_check_ids else None
+    unresolved_failed_check_first_classification = (
+        failed_check_classifications_by_id.get(unresolved_failed_check_first_id)
+        if unresolved_failed_check_first_id is not None
+        else None
+    )
+    unresolved_failed_check_first_recovery_owner = (
+        failed_check_recovery_owners.get(unresolved_failed_check_first_id)
+        if unresolved_failed_check_first_id is not None
+        else None
+    )
+    unresolved_failed_check_next_step = (
+        f"Add `{unresolved_failed_check_first_id}` to Next action"
+        + (
+            f" for {unresolved_failed_check_first_classification} recovery"
+            if unresolved_failed_check_first_classification is not None
+            else ""
+        )
+        + (
+            f" and route to {unresolved_failed_check_first_recovery_owner}"
+            if unresolved_failed_check_first_recovery_owner is not None
+            else ""
+        )
+        if unresolved_failed_check_first_id is not None
+        else None
+    )
     qa_inventory_check_refs = _extract_qa_inventory_check_refs(text)
     expected_check_ids = [
         "F1", "F2", "F3", "F4", "F5",
@@ -930,6 +956,10 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "next_action_failed_check_recovery_owner_count": len(next_action_failed_check_recovery_owners),
         "unresolved_failed_check_ids": unresolved_failed_check_ids,
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
+        "unresolved_failed_check_first_id": unresolved_failed_check_first_id,
+        "unresolved_failed_check_first_classification": unresolved_failed_check_first_classification,
+        "unresolved_failed_check_first_recovery_owner": unresolved_failed_check_first_recovery_owner,
+        "unresolved_failed_check_next_step": unresolved_failed_check_next_step,
         "next_action_references_all_failed_checks": next_action_references_all_failed_checks,
         "unresolved_failed_check_classification_counts": unresolved_failed_check_classification_counts,
         "unresolved_failed_check_ids_by_classification": unresolved_failed_check_ids_by_classification,
