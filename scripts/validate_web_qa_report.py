@@ -374,9 +374,33 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     missing_checkpoint_target_ref_ids = [
         checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in checkpoint_target_refs_by_id
     ]
+    missing_checkpoint_target_ref_count_by_section = {
+        "functional": sum(1 for checkpoint_id in missing_checkpoint_target_ref_ids if checkpoint_id.startswith("F")),
+        "visual": sum(1 for checkpoint_id in missing_checkpoint_target_ref_ids if checkpoint_id.startswith("V")),
+        "off_happy": sum(1 for checkpoint_id in missing_checkpoint_target_ref_ids if checkpoint_id.startswith("O")),
+    }
+    missing_checkpoint_target_ref_coverage_rate_by_section = {
+        section: round(
+            missing_checkpoint_target_ref_count_by_section[section] / checkpoint_section_counts[section],
+            4,
+        ) if checkpoint_section_counts[section] else 0.0
+        for section in checkpoint_section_counts
+    }
     missing_checkpoint_artifact_ref_ids = [
         checkpoint_id for checkpoint_id in checkpoint_order if checkpoint_id not in checkpoint_artifact_refs_by_id
     ]
+    missing_checkpoint_artifact_ref_count_by_section = {
+        "functional": sum(1 for checkpoint_id in missing_checkpoint_artifact_ref_ids if checkpoint_id.startswith("F")),
+        "visual": sum(1 for checkpoint_id in missing_checkpoint_artifact_ref_ids if checkpoint_id.startswith("V")),
+        "off_happy": sum(1 for checkpoint_id in missing_checkpoint_artifact_ref_ids if checkpoint_id.startswith("O")),
+    }
+    missing_checkpoint_artifact_ref_coverage_rate_by_section = {
+        section: round(
+            missing_checkpoint_artifact_ref_count_by_section[section] / checkpoint_section_counts[section],
+            4,
+        ) if checkpoint_section_counts[section] else 0.0
+        for section in checkpoint_section_counts
+    }
     failed_check_classifications = _extract_failed_check_classifications(text)
     failed_check_classifications_by_id = _extract_failed_check_classifications_by_id(text)
     failed_check_classification_counts = {"selector": 0, "runtime": 0, "product": 0}
@@ -560,6 +584,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_target_refs_by_id": checkpoint_target_refs_by_id,
         "missing_checkpoint_target_ref_ids": missing_checkpoint_target_ref_ids,
         "missing_checkpoint_target_ref_count": len(missing_checkpoint_target_ref_ids),
+        "missing_checkpoint_target_ref_count_by_section": missing_checkpoint_target_ref_count_by_section,
+        "missing_checkpoint_target_ref_coverage_rate_by_section": missing_checkpoint_target_ref_coverage_rate_by_section,
         "checkpoint_reused_target_refs": checkpoint_reused_target_refs,
         "checkpoint_reused_target_ref_count": len(checkpoint_reused_target_refs),
         "checkpoint_reused_target_ref_id_count": len(checkpoint_reused_target_refs_by_id),
@@ -580,6 +606,8 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_artifact_refs_by_id": checkpoint_artifact_refs_by_id,
         "missing_checkpoint_artifact_ref_ids": missing_checkpoint_artifact_ref_ids,
         "missing_checkpoint_artifact_ref_count": len(missing_checkpoint_artifact_ref_ids),
+        "missing_checkpoint_artifact_ref_count_by_section": missing_checkpoint_artifact_ref_count_by_section,
+        "missing_checkpoint_artifact_ref_coverage_rate_by_section": missing_checkpoint_artifact_ref_coverage_rate_by_section,
         "checkpoint_reused_artifact_refs": checkpoint_reused_artifact_refs,
         "checkpoint_reused_artifact_ref_count": len(checkpoint_reused_artifact_refs),
         "checkpoint_reused_artifact_ref_id_count": len(checkpoint_reused_artifact_refs_by_id),

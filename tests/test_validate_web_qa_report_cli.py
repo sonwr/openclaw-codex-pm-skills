@@ -60,6 +60,14 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_target_ref_count"], 8)
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_target_ref_ids"][:3], ["F2", "F3", "F4"])
             self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_target_ref_count_by_section"],
+                {"functional": 4, "visual": 2, "off_happy": 2},
+            )
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_target_ref_coverage_rate_by_section"],
+                {"functional": 0.8, "visual": 0.6667, "off_happy": 1.0},
+            )
+            self.assertEqual(
                 payload["report_metadata"]["missing_checkpoint_timestamp_ids_by_section"],
                 {"functional": ["F2", "F3", "F4", "F5"], "visual": ["V2", "V3"], "off_happy": ["O1", "O2"]},
             )
@@ -92,6 +100,14 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             )
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_artifact_ref_count"], 8)
             self.assertEqual(payload["report_metadata"]["missing_checkpoint_artifact_ref_ids"][-2:], ["O1", "O2"])
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_artifact_ref_count_by_section"],
+                {"functional": 4, "visual": 2, "off_happy": 2},
+            )
+            self.assertEqual(
+                payload["report_metadata"]["missing_checkpoint_artifact_ref_coverage_rate_by_section"],
+                {"functional": 0.8, "visual": 0.6667, "off_happy": 1.0},
+            )
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs"], [])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs"], [])
             self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owners"], {})

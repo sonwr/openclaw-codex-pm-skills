@@ -293,6 +293,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
         )
         self.assertEqual(missing_target["checkpoint_target_ref_count"], 0)
         self.assertEqual(missing_target["checkpoint_evidence_ref_coverage_rate"], 0.0)
+        self.assertEqual(
+            missing_target["missing_checkpoint_target_ref_count_by_section"],
+            {"functional": 5, "visual": 3, "off_happy": 2},
+        )
+        self.assertEqual(
+            missing_target["missing_checkpoint_target_ref_coverage_rate_by_section"],
+            {"functional": 1.0, "visual": 1.0, "off_happy": 1.0},
+        )
 
         self.assertEqual(reused_target["checkpoint_target_ref_count"], 9)
         self.assertEqual(reused_target["checkpoint_reused_target_refs"], ["login.shared"])
@@ -302,6 +310,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(missing_artifact["missing_checkpoint_artifact_ref_ids"], ["F3"])
         self.assertEqual(missing_artifact["checkpoint_artifact_ref_count"], 9)
         self.assertEqual(missing_artifact["checkpoint_evidence_ref_coverage_rate"], 0.9)
+        self.assertEqual(
+            missing_artifact["missing_checkpoint_artifact_ref_count_by_section"],
+            {"functional": 1, "visual": 0, "off_happy": 0},
+        )
+        self.assertEqual(
+            missing_artifact["missing_checkpoint_artifact_ref_coverage_rate_by_section"],
+            {"functional": 0.2, "visual": 0.0, "off_happy": 0.0},
+        )
 
     def test_validate_report_fails_when_failure_timestamp_not_iso_utc(self) -> None:
         broken = FAILED_REPORT_WITH_RECOVERY.replace(
