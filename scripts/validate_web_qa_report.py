@@ -1035,6 +1035,21 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         and effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids
         else None
     )
+    effective_replay_readiness_hotspot_primary_blocker_summary_by_section = {
+        section: (
+            f"{effective_replay_readiness_hotspot_primary_blocker_key_by_section[section]}: "
+            + ", ".join(effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids_by_section[section])
+            + (
+                f" ({effective_replay_readiness_hotspot_primary_blocker_by_section[section]['checkpoint_share'] * 100:.2f}% of section checkpoints)"
+                if effective_replay_readiness_hotspot_primary_blocker_by_section[section]["checkpoint_share"] is not None
+                else ""
+            )
+            if effective_replay_readiness_hotspot_primary_blocker_key_by_section[section] is not None
+            and effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids_by_section[section]
+            else None
+        )
+        for section in hotspot_sections
+    }
     effective_replay_ready_sections = [
         section
         for section, count in effective_replay_readiness_blocker_count_by_section.items()
@@ -1144,6 +1159,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_primary_blocker_by_section": effective_replay_readiness_hotspot_primary_blocker_by_section,
         "effective_replay_readiness_hotspot_next_step": effective_replay_readiness_hotspot_next_step,
         "effective_replay_readiness_hotspot_primary_blocker_summary": effective_replay_readiness_hotspot_primary_blocker_summary,
+        "effective_replay_readiness_hotspot_primary_blocker_summary_by_section": effective_replay_readiness_hotspot_primary_blocker_summary_by_section,
         "effective_replay_ready_sections": effective_replay_ready_sections,
         "effective_replay_blocked_sections": effective_replay_blocked_sections,
         "effective_replay_section_status": effective_replay_section_status,
