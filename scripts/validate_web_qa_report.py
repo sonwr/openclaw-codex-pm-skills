@@ -185,6 +185,16 @@ def _extract_failed_check_recovery_owners(text: str) -> dict[str, str]:
             owners[check_id] = match.group(1).strip()
     return owners
 
+def _group_check_ids_by_recovery_owner(check_ids: list[str], recovery_owners: dict[str, str]) -> dict[str, list[str]]:
+    grouped: dict[str, list[str]] = {}
+    for check_id in check_ids:
+        owner = recovery_owners.get(check_id)
+        if owner is None:
+            continue
+        grouped.setdefault(owner, []).append(check_id)
+    return grouped
+
+
 
 def _extract_next_action_failed_check_refs(text: str) -> list[str]:
     next_action = _extract_next_action(text)
@@ -623,6 +633,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         else 0.0
         for classification in unresolved_failed_check_classification_counts
     }
+    failed_check_ids_by_recovery_owner = _group_check_ids_by_recovery_owner(failed_check_ids, failed_check_recovery_owners)
+    next_action_failed_check_ids_by_recovery_owner = _group_check_ids_by_recovery_owner(next_action_failed_check_refs, failed_check_recovery_owners)
+    unresolved_failed_check_ids_by_recovery_owner = _group_check_ids_by_recovery_owner(unresolved_failed_check_ids, failed_check_recovery_owners)
     next_action_failed_check_gap_count = len(unresolved_failed_check_ids)
     next_action_failed_check_gap_count_by_classification = {
         classification: unresolved_failed_check_classification_counts[classification]
@@ -1061,6 +1074,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "missing_failed_check_classification_ids": missing_failed_check_classification_ids,
         "missing_failed_check_classification_count": len(missing_failed_check_classification_ids),
         "failed_check_recovery_owners": failed_check_recovery_owners,
+        "failed_check_ids_by_recovery_owner": failed_check_ids_by_recovery_owner,
         "failed_check_recovery_owner_count": len(failed_check_recovery_owners),
         "failed_check_recovery_owner_coverage_rate": failed_check_recovery_owner_coverage_rate,
         "missing_failed_check_recovery_owner_ids": missing_failed_check_recovery_owner_ids,
@@ -1096,6 +1110,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         },
         "next_action_failed_check_coverage_rate_by_classification": next_action_failed_check_coverage_rate_by_classification,
         "next_action_failed_check_recovery_owners": next_action_failed_check_recovery_owners,
+        "next_action_failed_check_ids_by_recovery_owner": next_action_failed_check_ids_by_recovery_owner,
         "next_action_failed_check_recovery_owner_count": len(next_action_failed_check_recovery_owners),
         "unresolved_failed_check_ids": unresolved_failed_check_ids,
         "unresolved_failed_check_count": len(unresolved_failed_check_ids),
@@ -1113,6 +1128,7 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         },
         "unresolved_failed_check_coverage_rate_by_classification": unresolved_failed_check_coverage_rate_by_classification,
         "unresolved_failed_check_recovery_owners": unresolved_failed_check_recovery_owners,
+        "unresolved_failed_check_ids_by_recovery_owner": unresolved_failed_check_ids_by_recovery_owner,
         "unresolved_failed_check_recovery_owner_count": len(unresolved_failed_check_recovery_owners),
         "qa_inventory_check_refs": qa_inventory_check_refs,
         "qa_inventory_check_ref_count": len(qa_inventory_check_refs),

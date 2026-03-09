@@ -139,6 +139,7 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             )
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_target_refs"], [])
             self.assertEqual(payload["report_metadata"]["checkpoint_reused_artifact_refs"], [])
+            self.assertEqual(payload["report_metadata"]["failed_check_ids_by_recovery_owner"], {})
             self.assertEqual(payload["report_metadata"]["next_action_failed_check_recovery_owners"], {})
             self.assertEqual(payload["report_metadata"]["next_action_failed_check_gap_count"], 0)
             self.assertEqual(

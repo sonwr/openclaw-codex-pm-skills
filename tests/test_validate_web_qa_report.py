@@ -172,7 +172,10 @@ class ValidateWebQaReportTests(unittest.TestCase):
 
 
     def test_report_metadata_exposes_next_action_failed_check_refs(self) -> None:
-        report = FAILED_REPORT_WITH_RECOVERY + "- Next action: Investigate F2 spinner timeout, capture new artifacts, and rerun login flow\n"
+        report = FAILED_REPORT_WITH_RECOVERY.replace(
+            "    - Evidence: `artifacts/f2-failure.png`\n",
+            "    - Recovery owner: qa-product\n    - Evidence: `artifacts/f2-failure.png`\n",
+        ) + "- Next action: Investigate F2 spinner timeout, capture new artifacts, and rerun login flow\n"
         metadata = _build_report_metadata(report)
 
         self.assertEqual(metadata["failed_check_ids"], ["F2"])
@@ -204,6 +207,9 @@ class ValidateWebQaReportTests(unittest.TestCase):
             {"selector": 0.0, "runtime": 0.0, "product": 0.0},
         )
         self.assertEqual(metadata["checkpoint_section_counts"], {"functional": 5, "visual": 3, "off_happy": 2})
+        self.assertEqual(metadata["failed_check_ids_by_recovery_owner"], {"qa-product": ["F2"]})
+        self.assertEqual(metadata["next_action_failed_check_ids_by_recovery_owner"], {"qa-product": ["F2"]})
+        self.assertEqual(metadata["unresolved_failed_check_ids_by_recovery_owner"], {})
 
 
 
