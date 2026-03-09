@@ -57,6 +57,8 @@ Why this order matters:
 
 This mirrors Playwright-interactive discipline: stabilize selectors/targets first, verify step-by-step evidence second, then publish the human-facing recovery plan.
 
+When JSON automation drives the rerun, prefer `report_metadata.effective_replay_readiness_hotspot_checkpoint_ids` first. It gives one flattened, deterministic checkpoint list for the current hotspot section(s), so a bot or reviewer can paste the exact F/V/O ids to rerun before drilling into the per-section map.
+
 ## Practical use
 
 ```bash

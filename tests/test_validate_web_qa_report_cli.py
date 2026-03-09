@@ -215,6 +215,11 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload = json.loads(output.getvalue().strip())
             self.assertEqual(payload["status"], "PASS")
             self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_checkpoint_ids"],
+                ["F1", "F2", "F3", "F4", "F5"],
+            )
+            self.assertEqual(payload["report_metadata"]["effective_replay_readiness_hotspot_checkpoint_count"], 5)
+            self.assertEqual(
                 payload["report_metadata"]["effective_replay_readiness_hotspot_checkpoint_ids_by_section"],
                 {"functional": ["F1", "F2", "F3", "F4", "F5"]},
             )

@@ -140,6 +140,8 @@ if slug == 'missing_target_refs':
     assert metadata['replay_readiness_blocker_coverage_rate_by_section'] == {'functional': 2.0, 'visual': 2.0, 'off_happy': 2.0}, metadata
     assert metadata['effective_replay_readiness'] == 'BLOCKED', metadata
     assert metadata['effective_replay_readiness_hotspot_blocker_keys'] == ['missing_target_refs', 'incomplete_evidence_refs'], metadata
+    assert metadata['effective_replay_readiness_hotspot_checkpoint_ids'] == ['F1', 'F2', 'F3', 'F4', 'F5'], metadata
+    assert metadata['effective_replay_readiness_hotspot_checkpoint_count'] == 5, metadata
     assert metadata['effective_replay_readiness_hotspot_checkpoint_ids_by_section'] == {'functional': ['F1', 'F2', 'F3', 'F4', 'F5']}, metadata
     assert metadata['effective_replay_readiness_hotspot_checkpoint_count_by_section'] == {'functional': 5}, metadata
     assert metadata['effective_replay_readiness_hotspot_checkpoint_share_by_section'] == {'functional': 1.0}, metadata
