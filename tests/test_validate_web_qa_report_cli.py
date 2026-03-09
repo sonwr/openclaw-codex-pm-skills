@@ -1581,6 +1581,14 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                 ],
             },
         )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_blocker_count_by_section"],
+            {"functional": 25, "visual": 15, "off_happy": 10},
+        )
+        self.assertEqual(
+            payload["report_metadata"]["effective_replay_readiness_blocker_coverage_rate_by_section"],
+            {"functional": 5.0, "visual": 5.0, "off_happy": 5.0},
+        )
 
 
 if __name__ == "__main__":
