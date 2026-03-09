@@ -208,6 +208,16 @@ Recovery checklist: confirm `report_metadata.qa_inventory_missing_check_refs == 
 
 Use this quick distinction when downstream CI or machine parsers need to decide whether to repair formatting or restore missing checklist coverage first.
 
+### Isolated checkpoint-evidence drift cues
+
+Use the isolated strict-plus fixtures when you need deterministic evidence about *which replay reference class drifted* before opening the full markdown report.
+
+- Missing target refs (`examples/web_qa_playwright_strict_fail_missing_target_refs.md`) -> expect `report_metadata.missing_checkpoint_target_ref_ids` to list all 10 checks and `checkpoint_evidence_ref_coverage_rate == 0.0`.
+- Reused target refs (`examples/web_qa_playwright_strict_fail_target_ref_reuse_only.md`) -> expect one uniqueness error while `checkpoint_target_ref_count == 9`, meaning coverage exists but stable target refs are no longer one-to-one.
+- Missing artifact paths (`examples/web_qa_playwright_strict_fail_missing_artifact_paths_only.md`) -> expect `missing_checkpoint_artifact_ref_ids == ['F3']` and `checkpoint_evidence_ref_coverage_rate == 0.9`, which signals partial evidence capture drift rather than total replay-evidence loss.
+
+Keep this split visible in CI so failure recovery can choose the right fix order: restore target identity first, then restore artifact completeness, then rerun the report.
+
 ### Parser-facing JSON snippets for QA inventory triage
 
 Use these minimal payload shapes when downstream CI needs a quick fixture-to-parser contract reference without rerunning the full walkthroughs.

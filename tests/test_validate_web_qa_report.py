@@ -244,6 +244,43 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["qa_inventory_missing_check_refs"], ["O2"])
         self.assertEqual(metadata["qa_inventory_missing_check_ref_count"], 1)
 
+    def test_report_metadata_distinguishes_missing_vs_reused_checkpoint_refs(self) -> None:
+        missing_target_fixture = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_missing_target_refs.md"
+        )
+        reused_target_fixture = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_target_ref_reuse_only.md"
+        )
+        missing_artifact_fixture = (
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "web_qa_playwright_strict_fail_missing_artifact_paths_only.md"
+        )
+
+        missing_target = _build_report_metadata(missing_target_fixture.read_text(encoding="utf-8"))
+        reused_target = _build_report_metadata(reused_target_fixture.read_text(encoding="utf-8"))
+        missing_artifact = _build_report_metadata(missing_artifact_fixture.read_text(encoding="utf-8"))
+
+        self.assertEqual(
+            missing_target["missing_checkpoint_target_ref_ids"],
+            ["F1", "F2", "F3", "F4", "F5", "V1", "V2", "V3", "O1", "O2"],
+        )
+        self.assertEqual(missing_target["checkpoint_target_ref_count"], 0)
+        self.assertEqual(missing_target["checkpoint_evidence_ref_coverage_rate"], 0.0)
+
+        self.assertEqual(reused_target["checkpoint_target_ref_count"], 9)
+        self.assertEqual(reused_target["checkpoint_reused_target_refs"], ["login.shared"])
+        self.assertEqual(reused_target["checkpoint_reused_target_ref_count"], 1)
+        self.assertEqual(reused_target["checkpoint_evidence_ref_coverage_rate"], 1.0)
+
+        self.assertEqual(missing_artifact["missing_checkpoint_artifact_ref_ids"], ["F3"])
+        self.assertEqual(missing_artifact["checkpoint_artifact_ref_count"], 9)
+        self.assertEqual(missing_artifact["checkpoint_evidence_ref_coverage_rate"], 0.9)
+
     def test_validate_report_fails_when_failure_timestamp_not_iso_utc(self) -> None:
         broken = FAILED_REPORT_WITH_RECOVERY.replace(
             "2026-03-07T04:10:00Z", "2026-03-07 04:10:00 UTC"
