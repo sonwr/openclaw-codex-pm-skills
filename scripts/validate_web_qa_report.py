@@ -830,6 +830,13 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_blocked_sections": effective_replay_blocked_sections,
         "effective_replay_section_status": effective_replay_section_status,
         "effective_replay_readiness_hotspot_blocker_keys": effective_replay_readiness_hotspot_blocker_keys,
+        "effective_replay_readiness_hotspot_blocker_counts_by_section": {
+            section: {
+                blocker_key: effective_replay_readiness_blocker_keys_by_section[section].count(blocker_key)
+                for blocker_key in effective_replay_readiness_blocker_keys_by_section[section]
+            }
+            for section in hotspot_sections
+        },
         "effective_replay_readiness_hotspot_checkpoint_ids": effective_replay_readiness_hotspot_checkpoint_ids,
         "effective_replay_readiness_hotspot_checkpoint_ids_by_section": effective_replay_readiness_hotspot_checkpoint_ids_by_section,
         "effective_replay_readiness_hotspot_checkpoint_count": effective_replay_readiness_hotspot_checkpoint_count,

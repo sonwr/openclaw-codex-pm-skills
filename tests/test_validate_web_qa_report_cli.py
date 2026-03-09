@@ -245,6 +245,10 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                     "checkpoint_share": 1.0,
                 }],
             )
+            self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_blocker_counts_by_section"],
+                {"functional": {"missing_target_refs": 1, "incomplete_evidence_refs": 1}},
+            )
 
     def test_cli_json_output_tracks_missing_evidence_dimensions_by_checkpoint(self) -> None:
         fixture_path = (
