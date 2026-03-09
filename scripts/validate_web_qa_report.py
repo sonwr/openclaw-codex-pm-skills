@@ -237,6 +237,18 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "visual": [checkpoint_id for checkpoint_id in missing_checkpoint_timestamp_ids if checkpoint_id.startswith("V")],
         "off_happy": [checkpoint_id for checkpoint_id in missing_checkpoint_timestamp_ids if checkpoint_id.startswith("O")],
     }
+    checkpoint_timestamp_count_by_section = {
+        "functional": sum(1 for checkpoint_id in checkpoint_timestamps_by_id if checkpoint_id.startswith("F")),
+        "visual": sum(1 for checkpoint_id in checkpoint_timestamps_by_id if checkpoint_id.startswith("V")),
+        "off_happy": sum(1 for checkpoint_id in checkpoint_timestamps_by_id if checkpoint_id.startswith("O")),
+    }
+    checkpoint_timestamp_coverage_rate_by_section = {
+        section: round(
+            checkpoint_timestamp_count_by_section[section] / checkpoint_section_counts[section],
+            4,
+        ) if checkpoint_section_counts[section] else 0.0
+        for section in checkpoint_section_counts
+    }
     checkpoint_target_refs: list[str] = []
     checkpoint_artifact_refs: list[str] = []
     checkpoint_target_refs_by_id: dict[str, list[str]] = {}
@@ -412,10 +424,12 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "checkpoint_count": checkpoint_count,
         "checkpoint_timestamps_by_id": checkpoint_timestamps_by_id,
         "checkpoint_timestamp_count": checkpoint_timestamp_count,
+        "checkpoint_timestamp_count_by_section": checkpoint_timestamp_count_by_section,
         "missing_checkpoint_timestamp_ids": missing_checkpoint_timestamp_ids,
         "missing_checkpoint_timestamp_count": len(missing_checkpoint_timestamp_ids),
         "missing_checkpoint_timestamp_ids_by_section": missing_checkpoint_timestamp_ids_by_section,
         "checkpoint_timestamp_coverage_rate": checkpoint_timestamp_coverage_rate,
+        "checkpoint_timestamp_coverage_rate_by_section": checkpoint_timestamp_coverage_rate_by_section,
         "checkpoint_section_counts": checkpoint_section_counts,
         "missing_checkpoint_ids": missing_checkpoint_ids,
         "missing_checkpoint_count": len(missing_checkpoint_ids),
