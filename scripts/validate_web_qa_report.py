@@ -589,8 +589,23 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "missing_checkpoint_timestamp_ids": missing_checkpoint_timestamp_ids,
         "missing_checkpoint_timestamp_count": len(missing_checkpoint_timestamp_ids),
         "missing_checkpoint_timestamp_ids_by_section": missing_checkpoint_timestamp_ids_by_section,
+        "missing_checkpoint_timestamp_count_by_section": {
+            section: len(missing_checkpoint_timestamp_ids_by_section[section])
+            for section in missing_checkpoint_timestamp_ids_by_section
+        },
         "checkpoint_timestamp_coverage_rate": checkpoint_timestamp_coverage_rate,
         "checkpoint_timestamp_coverage_rate_by_section": checkpoint_timestamp_coverage_rate_by_section,
+        "missing_checkpoint_timestamp_coverage_rate_by_section": {
+            section: round(
+                (
+                    len(missing_checkpoint_timestamp_ids_by_section[section]) / checkpoint_section_counts[section]
+                    if checkpoint_section_counts[section]
+                    else 0.0
+                ),
+                4,
+            )
+            for section in missing_checkpoint_timestamp_ids_by_section
+        },
         "checkpoint_section_counts": checkpoint_section_counts,
         "missing_checkpoint_ids": missing_checkpoint_ids,
         "missing_checkpoint_count": len(missing_checkpoint_ids),

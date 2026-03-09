@@ -369,10 +369,18 @@ class ValidateWebQaReportTests(unittest.TestCase):
             ["F2", "F3", "F4", "F5", "V2", "V3", "O1", "O2"],
         )
         self.assertEqual(metadata["missing_checkpoint_timestamp_count"], 8)
+        self.assertEqual(
+            metadata["missing_checkpoint_timestamp_count_by_section"],
+            {"functional": 4, "visual": 2, "off_happy": 2},
+        )
         self.assertEqual(metadata["checkpoint_timestamp_coverage_rate"], 0.2)
         self.assertEqual(
             metadata["checkpoint_timestamp_coverage_rate_by_section"],
             {"functional": 0.2, "visual": 0.3333, "off_happy": 0.0},
+        )
+        self.assertEqual(
+            metadata["missing_checkpoint_timestamp_coverage_rate_by_section"],
+            {"functional": 0.8, "visual": 0.6667, "off_happy": 1.0},
         )
 
     def test_validate_report_fails_when_failure_timestamps_are_not_monotonic(self) -> None:
