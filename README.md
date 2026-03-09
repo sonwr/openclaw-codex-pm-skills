@@ -526,6 +526,7 @@ If you are updating web QA prompts, fixtures, or report validation rules, read:
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 
 - `docs/WEB_QA_PLAYWRIGHT_SECTION_RERUN_CHECKLIST.md` (adds a section-by-section rerun order so operators repair one blocked lane at a time before widening replay scope)
+- `docs/WEB_QA_PLAYWRIGHT_BLOCKED_SECTION_HANDOFF.md` (adds a minimal section-scoped handoff pattern so blocked `functional` / `visual` / `off_happy` lanes can be copied straight from strict-plus JSON into the next rerun)
 These docs keep browser automation work aligned with deterministic replay, step-by-step verification, and failure-recovery handoff expectations.
 
 ---
