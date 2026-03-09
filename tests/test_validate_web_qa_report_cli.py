@@ -258,6 +258,20 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                 },
             )
             self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_key_by_section"],
+                {"functional": "missing_target_refs"},
+            )
+            self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_checkpoint_ids_by_section"],
+                {"functional": ["F1", "F2", "F3", "F4", "F5"]},
+            )
+            self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_next_step_by_section"],
+                {
+                    "functional": "Repair hotspot section `functional` by fixing `missing_target_refs` across checkpoints: F1, F2, F3, F4, F5",
+                },
+            )
+            self.assertEqual(
                 payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_key"],
                 "missing_target_refs",
             )
