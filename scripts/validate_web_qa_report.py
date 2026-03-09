@@ -765,6 +765,26 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         else 0.0
         for section in hotspot_sections
     }
+    effective_replay_readiness_hotspot_primary_blocker_key = (
+        max(
+            effective_replay_readiness_hotspot_blocker_key_frequency.items(),
+            key=lambda item: (item[1], item[0]),
+        )[0]
+        if effective_replay_readiness_hotspot_blocker_key_frequency
+        else None
+    )
+    effective_replay_readiness_hotspot_primary_blocker_count = (
+        effective_replay_readiness_hotspot_blocker_key_frequency[effective_replay_readiness_hotspot_primary_blocker_key]
+        if effective_replay_readiness_hotspot_primary_blocker_key is not None
+        else 0
+    )
+    effective_replay_readiness_hotspot_next_step = (
+        f"Repair `{effective_replay_readiness_hotspot_primary_blocker_key}` across hotspot checkpoints: "
+        + ", ".join(effective_replay_readiness_hotspot_checkpoint_ids)
+        if effective_replay_readiness_hotspot_primary_blocker_key is not None
+        and effective_replay_readiness_hotspot_checkpoint_ids
+        else None
+    )
     effective_replay_ready_sections = [
         section
         for section, count in effective_replay_readiness_blocker_count_by_section.items()
@@ -843,6 +863,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         "effective_replay_readiness_hotspot_has_ties": effective_replay_readiness_hotspot_has_ties,
         "effective_replay_readiness_hotspot_blocker_count_total": effective_replay_readiness_hotspot_blocker_count_total,
         "effective_replay_readiness_hotspot_blocker_key_frequency": effective_replay_readiness_hotspot_blocker_key_frequency,
+        "effective_replay_readiness_hotspot_primary_blocker_key": effective_replay_readiness_hotspot_primary_blocker_key,
+        "effective_replay_readiness_hotspot_primary_blocker_count": effective_replay_readiness_hotspot_primary_blocker_count,
+        "effective_replay_readiness_hotspot_next_step": effective_replay_readiness_hotspot_next_step,
         "effective_replay_ready_sections": effective_replay_ready_sections,
         "effective_replay_blocked_sections": effective_replay_blocked_sections,
         "effective_replay_section_status": effective_replay_section_status,
