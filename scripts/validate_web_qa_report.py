@@ -524,6 +524,9 @@ def _build_report_metadata(text: str) -> dict[str, object]:
         else 0.0
         for classification in unresolved_failed_check_classification_counts
     }
+    replay_readiness_reference_regressions = (
+        reported_regressions if reported_regressions is not None else failed_check_count
+    )
     signoff_field_values = {
         "regressions": reported_regressions,
         "merge_recommendation": merge_recommendation,
@@ -539,11 +542,27 @@ def _build_report_metadata(text: str) -> dict[str, object]:
     signoff_field_coverage_rate = round(
         (len(signoff_field_values) - len(missing_signoff_fields)) / len(signoff_field_values), 4
     ) if signoff_field_values else 1.0
+    replay_readiness_consistent_with_failed_checks = (
+        replay_readiness is None
+        or (replay_readiness_reference_regressions == 0 and replay_readiness == "READY")
+        or (replay_readiness_reference_regressions > 0 and replay_readiness == "BLOCKED")
+    )
+    replay_readiness_blockers: list[str] = []
+    if replay_readiness_reference_regressions == 0 and replay_readiness == "BLOCKED":
+        replay_readiness_blockers.append("regressions=0 but replay_readiness=BLOCKED")
+    if replay_readiness_reference_regressions > 0 and replay_readiness == "READY":
+        replay_readiness_blockers.append(
+            f"regressions={replay_readiness_reference_regressions} but replay_readiness=READY"
+        )
     return {
         "has_signoff_section": _has_signoff_section(text),
         "reported_regressions": reported_regressions,
         "merge_recommendation": merge_recommendation,
         "replay_readiness": replay_readiness,
+        "replay_readiness_reference_regressions": replay_readiness_reference_regressions,
+        "replay_readiness_consistent_with_failed_checks": replay_readiness_consistent_with_failed_checks,
+        "replay_readiness_blockers": replay_readiness_blockers,
+        "replay_readiness_blocker_count": len(replay_readiness_blockers),
         "signoff_field_values": signoff_field_values,
         "signoff_field_status": signoff_field_status,
         "present_signoff_fields": present_signoff_fields,

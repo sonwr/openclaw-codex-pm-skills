@@ -1508,6 +1508,46 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             self.assertTrue(any("every failed check id" in err.lower() for err in payload["errors"]))
 
 
+    def test_cli_json_output_flags_replay_readiness_mismatch_against_failed_checks(self) -> None:
+        report = VALID_REPORT.replace(
+            "- Regressions: 0",
+            "- Regressions: 1",
+        ).replace(
+            "- Merge recommendation: **APPROVE**",
+            "- Merge recommendation: **BLOCK**",
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(report, encoding="utf-8")
+
+            output = io.StringIO()
+            with self.assertRaises(SystemExit):
+                with mock.patch(
+                    "sys.argv",
+                    [
+                        "validate_web_qa_report.py",
+                        "--file",
+                        str(report_path),
+                        "--strict",
+                        "--json",
+                    ],
+                ):
+                    with contextlib.redirect_stdout(output):
+                        validate_web_qa_report.main()
+
+        payload = json.loads(output.getvalue().strip())
+        self.assertEqual(payload["status"], "FAIL")
+        self.assertEqual(payload["report_metadata"]["replay_readiness"], "READY")
+        self.assertEqual(payload["report_metadata"]["replay_readiness_reference_regressions"], 1)
+        self.assertFalse(payload["report_metadata"]["replay_readiness_consistent_with_failed_checks"])
+        self.assertEqual(
+            payload["report_metadata"]["replay_readiness_blockers"],
+            ["regressions=1 but replay_readiness=READY"],
+        )
+        self.assertEqual(payload["report_metadata"]["replay_readiness_blocker_count"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -1576,6 +1616,8 @@ if __name__ == "__main__":
         self.assertEqual(payload["report_metadata"]["reported_regressions"], 1)
         self.assertEqual(payload["report_metadata"]["merge_recommendation"], "BLOCK")
         self.assertEqual(payload["report_metadata"]["replay_readiness"], "BLOCKED")
+        self.assertTrue(payload["report_metadata"]["replay_readiness_consistent_with_failed_checks"])
+        self.assertEqual(payload["report_metadata"]["replay_readiness_blockers"], [])
         self.assertEqual(payload["report_metadata"]["missing_signoff_fields"], [])
         self.assertEqual(payload["report_metadata"]["missing_signoff_field_count"], 0)
         self.assertEqual(payload["report_metadata"]["signoff_field_coverage_rate"], 1.0)
