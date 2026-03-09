@@ -334,6 +334,14 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
                 {"functional": ["F1", "F2", "F3", "F4", "F5"]},
             )
             self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_tied_sections"],
+                ["functional"],
+            )
+            self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_tied_section_labels"],
+                ["functional"],
+            )
+            self.assertEqual(
                 payload["report_metadata"]["effective_replay_readiness_hotspot_summaries"],
                 [{
                     "section": "functional",
@@ -1900,6 +1908,65 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             payload["report_metadata"]["effective_replay_readiness_hotspot_primary_blocker_summary_by_section"],
             {"functional": "ready_with_regressions: F1, F2, F3, F4, F5 (100.00% of section checkpoints)"},
         )
+
+
+    def test_cli_json_output_exposes_hotspot_tied_sections_when_multiple_sections_share_top_blocker_load(self) -> None:
+        report = VALID_REPORT.replace(
+            "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
+            "- F1 checkpoint: PASS 2026-03-08T14:40:00Z ref=e11 URL changed to `/dashboard`, artifact `artifacts/f1.png` user avatar visible",
+        ).replace(
+            "- F2 checkpoint: Inline error panel rendered and focus moved to form alert",
+            "- F2 checkpoint: PASS 2026-03-08T14:40:30Z ref=e12 Inline error panel rendered, artifact `artifacts/f2.png` focus moved to form alert",
+        ).replace(
+            "- F3 checkpoint: Required-field validation blocked form submit",
+            "- F3 checkpoint: PASS 2026-03-08T14:41:00Z ref=e13 Required-field validation blocked form submit, artifact `artifacts/f3.png`",
+        ).replace(
+            "- F4 checkpoint: Pressing Enter on password field triggered submit",
+            "- F4 checkpoint: PASS 2026-03-08T14:41:30Z ref=e14 Pressing Enter on password field triggered submit, artifact `artifacts/f4.png`",
+        ).replace(
+            "- V1 checkpoint: Captured baseline layout screenshot",
+            "- V1 checkpoint: PASS 2026-03-08T14:42:00Z ref=e44 Captured baseline layout screenshot `artifacts/v1.png`",
+        ).replace(
+            "- V2 checkpoint: Captured error-state screenshot",
+            "- V2 checkpoint: PASS 2026-03-08T14:42:30Z ref=e45 Captured error-state screenshot `artifacts/v2.png`",
+        ).replace(
+            "- O1 checkpoint: Wrong-password path stayed on `/login`",
+            "- O1 checkpoint: PASS 2026-03-08T14:43:00Z ref=e51 Wrong-password path stayed on `/login`, artifact `artifacts/o1.png`",
+        ).replace(
+            "- O2 checkpoint: Empty-password path showed client-side validation",
+            "- O2 checkpoint: PASS 2026-03-08T14:43:30Z ref=e52 Empty-password path showed client-side validation, artifact `artifacts/o2.png`",
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_path = Path(tmpdir) / "report.md"
+            report_path.write_text(report, encoding="utf-8")
+
+            output = io.StringIO()
+            with mock.patch(
+                "sys.argv",
+                [
+                    "validate_web_qa_report.py",
+                    "--file",
+                    str(report_path),
+                    "--strict",
+                    "--json",
+                ],
+            ):
+                with contextlib.redirect_stdout(output):
+                    validate_web_qa_report.main()
+
+            payload = json.loads(output.getvalue().strip())
+            self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["report_metadata"]["effective_replay_readiness_hotspot_tie_count"], 2)
+            self.assertEqual(payload["report_metadata"]["effective_replay_readiness_hotspot_has_ties"], True)
+            self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_tied_sections"],
+                ["functional", "visual"],
+            )
+            self.assertEqual(
+                payload["report_metadata"]["effective_replay_readiness_hotspot_tied_section_labels"],
+                ["functional", "visual"],
+            )
 
 
 if __name__ == "__main__":
