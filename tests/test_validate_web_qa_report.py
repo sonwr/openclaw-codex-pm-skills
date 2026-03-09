@@ -146,6 +146,15 @@ class ValidateWebQaReportTests(unittest.TestCase):
             [],
         )
 
+    def test_validate_report_fails_when_next_action_does_not_reference_all_failed_check_ids(self) -> None:
+        report = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n\n## 2) Checklist execution summary\n- Functional checks (3/5 pass)\n  - F1: PASS\n  - F2: FAIL\n    - Expected: Inline selector resolves after submit\n    - Observed: Locator never resolved\n    - First failure timestamp: 2026-03-07T04:10:00Z\n    - Retry: FAIL\n    - Failure classification: selector\n    - Recovery owner: qa-ui\n    - Evidence: `artifacts/f2-failure.png`\n  - F3: FAIL\n    - Expected: Spinner clears within 2 seconds\n    - Observed: Spinner persisted for 10 seconds\n    - First failure timestamp: 2026-03-07T04:12:00Z\n    - Retry: FAIL\n    - Failure classification: runtime\n    - Recovery owner: qa-runtime\n    - Evidence: `artifacts/f3-failure.png`\n  - F4: PASS\n  - F5: PASS\n- Visual checks (3/3 pass)\n  - V1: PASS `shots/v1.png`\n  - V2: PASS `shots/v2.png`\n  - V3: PASS `shots/v3.png`\n- Off-happy-path checks (2/2 pass)\n  - O1: PASS\n  - O2: PASS\n\n## 3) Execution log\n- F2 checkpoint: FAIL - selector missing after submit\n- F3 checkpoint: FAIL - spinner never cleared\n\n## 4) Signoff\n- Regressions: 2\n- Merge recommendation: **BLOCK**\n- Replay readiness: **BLOCKED**\n- Next action: Investigate F2 selector drift, capture fresh evidence, and rerun selector coverage\n"""
+        errors = validate_report_text(
+            report,
+            require_next_action=True,
+            require_next_action_all_failed_check_refs=True,
+        )
+        self.assertTrue(any("every failed check id" in e for e in errors))
+
 
     def test_report_metadata_exposes_next_action_failed_check_refs(self) -> None:
         report = FAILED_REPORT_WITH_RECOVERY + "- Next action: Investigate F2 spinner timeout, capture new artifacts, and rerun login flow\n"

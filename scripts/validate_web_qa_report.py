@@ -714,6 +714,7 @@ def validate_report_text(
     require_replay_readiness: bool = False,
     require_next_action: bool = False,
     require_next_action_failed_check_ref: bool = False,
+    require_next_action_all_failed_check_refs: bool = False,
 ) -> list[str]:
     functional_block = _section_block(text, SECTION_TITLES["functional"])
     visual_block = _section_block(text, SECTION_TITLES["visual"])
@@ -1068,6 +1069,25 @@ def validate_report_text(
                 "next action failed-check ref: Next action must reference at least one failed check id "
                 f"({', '.join(failed_check_ids)}) so recovery work stays traceable"
             )
+
+    if require_next_action_all_failed_check_refs:
+        failed_check_ids = _extract_failed_check_ids(text)
+        if failed_check_ids and next_action is None:
+            errors.append(
+                "next action all failed-check refs: signoff must include 'Next action: ...' when failed checks need a deterministic full handoff"
+            )
+        elif failed_check_ids:
+            unresolved_failed_check_ids = [
+                check_id
+                for check_id in failed_check_ids
+                if re.search(rf"\b{re.escape(check_id)}\b", next_action) is None
+            ]
+            if unresolved_failed_check_ids:
+                errors.append(
+                    "next action all failed-check refs: Next action must reference every failed check id "
+                    f"({', '.join(failed_check_ids)}; missing: {', '.join(unresolved_failed_check_ids)}) "
+                    "so replay recovery keeps a complete deterministic handoff"
+                )
 
     checkpoint_pairs = _extract_checkpoint_tails(text)
 
@@ -1559,6 +1579,11 @@ def main() -> None:
         action="store_true",
         help="Require signoff Next action to reference at least one failed check id when regressions are present",
     )
+    parser.add_argument(
+        "--require-next-action-all-failed-check-refs",
+        action="store_true",
+        help="Require signoff Next action to reference every failed check id for a complete deterministic recovery handoff",
+    )
     args = parser.parse_args()
 
     profile_enabled = (
@@ -1607,6 +1632,7 @@ def main() -> None:
     require_replay_readiness = args.require_replay_readiness or profile_enabled
     require_next_action = args.require_next_action
     require_next_action_failed_check_ref = args.require_next_action_failed_check_ref
+    require_next_action_all_failed_check_refs = args.require_next_action_all_failed_check_refs
 
     def resolve_profile_preset() -> str | None:
         if args.playwright_interactive_profile:
@@ -1656,6 +1682,7 @@ def main() -> None:
         require_replay_readiness=require_replay_readiness,
         require_next_action=require_next_action,
         require_next_action_failed_check_ref=require_next_action_failed_check_ref,
+        require_next_action_all_failed_check_refs=require_next_action_all_failed_check_refs,
     )
     report_metadata = _build_report_metadata(text)
 
@@ -1702,6 +1729,7 @@ def main() -> None:
             "require_replay_readiness": require_replay_readiness,
             "require_next_action": require_next_action,
             "require_next_action_failed_check_ref": require_next_action_failed_check_ref,
+            "require_next_action_all_failed_check_refs": require_next_action_all_failed_check_refs,
             "file": str(report_path),
             "errors": errors,
             "error_count": len(errors),
@@ -1749,6 +1777,7 @@ def main() -> None:
         "require_replay_readiness": require_replay_readiness,
         "require_next_action": require_next_action,
         "require_next_action_failed_check_ref": require_next_action_failed_check_ref,
+        "require_next_action_all_failed_check_refs": require_next_action_all_failed_check_refs,
         "file": str(report_path),
         "report_metadata": report_metadata,
         "counts": {
@@ -1827,6 +1856,8 @@ def main() -> None:
         print("- next action handoff checks: enabled")
     if require_next_action_failed_check_ref:
         print("- next action failed-check traceability checks: enabled")
+    if require_next_action_all_failed_check_refs:
+        print("- next action all-failed-check handoff checks: enabled")
     if report_metadata.get("has_signoff_section"):
         print(
             "- signoff field coverage: "
