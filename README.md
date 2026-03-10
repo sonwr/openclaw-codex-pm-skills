@@ -26,6 +26,7 @@ If you need a compact signoff-coverage decision card before handoff, open `docs/
 If you need a 60-second replay-readiness review before rerun or handoff, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_READINESS_QUICKCHECK.md`.
 If hotspot sections tie on replay blockers, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_HOTSPOT_TIEBREAK.md` before flattening the repair lane into a single winner.
 If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_TRIAGE_CARD.md`.
+If you need a compact rerun-only handoff checklist after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_HANDOFF_CARD.md`.
 
 ---
 
