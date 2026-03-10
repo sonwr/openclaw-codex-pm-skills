@@ -42,6 +42,7 @@ If you need a fast green/yellow/red cue sheet before calling a failure lane reru
 If you need a one-screen retry-versus-repair decision card before choosing the next move, open `docs/WEB_QA_PLAYWRIGHT_RETRY_DECISION_CARD.md`.
 If you need a compact hotspot-only rerun brief after strict-plus validation already named the blocked lane, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_HANDOFF_CARD.md`.
 If you need a one-screen lane audit before calling the rerun scope safe, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_LANE_AUDIT.md`.
+If you need a 30-second call on whether the next rerun should stay lane-scoped or expand to section scope, open `docs/WEB_QA_PLAYWRIGHT_RERUN_SCOPE_CARD.md`.
 If you need a one-screen rule for turning hotspot JSON into the next repair sentence, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_NEXT_STEP.md`.
 If you need a compact maturity ladder for deciding whether a passing artifact is merely validator-clean or truly handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_HANDOFF_READINESS_LADDER.md`.
 If you need a one-screen rule for making `Next action:` cover every failed check id before strict-plus handoff, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_ALL_FAILED_REFS.md`.
