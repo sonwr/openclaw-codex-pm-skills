@@ -19,6 +19,22 @@ VALID_REPORT = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n- V
 
 class ValidateWebQaReportCliTests(unittest.TestCase):
 
+    def test_next_action_replay_support_helpers_cover_all_presence_combinations(self) -> None:
+        self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support(["e12"], ["artifacts/f1.png"]), "target_and_artifact_refs")
+        self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support(["e12"], []), "target_refs_only")
+        self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support([], ["artifacts/f1.png"]), "artifact_refs_only")
+        self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support([], []), "none")
+
+    def test_next_action_replay_handoff_card_marks_missing_dimensions(self) -> None:
+        self.assertEqual(
+            validate_web_qa_report._format_next_action_replay_handoff_card(["F2"], ["e12"], [], False),
+            "checks=F2; targets=e12; artifacts=missing; rerun=no",
+        )
+        self.assertEqual(
+            validate_web_qa_report._describe_next_action_replay_support(["F2"], ["e12"], [], True),
+            "failed checks: F2 | targets: e12 | artifacts: missing | rerun cue: yes",
+        )
+
     def test_cli_json_output_exposes_checkpoint_ref_metadata_for_replay_triage(self) -> None:
         report = VALID_REPORT.replace(
             "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
