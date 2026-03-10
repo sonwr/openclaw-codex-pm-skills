@@ -26,6 +26,7 @@ This project is designed for teams who want practical, reusable product-manageme
 - [How to Use in Real Work](#how-to-use-in-real-work)
 - [Quality Standards](#quality-standards)
 - [Playwright Interactive Execution Principles](#playwright-interactive-execution-principles)
+- [Playwright Replay Blocker Triage](#playwright-replay-blocker-triage)
 - [Contributing Guide](#contributing-guide)
 - [Governance and Decision-Making](#governance-and-decision-making)
 - [Compatibility Notes](#compatibility-notes)
@@ -533,6 +534,10 @@ If you are updating web QA prompts, fixtures, or report validation rules, read:
 These docs keep browser automation work aligned with deterministic replay, step-by-step verification, and failure-recovery handoff expectations.
 
 ---
+
+## Playwright Replay Blocker Triage
+
+If a report is technically valid but still hard to replay, use `docs/WEB_QA_PLAYWRIGHT_REPLAY_BLOCKER_TRIAGE.md` to group blocker-heavy failures by cause, owner, and smallest trustworthy rerun.
 
 ## Contributing Guide
 
