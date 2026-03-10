@@ -20,6 +20,7 @@ python3 -m unittest tests/test_validate_web_qa_report.py tests/test_validate_web
 This keeps documentation tweaks and validation-rule changes tied to the same replay-readiness contract.
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
 If the validator passes with incomplete signoff coverage, use `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_MISSING_FIELDS.md` to decide whether the artifact is inspection-ready or truly handoff-ready.
+If you need a compact signoff-coverage decision card before handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_COVERAGE_CARD.md`.
 If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_TRIAGE_CARD.md`.
 
 ---
@@ -166,6 +167,7 @@ Current docs:
 - `docs/PLAYWRIGHT_INTERACTIVE_REPAIR_LOOP.md` (adds a concise rerun playbook for stabilizing the session, repairing one checkpoint at a time, restoring evidence, and confirming recovery before signoff)
 - `docs/WEB_QA_PLAYWRIGHT_STEP_TEMPLATE.md` (adds a copyable single-checkpoint template so interactive QA reports keep one action, one verification step, one evidence artifact, and one recovery note per checkpoint)
 - `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_LANES.md` (adds a READY-vs-BLOCKED section triage note so operators can choose the next deterministic replay lane directly from strict-plus JSON)
+- `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_COVERAGE_CARD.md` (adds a compact validation-clean vs handoff-ready decision card for incomplete signoff coverage)
 - `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_QUICKCHECK.md` (adds a 60-second human review order for deciding whether a strict-plus report is validation-clean and handoff-ready)
 - `docs/WEB_QA_PLAYWRIGHT_SECTION_STATUS_CARD.md` (adds a copy-ready per-section handoff card so operators can pass `functional` / `visual` / `off_happy` replay status without reopening the full JSON)
 - `docs/WEB_QA_PLAYWRIGHT_SECTION_REPAIR_ORDER.md` (adds a compact section-first repair order that maps READY/BLOCKED lanes, hotspot blockers, and first rerun targets into one operator checklist)
