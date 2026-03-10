@@ -218,15 +218,22 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["checkpoint_section_counts"], {"functional": 5, "visual": 3, "off_happy": 2})
         self.assertEqual(metadata["failed_check_ids_by_recovery_owner"], {"qa-product": ["F2"]})
         self.assertEqual(metadata["failed_check_handoff_summary_by_recovery_owner"], {"qa-product": "F2"})
-        self.assertEqual(metadata["failed_check_count_by_recovery_owner"], {"qa-product": 1})
-        self.assertEqual(metadata["next_action_failed_check_ids_by_recovery_owner"], {"qa-product": ["F2"]})
-        self.assertEqual(metadata["next_action_failed_check_handoff_summary_by_recovery_owner"], {"qa-product": "F2"})
-        self.assertEqual(metadata["next_action_failed_check_count_by_recovery_owner"], {"qa-product": 1})
-        self.assertEqual(metadata["next_action_failed_check_coverage_rate_by_recovery_owner"], {"qa-product": 1.0})
+
+    def test_report_metadata_groups_failed_checks_by_multiple_recovery_owners(self) -> None:
+        report = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n- Viewport: `1366x768`\n- Test account: `qa.user@example.test`\n\n## 2) Checklist execution summary\n- Functional checks (3/5 pass)\n  - F1: PASS\n  - F2: FAIL\n    - Expected: Inline selector resolves after submit\n    - Observed: Locator never resolved\n    - First failure timestamp: 2026-03-07T04:10:00Z\n    - Retry: FAIL\n    - Failure classification: selector\n    - Recovery owner: qa-ui\n    - Evidence: `artifacts/f2-failure.png`\n  - F3: FAIL\n    - Expected: Spinner clears within 2 seconds\n    - Observed: Spinner persisted for 10 seconds\n    - First failure timestamp: 2026-03-07T04:12:00Z\n    - Retry: FAIL\n    - Failure classification: runtime\n    - Recovery owner: qa-runtime\n    - Evidence: `artifacts/f3-failure.png`\n  - F4: PASS\n  - F5: PASS\n- Visual checks (3/3 pass)\n  - V1: PASS `shots/v1.png`\n  - V2: PASS `shots/v2.png`\n  - V3: PASS `shots/v3.png`\n- Off-happy-path checks (2/2 pass)\n  - O1: PASS\n  - O2: PASS\n\n## 3) Execution log\n- F2 checkpoint: FAIL - selector missing after submit\n- F3 checkpoint: FAIL - spinner never cleared\n\n## 4) Signoff\n- Regressions: 2\n- Merge recommendation: **BLOCK**\n- Replay readiness: **BLOCKED**\n- Next action: Investigate F2 selector drift first, then rerun F3 spinner checks with fresh artifacts\n"""
+        metadata = _build_report_metadata(report)
+
+        self.assertEqual(metadata["failed_check_ids_by_recovery_owner"], {"qa-ui": ["F2"], "qa-runtime": ["F3"]})
+        self.assertEqual(metadata["failed_check_handoff_summary_by_recovery_owner"], {"qa-ui": "F2", "qa-runtime": "F3"})
+        self.assertEqual(metadata["failed_check_count_by_recovery_owner"], {"qa-ui": 1, "qa-runtime": 1})
+        self.assertEqual(metadata["next_action_failed_check_ids_by_recovery_owner"], {"qa-ui": ["F2"], "qa-runtime": ["F3"]})
+        self.assertEqual(metadata["next_action_failed_check_handoff_summary_by_recovery_owner"], {"qa-ui": "F2", "qa-runtime": "F3"})
+        self.assertEqual(metadata["next_action_failed_check_count_by_recovery_owner"], {"qa-ui": 1, "qa-runtime": 1})
+        self.assertEqual(metadata["next_action_failed_check_coverage_rate_by_recovery_owner"], {"qa-ui": 1.0, "qa-runtime": 1.0})
         self.assertEqual(metadata["unresolved_failed_check_ids_by_recovery_owner"], {})
         self.assertEqual(metadata["unresolved_failed_check_handoff_summary_by_recovery_owner"], {})
         self.assertEqual(metadata["unresolved_failed_check_count_by_recovery_owner"], {})
-        self.assertEqual(metadata["unresolved_failed_check_coverage_rate_by_recovery_owner"], {"qa-product": 0.0})
+        self.assertEqual(metadata["unresolved_failed_check_coverage_rate_by_recovery_owner"], {"qa-ui": 0.0, "qa-runtime": 0.0})
 
 
 
