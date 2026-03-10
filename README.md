@@ -11,6 +11,9 @@ This project is designed for teams who want practical, reusable product-manageme
 
 ## Fast validation
 
+Suggested PM loop: validate the repo first, update the prompt or evidence surface in a small slice, then rerun the validator before proposing handoff wording.
+
+
 Use the repository smoke check before proposing README, example, or validator changes:
 
 ```bash
