@@ -76,6 +76,7 @@ If you need a compact rule for choosing which passing-but-still-blocked lane des
 If you need a compact owner-ready reminder for keeping a passing rerun request scoped to a single blocked lane, open `docs/WEB_QA_PLAYWRIGHT_RERUN_OWNER_BOUNDARY.md`.
 If you need a quick ladder for choosing checkpoint-vs-lane-vs-section rerun scope after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_SCOPE_LADDER.md`.
 If you need a compact green/yellow/red cue before calling that rerun request safely scoped, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_SCOPE_SIGNAL.md`.
+If you need a fast scope-choice check before calling a passing artifact checkpoint-, section-, or whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_REPLAY_SCOPE_CHECK.md`.
 
 ---
 
