@@ -23,6 +23,7 @@ The JSON metadata also tracks failed-check recovery owners, missing owner covera
 If the validator passes with incomplete signoff coverage, use `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_MISSING_FIELDS.md` to decide whether the artifact is inspection-ready or truly handoff-ready.
 If owner coverage is the real blocker after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_GAPS.md` before calling the report handoff-ready.
 If you need a compact signoff-coverage decision card before handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_COVERAGE_CARD.md`.
+If you need a 60-second signoff-first scan before a deeper review, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_FIRST_LOOK.md`.
 If you need a 60-second replay-readiness review before rerun or handoff, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_READINESS_QUICKCHECK.md`.
 If hotspot sections tie on replay blockers, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_HOTSPOT_TIEBREAK.md` before flattening the repair lane into a single winner.
 If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_TRIAGE_CARD.md`.
