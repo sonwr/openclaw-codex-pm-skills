@@ -44,6 +44,7 @@ If you need a one-screen matrix for judging whether the next action already has 
 If you need a compact pre-handoff priority check for whether the next-action sentence names the hottest blocked lane and proof target, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_PRIORITY_CHECK.md`.
 If you need a compact evidence gate for deciding whether the next-action line already names the failed lane, stable target, and proof artifact, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_EVIDENCE_GATE.md`.
 If you need a fast check for whether the next-action line already makes owner routing obvious, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_CHECK.md`.
+If you need a short human-ready wording audit before posting that next-action line, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HUMAN_READY_CHECK.md`.
 If you need a shortest-path sequence for turning a passing artifact into an owner-routable next-action sentence, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_SEQUENCE.md`.
 If you need a compact validator-clean versus handoff-ready wording check before signoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HANDOFF_READY_SIGNAL.md`.
 If you need a one-screen note for keeping a passing handoff intentionally lane-scoped instead of sounding whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SCOPE_NOTE.md`.
