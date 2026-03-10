@@ -30,6 +30,7 @@ If you need a 60-second signoff-first scan before a deeper review, open `docs/WE
 If you need a 60-second replay-readiness review before rerun or handoff, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_READINESS_QUICKCHECK.md`.
 If hotspot sections tie on replay blockers, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_HOTSPOT_TIEBREAK.md` before flattening the repair lane into a single winner.
 If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_TRIAGE_CARD.md`.
+If you need a shortest-path sequence for turning a validator-clean blocked lane into an owner-ready signoff line, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_SEQUENCE.md`.
 If you need a compact next-action wording guide before declaring handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HANDOFF.md`.
 If you need a compact signoff gate for deciding whether the next action is specific enough to call the artifact handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_NEXT_ACTION_GATE.md`.
 If you need safer wording for PASS artifacts that still should not be called signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_BLOCKER_LANGUAGE.md`.
