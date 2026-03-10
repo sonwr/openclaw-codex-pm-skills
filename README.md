@@ -9,6 +9,16 @@ This project is designed for teams who want practical, reusable product-manageme
 - safe for collaborative use,
 - and realistic to maintain in open source.
 
+## Fast validation
+
+Use the repository smoke check before proposing README, example, or validator changes:
+
+```bash
+python3 -m unittest tests/test_validate_web_qa_report.py tests/test_validate_web_qa_report_cli.py
+```
+
+This keeps documentation tweaks and validation-rule changes tied to the same replay-readiness contract.
+
 ---
 
 ## Table of Contents
