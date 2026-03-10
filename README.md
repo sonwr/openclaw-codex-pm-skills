@@ -27,6 +27,7 @@ This project is designed for teams who want practical, reusable product-manageme
 - [Quality Standards](#quality-standards)
 - [Playwright Interactive Execution Principles](#playwright-interactive-execution-principles)
 - [Playwright Replay Blocker Triage](#playwright-replay-blocker-triage)
+- [Playwright Replay Signals](#playwright-replay-signals)
 - [Contributing Guide](#contributing-guide)
 - [Governance and Decision-Making](#governance-and-decision-making)
 - [Compatibility Notes](#compatibility-notes)
@@ -142,6 +143,7 @@ Current docs:
 - `docs/MAPPING_PM_SKILLS.md`
 - `docs/PR_MERGE_POLICY.md`
 - `docs/WEB_QA_PLAYWRIGHT_REPLAY_PROFILE.md`
+- `docs/WEB_QA_PLAYWRIGHT_REPLAY_SIGNALS.md` (defines a deterministic first-look order for section status, hotspot blocker, next step, replay support, and unresolved handoff signals)
 - `docs/WEB_QA_PLAYWRIGHT_PRECHECK.md` (adds a 1-minute pre-run stability/reproducibility checklist before the first interactive step)
 - `docs/WEB_QA_PLAYWRIGHT_FAILURE_HANDOFF.md`
 - `docs/WEB_QA_PLAYWRIGHT_JSON_HANDOFF.md`
@@ -214,6 +216,11 @@ Current examples:
 - web QA Playwright strict-plus isolated missing-recovery-owner fail fixture for explicit owner-handoff triage (`examples/web_qa_playwright_strict_fail_missing_recovery_owner_only.md`)
 
 ---
+
+## Playwright Replay Signals
+
+If you need the shortest possible operator-first triage order for a blocked strict-plus report, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_SIGNALS.md`.
+It keeps the first scan deterministic: section lane -> hotspot blocker -> copy-ready next step -> next-action replay support -> unresolved failed-check handoff.
 
 ## What We Are Building Next
 
