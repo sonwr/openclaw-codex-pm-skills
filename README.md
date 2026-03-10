@@ -28,6 +28,7 @@ If you need a compact owner handoff sentence after validation passes, open `docs
 If you need an even shorter owner-aware signoff sentence that keeps covered versus unresolved failed checks visible, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_SUMMARY_LINE.md`.
 If you need a one-line owner summary before writing the fuller handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_SUMMARY_LINE.md` first and expand only if unresolved checks remain.
 If you need a faster owner-first cue before writing that sentence, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_CUE.md`.
+If you need a compact owner-alias-safe handoff sentence that still keeps unresolved failed checks visible, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_ALIAS_TRIAGE.md`.
 If you need a compact signoff-coverage decision card before handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_COVERAGE_CARD.md`.
 If you need a 60-second signoff-first scan before a deeper review, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_FIRST_LOOK.md`.
 If you need a 60-second replay-readiness review before rerun or handoff, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_READINESS_QUICKCHECK.md`.
