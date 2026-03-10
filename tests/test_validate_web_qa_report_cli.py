@@ -75,6 +75,19 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             "failed checks: F2, V1 | targets: e12, e44 | artifacts: artifacts/f2.png, artifacts/v1.png | rerun cue: no",
         )
 
+    def test_next_action_ref_extractors_dedupe_refs_in_order(self) -> None:
+        report = VALID_REPORT.replace(
+            "- Next action: Archive artifacts and proceed to release signoff",
+            "- Next action: Re-run F2 at ref=e12 with `artifacts/f2.png`, then confirm F2 again at ref=e12 before checking V1 with `artifacts/v1.png`",
+        )
+
+        self.assertEqual(validate_web_qa_report._extract_next_action_failed_check_refs(report), ["F2", "V1"])
+        self.assertEqual(validate_web_qa_report._extract_next_action_target_refs(report), ["e12"])
+        self.assertEqual(
+            validate_web_qa_report._extract_next_action_artifact_refs(report),
+            ["artifacts/f2.png", "artifacts/v1.png"],
+        )
+
     def test_cli_json_output_exposes_checkpoint_ref_metadata_for_replay_triage(self) -> None:
         report = VALID_REPORT.replace(
             "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
