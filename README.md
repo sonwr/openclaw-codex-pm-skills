@@ -30,6 +30,7 @@ If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_
 If you need a compact next-action wording guide before declaring handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HANDOFF.md`.
 If you need a compact rerun-only handoff checklist after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_HANDOFF_CARD.md`.
 If you need a one-screen retry-versus-repair decision card before choosing the next move, open `docs/WEB_QA_PLAYWRIGHT_RETRY_DECISION_CARD.md`.
+If you need a compact hotspot-only rerun brief after strict-plus validation already named the blocked lane, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_HANDOFF_CARD.md`.
 If you need a quick picker for the isolated strict-plus fail fixtures before replaying a validator error, open `docs/WEB_QA_PLAYWRIGHT_STRICT_PLUS_FAIL_FIXTURE_MAP.md`.
 
 ---
