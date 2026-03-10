@@ -82,6 +82,7 @@ If you need a compact owner-ready reminder for keeping a passing rerun request s
 If you need a quick ladder for choosing checkpoint-vs-lane-vs-section rerun scope after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_SCOPE_LADDER.md`.
 If you need a compact green/yellow/red cue before calling that rerun request safely scoped, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_SCOPE_SIGNAL.md`.
 If you need a fast scope-choice check before calling a passing artifact checkpoint-, section-, or whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_REPLAY_SCOPE_CHECK.md`.
+If you need a four-choice picker for the narrowest honest handoff label after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SCOPE_PICKER.md`.
 
 ---
 
