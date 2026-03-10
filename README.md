@@ -31,6 +31,7 @@ If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_
 If you need a compact next-action wording guide before declaring handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HANDOFF.md`.
 If you need a one-screen matrix for judging whether the next action already has enough target/artifact support for replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_SUPPORT_MATRIX.md`.
 If you need a compact pre-handoff priority check for whether the next-action sentence names the hottest blocked lane and proof target, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_PRIORITY_CHECK.md`.
+If you need a fast check for whether the next-action line already makes owner routing obvious, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_CHECK.md`.
 If you need a compact rerun-only handoff checklist after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_HANDOFF_CARD.md`.
 If you need a fast green/yellow/red cue sheet before calling a failure lane rerun-ready, open `docs/WEB_QA_PLAYWRIGHT_RERUN_READINESS_CUES.md`.
 If you need a one-screen retry-versus-repair decision card before choosing the next move, open `docs/WEB_QA_PLAYWRIGHT_RETRY_DECISION_CARD.md`.
