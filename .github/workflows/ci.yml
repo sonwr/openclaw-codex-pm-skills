@@ -9,24 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check required docs exist
+      - name: Run local CI entrypoint
         run: |
-          test -f README.md
-          test -f docs/INSTALL_OPENCLAW.md
-          test -f docs/COMPATIBILITY.md
-      - name: Check skill files
-        run: |
-          find skills -name 'SKILL.md' | grep -q .
-      - name: Check helper scripts
-        run: |
-          test -x scripts/install_local.sh
-          test -x scripts/validate_web_qa_report.py
-      - name: Validate sample web QA report shape
-        run: |
-          python3 scripts/validate_web_qa_report.py --file examples/web_qa_playwright_sample_run.md --strict
-      - name: Run validator unit tests
-        run: |
-          PYTHONPATH=. python3 -m unittest discover -s tests -p "test_*.py" -v
+          chmod +x scripts/run_ci_locally.sh
+          ./scripts/run_ci_locally.sh
       - name: Assert strict-fail fixtures are rejected
         run: |
           set -euo pipefail
