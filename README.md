@@ -22,6 +22,7 @@ For broader validator or fixture rewrites, run `python3 -m unittest discover -s 
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
 If the validator passes with incomplete signoff coverage, use `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_MISSING_FIELDS.md` to decide whether the artifact is inspection-ready or truly handoff-ready.
 If owner coverage is the real blocker after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_GAPS.md` before calling the report handoff-ready.
+If you need a fast last-pass gate for whether unresolved failed checks still block owner-complete handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_GAP_EXIT_CHECK.md`.
 If you need a compact owner handoff sentence after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_HANDOFF.md`.
 If you need a faster owner-first cue before writing that sentence, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_CUE.md`.
 If you need a compact signoff-coverage decision card before handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_COVERAGE_CARD.md`.
