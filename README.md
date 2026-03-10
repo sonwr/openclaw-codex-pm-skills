@@ -32,6 +32,7 @@ If hotspot sections tie on replay blockers, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_
 If you need a quick rule card for interpreting replay blocker totals before handoff, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_BLOCKER_TOTALS.md`.
 If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_TRIAGE_CARD.md`.
 If you need a shortest-path sequence for turning a validator-clean blocked lane into an owner-ready signoff line, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_SEQUENCE.md`.
+If you need a compact step-by-step bridge from validator PASS to a signoff-ready handoff sentence, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HANDOFF_SEQUENCE.md`.
 If you need a compact next-action wording guide before declaring handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HANDOFF.md`.
 If you need a compact signoff gate for deciding whether the next action is specific enough to call the artifact handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_NEXT_ACTION_GATE.md`.
 If you need safer wording for PASS artifacts that still should not be called signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_BLOCKER_LANGUAGE.md`.
