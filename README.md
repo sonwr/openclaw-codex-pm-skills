@@ -46,6 +46,7 @@ If you need a quick picker for the isolated strict-plus fail fixtures before rep
 If you need a compact exit-criteria check before calling a passing artifact signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_EXIT_CRITERIA.md`.
 If you need a one-screen rule for deciding whether a validator-clean artifact should stop at signoff or go back through a focused rerun, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_SPLIT.md`.
 If you need a four-line hotspot-first signoff brief before a rerun handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HOTSPOT_BRIEF.md`.
+If you need a compact rule for choosing which passing-but-still-blocked lane deserves the handoff sentence first, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_PRIORITY_LADDER.md`.
 
 ---
 
