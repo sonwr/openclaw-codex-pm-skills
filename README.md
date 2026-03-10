@@ -151,6 +151,7 @@ Current docs:
 - `docs/WEB_QA_PLAYWRIGHT_STEP_TEMPLATE.md` (adds a copyable single-checkpoint template so interactive QA reports keep one action, one verification step, one evidence artifact, and one recovery note per checkpoint)
 - `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_LANES.md` (adds a READY-vs-BLOCKED section triage note so operators can choose the next deterministic replay lane directly from strict-plus JSON)
 - `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_QUICKCHECK.md` (adds a 60-second human review order for deciding whether a strict-plus report is validation-clean and handoff-ready)
+- `docs/WEB_QA_PLAYWRIGHT_SECTION_STATUS_CARD.md` (adds a copy-ready per-section handoff card so operators can pass `functional` / `visual` / `off_happy` replay status without reopening the full JSON)
 - `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md` (condenses the same principles into a fast operator rerun checklist for blocked interactive runs)
 - `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_REPLAY_CARD.md` (adds a copy-ready next-action handoff card so blocked reruns keep failed-check ids, stable refs, artifacts, and verification cues in one deterministic sentence)
 - Canonical opt-in traceability example: `examples/web_qa_playwright_strict_plus_with_check_refs_pass.md`
