@@ -45,6 +45,7 @@ If you need a one-screen rule for making `Next action:` cover every failed check
 If you need a quick picker for the isolated strict-plus fail fixtures before replaying a validator error, open `docs/WEB_QA_PLAYWRIGHT_STRICT_PLUS_FAIL_FIXTURE_MAP.md`.
 If you need a compact exit-criteria check before calling a passing artifact signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_EXIT_CRITERIA.md`.
 If you need a one-screen rule for deciding whether a validator-clean artifact should stop at signoff or go back through a focused rerun, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_SPLIT.md`.
+If you need a four-line hotspot-first signoff brief before a rerun handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HOTSPOT_BRIEF.md`.
 
 ---
 
