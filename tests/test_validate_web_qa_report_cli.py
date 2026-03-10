@@ -35,6 +35,20 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             "failed checks: F2 | targets: e12 | artifacts: missing | rerun cue: yes",
         )
 
+    def test_next_action_replay_handoff_card_lists_multiple_checks_and_refs(self) -> None:
+        self.assertEqual(
+            validate_web_qa_report._format_next_action_replay_handoff_card(
+                ["F2", "V1"], ["e12", "e44"], ["artifacts/f2.png", "artifacts/v1.png"], True
+            ),
+            "checks=F2,V1; targets=e12,e44; artifacts=artifacts/f2.png,artifacts/v1.png; rerun=yes",
+        )
+        self.assertEqual(
+            validate_web_qa_report._describe_next_action_replay_support(
+                ["F2", "V1"], ["e12", "e44"], ["artifacts/f2.png", "artifacts/v1.png"], False
+            ),
+            "failed checks: F2, V1 | targets: e12, e44 | artifacts: artifacts/f2.png, artifacts/v1.png | rerun cue: no",
+        )
+
     def test_cli_json_output_exposes_checkpoint_ref_metadata_for_replay_triage(self) -> None:
         report = VALID_REPORT.replace(
             "- F1 checkpoint: URL changed to `/dashboard`, user avatar visible",
