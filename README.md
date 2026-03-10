@@ -43,6 +43,7 @@ If you need safer wording for PASS artifacts that still should not be called sig
 If you need a one-screen matrix for judging whether the next action already has enough target/artifact support for replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_SUPPORT_MATRIX.md`.
 If you need a compact pre-handoff priority check for whether the next-action sentence names the hottest blocked lane and proof target, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_PRIORITY_CHECK.md`.
 If you need a compact evidence gate for deciding whether the next-action line already names the failed lane, stable target, and proof artifact, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_EVIDENCE_GATE.md`.
+If you need a one-line status sentence once the next action is already known, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_NEXT_ACTION_STATUS_LINE.md`.
 If you need a fast check for whether the next-action line already makes owner routing obvious, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_CHECK.md`.
 If you need a short human-ready wording audit before posting that next-action line, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HUMAN_READY_CHECK.md`.
 If you need a shortest-path sequence for turning a passing artifact into an owner-routable next-action sentence, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_SEQUENCE.md`.
