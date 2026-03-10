@@ -290,6 +290,15 @@ class ValidateWebQaReportTests(unittest.TestCase):
             metadata["unresolved_failed_check_coverage_rate_by_classification"],
             {"selector": 0.0, "runtime": 1.0, "product": 0.0},
         )
+        self.assertEqual(metadata["next_action_failed_check_coverage_rate"], 0.5)
+        self.assertEqual(
+            metadata["next_action_failed_check_coverage_rate_by_recovery_owner"],
+            {"qa-ui": 1.0, "qa-runtime": 0.0},
+        )
+        self.assertEqual(
+            metadata["unresolved_failed_check_coverage_rate_by_recovery_owner"],
+            {"qa-ui": 0.0, "qa-runtime": 1.0},
+        )
 
     def test_report_metadata_tracks_signoff_section_presence(self) -> None:
         metadata = _build_report_metadata(VALID_REPORT)
