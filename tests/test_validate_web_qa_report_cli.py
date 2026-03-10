@@ -24,6 +24,20 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
         self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support(["e12"], []), "target_refs_only")
         self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support([], ["artifacts/f1.png"]), "artifact_refs_only")
         self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support([], []), "none")
+        self.assertEqual(
+            validate_web_qa_report._replay_support_dimensions_present(["e12"], ["artifacts/f1.png"]),
+            ["target_refs", "artifact_refs"],
+        )
+        self.assertEqual(validate_web_qa_report._replay_support_dimensions_present(["e12"], []), ["target_refs"])
+        self.assertEqual(validate_web_qa_report._replay_support_dimensions_present([], ["artifacts/f1.png"]), ["artifact_refs"])
+        self.assertEqual(validate_web_qa_report._replay_support_dimensions_present([], []), [])
+        self.assertEqual(validate_web_qa_report._replay_support_missing_dimensions(["e12"], ["artifacts/f1.png"]), [])
+        self.assertEqual(validate_web_qa_report._replay_support_missing_dimensions(["e12"], []), ["artifact_refs"])
+        self.assertEqual(validate_web_qa_report._replay_support_missing_dimensions([], ["artifacts/f1.png"]), ["target_refs"])
+        self.assertEqual(
+            validate_web_qa_report._replay_support_missing_dimensions([], []),
+            ["target_refs", "artifact_refs"],
+        )
 
     def test_next_action_replay_handoff_card_marks_missing_dimensions(self) -> None:
         self.assertEqual(
