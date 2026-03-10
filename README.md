@@ -32,6 +32,7 @@ If you need a compact rerun-only handoff checklist after validation already pass
 If you need a one-screen retry-versus-repair decision card before choosing the next move, open `docs/WEB_QA_PLAYWRIGHT_RETRY_DECISION_CARD.md`.
 If you need a compact hotspot-only rerun brief after strict-plus validation already named the blocked lane, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_HANDOFF_CARD.md`.
 If you need a one-screen rule for turning hotspot JSON into the next repair sentence, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_NEXT_STEP.md`.
+If you need a one-screen rule for making `Next action:` cover every failed check id before strict-plus handoff, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_ALL_FAILED_REFS.md`.
 If you need a quick picker for the isolated strict-plus fail fixtures before replaying a validator error, open `docs/WEB_QA_PLAYWRIGHT_STRICT_PLUS_FAIL_FIXTURE_MAP.md`.
 
 ---
