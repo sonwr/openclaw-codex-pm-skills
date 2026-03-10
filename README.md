@@ -65,6 +65,7 @@ If you need a one-screen rule for deciding whether replay support is strong enou
 If you need a fast green/yellow/red cue sheet before calling a failure lane rerun-ready, open `docs/WEB_QA_PLAYWRIGHT_RERUN_READINESS_CUES.md`.
 If you need a one-screen retry-versus-repair decision card before choosing the next move, open `docs/WEB_QA_PLAYWRIGHT_RETRY_DECISION_CARD.md`.
 If you need a compact hotspot-only rerun brief after strict-plus validation already named the blocked lane, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_HANDOFF_CARD.md`.
+If you need a compact reproduce-triage-rerun loop before writing the next-action line, open `docs/WEB_QA_PLAYWRIGHT_SCENARIO_RECOVERY_LOOP.md`.
 If you need a one-screen lane audit before calling the rerun scope safe, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_LANE_AUDIT.md`.
 If you need a 30-second call on whether the next rerun should stay lane-scoped or expand to section scope, open `docs/WEB_QA_PLAYWRIGHT_RERUN_SCOPE_CARD.md`.
 If you need a one-screen rule for turning hotspot JSON into the next repair sentence, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_NEXT_STEP.md`.
