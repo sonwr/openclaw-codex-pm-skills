@@ -72,6 +72,7 @@ If you need a one-screen rule for deciding whether a validator-clean artifact sh
 If you need a four-line hotspot-first signoff brief before a rerun handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HOTSPOT_BRIEF.md`.
 If you need a compact escalation sentence when multiple blocked lanes still compete after validation passes, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HOTSPOT_ESCALATION.md`.
 If you need a compact rule for choosing which passing-but-still-blocked lane deserves the handoff sentence first, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_PRIORITY_LADDER.md`.
+If you need a compact owner-ready reminder for keeping a passing rerun request scoped to a single blocked lane, open `docs/WEB_QA_PLAYWRIGHT_RERUN_OWNER_BOUNDARY.md`.
 
 ---
 
