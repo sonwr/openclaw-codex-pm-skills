@@ -52,6 +52,7 @@ If you need a compact card for deciding whether the next-action line is rerun-re
 If you need a one-screen rerun-versus-repair chooser after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_DECIDER.md`.
 If you need a one-screen rule for keeping a passing report's rerun request narrow instead of drifting into a full replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_REPLAY_BOUNDARY.md`.
 If you need a compact rerun-only handoff checklist after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_HANDOFF_CARD.md`.
+If you need a quick artifact-specific check before calling that rerun handoff replay-ready, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_ARTIFACT_CHECK.md`.
 If you need a one-line rerun owner handoff after that checklist, open `docs/WEB_QA_PLAYWRIGHT_RERUN_OWNER_STATUS_LINE.md`.
 If you need a compact pass/fail cue for whether a validator-clean artifact is truly ready for a focused rerun handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_READY_SIGNAL.md`.
 If you need a one-screen rule for deciding whether replay support is strong enough to keep the rerun lane narrow, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_SUPPORT_SCOPE_GATE.md`.
