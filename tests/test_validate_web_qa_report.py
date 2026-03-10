@@ -1380,6 +1380,32 @@ class ValidateWebQaReportTests(unittest.TestCase):
         )
 
 
+    def test_report_metadata_marks_next_action_replay_support_as_target_refs_only(self) -> None:
+        report = (
+            FAILED_REPORT_WITH_RECOVERY
+            + "- Next action: Re-run F2 on ref=login.submit and compare the inline error state before retry\n"
+        )
+        metadata = _build_report_metadata(report)
+
+        self.assertEqual(metadata["next_action_target_refs"], ["login.submit"])
+        self.assertEqual(metadata["next_action_artifact_refs"], [])
+        self.assertEqual(metadata["next_action_replay_support_level"], "target_refs_only")
+        self.assertEqual(metadata["next_action_replay_support_dimensions_present"], ["target_refs"])
+        self.assertEqual(metadata["next_action_replay_support_missing_dimensions"], ["artifact_refs"])
+
+    def test_report_metadata_marks_next_action_replay_support_as_artifact_refs_only(self) -> None:
+        report = (
+            FAILED_REPORT_WITH_RECOVERY
+            + "- Next action: Re-run F2 after attaching `artifacts/f2-rerun.png` for the follow-up review\n"
+        )
+        metadata = _build_report_metadata(report)
+
+        self.assertEqual(metadata["next_action_target_refs"], [])
+        self.assertEqual(metadata["next_action_artifact_refs"], ["artifacts/f2-rerun.png"])
+        self.assertEqual(metadata["next_action_replay_support_level"], "artifact_refs_only")
+        self.assertEqual(metadata["next_action_replay_support_dimensions_present"], ["artifact_refs"])
+        self.assertEqual(metadata["next_action_replay_support_missing_dimensions"], ["target_refs"])
+
 if __name__ == "__main__":
     unittest.main()
 
