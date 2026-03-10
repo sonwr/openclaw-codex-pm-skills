@@ -83,6 +83,7 @@ If you need a quick ladder for choosing checkpoint-vs-lane-vs-section rerun scop
 If you need a compact green/yellow/red cue before calling that rerun request safely scoped, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_SCOPE_SIGNAL.md`.
 If you need a fast scope-choice check before calling a passing artifact checkpoint-, section-, or whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_REPLAY_SCOPE_CHECK.md`.
 If you need a four-choice picker for the narrowest honest handoff label after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SCOPE_PICKER.md`.
+If you need a 30-second pass/hold card before calling that scope sentence handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SCOPE_QUICKCHECK.md`.
 If you need copy-ready wording samples for checkpoint-, section-, rerun-, or hold-scoped signoff labels, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SCOPE_EXAMPLES.md`.
 
 ---
