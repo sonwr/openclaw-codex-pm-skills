@@ -1406,10 +1406,6 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertEqual(metadata["next_action_replay_support_dimensions_present"], ["artifact_refs"])
         self.assertEqual(metadata["next_action_replay_support_missing_dimensions"], ["target_refs"])
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     def test_validate_report_fails_when_qa_inventory_bullet_has_no_checks_mapping(self) -> None:
         with_inventory = VALID_REPORT.replace(
             "## Scope\n",
@@ -1427,3 +1423,7 @@ if __name__ == "__main__":
             validate_report_text(with_inventory, require_qa_inventory_check_refs=True),
             [],
         )
+
+
+if __name__ == "__main__":
+    unittest.main()
