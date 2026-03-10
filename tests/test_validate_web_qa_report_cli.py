@@ -19,6 +19,18 @@ VALID_REPORT = """# Sample\n\n## Scope\n- URL: `https://example.test/login`\n- V
 
 class ValidateWebQaReportCliTests(unittest.TestCase):
 
+    def test_recovery_owner_grouping_helpers_skip_unowned_checks(self) -> None:
+        grouped = validate_web_qa_report._group_check_ids_by_recovery_owner(
+            ["F2", "V1", "O1"],
+            {"F2": "qa", "O1": "frontend"},
+        )
+
+        self.assertEqual(grouped, {"qa": ["F2"], "frontend": ["O1"]})
+        self.assertEqual(
+            validate_web_qa_report._summarize_check_ids_by_recovery_owner(grouped),
+            {"qa": "F2", "frontend": "O1"},
+        )
+
     def test_next_action_replay_support_helpers_cover_all_presence_combinations(self) -> None:
         self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support(["e12"], ["artifacts/f1.png"]), "target_and_artifact_refs")
         self.assertEqual(validate_web_qa_report._summarize_next_action_replay_support(["e12"], []), "target_refs_only")
