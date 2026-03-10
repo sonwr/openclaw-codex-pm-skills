@@ -18,6 +18,7 @@ python3 -m unittest tests/test_validate_web_qa_report.py tests/test_validate_web
 ```
 
 This keeps documentation tweaks and validation-rule changes tied to the same replay-readiness contract.
+The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
 
 ---
 
