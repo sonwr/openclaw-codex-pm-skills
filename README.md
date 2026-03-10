@@ -37,6 +37,7 @@ If you need a one-screen rule for turning hotspot JSON into the next repair sent
 If you need a compact maturity ladder for deciding whether a passing artifact is merely validator-clean or truly handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_HANDOFF_READINESS_LADDER.md`.
 If you need a one-screen rule for making `Next action:` cover every failed check id before strict-plus handoff, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_ALL_FAILED_REFS.md`.
 If you need a quick picker for the isolated strict-plus fail fixtures before replaying a validator error, open `docs/WEB_QA_PLAYWRIGHT_STRICT_PLUS_FAIL_FIXTURE_MAP.md`.
+If you need a compact exit-criteria check before calling a passing artifact signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_EXIT_CRITERIA.md`.
 
 ---
 
