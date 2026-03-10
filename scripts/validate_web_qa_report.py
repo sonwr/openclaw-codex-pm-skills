@@ -302,7 +302,7 @@ def _format_next_action_replay_handoff_card(
     mentions_rerun: bool,
 ) -> str:
     return (
-        f"checks={','.join(failed_check_refs) if failed_check_refs else 'missing'}; "
+        f"checks={','.join(failed_check_refs) if failed_check_refs else 'none'}; "
         f"targets={','.join(target_refs) if target_refs else 'missing'}; "
         f"artifacts={','.join(artifact_refs) if artifact_refs else 'missing'}; "
         f"rerun={'yes' if mentions_rerun else 'no'}"

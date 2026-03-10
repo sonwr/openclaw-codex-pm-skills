@@ -61,6 +61,16 @@ class ValidateWebQaReportCliTests(unittest.TestCase):
             "failed checks: F2 | targets: e12 | artifacts: missing | rerun cue: yes",
         )
 
+    def test_next_action_replay_handoff_card_uses_none_when_no_failed_checks_are_named(self) -> None:
+        self.assertEqual(
+            validate_web_qa_report._format_next_action_replay_handoff_card([], ["e12"], ["artifacts/f1.png"], False),
+            "checks=none; targets=e12; artifacts=artifacts/f1.png; rerun=no",
+        )
+        self.assertEqual(
+            validate_web_qa_report._describe_next_action_replay_support([], ["e12"], ["artifacts/f1.png"], False),
+            "failed checks: none | targets: e12 | artifacts: artifacts/f1.png | rerun cue: no",
+        )
+
     def test_next_action_replay_handoff_card_lists_multiple_checks_and_refs(self) -> None:
         self.assertEqual(
             validate_web_qa_report._format_next_action_replay_handoff_card(
