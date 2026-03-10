@@ -26,6 +26,7 @@ If you need a compact wording note for validator-PASS artifacts that are still n
 If you need a fast last-pass gate for whether unresolved failed checks still block owner-complete handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_GAP_EXIT_CHECK.md`.
 If you need a compact owner handoff sentence after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_HANDOFF.md`.
 If you need an even shorter owner-aware signoff sentence that keeps covered versus unresolved failed checks visible, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_SUMMARY_LINE.md`.
+If you need a one-line owner summary before writing the fuller handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_SUMMARY_LINE.md` first and expand only if unresolved checks remain.
 If you need a faster owner-first cue before writing that sentence, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_CUE.md`.
 If you need a compact signoff-coverage decision card before handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_COVERAGE_CARD.md`.
 If you need a 60-second signoff-first scan before a deeper review, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_FIRST_LOOK.md`.
