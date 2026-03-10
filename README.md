@@ -20,6 +20,7 @@ python3 -m unittest tests/test_validate_web_qa_report.py tests/test_validate_web
 This keeps documentation tweaks and validation-rule changes tied to the same replay-readiness contract.
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
 If the validator passes with incomplete signoff coverage, use `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_MISSING_FIELDS.md` to decide whether the artifact is inspection-ready or truly handoff-ready.
+If owner coverage is the real blocker after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_GAPS.md` before calling the report handoff-ready.
 If you need a compact signoff-coverage decision card before handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_COVERAGE_CARD.md`.
 If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_TRIAGE_CARD.md`.
 
