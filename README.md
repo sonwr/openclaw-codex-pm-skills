@@ -41,6 +41,7 @@ If you need a compact pre-handoff priority check for whether the next-action sen
 If you need a compact evidence gate for deciding whether the next-action line already names the failed lane, stable target, and proof artifact, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_EVIDENCE_GATE.md`.
 If you need a fast check for whether the next-action line already makes owner routing obvious, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_CHECK.md`.
 If you need a shortest-path sequence for turning a passing artifact into an owner-routable next-action sentence, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_SEQUENCE.md`.
+If you need a compact validator-clean versus handoff-ready wording check before signoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HANDOFF_READY_SIGNAL.md`.
 If you need a compact card for deciding whether the next-action line is rerun-ready enough to hand off, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_CUE.md`.
 If you need a one-screen rerun-versus-repair chooser after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_DECIDER.md`.
 If you need a one-screen rule for keeping a passing report's rerun request narrow instead of drifting into a full replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_REPLAY_BOUNDARY.md`.
