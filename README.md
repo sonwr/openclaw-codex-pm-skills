@@ -44,6 +44,7 @@ If you need a fast check for whether the next-action line already makes owner ro
 If you need a shortest-path sequence for turning a passing artifact into an owner-routable next-action sentence, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_OWNER_SEQUENCE.md`.
 If you need a compact validator-clean versus handoff-ready wording check before signoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HANDOFF_READY_SIGNAL.md`.
 If you need a one-screen note for keeping a passing handoff intentionally lane-scoped instead of sounding whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SCOPE_NOTE.md`.
+If you need a one-screen check for whether a passing handoff still needs to stay section-scoped instead of sounding whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SECTION_SCOPE_CHECK.md`.
 If you need a compact card for deciding whether the next-action line is rerun-ready enough to hand off, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_CUE.md`.
 If you need a one-screen rerun-versus-repair chooser after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_DECIDER.md`.
 If you need a one-screen rule for keeping a passing report's rerun request narrow instead of drifting into a full replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_REPLAY_BOUNDARY.md`.
