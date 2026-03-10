@@ -325,6 +325,7 @@ For a shorter operator handoff that freezes profile/refs before reruns, see `doc
 For a JSON-first READY-vs-BLOCKED triage note that tells operators which replay lane to repair next, see `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_LANES.md`.
 For a shorter “which blocker do I repair first?” operator note, see `docs/WEB_QA_PLAYWRIGHT_BLOCKER_PRIORITY.md`.
 For hotspot-first section repair when replay metadata points at one blocked lane, see `docs/WEB_QA_PLAYWRIGHT_SECTION_HOTSPOT_REPAIR.md`.
+For a shorter copy/paste rerun note driven directly by the hotspot JSON lane, see `docs/WEB_QA_PLAYWRIGHT_REPAIR_LANE_CARD.md`.
 The blocker-priority note now keeps the replay repair order explicit: target refs -> artifact evidence -> chronology -> state consistency -> owner handoff.
 
 Recommended operator loop before every interactive rerun:
