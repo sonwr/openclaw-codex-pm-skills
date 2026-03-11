@@ -34,6 +34,7 @@ If you need a compact signoff note that keeps Web QA validator PASS coupled to s
 If the workstream is about governance-sandbox web UI proof, use `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PROOF_LOOP.md` so UI work stays anchored to scenario input, report output, and deterministic browser-proof checkpoints.
 If you need a compact pass/hold cue before calling that web-demo slice complete, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_SCOPE_CHECK.md`.
 If you need a compact entry bar before expanding the governance-sandbox web demo beyond the first form and result-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_ENTRY_CHECK.md`.
+If you need a compact proof cue for scenario preset aliasing (`preset`/`group`/`trait`/`persona`) plus report summary aliases (`summary`/`brief`/`report_summary`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_PROOF.md`.
 If the web-demo slice specifically changes the scenario form, result cards, or report download proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_FORM_PROOF.md`.
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
 If the validator passes with incomplete signoff coverage, use `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_MISSING_FIELDS.md` to decide whether the artifact is inspection-ready or truly handoff-ready.
