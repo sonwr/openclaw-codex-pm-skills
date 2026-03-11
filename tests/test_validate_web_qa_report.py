@@ -1454,6 +1454,15 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertIn("docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md", readme)
         self.assertIn("report.title", note.read_text(encoding="utf-8"))
 
+    def test_readme_links_web_qa_strict_signoff_checklist(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        readme = (repo_root / "README.md").read_text(encoding="utf-8")
+        note = repo_root / "docs" / "WEB_QA_STRICT_SIGNOFF_CHECKLIST.md"
+
+        self.assertTrue(note.exists())
+        self.assertIn("docs/WEB_QA_STRICT_SIGNOFF_CHECKLIST.md", readme)
+        self.assertIn("strict Playwright web QA report", note.read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()
