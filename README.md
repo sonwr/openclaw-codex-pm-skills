@@ -51,6 +51,7 @@ If you need a compact proof cue for scenario preset aliasing (`preset`/`group`/`
 If you need a shorter alias-expansion check before widening the governance-sandbox proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ALIAS_EXPANSION.md`.
 If the web-demo slice specifically changes the scenario form, result cards, or report download proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_FORM_PROOF.md`.
 If you need a compact check that the first governance-sandbox web demo still makes report download proof visible from the result card, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_DOWNLOAD_CHECK.md`.
+If you need a compact reminder to keep that first web-demo slice in a stability-first lane before widening scope, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STABILITY_LANE.md`.
 If you need a one-screen audit before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
 If the scenario import workstream adds another stakeholder preset alias (`role` / `persona` / `group`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_ROLE_NOTE.md` so alias-proof scope stays tied to the same report-ready replay flow.
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
