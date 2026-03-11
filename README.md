@@ -95,6 +95,7 @@ If you need a compact note for authoring stakeholder presets with a YAML/JSON na
 If you need a compact note for the top-level `report_output_directory` alias before widening scenario-to-report wiring, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_DIRECTORY_ALIAS_NOTE.md`.
 If you need the shortest note for nested `scenario.inputs` fixtures before widening governance-sandbox scenario replay coverage, open `docs/GOVERNANCE_SANDBOX_NESTED_SCENARIO_INPUTS_NOTE.md`.
 If you need a compact reminder that nested scenario fixtures can also keep report metadata under `inputs.report`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_NOTE.md`.
+If you need a short PM-facing note for bundle naming driven from `inputs.report.outputs.basename`, open `docs/GOVERNANCE_SANDBOX_INPUTS_REPORT_OUTPUTS_BASENAME_NOTE.md`.
 If you need a compact entry bar before expanding the governance-sandbox web demo beyond the first form and result-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_ENTRY_CHECK.md`.
 If you need a compact proof cue for scenario preset aliasing (`preset`/`group`/`trait`/`persona`) plus report summary aliases (`summary`/`brief`/`report_summary`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_PROOF.md`.
 If you need a shorter alias-expansion check before widening the governance-sandbox proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ALIAS_EXPANSION.md`.
