@@ -1450,3 +1450,9 @@ class ValidateWebQaReportTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+
+def test_extract_checkpoint_target_refs_supports_colons_and_dots() -> None:
+    tail = "PASS target ref=dialog.confirm primary ref=modal.header-1 ref=card:alpha"
+    assert module._extract_checkpoint_target_refs(tail) == ["dialog.confirm", "modal.header-1", "card:alpha"]
