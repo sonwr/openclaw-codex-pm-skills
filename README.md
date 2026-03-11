@@ -38,6 +38,7 @@ If you need a quick note for `report.output_name` or top-level `report_name` bun
 If you need a one-screen replay check for scenario file + basename + artifact-path visibility together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_CARD.md`.
 If you need a short reviewer cue for one DAO-flavored scenario example that already proves scenario-file input plus named JSON/Markdown/HTML output, open `docs/GOVERNANCE_SANDBOX_DAO_REPORT_EXAMPLE_NOTE.md`.
 If you need a quick reminder to verify preset coverage before wiring a scenario file or web demo, open `docs/GOVERNANCE_SANDBOX_LIST_PRESETS_NOTE.md`.
+If you need a compact example scenario that proves preset-driven stakeholders plus a report bundle in one replay, open `docs/GOVERNANCE_SANDBOX_PRESET_BUNDLE_EXAMPLE_NOTE.md`.
 If you need a machine-readable preset catalog handoff for CLI, browser-form, or demo wiring, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_HANDOFF.md`.
 If you need a compact browser-proof recovery note for a flaky governance-sandbox web demo checkpoint, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_RECOVERY_NOTE.md`.
 If you need a compact matrix for checking which governance-sandbox report artifacts should be present after a scenario replay, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md`.
