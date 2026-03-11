@@ -73,6 +73,7 @@ If you need a compact proof cue for scenario preset aliasing (`preset`/`group`/`
 If you need a shorter alias-expansion check before widening the governance-sandbox proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ALIAS_EXPANSION.md`.
 If the web-demo slice specifically changes the scenario form, result cards, or report download proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_FORM_PROOF.md`.
 If you need a compact check that the first governance-sandbox web demo still makes report download proof visible from the result card, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_DOWNLOAD_CHECK.md`.
+If you need a PM-facing note for keeping scenario replay, result-card proof, and report-bundle download proof coupled in one slice, open `docs/GOVERNANCE_SANDBOX_REPORT_DOWNLOAD_PROOF_NOTE.md`.
 If you need the shortest scenario-file -> result card -> report-download proof path before a wider browser pass, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_DOWNLOAD_START.md`.
 If you need a compact reminder to keep that first web-demo slice in a stability-first lane before widening scope, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STABILITY_LANE.md`.
 If you need a one-screen audit before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
