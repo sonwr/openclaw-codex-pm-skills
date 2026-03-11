@@ -85,6 +85,7 @@ If you need a compact signoff note that keeps Web QA validator PASS coupled to s
 If you need a compact signoff note that keeps Web QA validator PASS coupled to scenario-report freshness, open `docs/WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF.md`.
 If the workstream is about governance-sandbox web UI proof, use `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PROOF_LOOP.md` so UI work stays anchored to scenario input, report output, and deterministic browser-proof checkpoints.
 If you need a compact pass/hold cue before calling that web-demo slice complete, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_SCOPE_CHECK.md`.
+If you need a short checklist for proving the scenario form, result card, and report download in one stability-first pass, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STEP_CHECKLIST.md`.
 If you want a short scenario-file-first checklist for governance-sandbox report bundles before wider web-demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_CHECKLIST.md`.
 If you need a compact note for scenario files that also carry report output paths, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PATH_ALIAS_NOTE.md`.
 If you need a short PM-facing cue for compact scenario fixtures that keep stakeholder names mapped directly to presets, open `docs/GOVERNANCE_SANDBOX_PRESET_MAP_ALIAS_NOTE.md`.

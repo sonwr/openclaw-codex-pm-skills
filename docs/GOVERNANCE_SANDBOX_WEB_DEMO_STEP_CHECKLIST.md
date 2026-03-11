@@ -1,21 +1,9 @@
-# Governance Sandbox web demo step checklist
+# Governance Sandbox Web Demo Step Checklist
 
-Use this when the governance-sandbox web slice changes the scenario form, run action, or result-card proof.
+Use this when the next slice is still the first reproducible governance-sandbox browser proof.
 
-## Goal
-
-Keep the first web demo deterministic, reviewable, and easy to recover when a browser checkpoint fails.
-
-## Steps
-
-1. Start with one scenario fixture that already proves scenario-file input plus report output.
-2. Fill only the minimum form fields needed to trigger a believable governance run.
-3. Verify the result card shows recommendation plus at least one stakeholder response.
-4. Verify report download or artifact-path proof stays visible from the same result card.
-5. Capture the exact rerun path before widening the UI scope.
-
-## Hold conditions
-
-- The form requires hidden setup that is not visible to reviewers.
-- The result card does not expose a report artifact or replay path.
-- The browser proof depends on flaky timing instead of stable checkpoints.
+1. Load one JSON/YAML scenario fixture that already produces JSON, Markdown, and HTML outputs.
+2. Keep the UI scope to one form submit, one result card, and one visible report-download action.
+3. Verify the same stakeholder preset mix appears in the CLI artifact and the rendered result card.
+4. Re-run the same browser path without changing timing assumptions before widening selectors or layout work.
+5. Treat any flaky checkpoint as a recovery task first, not a scope-expansion excuse.
