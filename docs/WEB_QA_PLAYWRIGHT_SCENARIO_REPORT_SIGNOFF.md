@@ -1,11 +1,12 @@
-# WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF
+# Web QA Playwright scenario-report signoff
 
-Use this note when a Web QA report already validates, but the same slice also depends on a fresh governance-sandbox scenario/report replay.
+Use this note when one validator PASS still needs to stay explicitly tied to fresh governance-sandbox scenario and report artifacts.
 
-Keep the signoff narrow:
+## Keep visible
+- the validator outcome
+- the exact scenario input that was replayed
+- the JSON/Markdown/HTML report bundle that was generated
+- whether the bundle is fresh enough for handoff
 
-- rerun one scenario fixture,
-- confirm one JSON/Markdown/HTML bundle refresh,
-- and name the exact browser-proof checkpoint that still depends on that bundle.
-
-Do not call the lane handoff-ready until the validator pass and the scenario-report artifact timestamps point to the same current slice.
+## Suggested line
+Validator PASS is only handoff-ready when the linked governance-sandbox scenario replay and report bundle are current, reopenable, and scoped to the same proof slice.
