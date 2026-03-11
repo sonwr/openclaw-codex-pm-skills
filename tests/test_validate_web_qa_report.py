@@ -93,6 +93,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
             (Path(__file__).resolve().parents[1] / "docs" / "GOVERNANCE_SANDBOX_STDIN_SCENARIO_NOTE.md").exists()
         )
 
+    def test_readme_mentions_governance_sandbox_scenario_inputs_report_note(self) -> None:
+        readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
+
+        self.assertIn("docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_NOTE.md", readme)
+        self.assertTrue(
+            (Path(__file__).resolve().parents[1] / "docs" / "GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_NOTE.md").exists()
+        )
+
     def test_strict_plus_fixture_reports_missing_checkpoint_timestamp_only(self) -> None:
         fixture_path = (
             Path(__file__).resolve().parents[1]
