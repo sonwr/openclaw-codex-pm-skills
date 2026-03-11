@@ -39,6 +39,7 @@ If you need a compact entry bar before expanding the governance-sandbox web demo
 If you need a compact proof cue for scenario preset aliasing (`preset`/`group`/`trait`/`persona`) plus report summary aliases (`summary`/`brief`/`report_summary`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_PROOF.md`.
 If you need a shorter alias-expansion check before widening the governance-sandbox proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ALIAS_EXPANSION.md`.
 If the web-demo slice specifically changes the scenario form, result cards, or report download proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_FORM_PROOF.md`.
+If you need a compact check that the first governance-sandbox web demo still makes report download proof visible from the result card, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_DOWNLOAD_CHECK.md`.
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
 If the validator passes with incomplete signoff coverage, use `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_MISSING_FIELDS.md` to decide whether the artifact is inspection-ready or truly handoff-ready.
 If owner coverage is the real blocker after validation passes, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_OWNER_GAPS.md` before calling the report handoff-ready.
