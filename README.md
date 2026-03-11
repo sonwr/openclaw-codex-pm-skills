@@ -42,6 +42,7 @@ If you need a quick note for `report.output_name` or top-level `report_name` bun
 If you need a one-screen replay check for scenario file + basename + artifact-path visibility together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_CARD.md`.
 If you need the shortest PM handoff note before replaying those same governance-sandbox metadata artifacts, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_METADATA_START_NOTE.md`.
 If you need the shortest PM handoff for scenario input and reviewer-visible report output together, open `docs/GOVERNANCE_SANDBOX_REPORT_RESULT_CARD_START_NOTE.md`.
+If you need an even smaller PM-facing start for one scenario file plus one generated report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_START_NOTE.md`.
 If you need a compact owner-facing sentence once one scenario replay already produced a shared JSON/Markdown/HTML bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_HANDOFF_NOTE.md`.
 If you need a compact rule for checking that scenario metadata and report artifact links stay readable together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_READABILITY_NOTE.md`.
 If you need a short maintainer cue for the new governance-sandbox report owner aliases before wider handoff wording, open `docs/GOVERNANCE_SANDBOX_REPORT_OWNER_ALIAS_NOTE.md`.
