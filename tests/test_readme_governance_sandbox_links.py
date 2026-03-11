@@ -91,6 +91,13 @@ class ReadmeGovernanceSandboxLinkTests(unittest.TestCase):
         self.assertTrue(doc.exists())
         self.assertIn("docs/GOVERNANCE_SANDBOX_WEB_DEMO_STEP_CHECKLIST.md", readme)
 
+    def test_readme_keeps_scenario_file_checklist_link(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        doc = ROOT / "docs" / "GOVERNANCE_SANDBOX_SCENARIO_FILE_CHECKLIST.md"
+
+        self.assertTrue(doc.exists())
+        self.assertIn("docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_CHECKLIST.md", readme)
+
     def test_readme_keeps_report_output_matrix_link(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         doc = ROOT / "docs" / "GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md"
