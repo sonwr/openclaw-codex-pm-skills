@@ -115,6 +115,7 @@ If you need the shortest scenario-file -> result card -> report-download proof p
 If you need a compact reminder to keep that first web-demo slice in a stability-first lane before widening scope, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STABILITY_LANE.md`.
 If you need a compact recovery-first checklist after one web-demo checkpoint regresses, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RECOVERY_PROOF.md`.
 If you need a one-line PM-facing status once that first result-card proof is believable, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STATUS_LINE_NOTE.md`.
+If you need a compact Playwright signoff note before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PLAYWRIGHT_SIGNOFF_NOTE.md`.
 If you need a one-screen audit before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
 If you want a shorter result-card-only audit before widening the first governance-sandbox web demo, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
 If the scenario import workstream adds another stakeholder preset alias (`role` / `persona` / `group`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_ROLE_NOTE.md` so alias-proof scope stays tied to the same report-ready replay flow.
