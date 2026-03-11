@@ -363,6 +363,7 @@ Current examples:
 
 If you need the shortest possible operator-first triage order for a blocked strict-plus report, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_SIGNALS.md`.
 If you need a quick artifact-only check before reopening the full markdown report, open `docs/WEB_QA_PLAYWRIGHT_JSON_OUT_ARTIFACT_CHECK.md`.
+If you need a compact report-safety check before trusting generated HTML headings in a replay artifact, open `docs/WEB_QA_PLAYWRIGHT_HTML_HEADING_ESCAPE_CHECK.md`.
 It keeps the first scan deterministic: section lane -> hotspot blocker -> copy-ready next step -> next-action replay support -> unresolved failed-check handoff.
 If you need the isolated strict-plus fixtures in a repair-first order before opening the full report, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_FIXTURE_SEQUENCE.md`.
 
