@@ -858,3 +858,4 @@ If you need a compact governance-sandbox handoff for `report_author` / `report_a
 If you need a compact recovery note for keeping one governance-sandbox result card tied to one downloadable report bundle after a failed interaction, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_RECOVERY_NOTE.md`.
 
 If you need a compact reminder to anchor the next action to the exact failed checks before widening the replay lane, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_FAILED_REFS_NOTE.md`.
+If you need a shorter note for replaying one Playwright report bundle within the same stable scope, open `docs/WEB_QA_PLAYWRIGHT_REPORT_REPLAY_SCOPE.md`.
