@@ -107,6 +107,7 @@ If you need a shortest-path sequence for turning a validator-clean blocked lane 
 If you need a compact step-by-step bridge from validator PASS to a signoff-ready handoff sentence, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_HANDOFF_SEQUENCE.md`.
 If you need a compact next-action wording guide before declaring handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_HANDOFF.md`.
 If you need a compact signoff gate for deciding whether the next action is specific enough to call the artifact handoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_NEXT_ACTION_GATE.md`.
+If you need a shorter report-scoped wording brief before that handoff sentence, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_REPORT_SCOPE_BRIEF.md`.
 If you need safer wording for PASS artifacts that still should not be called signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_BLOCKER_LANGUAGE.md`.
 If you need a one-screen matrix for judging whether the next action already has enough target/artifact support for replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_SUPPORT_MATRIX.md`.
 If you need a compact pre-handoff priority check for whether the next-action sentence names the hottest blocked lane and proof target, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_PRIORITY_CHECK.md`.
