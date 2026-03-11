@@ -7,6 +7,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ReadmeGovernanceSandboxLinkTests(unittest.TestCase):
+    def test_readme_keeps_report_summary_alias_note_link(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        doc = ROOT / "docs" / "GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md"
+
+        self.assertTrue(doc.exists())
+        self.assertIn("docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md", readme)
+
     def test_readme_keeps_web_demo_form_proof_link(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         doc = ROOT / "docs" / "GOVERNANCE_SANDBOX_WEB_DEMO_FORM_PROOF.md"
