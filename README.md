@@ -67,6 +67,7 @@ If you need a short step ladder for stabilizing browser-demo checkpoints before 
 If you need a compact rule for keeping the first governance-sandbox browser proof limited to one scenario form, one result card, and one report-download check, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_CHECKPOINT_RULE.md`.
 If you need a short step-by-step checkpoint list before widening that first web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STEP_CHECKLIST.md`.
 If you need a compact acceptance note for when that first governance-sandbox result card is actually reviewable, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_ACCEPTANCE.md`.
+If you need a compact reminder to keep that first result card tied to one believable report-download proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_REPORT_DOWNLOAD_NOTE.md`.
 
 If you need a quick proof loop for scenario alias imports before report handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_CHECKLIST.md`.
 If you need a compact signoff note that keeps Web QA validator PASS coupled to scenario-report freshness, open `docs/WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF.md`.
