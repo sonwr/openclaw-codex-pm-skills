@@ -77,6 +77,7 @@ If you need a one-line rerun owner handoff after that checklist, open `docs/WEB_
 If you need a slightly broader signoff-safe rerun sentence before handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_STATUS_LINE.md`.
 If you need a compact pass/fail cue for whether a validator-clean artifact is truly ready for a focused rerun handoff, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_READY_SIGNAL.md`.
 If you need a one-screen rule for deciding whether replay support is strong enough to keep the rerun lane narrow, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_SUPPORT_SCOPE_GATE.md`.
+Validator JSON now exposes replay-support states such as `target_and_artifact_refs`, `target_refs_only`, `artifact_refs_only`, and `none`, so downstream handoffs can describe rerun scope without rebuilding that classification.
 If you need a fast green/yellow/red cue sheet before calling a failure lane rerun-ready, open `docs/WEB_QA_PLAYWRIGHT_RERUN_READINESS_CUES.md`.
 If you need a one-screen retry-versus-repair decision card before choosing the next move, open `docs/WEB_QA_PLAYWRIGHT_RETRY_DECISION_CARD.md`.
 If you need a compact hotspot-only rerun brief after strict-plus validation already named the blocked lane, open `docs/WEB_QA_PLAYWRIGHT_HOTSPOT_HANDOFF_CARD.md`.
