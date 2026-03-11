@@ -44,6 +44,7 @@ If you need the shortest PM handoff note before replaying those same governance-
 If you need the shortest PM handoff for scenario input and reviewer-visible report output together, open `docs/GOVERNANCE_SANDBOX_REPORT_RESULT_CARD_START_NOTE.md`.
 If you need a compact owner-facing sentence once one scenario replay already produced a shared JSON/Markdown/HTML bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_HANDOFF_NOTE.md`.
 If you need a compact rule for checking that scenario metadata and report artifact links stay readable together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_READABILITY_NOTE.md`.
+If you need a short maintainer cue for the new governance-sandbox report owner aliases before wider handoff wording, open `docs/GOVERNANCE_SANDBOX_REPORT_OWNER_ALIAS_NOTE.md`.
 If you need a short reviewer cue for one DAO-flavored scenario example that already proves scenario-file input plus named JSON/Markdown/HTML output, open `docs/GOVERNANCE_SANDBOX_DAO_REPORT_EXAMPLE_NOTE.md`.
 If you need a quick reminder to verify preset coverage before wiring a scenario file or web demo, open `docs/GOVERNANCE_SANDBOX_LIST_PRESETS_NOTE.md`.
 If you need a compact example scenario that proves preset-driven stakeholders plus a report bundle in one replay, open `docs/GOVERNANCE_SANDBOX_PRESET_BUNDLE_EXAMPLE_NOTE.md`.
