@@ -59,6 +59,7 @@ If you need the fastest scenario-file -> rendered-audience proof before wider re
 If you need a short alias rule for keeping `report.audience`, `report_readers`, and top-level audience fields aligned in one replayable fixture, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_ALIAS_NOTE.md`.
 If you need a short alias note for nested `report.report_readers` audience metadata in governance-sandbox scenario files, open `docs/GOVERNANCE_SANDBOX_REPORT_READERS_ALIAS_NOTE.md`.
 If you need a compact browser-proof recovery note for a flaky governance-sandbox web demo checkpoint, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_RECOVERY_NOTE.md`.
+If you need a short PM-facing cue for pairing stable browser-proof checkpoints with the same scenario/report artifacts, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_ARTIFACT_STABILITY_NOTE.md`.
 If you need a compact matrix for checking which governance-sandbox report artifacts should be present after a scenario replay, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md`.
 If you need a quick alias note for driving governance-sandbox report bundle filenames from `report.file_stem`, open `docs/GOVERNANCE_SANDBOX_REPORT_FILE_STEM_ALIAS_NOTE.md`.
 If you need a short note for when one `--report-dir` run should keep named artifacts plus default `report.*` aliases together, open `docs/GOVERNANCE_SANDBOX_REPORT_DIR_ALIAS_NOTE.md`.
