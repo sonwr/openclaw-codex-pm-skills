@@ -735,3 +735,8 @@ MIT
 ## Playwright Interactive Step Verification
 
 Need a compact handoff for step-by-step browser proof loops? Open `docs/PLAYWRIGHT_INTERACTIVE_STEP_VERIFICATION.md` for the minimum stable sequence: lock one replay preset, verify each checkpoint before advancing, and hand off the first repeated blocker with the smallest rerun command.
+
+
+## Governance + UI proof handoff
+
+For governance-heavy web work, pair `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_GOVERNANCE_NOTE.md` with `docs/WEB_QA_PLAYWRIGHT_STABILITY_CHECKLIST.md` so scenario intent, replay stability, and blocker wording stay aligned in one proof loop.
