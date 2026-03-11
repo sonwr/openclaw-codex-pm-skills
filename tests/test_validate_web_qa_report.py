@@ -171,6 +171,20 @@ class ValidateWebQaReportTests(unittest.TestCase):
         self.assertTrue(any("every failed check id" in e for e in errors))
 
 
+    def test_report_metadata_tracks_target_and_artifact_refs_inside_next_action(self) -> None:
+        report = FAILED_REPORT_WITH_RECOVERY.replace(
+            "    - Evidence: `artifacts/f2-failure.png`\n",
+            "    - Recovery owner: qa-product\n    - Evidence: `artifacts/f2-failure.png`\n",
+        ) + "- Next action: Rerun F2 against `#login-form`, capture `artifacts/f2-rerun.png`, and replay the login flow\n"
+        metadata = _build_report_metadata(report)
+
+        self.assertEqual(metadata["next_action_failed_check_refs"], ["F2"])
+        self.assertEqual(metadata["next_action_target_refs"], [])
+        self.assertEqual(metadata["next_action_artifact_refs"], ["artifacts/f2-rerun.png"])
+        self.assertFalse(metadata["next_action_has_target_refs"])
+        self.assertTrue(metadata["next_action_has_artifact_refs"])
+        self.assertEqual(metadata["next_action_replay_support_level"], "artifact_refs_only")
+
     def test_report_metadata_exposes_next_action_failed_check_refs(self) -> None:
         report = FAILED_REPORT_WITH_RECOVERY.replace(
             "    - Evidence: `artifacts/f2-failure.png`\n",
