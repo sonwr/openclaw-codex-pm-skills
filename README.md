@@ -817,3 +817,4 @@ For governance-heavy web work, pair `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_GOVERNANCE_N
 If you need a compact owner-handoff note after validating replay support, open `docs/WEB_QA_PLAYWRIGHT_FAILURE_OWNER_LANE.md`.
 
 If you need a compact note on keeping long-running ACP repo work inside one durable Discord thread, open `docs/DISCORD_THREAD_ACP_SESSION_NOTE.md`.
+If you need a compact governance-sandbox handoff for one scenario file plus one shared JSON/Markdown/HTML bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_NOTE.md`.
