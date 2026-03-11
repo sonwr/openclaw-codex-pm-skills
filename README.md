@@ -842,6 +842,7 @@ If you need a compact owner-handoff note after validating replay support, open `
 
 If you need a compact note on keeping long-running ACP repo work inside one durable Discord thread, open `docs/DISCORD_THREAD_ACP_SESSION_NOTE.md`.
 If you need a compact governance-sandbox handoff for one scenario file plus one shared JSON/Markdown/HTML bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_NOTE.md`.
+If you need a tiny PM-facing note for keeping stdin-driven scenario import tied to the same markdown/html/json report bundle, open `docs/GOVERNANCE_SANDBOX_STDIN_SCENARIO_REPORT_NOTE.md`.
 
 If you need a compact governance-sandbox handoff for `report_author` / `report_authors` owner aliases, open `docs/GOVERNANCE_SANDBOX_REPORT_AUTHOR_ALIAS_NOTE.md`.
 If you need a compact recovery note for keeping one governance-sandbox result card tied to one downloadable report bundle after a failed interaction, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_RECOVERY_NOTE.md`.
