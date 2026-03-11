@@ -37,6 +37,7 @@ If you need a short note for driving the default report bundle basename from `re
 If you need a quick note for `report.output_name` or top-level `report_name` bundle naming, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_NAME_ALIAS_NOTE.md`.
 If you need a one-screen replay check for scenario file + basename + artifact-path visibility together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_CARD.md`.
 If you need the shortest PM handoff note before replaying those same governance-sandbox metadata artifacts, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_METADATA_START_NOTE.md`.
+If you need the shortest PM handoff for scenario input and reviewer-visible report output together, open `docs/GOVERNANCE_SANDBOX_REPORT_RESULT_CARD_START_NOTE.md`.
 If you need a compact rule for checking that scenario metadata and report artifact links stay readable together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_READABILITY_NOTE.md`.
 If you need a short reviewer cue for one DAO-flavored scenario example that already proves scenario-file input plus named JSON/Markdown/HTML output, open `docs/GOVERNANCE_SANDBOX_DAO_REPORT_EXAMPLE_NOTE.md`.
 If you need a quick reminder to verify preset coverage before wiring a scenario file or web demo, open `docs/GOVERNANCE_SANDBOX_LIST_PRESETS_NOTE.md`.
