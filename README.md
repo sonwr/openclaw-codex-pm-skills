@@ -73,6 +73,7 @@ If you need a compact signoff note that keeps Web QA validator PASS coupled to s
 If the workstream is about governance-sandbox web UI proof, use `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PROOF_LOOP.md` so UI work stays anchored to scenario input, report output, and deterministic browser-proof checkpoints.
 If you need a compact pass/hold cue before calling that web-demo slice complete, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_SCOPE_CHECK.md`.
 If you want a short scenario-file-first checklist for governance-sandbox report bundles before wider web-demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_CHECKLIST.md`.
+If you need a compact note for scenario files that also carry report output paths, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PATH_ALIAS_NOTE.md`.
 If you need a compact note for authoring stakeholder presets with a YAML/JSON name-to-preset map, open `docs/GOVERNANCE_SANDBOX_SCENARIO_MAP_INPUT_NOTE.md`.
 If you need a compact entry bar before expanding the governance-sandbox web demo beyond the first form and result-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_ENTRY_CHECK.md`.
 If you need a compact proof cue for scenario preset aliasing (`preset`/`group`/`trait`/`persona`) plus report summary aliases (`summary`/`brief`/`report_summary`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_PROOF.md`.
