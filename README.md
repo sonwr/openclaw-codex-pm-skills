@@ -51,6 +51,7 @@ If you need a compact note for carrying report audience metadata from scenario f
 If you need a short PM-facing cue for keeping preset labels paired with stakeholder concern summaries in governance-sandbox reports, open `docs/GOVERNANCE_SANDBOX_PRESET_SUMMARY_REPORT_NOTE.md`.
 If you need the fastest scenario-file -> rendered-audience proof before wider report work, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_START_NOTE.md`.
 If you need a short alias rule for keeping `report.audience`, `report_readers`, and top-level audience fields aligned in one replayable fixture, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_ALIAS_NOTE.md`.
+If you need a short alias note for nested `report.report_readers` audience metadata in governance-sandbox scenario files, open `docs/GOVERNANCE_SANDBOX_REPORT_READERS_ALIAS_NOTE.md`.
 If you need a compact browser-proof recovery note for a flaky governance-sandbox web demo checkpoint, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_RECOVERY_NOTE.md`.
 If you need a compact matrix for checking which governance-sandbox report artifacts should be present after a scenario replay, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md`.
 If you need a quick alias note for driving governance-sandbox report bundle filenames from `report.file_stem`, open `docs/GOVERNANCE_SANDBOX_REPORT_FILE_STEM_ALIAS_NOTE.md`.
