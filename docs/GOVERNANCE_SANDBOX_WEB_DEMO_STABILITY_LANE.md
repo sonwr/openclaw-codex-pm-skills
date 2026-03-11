@@ -1,17 +1,12 @@
-# governance-sandbox web demo stability lane
+# Governance Sandbox web demo stability lane
 
-Use this note when the first governance-sandbox web demo already has one scenario form and one result-card/report-download path, but you need to decide whether the next pass should stay on stability instead of adding UI scope.
+Use a stability-first lane for the first Governance Sandbox browser demo slice:
 
-## Keep the next pass in the stability lane when
+- one scenario input surface,
+- one result card,
+- one report-download proof,
+- one deterministic replay path.
 
-- the same scenario file should reproduce the same result-card copy and report bundle paths,
-- browser-proof checkpoints already exist but still need retry/recovery wording,
-- the UI already proves one believable action and the risk is flaky replay, not missing surface area,
-- widening the UI would hide a weaker scenario-import or report-download contract.
+Do not expand the demo into secondary views until that narrow lane can be replayed with stable steps, stable selectors or refs, and stable artifact expectations.
 
-## Fast check
-
-1. Reopen the scenario-file proof loop first.
-2. Confirm the result card still points to one report bundle or download target.
-3. Keep the Playwright pass scoped to the same form -> result-card -> report-download path.
-4. Only widen the UI after the deterministic replay note and failure-recovery cue are both current.
+Pair this note with `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PLAYWRIGHT_LADDER.md` and `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_DOWNLOAD_CHECK.md` when reviewing the first interactive proof.
