@@ -29,6 +29,7 @@ If you need the same proof path with a JSON fixture instead of YAML, open `docs/
 If the workstream needs reviewer-ready memo naming for governance-sandbox report bundles, open `docs/GOVERNANCE_SANDBOX_REPORT_TITLE_HANDOFF.md` before changing scenario metadata or report examples.
 If you need a compact pass over whether one scenario file already produces a reusable JSON/Markdown/HTML proof bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_CHECK.md`.
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
+If you need a compact note for carrying `report.synopsis` into the same markdown/html/json memo summary lane, open `docs/GOVERNANCE_SANDBOX_REPORT_SYNOPSIS_ALIAS_NOTE.md`.
 If you need a quick note for title-derived report bundle naming when no explicit basename is set, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md`.
 If you need a compact note for keeping governance-sandbox artifact paths visible in report metadata, open `docs/GOVERNANCE_SANDBOX_REPORT_ARTIFACT_PATHS.md`.
 If you need the shortest pipe-friendly scenario replay for governance-sandbox JSON/YAML input, open `docs/GOVERNANCE_SANDBOX_STDIN_SCENARIO_NOTE.md`.
