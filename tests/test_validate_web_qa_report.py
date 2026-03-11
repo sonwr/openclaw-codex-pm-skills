@@ -1438,6 +1438,13 @@ class ValidateWebQaReportTests(unittest.TestCase):
             [],
         )
 
+    def test_readme_links_report_artifact_paths_note(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        readme = (repo_root / "README.md").read_text(encoding="utf-8")
+
+        self.assertIn("docs/GOVERNANCE_SANDBOX_REPORT_ARTIFACT_PATHS.md", readme)
+        self.assertTrue((repo_root / "docs" / "GOVERNANCE_SANDBOX_REPORT_ARTIFACT_PATHS.md").exists())
+
     def test_readme_links_report_basename_title_fallback_note(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
         readme = (repo_root / "README.md").read_text(encoding="utf-8")

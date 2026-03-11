@@ -26,6 +26,7 @@ If the workstream touches governance-sandbox scenario files or markdown/html rep
 If the workstream needs reviewer-ready memo naming for governance-sandbox report bundles, open `docs/GOVERNANCE_SANDBOX_REPORT_TITLE_HANDOFF.md` before changing scenario metadata or report examples.
 If you need a compact pass over whether one scenario file already produces a reusable JSON/Markdown/HTML proof bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_CHECK.md`.
 If you need a quick note for title-derived report bundle naming when no explicit basename is set, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md`.
+If you need a compact note for keeping governance-sandbox artifact paths visible in report metadata, open `docs/GOVERNANCE_SANDBOX_REPORT_ARTIFACT_PATHS.md`.
 If you need a quick proof loop for scenario alias imports before report handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_CHECKLIST.md`.
 If you need a compact signoff note that keeps Web QA validator PASS coupled to scenario-report freshness, open `docs/WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF.md`.
 If the workstream is about governance-sandbox web UI proof, use `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PROOF_LOOP.md` so UI work stays anchored to scenario input, report output, and deterministic browser-proof checkpoints.
