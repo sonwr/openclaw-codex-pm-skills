@@ -56,6 +56,7 @@ If you need a compact PM-facing start note for wiring `run --list-presets-json` 
 If you need a compact scenario-authoring cue for `trait` / `persona` preset aliases before widening report or web-demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TRAIT_ALIAS_NOTE.md`.
 If you need the shortest PM-facing note for scenario-file input plus the default markdown/html/json report trio before broader demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MINIMUM_BUNDLE_NOTE.md`.
 If you need a shorter PM-facing cue for proving scenario-file input plus one markdown memo before widening the full report trio, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_MARKDOWN_NOTE.md`.
+If you need a compact pre-merge check that the smallest acceptable governance-sandbox progress still means scenario import plus one validated report artifact, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MIN_PROGRESS_CHECK.md`.
 
 If you need a compact PM cue for the current governance-sandbox build order (scenario file -> report bundle -> presets -> web demo -> demo GIF), open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
 If you need a shorter PM reminder that scenario-file input and markdown/html report output stay first in that order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md`.
