@@ -66,6 +66,7 @@ If you need a compact acceptance note for when that first governance-sandbox res
 
 If you need a quick proof loop for scenario alias imports before report handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_CHECKLIST.md`.
 If you need a compact signoff note that keeps Web QA validator PASS coupled to scenario-report freshness, open `docs/WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF.md`.
+If you need a compact signoff note that keeps Web QA validator PASS coupled to scenario-report freshness, open `docs/WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF.md`.
 If the workstream is about governance-sandbox web UI proof, use `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PROOF_LOOP.md` so UI work stays anchored to scenario input, report output, and deterministic browser-proof checkpoints.
 If you need a compact pass/hold cue before calling that web-demo slice complete, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_SCOPE_CHECK.md`.
 If you want a short scenario-file-first checklist for governance-sandbox report bundles before wider web-demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_CHECKLIST.md`.

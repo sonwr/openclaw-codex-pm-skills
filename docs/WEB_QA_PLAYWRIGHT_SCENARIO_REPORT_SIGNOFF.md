@@ -1,21 +1,11 @@
-# Web QA Playwright scenario-report signoff
+# WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF
 
-Use this note when a Web QA artifact depends on governance-sandbox scenario files plus markdown/html report proof.
+Use this note when a Web QA report already validates, but the same slice also depends on a fresh governance-sandbox scenario/report replay.
 
-## Fast loop
+Keep the signoff narrow:
 
-1. Validate the Web QA artifact first.
-2. Re-run the linked governance scenario fixture that produced the report.
-3. Confirm the markdown/html report still names the same scenario context, hotspot, and next action.
-4. Only call the handoff signoff-ready when both the validator and the scenario-report bundle stay aligned.
+- rerun one scenario fixture,
+- confirm one JSON/Markdown/HTML bundle refresh,
+- and name the exact browser-proof checkpoint that still depends on that bundle.
 
-## Minimum evidence
-
-- validator PASS output
-- scenario file path or stdin proof
-- report.json / report.md / report.html bundle
-- one sentence describing whether the next action stayed lane-scoped or expanded
-
-## Hold language
-
-Use hold language when the validator passes but the scenario/report bundle is stale, missing, or points at a different replay lane than the current artifact.
+Do not call the lane handoff-ready until the validator pass and the scenario-report artifact timestamps point to the same current slice.
