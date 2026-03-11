@@ -50,6 +50,7 @@ If you need a compact matrix for checking which governance-sandbox report artifa
 If you need a quick alias note for driving governance-sandbox report bundle filenames from `report.file_stem`, open `docs/GOVERNANCE_SANDBOX_REPORT_FILE_STEM_ALIAS_NOTE.md`.
 If you need a short note for when one `--report-dir` run should keep named artifacts plus default `report.*` aliases together, open `docs/GOVERNANCE_SANDBOX_REPORT_DIR_ALIAS_NOTE.md`.
 If you need a compact UI review loop for the first governance-sandbox web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_REVIEW.md`.
+If you want the shortest bridge between governance-sandbox web-demo work and UI/UX review rules, open `docs/GOVERNANCE_SANDBOX_UI_UX_PRO_MAX_BRIDGE.md`.
 If you need a short step ladder for stabilizing browser-demo checkpoints before widening coverage, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PLAYWRIGHT_LADDER.md`.
 If you need a compact rule for keeping the first governance-sandbox browser proof limited to one scenario form, one result card, and one report-download check, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_CHECKPOINT_RULE.md`.
 If you need a short step-by-step checkpoint list before widening that first web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STEP_CHECKLIST.md`.
