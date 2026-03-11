@@ -69,6 +69,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
         errors = validate_report_text(fixture_text, strict=True)
         self.assertTrue(any("Execution log" in e for e in errors))
 
+    def test_readme_mentions_governance_sandbox_report_name_alias_note(self) -> None:
+        readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
+
+        self.assertIn("docs/GOVERNANCE_SANDBOX_REPORT_NAME_ALIAS_NOTE.md", readme)
+        self.assertTrue(
+            (Path(__file__).resolve().parents[1] / "docs" / "GOVERNANCE_SANDBOX_REPORT_NAME_ALIAS_NOTE.md").exists()
+        )
+
     def test_strict_plus_fixture_reports_missing_checkpoint_timestamp_only(self) -> None:
         fixture_path = (
             Path(__file__).resolve().parents[1]
