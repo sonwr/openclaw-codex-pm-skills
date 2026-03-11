@@ -78,6 +78,7 @@ If you need a compact browser-proof recovery note for a flaky governance-sandbox
 If you need a short PM-facing cue for pairing stable browser-proof checkpoints with the same scenario/report artifacts, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_ARTIFACT_STABILITY_NOTE.md`.
 If you need a compact matrix for checking which governance-sandbox report artifacts should be present after a scenario replay, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md`.
 If you need a quick alias note for driving governance-sandbox report bundle filenames from `report.file_stem`, open `docs/GOVERNANCE_SANDBOX_REPORT_FILE_STEM_ALIAS_NOTE.md`.
+If you need a compact alias note for driving that same governance-sandbox report bundle from `report.slug`, open `docs/GOVERNANCE_SANDBOX_REPORT_SLUG_ALIAS_NOTE.md`.
 If you need a short note for when one `--report-dir` run should keep named artifacts plus default `report.*` aliases together, open `docs/GOVERNANCE_SANDBOX_REPORT_DIR_ALIAS_NOTE.md`.
 If you need a compact UI review loop for the first governance-sandbox web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_REVIEW.md`.
 If you want the shortest bridge between governance-sandbox web-demo work and UI/UX review rules, open `docs/GOVERNANCE_SANDBOX_UI_UX_PRO_MAX_BRIDGE.md`.
