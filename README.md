@@ -66,6 +66,7 @@ If the web-demo slice specifically changes the scenario form, result cards, or r
 If you need a compact check that the first governance-sandbox web demo still makes report download proof visible from the result card, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_DOWNLOAD_CHECK.md`.
 If you need a compact reminder to keep that first web-demo slice in a stability-first lane before widening scope, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STABILITY_LANE.md`.
 If you need a one-screen audit before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
+If you want a shorter result-card-only audit before widening the first governance-sandbox web demo, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
 If the scenario import workstream adds another stakeholder preset alias (`role` / `persona` / `group`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_ROLE_NOTE.md` so alias-proof scope stays tied to the same report-ready replay flow.
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
 If the validator passes with incomplete signoff coverage, use `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_MISSING_FIELDS.md` to decide whether the artifact is inspection-ready or truly handoff-ready.
