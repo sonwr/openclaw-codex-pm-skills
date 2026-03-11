@@ -123,6 +123,7 @@ If you need a compact Playwright signoff note before widening that same form-to-
 If you need one bridge note that keeps ui-ux-pro-max layout rules and Playwright stability checks coupled for the first governance-sandbox web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_UX_PLAYWRIGHT_HANDOFF.md`.
 If you need a one-screen audit before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
 If you want a shorter result-card-only audit before widening the first governance-sandbox web demo, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
+If you need a compact PM note that keeps governance-sandbox work pinned to scenario-file import plus report-bundle proof before wider preset or UI expansion, open `docs/GOVERNANCE_SANDBOX_REPORT_PRIORITY_BUNDLE_NOTE.md`.
 If the scenario import workstream adds another stakeholder preset alias (`role` / `persona` / `group`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_ROLE_NOTE.md` so alias-proof scope stays tied to the same report-ready replay flow.
 If you need a compact note for mapping-style fixtures that keep stable ids outside but human names inside `stakeholder`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_STAKEHOLDER_ALIAS_NOTE.md`.
 The JSON metadata also tracks failed-check recovery owners, missing owner coverage, and next-action owner handoff readiness so triage gaps stay visible before merge.
