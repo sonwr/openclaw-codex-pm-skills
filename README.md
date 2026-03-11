@@ -83,6 +83,7 @@ If you need a short step ladder for stabilizing browser-demo checkpoints before 
 If you need a one-line PM check for whether a scenario-file run already produced the minimum report trio, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STACK_NOTE.md`.
 If you need a compact rule for keeping the first governance-sandbox browser proof limited to one scenario form, one result card, and one report-download check, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_CHECKPOINT_RULE.md`.
 If you need a short step-by-step checkpoint list before widening that first web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STEP_CHECKLIST.md`.
+If you need a compact PM-facing reminder to keep that first governance-sandbox web demo limited to one scenario form, one result card, and one report-download checkpoint, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_SCOPE_BRIEF.md`.
 If you need a compact acceptance note for when that first governance-sandbox result card is actually reviewable, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_ACCEPTANCE.md`.
 If you need a compact reminder to keep that first result card tied to one believable report-download proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_REPORT_DOWNLOAD_NOTE.md`.
 If you need a smaller scope note for keeping that same browser slice limited to one form, one result card, and one report download, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_DOWNLOAD_SCOPE_NOTE.md`.
