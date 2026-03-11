@@ -24,6 +24,7 @@ This keeps documentation tweaks and validation-rule changes tied to the same rep
 For broader validator or fixture rewrites, run `python3 -m unittest discover -s tests` before opening the PR so the full replay-readiness surface stays green.
 If the workstream touches governance-sandbox scenario files or markdown/html report proof, use `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PROOF_LOOP.md` before merging so scenario-input evidence and report-output evidence stay coupled.
 If you need the shortest scenario-file -> JSON/Markdown/HTML replay path before the fuller proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_QUICKSTART.md` first.
+If you need a compact reminder to keep one scenario import tied to one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STACK_NOTE.md`.
 If you need the smallest PM-facing scenario file -> one JSON/Markdown/HTML report bundle check before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TO_REPORT_START.md`.
 If you need the same proof path with a JSON fixture instead of YAML, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON_QUICKSTART.md`.
 If the workstream needs reviewer-ready memo naming for governance-sandbox report bundles, open `docs/GOVERNANCE_SANDBOX_REPORT_TITLE_HANDOFF.md` before changing scenario metadata or report examples.
