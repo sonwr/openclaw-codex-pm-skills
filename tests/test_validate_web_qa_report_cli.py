@@ -2710,3 +2710,14 @@ if __name__ == "__main__":
         rendered = stdout.getvalue()
         self.assertIn("- effective replay hotspot: functional (4 blocker(s); checkpoints: F2, F3)", rendered)
         self.assertIn("- effective replay hotspot next step: Repair `missing_target_refs` across hotspot checkpoints: F2, F3", rendered)
+
+
+    def test_next_action_rerun_detection_accepts_plural_forms(self) -> None:
+        report = VALID_REPORT.replace(
+            "- Next action: Archive artifacts and proceed to release signoff",
+            "- Next action: Reruns F2 against ref=e12, captures `artifacts/f2-rerun.png`, and retries the login flow",
+        )
+
+        self.assertTrue(validate_web_qa_report._next_action_mentions_rerun(report))
+        metadata = validate_web_qa_report._build_report_metadata(report)
+        self.assertTrue(metadata["next_action_mentions_rerun"])

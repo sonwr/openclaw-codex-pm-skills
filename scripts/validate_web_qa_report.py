@@ -313,7 +313,7 @@ def _next_action_mentions_rerun(text: str) -> bool:
     next_action = _extract_next_action(text)
     if next_action is None:
         return False
-    return re.search(r"\b(rerun|re-run|replay|re-test|retest|retry)\b", next_action, flags=re.IGNORECASE) is not None
+    return re.search(r"\b(rerun|reruns|re-run|re-runs|replay|replays|re-test|retest|retry|retries)\b", next_action, flags=re.IGNORECASE) is not None
 
 
 def _summarize_checkpoint_sections(checkpoint_order: list[str]) -> dict[str, int]:
