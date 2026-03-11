@@ -23,6 +23,7 @@ python3 -m unittest tests/test_validate_web_qa_report.py tests/test_validate_web
 This keeps documentation tweaks and validation-rule changes tied to the same replay-readiness contract.
 For broader validator or fixture rewrites, run `python3 -m unittest discover -s tests` before opening the PR so the full replay-readiness surface stays green.
 If the workstream touches governance-sandbox scenario files or markdown/html report proof, use `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PROOF_LOOP.md` before merging so scenario-input evidence and report-output evidence stay coupled.
+If you need the shortest scenario-file -> JSON/Markdown/HTML replay path before the fuller proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_QUICKSTART.md` first.
 If the workstream needs reviewer-ready memo naming for governance-sandbox report bundles, open `docs/GOVERNANCE_SANDBOX_REPORT_TITLE_HANDOFF.md` before changing scenario metadata or report examples.
 If you need a compact pass over whether one scenario file already produces a reusable JSON/Markdown/HTML proof bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_CHECK.md`.
 If you need a quick note for title-derived report bundle naming when no explicit basename is set, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md`.
