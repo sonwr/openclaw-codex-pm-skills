@@ -1438,6 +1438,15 @@ class ValidateWebQaReportTests(unittest.TestCase):
             [],
         )
 
+    def test_readme_links_report_basename_title_fallback_note(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        readme = (repo_root / "README.md").read_text(encoding="utf-8")
+        note = repo_root / "docs" / "GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md"
+
+        self.assertTrue(note.exists())
+        self.assertIn("docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md", readme)
+        self.assertIn("report.title", note.read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()
