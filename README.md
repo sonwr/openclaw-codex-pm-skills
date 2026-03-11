@@ -842,3 +842,5 @@ If you need a compact governance-sandbox handoff for one scenario file plus one 
 
 If you need a compact governance-sandbox handoff for `report_author` / `report_authors` owner aliases, open `docs/GOVERNANCE_SANDBOX_REPORT_AUTHOR_ALIAS_NOTE.md`.
 If you need a compact recovery note for keeping one governance-sandbox result card tied to one downloadable report bundle after a failed interaction, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_RECOVERY_NOTE.md`.
+
+If you need a compact reminder to anchor the next action to the exact failed checks before widening the replay lane, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_FAILED_REFS_NOTE.md`.
