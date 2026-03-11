@@ -42,7 +42,8 @@ If you need a short reviewer cue for one DAO-flavored scenario example that alre
 If you need a quick reminder to verify preset coverage before wiring a scenario file or web demo, open `docs/GOVERNANCE_SANDBOX_LIST_PRESETS_NOTE.md`.
 If you need a compact example scenario that proves preset-driven stakeholders plus a report bundle in one replay, open `docs/GOVERNANCE_SANDBOX_PRESET_BUNDLE_EXAMPLE_NOTE.md`.
 If you need a machine-readable preset catalog handoff for CLI, browser-form, or demo wiring, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_HANDOFF.md`.
-If you want the shortest replay note before wiring that preset JSON into a scenario form or review bot, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_START_NOTE.md`.
+If you want the shortest replay note before wiring that preset JSON into a scenario form or review bot, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_START_NOTE.md
+- `docs/GOVERNANCE_SANDBOX_STRING_PRESET_NOTE.md``.
 If you need a compact note for carrying report audience metadata from scenario files into markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_NOTE.md`.
 If you need the fastest scenario-file -> rendered-audience proof before wider report work, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_START_NOTE.md`.
 If you need a short alias rule for keeping `report.audience`, `report_readers`, and top-level audience fields aligned in one replayable fixture, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_ALIAS_NOTE.md`.
