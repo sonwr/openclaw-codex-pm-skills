@@ -88,6 +88,7 @@ If you need a short PM-facing cue for compact scenario fixtures that keep stakeh
 If you need the shortest reminder for compact report path fields like `report.md_file` and `report.html_output`, open `docs/GOVERNANCE_SANDBOX_REPORT_PATH_SHORT_ALIASES_NOTE.md`.
 If you need a compact reminder that relative CLI report paths should resolve from the scenario-file directory, open `docs/GOVERNANCE_SANDBOX_RELATIVE_REPORT_PATHS_NOTE.md`.
 If you need a compact note for authoring stakeholder presets with a YAML/JSON name-to-preset map, open `docs/GOVERNANCE_SANDBOX_SCENARIO_MAP_INPUT_NOTE.md`.
+If you need a compact note for the top-level `report_output_directory` alias before widening scenario-to-report wiring, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_DIRECTORY_ALIAS_NOTE.md`.
 If you need the shortest note for nested `scenario.inputs` fixtures before widening governance-sandbox scenario replay coverage, open `docs/GOVERNANCE_SANDBOX_NESTED_SCENARIO_INPUTS_NOTE.md`.
 If you need a compact reminder that nested scenario fixtures can also keep report metadata under `inputs.report`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_NOTE.md`.
 If you need a compact entry bar before expanding the governance-sandbox web demo beyond the first form and result-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_ENTRY_CHECK.md`.
