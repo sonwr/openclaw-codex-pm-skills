@@ -45,6 +45,7 @@ If you need a machine-readable preset catalog handoff for CLI, browser-form, or 
 If you want the shortest replay note before wiring that preset JSON into a scenario form or review bot, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_START_NOTE.md
 - `docs/GOVERNANCE_SANDBOX_STRING_PRESET_NOTE.md``.
 If you need a compact note for carrying report audience metadata from scenario files into markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_NOTE.md`.
+If you need a short PM-facing cue for keeping preset labels paired with stakeholder concern summaries in governance-sandbox reports, open `docs/GOVERNANCE_SANDBOX_PRESET_SUMMARY_REPORT_NOTE.md`.
 If you need the fastest scenario-file -> rendered-audience proof before wider report work, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_START_NOTE.md`.
 If you need a short alias rule for keeping `report.audience`, `report_readers`, and top-level audience fields aligned in one replayable fixture, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_ALIAS_NOTE.md`.
 If you need a compact browser-proof recovery note for a flaky governance-sandbox web demo checkpoint, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_RECOVERY_NOTE.md`.
