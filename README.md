@@ -42,8 +42,10 @@ If you need a short reviewer cue for one DAO-flavored scenario example that alre
 If you need a quick reminder to verify preset coverage before wiring a scenario file or web demo, open `docs/GOVERNANCE_SANDBOX_LIST_PRESETS_NOTE.md`.
 If you need a compact example scenario that proves preset-driven stakeholders plus a report bundle in one replay, open `docs/GOVERNANCE_SANDBOX_PRESET_BUNDLE_EXAMPLE_NOTE.md`.
 If you need a machine-readable preset catalog handoff for CLI, browser-form, or demo wiring, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_HANDOFF.md`.
-If you want the shortest replay note before wiring that preset JSON into a scenario form or review bot, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_START_NOTE.md
-- `docs/GOVERNANCE_SANDBOX_STRING_PRESET_NOTE.md``.
+
+If you need a compact reminder to keep the first governance-sandbox web-demo form aligned with the exported preset catalog before widening scope, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PRESET_FORM_NOTE.md`.
+If you want the shortest replay note before wiring that preset JSON into a scenario form or review bot, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_START_NOTE.md`.
+If you need the matching note for string-form stakeholder presets, open `docs/GOVERNANCE_SANDBOX_STRING_PRESET_NOTE.md`.
 If you need a compact note for carrying report audience metadata from scenario files into markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_NOTE.md`.
 If you need a short PM-facing cue for keeping preset labels paired with stakeholder concern summaries in governance-sandbox reports, open `docs/GOVERNANCE_SANDBOX_PRESET_SUMMARY_REPORT_NOTE.md`.
 If you need the fastest scenario-file -> rendered-audience proof before wider report work, open `docs/GOVERNANCE_SANDBOX_REPORT_AUDIENCE_START_NOTE.md`.
