@@ -42,6 +42,7 @@ If you need a machine-readable preset catalog handoff for CLI, browser-form, or 
 If you need a compact browser-proof recovery note for a flaky governance-sandbox web demo checkpoint, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_RECOVERY_NOTE.md`.
 If you need a compact matrix for checking which governance-sandbox report artifacts should be present after a scenario replay, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md`.
 If you need a compact UI review loop for the first governance-sandbox web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_REVIEW.md`.
+If you need a short step ladder for stabilizing browser-demo checkpoints before widening coverage, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PLAYWRIGHT_LADDER.md`.
 If you need a short step-by-step checkpoint list before widening that first web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STEP_CHECKLIST.md`.
 
 If you need a quick proof loop for scenario alias imports before report handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_CHECKLIST.md`.
