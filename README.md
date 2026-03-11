@@ -113,6 +113,7 @@ If you need a compact scope ladder before choosing checkpoint-, lane-, section-,
 - [How to Use in Real Work](#how-to-use-in-real-work)
 - [Quality Standards](#quality-standards)
 - [Playwright Interactive Execution Principles](#playwright-interactive-execution-principles)
+- [Playwright Interactive Step Verification](#playwright-interactive-step-verification)
 - [Playwright Replay Blocker Triage](#playwright-replay-blocker-triage)
 - [Playwright Replay Signals](#playwright-replay-signals)
 - [Contributing Guide](#contributing-guide)
@@ -729,3 +730,7 @@ Stable, community-supported PM skill framework for OpenClaw/Codex-style teams.
 ## License
 
 MIT
+
+## Playwright Interactive Step Verification
+
+Need a compact handoff for step-by-step browser proof loops? Open `docs/PLAYWRIGHT_INTERACTIVE_STEP_VERIFICATION.md` for the minimum stable sequence: lock one replay preset, verify each checkpoint before advancing, and hand off the first repeated blocker with the smallest rerun command.
