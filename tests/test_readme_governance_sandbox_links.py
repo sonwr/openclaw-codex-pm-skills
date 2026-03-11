@@ -56,6 +56,13 @@ class ReadmeGovernanceSandboxLinkTests(unittest.TestCase):
         self.assertTrue(doc.exists())
         self.assertIn("docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_RECOVERY_NOTE.md", readme)
 
+    def test_readme_keeps_web_demo_ui_review_link(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        doc = ROOT / "docs" / "GOVERNANCE_SANDBOX_WEB_DEMO_UI_REVIEW.md"
+
+        self.assertTrue(doc.exists())
+        self.assertIn("docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_REVIEW.md", readme)
+
 
 if __name__ == "__main__":
     unittest.main()
