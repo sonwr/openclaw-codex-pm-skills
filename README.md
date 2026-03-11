@@ -82,6 +82,7 @@ If you need a compact pass/hold cue before calling that web-demo slice complete,
 If you want a short scenario-file-first checklist for governance-sandbox report bundles before wider web-demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_CHECKLIST.md`.
 If you need a compact note for scenario files that also carry report output paths, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PATH_ALIAS_NOTE.md`.
 If you need the shortest reminder for compact report path fields like `report.md_file` and `report.html_output`, open `docs/GOVERNANCE_SANDBOX_REPORT_PATH_SHORT_ALIASES_NOTE.md`.
+If you need a compact reminder that relative CLI report paths should resolve from the scenario-file directory, open `docs/GOVERNANCE_SANDBOX_RELATIVE_REPORT_PATHS_NOTE.md`.
 If you need a compact note for authoring stakeholder presets with a YAML/JSON name-to-preset map, open `docs/GOVERNANCE_SANDBOX_SCENARIO_MAP_INPUT_NOTE.md`.
 If you need the shortest note for nested `scenario.inputs` fixtures before widening governance-sandbox scenario replay coverage, open `docs/GOVERNANCE_SANDBOX_NESTED_SCENARIO_INPUTS_NOTE.md`.
 If you need a compact reminder that nested scenario fixtures can also keep report metadata under `inputs.report`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_NOTE.md`.
