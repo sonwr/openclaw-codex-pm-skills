@@ -61,6 +61,7 @@ If you need a compact rule for checking that scenario metadata and report artifa
 If you need a short maintainer cue for the new governance-sandbox report owner aliases before wider handoff wording, open `docs/GOVERNANCE_SANDBOX_REPORT_OWNER_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping scenario source, report basename, and report owner visible in one governance-sandbox handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_BASENAME_NOTE.md`.
 If you need a short PM alias note for carrying `scenario_source` / `source_path` metadata through stdin-driven governance-sandbox markdown/html report bundles, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_ALIAS_NOTE.md`.
+If you need a compact rule for when nested source aliases should yield to the real scenario-file path, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_PRECEDENCE_NOTE.md`.
 If you need a short reviewer cue for one DAO-flavored scenario example that already proves scenario-file input plus named JSON/Markdown/HTML output, open `docs/GOVERNANCE_SANDBOX_DAO_REPORT_EXAMPLE_NOTE.md`.
 If you need a quick reminder to verify preset coverage before wiring a scenario file or web demo, open `docs/GOVERNANCE_SANDBOX_LIST_PRESETS_NOTE.md`.
 If you need a compact example scenario that proves preset-driven stakeholders plus a report bundle in one replay, open `docs/GOVERNANCE_SANDBOX_PRESET_BUNDLE_EXAMPLE_NOTE.md`.
