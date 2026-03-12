@@ -100,6 +100,7 @@ If you need the shortest preset-catalog cue before wiring one result card or bro
 If you need a compact PM-facing start note for wiring `run --list-presets-json` into the first scenario form before wider web-demo work, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_FORM_START_NOTE.md`.
 If you need a compact scenario-authoring cue for `trait` / `persona` preset aliases before widening report or web-demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TRAIT_ALIAS_NOTE.md`.
 If you need the shortest PM-facing note for scenario-file input plus the default markdown/html/json report trio before broader demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MINIMUM_BUNDLE_NOTE.md`.
+If you need a compact note for keeping the first governance-sandbox web demo recovery loop aligned with Playwright-interactive replay rules, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PLAYWRIGHT_RECOVERY_NOTE.md`.
 If you need the shortest PM-facing note for keeping scenario source plus the default report trio in one replay line, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_TRIO_NOTE.md`.
 If you need the shortest reminder that `scenario_config` is also accepted as a scenario-file wrapper before widening import docs, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CONFIG_WRAPPER_NOTE.md`.
 If you need a shorter PM-facing cue for proving scenario-file input plus one markdown memo before widening the full report trio, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_MARKDOWN_NOTE.md`.
