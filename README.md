@@ -164,6 +164,7 @@ If you need a compact recovery-first checklist after one web-demo checkpoint reg
 If you need a one-line PM-facing status once that first result-card proof is believable, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STATUS_LINE_NOTE.md`.
 If you need a compact Playwright signoff note before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PLAYWRIGHT_SIGNOFF_NOTE.md`.
 If you need one bridge note that keeps ui-ux-pro-max layout rules and Playwright stability checks coupled for the first governance-sandbox web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_UX_PLAYWRIGHT_HANDOFF.md`.
+If you need the narrowest web-demo proof that keeps one stable form submit, one result card, and one replay-ready handoff together, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_REPLAY_STACK.md`.
 If you need the same bridge condensed into one form-to-card acceptance lane, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_FORM_TO_CARD_ACCEPTANCE.md`.
 If you need a one-screen audit before widening that same form-to-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
 If you want a shorter result-card-only audit before widening the first governance-sandbox web demo, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_AUDIT.md`.
