@@ -985,3 +985,5 @@ If you need a compact PM note for scenario files that use `stakeholder_trait_map
 
 If you need a compact PM note for keeping one report audience phrased as watchers while the same governance-sandbox scenario/report bundle stays stable, open `docs/GOVERNANCE_SANDBOX_REPORT_WATCHERS_NOTE.md`.
 - Governance sandbox scenario/report bundle review note: `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_REVIEW.md`
+
+If you need a compact PM reminder to keep every active repo update gated by local validation before push, open `docs/PM_VALIDATE_THEN_PUSH_ACTIVE_REPOS_NOTE.md`.
