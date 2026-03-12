@@ -28,6 +28,7 @@ If you need a compact reminder to keep one scenario import tied to one JSON/Mark
 If you need a compact PM note for keeping scenario-file support and markdown/html report generation at the front of the queue, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_LANE.md`.
 If you need a one-screen PM reminder for the current governance-sandbox build order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact maintainer loop for the current phase-one priority, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_LOOP.md`.
+If you need a compact PM reminder to validate the smallest repo-level slice before push, open `docs/OPENCLAW_PM_VALIDATE_THEN_PUSH_NOTE.md`.
 If you need a compact PM note for keeping one small validated improvement visible across all five active repos while governance-sandbox still stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM note for keeping governance-sandbox scenario-file/report-first progress paired with the same active five-repo slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PROGRESS_NOTE.md`.
 If you need an even shorter PM note for keeping each pass to one validated scenario/report-first slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SMALL_SLICE_NOTE.md`.
