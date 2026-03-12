@@ -164,6 +164,7 @@ If you need a short checklist for proving the scenario form, result card, and re
 If you want a short scenario-file-first checklist for governance-sandbox report bundles before wider web-demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_CHECKLIST.md`.
 If you need a compact note for scenario files that also carry report output paths, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PATH_ALIAS_NOTE.md`.
 If you need a compact PM note for scenario files wrapped under `scenario_payload`, `scenario_data`, or `scenario_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WRAPPER_ALIAS_NOTE.md`.
+If you need a compact PM cue for wrapping imported proposal/stakeholder payloads under `scenario_input`, `scenario_document`, or `scenario_manifest`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUT_WRAPPER_NOTE.md`.
 If you need the matching PM note for a plain top-level `scenario` wrapper before widening fixture reuse, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TOP_LEVEL_WRAPPER_NOTE.md`.
 If you need the matching PM note for `scenario_plan` wrappers before widening fixture reuse, open `docs/GOVERNANCE_SANDBOX_SCENARIO_PLAN_WRAPPER_NOTE.md`.
 If you need a compact PM cue for wrapping imported proposal/stakeholder payloads under `scenario_input`, `scenario_document`, or `scenario_manifest`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUT_WRAPPER_NOTE.md`.
