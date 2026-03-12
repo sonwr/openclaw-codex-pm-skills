@@ -88,6 +88,7 @@ If you need a compact matrix for checking which governance-sandbox report artifa
 If you need a quick alias note for driving governance-sandbox report bundle filenames from `report.file_stem`, open `docs/GOVERNANCE_SANDBOX_REPORT_FILE_STEM_ALIAS_NOTE.md`.
 If you need a compact alias note for driving that same governance-sandbox report bundle from `report.slug`, open `docs/GOVERNANCE_SANDBOX_REPORT_SLUG_ALIAS_NOTE.md`.
 If you need a short note for when one `--report-dir` run should keep named artifacts plus default `report.*` aliases together, open `docs/GOVERNANCE_SANDBOX_REPORT_DIR_ALIAS_NOTE.md`.
+If you need a compact PM note for the shorter top-level `report_folder` alias, open `docs/GOVERNANCE_SANDBOX_REPORT_FOLDER_ALIAS_NOTE.md`.
 If you need a compact UI review loop for the first governance-sandbox web demo slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_REVIEW.md`.
 If you want the shortest bridge between governance-sandbox web-demo work and UI/UX review rules, open `docs/GOVERNANCE_SANDBOX_UI_UX_PRO_MAX_BRIDGE.md`.
 If you need a metadata-first reopen note after one scenario-file + report-bundle run, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_HANDOFF.md`.
