@@ -62,6 +62,7 @@ If you need a compact PM review note for replaying one imported scenario file ag
 If you need a quick note for title-derived report bundle naming when no explicit basename is set, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md`.
 If you need a compact note for keeping governance-sandbox artifact paths visible in report metadata, open `docs/GOVERNANCE_SANDBOX_REPORT_ARTIFACT_PATHS.md`.
 If you need the shortest pipe-friendly scenario replay for governance-sandbox JSON/YAML input, open `docs/GOVERNANCE_SANDBOX_STDIN_SCENARIO_NOTE.md`.
+If you need a one-line reviewer cue that keeps report subject, owner, queue, and bundle status aligned in the same saved summary handoff, open `docs/CLI_SUMMARY_REPORT_SUBJECT_OWNER_QUEUE_STATUS_NOTE.md`.
 If you need the same stdin path with a default report bundle handoff, open `docs/GOVERNANCE_SANDBOX_STDIN_REPORT_BUNDLE_NOTE.md`.
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
 If you need a short note for driving the default report bundle basename from `report.name`, open `docs/GOVERNANCE_SANDBOX_REPORT_NAME_ALIAS_NOTE.md`.
