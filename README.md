@@ -31,6 +31,7 @@ If you need a compact PM note for scenario-file alias growth that keeps preset m
 If you need the smallest PM-facing scenario file -> one JSON/Markdown/HTML report bundle check before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TO_REPORT_START.md`.
 If you need a compact PM handoff that names the imported scenario, the report bundle basename, and the generated markdown/html/json artifacts in one place, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_HANDOFF.md`.
 If you need the same proof path with a JSON fixture instead of YAML, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON_QUICKSTART.md`.
+If you need one compact PM cue for keeping JSON/YAML scenario import tied to the generated report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON_YAML_REPORT_START.md`.
 If the workstream needs reviewer-ready memo naming for governance-sandbox report bundles, open `docs/GOVERNANCE_SANDBOX_REPORT_TITLE_HANDOFF.md` before changing scenario metadata or report examples.
 If you need a compact pass over whether one scenario file already produces a reusable JSON/Markdown/HTML proof bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_CHECK.md`.
 If you need a short naming cue for keeping one scenario replay tied to one report bundle label across PM handoff copy, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_LABEL_NOTE.md`.
