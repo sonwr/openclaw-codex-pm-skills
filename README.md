@@ -864,6 +864,8 @@ If you need a compact governance-sandbox handoff for one scenario file plus one 
 If you need a tiny PM-facing note for keeping stdin-driven scenario import tied to the same markdown/html/json report bundle, open `docs/GOVERNANCE_SANDBOX_STDIN_SCENARIO_REPORT_NOTE.md`.
 
 If you need a compact governance-sandbox handoff for `report_author` / `report_authors` owner aliases, open `docs/GOVERNANCE_SANDBOX_REPORT_AUTHOR_ALIAS_NOTE.md`.
+If you need a compact PM note for keeping one scenario-input wrapper tied to one report-output basename before a wider governance-sandbox replay, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_OUTPUTS_NOTE.md`.
+
 If you need a compact recovery note for keeping one governance-sandbox result card tied to one downloadable report bundle after a failed interaction, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_RECOVERY_NOTE.md`.
 
 If you need a compact reminder to anchor the next action to the exact failed checks before widening the replay lane, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_FAILED_REFS_NOTE.md`.
