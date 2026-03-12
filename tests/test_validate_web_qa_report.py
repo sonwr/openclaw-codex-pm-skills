@@ -77,6 +77,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
             (Path(__file__).resolve().parents[1] / "docs" / "GOVERNANCE_SANDBOX_REPORT_NAME_ALIAS_NOTE.md").exists()
         )
 
+    def test_readme_mentions_governance_sandbox_report_output_directory_aliases_note(self) -> None:
+        readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
+
+        self.assertIn("docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_DIRECTORY_ALIASES_NOTE.md", readme)
+        self.assertTrue(
+            (Path(__file__).resolve().parents[1] / "docs" / "GOVERNANCE_SANDBOX_REPORT_OUTPUT_DIRECTORY_ALIASES_NOTE.md").exists()
+        )
+
     def test_readme_mentions_governance_sandbox_report_output_name_alias_note(self) -> None:
         readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
 
