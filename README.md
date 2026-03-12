@@ -28,6 +28,7 @@ If you need a compact reminder to keep one scenario import tied to one JSON/Mark
 If you need a compact PM note for keeping scenario-file support and markdown/html report generation at the front of the queue, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_LANE.md`.
 If you need a compact PM note for keeping scenario-file input work explicitly ahead of preset expansion and web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_FIRST_RULE.md`.
 If you need a compact PM note for scenario-file alias growth that keeps preset maps, trait aliases, and report outputs in the same proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_EXPANSION_LANE.md`.
+If you need a compact handoff for proposal-object aliases that still keeps scenario import tied to the report bundle proof, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_ALIAS_HANDOFF.md`.
 If you need the smallest PM-facing scenario file -> one JSON/Markdown/HTML report bundle check before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TO_REPORT_START.md`.
 If you need a compact PM handoff that names the imported scenario, the report bundle basename, and the generated markdown/html/json artifacts in one place, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_HANDOFF.md`.
 If you need a compact reviewer-audience note that keeps one imported scenario tied to one governance report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_REVIEWERS_NOTE.md`.
