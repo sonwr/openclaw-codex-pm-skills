@@ -1,17 +1,16 @@
-from __future__ import annotations
-
 from pathlib import Path
-import unittest
 
+ROOT = Path(__file__).resolve().parents[1]
+README = ROOT / 'README.md'
+NOTE = ROOT / 'docs' / 'GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md'
 
-class ReadmeGovernanceSandboxScenarioReportPriorityNoteTests(unittest.TestCase):
-    def test_readme_mentions_governance_sandbox_scenario_report_priority_note(self) -> None:
-        root = Path(__file__).resolve().parents[1]
-        readme = (root / "README.md").read_text(encoding="utf-8")
+def test_readme_mentions_governance_sandbox_scenario_report_priority_note() -> None:
+    readme = README.read_text(encoding='utf-8')
+    assert 'docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md' in readme
+    assert 'scenario-file input plus markdown/html report output' in readme
 
-        self.assertIn("docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md", readme)
-        self.assertTrue((root / "docs" / "GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md").exists())
-
-
-if __name__ == "__main__":
-    unittest.main()
+def test_governance_sandbox_scenario_report_priority_note_keeps_priority_pair_visible() -> None:
+    note = NOTE.read_text(encoding='utf-8')
+    assert 'scenario file' in note
+    assert 'JSON/Markdown/HTML report bundle' in note
+    assert 'repositories 4 and 5 as non-optional' in note
