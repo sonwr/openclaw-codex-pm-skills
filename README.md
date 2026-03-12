@@ -897,6 +897,7 @@ If you need a tiny PM-facing note for keeping stdin-driven scenario import tied 
 If you need a compact reminder to keep an `inputs.source` alias visible when stdin drives the same governance-sandbox report bundle, open `docs/GOVERNANCE_SANDBOX_INPUTS_SOURCE_ALIAS_NOTE.md`.
 
 If you need a compact governance-sandbox handoff for `report_author` / `report_authors` owner aliases, open `docs/GOVERNANCE_SANDBOX_REPORT_AUTHOR_ALIAS_NOTE.md`.
+If you need a compact governance-sandbox handoff for a singular `report.reviewer` audience alias that still renders the same markdown/html/json report bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_REVIEWER_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping one scenario-input wrapper tied to one report-output basename before a wider governance-sandbox replay, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_OUTPUTS_NOTE.md`.
 
 If you need a compact note for keeping one reviewer-facing report subtitle tied to the same governance-sandbox artifact bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_SUBTITLE_NOTE.md`.
