@@ -888,3 +888,5 @@ If you need a compact reminder to anchor the next action to the exact failed che
 If you need a shorter note for replaying one Playwright report bundle within the same stable scope, open `docs/WEB_QA_PLAYWRIGHT_REPORT_REPLAY_SCOPE.md`.
 If you need one compact owner-facing handoff for one validated Playwright report bundle, open `examples/web_qa_playwright_report_bundle_owner_handoff.md`.
 If you need one bridge note that keeps UI/UX-first demo shaping tied to replayable Playwright proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_UX_PLAYWRIGHT_BRIDGE.md`.
+
+If you need a tiny handoff note for keeping scenario-file report urgency visible in the rendered memo lane, open `docs/GOVERNANCE_SANDBOX_REPORT_PRIORITY_LANE_NOTE.md`.
