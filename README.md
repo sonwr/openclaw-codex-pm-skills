@@ -898,3 +898,5 @@ If you need one bridge note that keeps UI/UX-first demo shaping tied to replayab
 If you need a tiny handoff note for keeping scenario-file report urgency visible in the rendered memo lane, open `docs/GOVERNANCE_SANDBOX_REPORT_PRIORITY_LANE_NOTE.md`.
 
 If you need a shortest-path PM note for pairing one scenario review fixture with one named markdown/html/json bundle replay, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REVIEW_PACK_NOTE.md`.
+
+If you need a compact PM reminder that governance-sandbox work stays ordered as scenario-file input -> markdown/html/json report bundle -> presets -> web demo -> demo GIF, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md`.
