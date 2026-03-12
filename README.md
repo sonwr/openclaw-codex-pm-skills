@@ -165,6 +165,7 @@ If you need a compact note for keeping scenario display-name aliases (`name` / `
 If you need a compact PM note for governance-sandbox scenario files that keep report subject, owner, and audience visible together, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_TRIAGE_NOTE.md`.
 If you need the shortest replay start for one scenario file plus one generated bundle that keeps both report owner and audience visible, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_AUDIENCE_START_NOTE.md`.
 If you need a compact signoff note that keeps Web QA validator PASS coupled to scenario-report freshness, open `docs/WEB_QA_PLAYWRIGHT_SCENARIO_REPORT_SIGNOFF.md`.
+If you need a short PM-facing reminder to keep governance-sandbox progress locked to one real scenario file and one report bundle before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PROGRESS_NOTE.md`.
 If the workstream is about governance-sandbox web UI proof, use `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PROOF_LOOP.md` so UI work stays anchored to scenario input, report output, and deterministic browser-proof checkpoints.
 If you need a compact pass/hold cue before calling that web-demo slice complete, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_SCOPE_CHECK.md`.
 If you need a short checklist for proving the scenario form, result card, and report download in one stability-first pass, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_STEP_CHECKLIST.md`.
