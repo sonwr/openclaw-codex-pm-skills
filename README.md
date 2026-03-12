@@ -239,6 +239,7 @@ If you need a one-line status update that keeps the passing handoff scoped to th
 If you need a one-screen check for whether a passing handoff still needs to stay section-scoped instead of sounding whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_SECTION_SCOPE_CHECK.md`.
 If you need a compact rule for keeping owner-alias handoffs scoped to the real replay lane instead of sounding whole-run ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_ALIAS_SCOPE_RULE.md`.
 If you need a compact card for deciding whether the next-action line is rerun-ready enough to hand off, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_CUE.md`.
+If you need a fast scope check before turning a passing artifact into a broader replay request, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_SCOPE_TRIM.md`.
 If you need a one-screen rerun-versus-repair chooser after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_RERUN_DECIDER.md`.
 If you need a one-screen rule for keeping a passing report's rerun request narrow instead of drifting into a full replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_REPLAY_BOUNDARY.md`.
 If you need a compact rerun-only handoff checklist after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_HANDOFF_CARD.md`.
