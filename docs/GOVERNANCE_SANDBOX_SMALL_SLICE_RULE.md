@@ -1,3 +1,5 @@
-# GOVERNANCE_SANDBOX_SMALL_SLICE_RULE
+# Governance Sandbox Small Slice Rule
 
-Keep each governance-sandbox change reviewable: one small scenario-input or report-output improvement, one reproducible validation pass, and one handoff line that names the proof artifact bundle.
+Keep each repository pass intentionally small: one code, test, docs, or automation improvement that is visible in review and validated before push.
+
+Use this when a cross-repo maintenance loop must keep all active repositories moving without letting one lane consume the whole cycle.
