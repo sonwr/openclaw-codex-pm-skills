@@ -35,6 +35,7 @@ If you need an even shorter PM note for keeping each pass to one validated scena
 If you need the matching one-line status cue for scenario-file import plus report refresh, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SHORT_STATUS_NOTE.md`.
 If you need a compact PM reminder that repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) stay mandatory in every five-repo slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_NON_SKIP_RULE_NOTE.md`.
 If you need a compact PM reminder that repo 5 still stays scenario-file/report-first even while repo 4 and repo 5 remain mandatory in each active slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PRIORITY_PAIR_NOTE.md`.
+If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep scenario-case wrapper growth tied to the same scenario-file -> JSON/Markdown/HTML report proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CASE_WRAPPER_NOTE.md`.
 If you need a compact PM note for keeping scenario-file input work explicitly ahead of preset expansion and web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_FIRST_RULE.md`.
 If you need a compact PM note for keeping stakeholder trait preset growth queued behind scenario-file import and markdown/html/json report proof, open `docs/GOVERNANCE_SANDBOX_TRAIT_PRESET_PHASE_NOTE.md`.
