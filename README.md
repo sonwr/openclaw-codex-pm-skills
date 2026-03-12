@@ -132,6 +132,7 @@ If you need a compact PM rule for proving scenario-file aliases and markdown/htm
 If you need a compact PM-facing status cue for one imported scenario file plus one generated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_STATUS_NOTE.md`.
 If you need a shorter PM note for keeping scenario import, regenerated report artifacts, and owner/reviewer handoff in one two-step slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_TWO_STEP_NOTE.md`.
 If you need a shorter PM reminder that scenario-file input and markdown/html report output stay first in that order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md`.
+If you need a compact PM note for keeping scenario-file import, markdown/html/json report proof, and the next smallest validated step in the same handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_NEXT_SLICE_NOTE.md`.
 If you need a compact PM cue for naming the scenario source, report basename, and generated artifact trio in one reviewer-facing line, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STATUS_TRIO_NOTE.md`.
 If you need a shortest-path PM reminder that scenario-file alias work still starts with one imported fixture plus one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ALIAS_START_NOTE.md`.
 If you need a compact PM note for keeping one imported fixture tied to one regenerated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPLAY_BUNDLE_NOTE.md`.
