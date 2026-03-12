@@ -977,3 +977,4 @@ If you need a compact note for governance-sandbox scenario-sheet wrapper aliases
 If you need a compact PM note for scenario files that use `stakeholder_trait_map` / `trait_map` while keeping one imported fixture tied to one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TRAIT_MAP_NOTE.md`.
 
 If you need a compact PM note for keeping one report audience phrased as watchers while the same governance-sandbox scenario/report bundle stays stable, open `docs/GOVERNANCE_SANDBOX_REPORT_WATCHERS_NOTE.md`.
+- Governance sandbox scenario/report bundle review note: `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_REVIEW.md`
