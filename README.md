@@ -37,6 +37,7 @@ If you need a compact PM note for keeping `proposal_copy_markdown` in the same s
 If you need a compact PM note for flat scenario fixtures that put `proposal_copy_markdown` at the top level, open `docs/GOVERNANCE_SANDBOX_TOP_LEVEL_PROPOSAL_COPY_MARKDOWN_NOTE.md`.
 If you need a compact handoff for proposal-object aliases that still keeps scenario import tied to the report bundle proof, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_ALIAS_HANDOFF.md`.
 If you need the smallest PM-facing scenario file -> one JSON/Markdown/HTML report bundle check before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TO_REPORT_START.md`.
+If you need the shortest PM note for keeping one JSON or YAML scenario input tied to one validated markdown/html/json report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_BUNDLE_START_NOTE.md`.
 If you need a compact PM handoff that names the imported scenario, the report bundle basename, and the generated markdown/html/json artifacts in one place, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_HANDOFF.md`.
 If you need a compact reviewer-audience note that keeps one imported scenario tied to one governance report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_REVIEWERS_NOTE.md`.
 If you need a compact PM cue for one scenario-file run that proves both the scenario source and the generated report directory, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SOURCE_DIR_NOTE.md`.
