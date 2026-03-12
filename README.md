@@ -52,6 +52,7 @@ If you need the shortest pipe-friendly scenario replay for governance-sandbox JS
 If you need the same stdin path with a default report bundle handoff, open `docs/GOVERNANCE_SANDBOX_STDIN_REPORT_BUNDLE_NOTE.md`.
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
 If you need a short note for driving the default report bundle basename from `report.name`, open `docs/GOVERNANCE_SANDBOX_REPORT_NAME_ALIAS_NOTE.md`.
+If you need a short note for driving the same governance-sandbox report bundle from `report.output_slug` or `report.outputs.output_slug`, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_SLUG_ALIAS_NOTE.md`.
 If you need a quick note for `report.output_name` or top-level `report_name` bundle naming, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_NAME_ALIAS_NOTE.md`.
 If you need a one-screen replay check for scenario file + basename + artifact-path visibility together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_CARD.md`.
 If you need the shortest PM handoff note before replaying those same governance-sandbox metadata artifacts, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_METADATA_START_NOTE.md`.
