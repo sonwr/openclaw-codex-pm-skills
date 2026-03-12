@@ -1,11 +1,10 @@
-# Governance Sandbox web-demo UI/UX + Playwright bridge
+# Governance Sandbox Web Demo UI/UX + Playwright Bridge
 
-When governance-sandbox work reaches the first browser slice, keep one flow explicit: scenario form -> result card -> downloadable report artifact.
+Use this note when the next governance-sandbox slice touches the first web demo.
 
-Use the UI/UX notes to keep the form focused, the result card readable above the fold, and the primary action obvious.
-Use the Playwright notes to keep the same flow replayable with stable selectors, staged checkpoints, and recovery steps after a failed run.
+Keep the scope narrow and reproducible:
+- one scenario input form
+- one result card
+- one report-download proof
 
-Minimum proof:
-- one preset-aware scenario form
-- one visible result card with recommendation + report path
-- one reproducible browser replay or recovery note
+Apply UI/UX review rules first so the screen hierarchy stays obvious, then apply Playwright replay rules so the same slice is stable under automation. Do not widen scope until the same scenario fixture can drive both the visible card state and the saved report artifact path without flaky selectors or hidden copy.
