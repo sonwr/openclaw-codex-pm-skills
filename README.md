@@ -72,6 +72,7 @@ If you need a shorter proof card for the minimum acceptable scenario-file + JSON
 If you need a shortest-path PM reminder for one scenario file feeding one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ENTRY_NOTE.md`.
 
 If you need a compact PM cue for the current governance-sandbox build order (scenario file -> report bundle -> presets -> web demo -> demo GIF), open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
+If you need a compact PM note for proving one scenario-file wrapper alias before widening preset or web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WRAPPER_ENTRY_NOTE.md`.
 If you need a compact PM note for shipping one small governance-sandbox improvement while keeping scenario import and report bundle proof coupled, open `docs/GOVERNANCE_SANDBOX_SMALL_SLICE_RULE.md`.
 If you need a compact PM rule for proving scenario-file aliases and markdown/html/json report artifacts in one reviewer-facing pass, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ARTIFACT_PROOF_RULE.md`.
 If you need a compact PM-facing status cue for one imported scenario file plus one generated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_STATUS_NOTE.md`.
