@@ -107,7 +107,7 @@ If you want a short scenario-file-first checklist for governance-sandbox report 
 If you need a compact note for scenario files that also carry report output paths, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PATH_ALIAS_NOTE.md`.
 If you need a compact PM note for scenario files wrapped under `scenario_payload`, `scenario_data`, or `scenario_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WRAPPER_ALIAS_NOTE.md`.
 If you need the matching PM note for a plain top-level `scenario` wrapper before widening fixture reuse, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TOP_LEVEL_WRAPPER_NOTE.md`.
-If you need a compact PM cue for wrapping imported proposal/stakeholder payloads under `scenario_input`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUT_WRAPPER_NOTE.md`.
+If you need a compact PM cue for wrapping imported proposal/stakeholder payloads under `scenario_input`, `scenario_document`, or `scenario_manifest`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUT_WRAPPER_NOTE.md`.
 If you need the matching cue for a plural `scenario_inputs` wrapper before wider scenario-fixture reuse, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_ALIAS_NOTE.md`.
 If you need a short PM-facing cue for compact scenario fixtures that keep stakeholder names mapped directly to presets, open `docs/GOVERNANCE_SANDBOX_PRESET_MAP_ALIAS_NOTE.md`.
 If you need the shortest reminder for compact report path fields like `report.md_file` and `report.html_output`, open `docs/GOVERNANCE_SANDBOX_REPORT_PATH_SHORT_ALIASES_NOTE.md`.
