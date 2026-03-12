@@ -35,6 +35,7 @@ If you need a compact PM note for keeping scenario-file input work explicitly ah
 If you need a compact PM note for keeping stakeholder trait preset growth queued behind scenario-file import and markdown/html/json report proof, open `docs/GOVERNANCE_SANDBOX_TRAIT_PRESET_PHASE_NOTE.md`.
 If you need a compact PM reminder to prove one scenario-storyboard wrapper with the same JSON/Markdown/HTML report bundle before widening governance-sandbox fixture scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_STORYBOARD_NOTE.md`.
 If you need a compact PM note for scenario-file alias growth that keeps preset maps, trait aliases, and report outputs in the same proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_EXPANSION_LANE.md`.
+If you need a compact PM note for workshop exports that arrive as `scenario_workshop_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WORKSHOP_BUNDLE_NOTE.md`.
 If you need a compact PM note for keeping `proposal_copy_markdown` in the same scenario-file/report-first proof lane, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_COPY_MARKDOWN_ALIAS_NOTE.md`.
 If you need a compact PM note for flat scenario fixtures that put `proposal_copy_markdown` at the top level, open `docs/GOVERNANCE_SANDBOX_TOP_LEVEL_PROPOSAL_COPY_MARKDOWN_NOTE.md`.
 If you need a compact handoff for proposal-object aliases that still keeps scenario import tied to the report bundle proof, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_ALIAS_HANDOFF.md`.
