@@ -1,3 +1,3 @@
-# Governance-sandbox scenario file report owner summary note
+# Governance Sandbox Scenario-File Owner + Summary Note
 
-When a governance-sandbox scenario file already declares report owner and report summary fields, keep the first handoff short: scenario import proof, one generated report bundle, and the named owner/audience line. This keeps scenario-file progress legible without expanding the report loop beyond the smallest validated artifact set.
+Keep the first handoff narrow: one imported JSON/YAML scenario file should make both `report.owner` and `report.summary` visible in the generated markdown/html/json bundle before widening audience-routing or demo scope.
