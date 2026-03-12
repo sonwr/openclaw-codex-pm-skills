@@ -1,11 +1,22 @@
-# Governance Sandbox scenario-report minimum progress check
+# Governance Sandbox Scenario Report Minimum Progress Check
 
-Use this note when the delivery lane needs the smallest honest definition of progress before widening scope.
+Use this check when a planning pass needs to prove the smallest acceptable governance-sandbox improvement without overscoping the branch.
 
-Treat the pass bar as met only when the same work slice includes:
+## Minimum acceptable slice
 
-1. one imported scenario fixture (`.json` or `.yaml`),
-2. one validated generated report artifact (`.md`, `.html`, or the full bundle),
-3. and one reproducible command or test that proves the slice still works.
+1. Import one governance scenario from a JSON or YAML file.
+2. Produce at least one validated report artifact from that scenario-driven run.
+3. Keep the proof path small enough that the next pass can still add presets, demo UI, or media capture without reworking the CLI contract.
 
-If any of those three pieces are missing, keep the work scoped to scenario/report foundations instead of widening into preset polish or web-demo breadth.
+## Review prompt
+
+- Did the change improve scenario-file intake, report generation, or replayable evidence?
+- Can a reviewer rerun the smallest happy path with one command?
+- Did the repo keep report artifacts explicit enough for downstream handoff?
+
+## Suggested proof bundle
+
+- scenario fixture path
+- exact CLI command
+- produced JSON/Markdown/HTML artifact path
+- validator or smoke-test command
