@@ -140,6 +140,7 @@ If you need a short PM-facing cue for pairing stable browser-proof checkpoints w
 If you need a compact matrix for checking which governance-sandbox report artifacts should be present after a scenario replay, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md`.
 If you need a short PM note for scenario/report fixtures that describe the bundle directory as `report_dir`, `reports_dir`, `report_folder`, or `reports_folder`, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_DIRECTORY_ALIASES_NOTE.md`.
 If you need a compact PM note for keeping JSON/Markdown/HTML paths grouped under one `report.outputs.files` block, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_FILES_NOTE.md`.
+If you need a tiny reviewer-facing reminder that the same scenario replay still owns one visible JSON/Markdown/HTML artifact trio, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_FILES_CARD.md`.
 If you need a quick alias note for driving governance-sandbox report bundle filenames from `report.file_stem`, open `docs/GOVERNANCE_SANDBOX_REPORT_FILE_STEM_ALIAS_NOTE.md`.
 If you need a compact alias note for driving that same governance-sandbox report bundle from `report.slug`, open `docs/GOVERNANCE_SANDBOX_REPORT_SLUG_ALIAS_NOTE.md`.
 If you need a short note for when one `--report-dir` run should keep named artifacts plus default `report.*` aliases together, open `docs/GOVERNANCE_SANDBOX_REPORT_DIR_ALIAS_NOTE.md`.
