@@ -85,6 +85,7 @@ If you need a shorter PM-facing cue for proving scenario-file input plus one mar
 If you need a compact PM note for keeping one imported scenario file tied to one generated JSON/Markdown/HTML bundle with replayable verification steps, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_VERIFICATION_LANE.md`.
 If you need a compact PM note for the more explicit `report.outputs.bundle_basename` alias before widening governance-sandbox naming rules, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_BASENAME_ALIAS_NOTE.md`.
 If you need a compact pre-merge check that the smallest acceptable governance-sandbox progress still means scenario import plus one validated report artifact, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MIN_PROGRESS_CHECK.md`.
+If you need one compact note for keeping scenario-file import, markdown/html report outputs, and report-priority wording aligned in the same smallest validated governance-sandbox slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_PRIORITY_STACK_NOTE.md`.
 If you need a shorter proof card for the minimum acceptable scenario-file + JSON/Markdown/HTML bundle slice before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MINIMUM_PROGRESS_CARD.md`.
 If you need a shortest-path PM reminder for one scenario file feeding one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ENTRY_NOTE.md`.
 
