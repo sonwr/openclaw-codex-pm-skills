@@ -97,6 +97,7 @@ If you need a compact PM queueing note for keeping one scenario import and one m
 If you need a compact PM queue note for one scenario file plus one regenerated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_QUEUE_NOTE.md`.
 If you need a compact PM note for proving one scenario-file wrapper alias before widening preset or web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WRAPPER_ENTRY_NOTE.md`.
 If you need a compact PM note for workshop fixtures that arrive as `scenario_manifest_bundle` or `scenario_packet_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_MANIFEST_BUNDLE_NOTE.md`.
+If you need the matching PM note for workshop fixtures that arrive as `scenario_session_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SESSION_BUNDLE_NOTE.md`.
 If you need a compact PM note for `stakeholder_list` or `stakeholder_entries` scenario-file aliases before widening preset or web-demo scope, open `docs/GOVERNANCE_SANDBOX_STAKEHOLDER_LIST_ALIAS_NOTE.md`.
 If you need a compact PM note for `scenario_record` archive-style wrappers before widening preset or web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_RECORD_WRAPPER_NOTE.md`.
 If you need a compact PM status cue for the current smallest acceptable win in governance-sandbox, open `docs/GOVERNANCE_SANDBOX_MINIMUM_WIN_STATUS_NOTE.md`.
