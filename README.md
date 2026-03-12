@@ -26,6 +26,7 @@ If the workstream touches governance-sandbox scenario files or markdown/html rep
 If you need the shortest scenario-file -> JSON/Markdown/HTML replay path before the fuller proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_QUICKSTART.md` first.
 If you need a compact reminder to keep one scenario import tied to one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STACK_NOTE.md`.
 If you need a compact PM note for keeping scenario-file support and markdown/html report generation at the front of the queue, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_LANE.md`.
+If you need a compact PM note for keeping one small validated improvement visible across all five active repos while governance-sandbox still stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM note for keeping scenario-file input work explicitly ahead of preset expansion and web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_FIRST_RULE.md`.
 If you need a compact PM note for scenario-file alias growth that keeps preset maps, trait aliases, and report outputs in the same proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_EXPANSION_LANE.md`.
 If you need a compact handoff for proposal-object aliases that still keeps scenario import tied to the report bundle proof, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_ALIAS_HANDOFF.md`.
