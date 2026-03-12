@@ -1,3 +1,8 @@
-# Governance Sandbox scenario/report owner+basename note
+# Governance sandbox scenario/report owner-basename note
 
-When a governance-sandbox slice is ready to hand off, keep three details together in one sentence: the imported scenario source, the generated report basename, and the visible report owner. That makes reruns, review comments, and owner routing easier to reopen without re-reading the full bundle.
+Keep one smallest governance-sandbox proof slice tied to:
+- one JSON or YAML scenario-file input,
+- one shared report basename,
+- one visible report owner handoff.
+
+That keeps scenario-source replay, markdown/html/json report artifacts, and reviewer ownership aligned before widening scope.
