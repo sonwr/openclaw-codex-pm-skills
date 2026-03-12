@@ -868,3 +868,4 @@ If you need a compact recovery note for keeping one governance-sandbox result ca
 
 If you need a compact reminder to anchor the next action to the exact failed checks before widening the replay lane, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_FAILED_REFS_NOTE.md`.
 If you need a shorter note for replaying one Playwright report bundle within the same stable scope, open `docs/WEB_QA_PLAYWRIGHT_REPORT_REPLAY_SCOPE.md`.
+If you need one bridge note that keeps UI/UX-first demo shaping tied to replayable Playwright proof, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_UX_PLAYWRIGHT_BRIDGE.md`.
