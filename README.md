@@ -87,6 +87,7 @@ If you need a shortest-path PM reminder for one scenario file feeding one JSON/M
 If you need a compact PM cue for the current governance-sandbox build order (scenario file -> report bundle -> presets -> web demo -> demo GIF), open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
 If you need a compact PM note for keeping scenario-file input and markdown/html report output paired as the first delivery slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_NOTE.md`.
 If you need a compact PM queueing note for keeping one scenario import and one markdown/html/json report bundle visible before broader review routing, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_QUEUE_NOTE.md`.
+If you need a compact PM queue note for one scenario file plus one regenerated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_QUEUE_NOTE.md`.
 If you need a compact PM note for proving one scenario-file wrapper alias before widening preset or web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WRAPPER_ENTRY_NOTE.md`.
 If you need a compact PM note for `scenario_record` archive-style wrappers before widening preset or web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_RECORD_WRAPPER_NOTE.md`.
 If you need a compact PM status cue for the current smallest acceptable win in governance-sandbox, open `docs/GOVERNANCE_SANDBOX_MINIMUM_WIN_STATUS_NOTE.md`.
