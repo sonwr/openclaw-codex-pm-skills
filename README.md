@@ -114,6 +114,7 @@ If you need a shortest-path PM reminder for one scenario file feeding one JSON/M
 If you need a compact PM cue for the current governance-sandbox build order (scenario file -> report bundle -> presets -> web demo -> demo GIF), open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
 If you need a one-line PM status cue for keeping that delivery ladder visible during small validated slices, open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_STATUS_NOTE.md`.
 If you need a compact PM rule for the required five-line short report across the active repos, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_SHORT_REPORT_RULE.md`.
+If you need a shorter PM reminder for one-line repo status updates that still name change state, validation, and commit/push gate together, open `docs/OPENCLAW_PM_FIVE_REPO_SHORT_LINE_GATE_NOTE.md`.
 If you need a compact PM reminder to validate one small evidence-backed improvement in repo 1 before widening the five-repo pass, open `docs/OPENCLAW_PM_SMALL_VALIDATED_SLICE_NOTE.md`.
 If you need a compact PM reminder for the same five-repo loop to stay small, validated, and non-skipping across repos 4 and 5, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATE_LOOP_NOTE.md`.
 
