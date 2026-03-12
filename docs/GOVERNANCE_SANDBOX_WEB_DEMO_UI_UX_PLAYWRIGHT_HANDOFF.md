@@ -1,7 +1,5 @@
-# Governance Sandbox Web Demo UI/UX + Playwright Handoff
+# Governance Sandbox web-demo UI/UX + Playwright handoff
 
-Keep the first governance-sandbox web demo narrow: scenario input, result card, and report-download proof in one replayable slice.
-
-- Apply ui-ux-pro-max principles: clear hierarchy, single primary action, and visible artifact outputs.
-- Apply playwright-interactive principles: stable selectors, step-by-step verification, and rerun-ready recovery notes.
-- Do not widen the surface until the result card and report download stay believable across reruns.
+Keep the first governance-sandbox web demo scoped to one obvious scenario form, one result card, and one reproducible report-download check.
+Shape the UI so the primary action, status cues, and exported artifact path stay visible above the fold.
+Validate the same slice with stability-first Playwright checkpoints, deterministic fixture input, and a recovery step before widening the flow.
