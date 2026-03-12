@@ -72,6 +72,7 @@ If you need a compact PM cue for the current governance-sandbox build order (sce
 If you need a compact PM rule for proving scenario-file aliases and markdown/html/json report artifacts in one reviewer-facing pass, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ARTIFACT_PROOF_RULE.md`.
 If you need a compact PM-facing status cue for one imported scenario file plus one generated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_STATUS_NOTE.md`.
 If you need a shorter PM reminder that scenario-file input and markdown/html report output stay first in that order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_NOTE.md`.
+If you need a compact PM cue for naming the scenario source, report basename, and generated artifact trio in one reviewer-facing line, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STATUS_TRIO_NOTE.md`.
 
 If you need a compact reminder to keep the first governance-sandbox web-demo form aligned with the exported preset catalog before widening scope, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PRESET_FORM_NOTE.md`.
 If you need a compact PM note for keeping one scenario-file replay tied to one generated markdown/html report artifact bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ARTIFACT_NOTE.md`.
