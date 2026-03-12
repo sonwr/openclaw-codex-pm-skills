@@ -29,6 +29,7 @@ If you need a compact PM note for keeping scenario-file support and markdown/htm
 If you need a one-screen PM reminder for the current governance-sandbox build order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact maintainer loop for the current phase-one priority, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_LOOP.md`.
 If you need a compact PM note for keeping one small validated improvement visible across all five active repos while governance-sandbox still stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ACTIVE_SLICE_NOTE.md`.
+If you need a compact PM note for keeping governance-sandbox scenario-file/report-first progress paired with the same active five-repo slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PROGRESS_NOTE.md`.
 If you need an even shorter PM note for keeping each pass to one validated scenario/report-first slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SMALL_SLICE_NOTE.md`.
 If you need the matching one-line status cue for scenario-file import plus report refresh, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SHORT_STATUS_NOTE.md`.
 If you need a compact PM reminder that repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) stay mandatory in every five-repo slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_NON_SKIP_RULE_NOTE.md`.
