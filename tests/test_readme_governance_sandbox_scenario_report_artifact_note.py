@@ -1,3 +1,4 @@
+import unittest
 from pathlib import Path
 
 
@@ -6,14 +7,18 @@ README = ROOT / "README.md"
 NOTE = ROOT / "docs" / "GOVERNANCE_SANDBOX_SCENARIO_REPORT_ARTIFACT_NOTE.md"
 
 
-def test_readme_mentions_governance_sandbox_scenario_report_artifact_note() -> None:
-    readme = README.read_text(encoding="utf-8")
-    assert "docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ARTIFACT_NOTE.md" in readme
-    assert NOTE.exists()
+class ReadmeGovernanceSandboxScenarioReportArtifactNoteTests(unittest.TestCase):
+    def test_readme_mentions_governance_sandbox_scenario_report_artifact_note(self) -> None:
+        readme = README.read_text(encoding="utf-8")
+        self.assertIn("docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ARTIFACT_NOTE.md", readme)
+        self.assertIn("named markdown/html/json memo bundle", readme)
+
+    def test_governance_sandbox_scenario_report_artifact_note_keeps_bundle_visible(self) -> None:
+        note = NOTE.read_text(encoding="utf-8")
+        self.assertIn("one scenario file", note)
+        self.assertIn("JSON, Markdown, and HTML outputs", note)
+        self.assertIn("artifact paths are visible", note)
 
 
-def test_governance_sandbox_scenario_report_artifact_note_keeps_bundle_scope_small() -> None:
-    note = NOTE.read_text(encoding="utf-8")
-    assert "one scenario file" in note
-    assert "one generated markdown artifact" in note
-    assert "one generated html artifact" in note
+if __name__ == "__main__":
+    unittest.main()
