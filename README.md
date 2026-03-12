@@ -37,6 +37,7 @@ If you need a compact pass over whether one scenario file already produces a reu
 If you need a short naming cue for keeping one scenario replay tied to one report bundle label across PM handoff copy, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_LABEL_NOTE.md`.
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
 If you need a compact note for carrying `report.synopsis` into the same markdown/html/json memo summary lane, open `docs/GOVERNANCE_SANDBOX_REPORT_SYNOPSIS_ALIAS_NOTE.md`.
+If you need a compact PM note for carrying `report.description` from one imported scenario file into the generated markdown/html memo bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_DESCRIPTION_NOTE.md`.
 If you need a compact PM cue for keeping one scenario file tied to a named markdown/html/json memo bundle with visible output paths, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ARTIFACT_NOTE.md`.
 If you need a compact PM review note for replaying one imported scenario file against one generated JSON/Markdown/HTML bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OUTPUT_REVIEW.md`.
 If you need a quick note for title-derived report bundle naming when no explicit basename is set, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md`.
