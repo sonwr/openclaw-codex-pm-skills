@@ -96,6 +96,8 @@ If you need a shorter proof card for the minimum acceptable scenario-file + JSON
 If you need a shortest-path PM reminder for one scenario file feeding one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ENTRY_NOTE.md`.
 
 If you need a compact PM cue for the current governance-sandbox build order (scenario file -> report bundle -> presets -> web demo -> demo GIF), open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
+If you need a one-line PM status cue for keeping that delivery ladder visible during small validated slices, open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_STATUS_NOTE.md`.
+
 If you need a compact PM note for keeping scenario-file input and markdown/html report output paired as the first delivery slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_NOTE.md`.
 If you need the matching one-line PM status cue for that same paired phase-one slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_STATUS_NOTE.md`.
 If you need a compact PM reminder for the current phase-one target (scenario file first, report bundle second), open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_NOTE.md`.
