@@ -95,6 +95,7 @@ If you need a shortest-path PM reminder for one scenario file feeding one JSON/M
 
 If you need a compact PM cue for the current governance-sandbox build order (scenario file -> report bundle -> presets -> web demo -> demo GIF), open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
 If you need a compact PM note for keeping scenario-file input and markdown/html report output paired as the first delivery slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_NOTE.md`.
+If you need the matching one-line PM status cue for that same paired phase-one slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_STATUS_NOTE.md`.
 If you need a compact PM reminder for the current phase-one target (scenario file first, report bundle second), open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_NOTE.md`.
 If you need a compact PM queueing note for keeping one scenario import and one markdown/html/json report bundle visible before broader review routing, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_QUEUE_NOTE.md`.
 If you need a compact PM queue note for one scenario file plus one regenerated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_QUEUE_NOTE.md`.
