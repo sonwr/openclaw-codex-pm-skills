@@ -287,6 +287,7 @@ If you need a compact maturity ladder for deciding whether a passing artifact is
 If you need a one-screen rule for making `Next action:` cover every failed check id before strict-plus handoff, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_ALL_FAILED_REFS.md`.
 If you need a quick picker for the isolated strict-plus fail fixtures before replaying a validator error, open `docs/WEB_QA_PLAYWRIGHT_STRICT_PLUS_FAIL_FIXTURE_MAP.md`.
 If you need a last-pass review card before declaring a strict web QA report signoff-ready, open `docs/WEB_QA_STRICT_SIGNOFF_CHECKLIST.md`.
+If you need a tighter replay handoff for failed strict web QA runs, open `docs/WEB_QA_REPLAY_HANDOFF_CARD.md`.
 If you need a compact rerun-versus-repair split card after validation already passed, open `docs/WEB_QA_PLAYWRIGHT_RERUN_REPAIR_SPLIT.md`.
 If you need a one-screen decision card for whether a validator-clean blocker should go to focused rerun or wording repair next, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_RERUN_REPAIR_DECIDER.md`.
 If you need a compact exit-criteria check before calling a passing artifact signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_EXIT_CRITERIA.md`.
