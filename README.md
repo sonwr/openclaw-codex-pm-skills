@@ -49,6 +49,7 @@ If you need the shortest PM note for keeping one JSON or YAML scenario input tie
 If you need a compact PM handoff that names the imported scenario, the report bundle basename, and the generated markdown/html/json artifacts in one place, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_HANDOFF.md`.
 If you need a compact reviewer-audience note that keeps one imported scenario tied to one governance report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_REVIEWERS_NOTE.md`.
 If you need a compact PM cue for one scenario-file run that proves both the scenario source and the generated report directory, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SOURCE_DIR_NOTE.md`.
+If you need a compact PM reminder to keep one imported scenario file tied to one generated report-output-directory handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OUTPUT_DIRECTORY_NOTE.md`.
 If you need a compact PM reminder that stdin-driven JSON/YAML replays should still report one visible JSON/Markdown/HTML bundle status line, open `docs/GOVERNANCE_SANDBOX_STDIN_REPORT_STATUS_NOTE.md`.
 If you need the same proof path with a JSON fixture instead of YAML, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON_QUICKSTART.md`.
 If you need one compact PM cue for keeping JSON/YAML scenario import tied to the generated report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON_YAML_REPORT_START.md`.
