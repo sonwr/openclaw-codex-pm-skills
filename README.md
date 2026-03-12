@@ -85,6 +85,7 @@ If you need a short alias rule for keeping `report.audience`, `report_readers`, 
 If you need a compact PM-facing note for keeping report owner and audience metadata visible together in one governance-sandbox replay bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_OWNER_AUDIENCE_NOTE.md`.
 If you need a short alias note for nested `report.report_readers` audience metadata in governance-sandbox scenario files, open `docs/GOVERNANCE_SANDBOX_REPORT_READERS_ALIAS_NOTE.md`.
 If you need a compact browser-proof recovery note for a flaky governance-sandbox web demo checkpoint, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_RECOVERY_NOTE.md`.
+If you want the shortest bridge that keeps the first governance-sandbox web-demo form aligned with both UI/UX review rules and Playwright replay rules, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_UX_PLAYWRIGHT_BRIDGE.md`.
 If you need a short PM-facing cue for pairing stable browser-proof checkpoints with the same scenario/report artifacts, open `docs/GOVERNANCE_SANDBOX_PLAYWRIGHT_ARTIFACT_STABILITY_NOTE.md`.
 If you need a compact matrix for checking which governance-sandbox report artifacts should be present after a scenario replay, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_MATRIX.md`.
 If you need a short PM note for scenario/report fixtures that describe the bundle directory as `report_dir`, `reports_dir`, `report_folder`, or `reports_folder`, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_DIRECTORY_ALIASES_NOTE.md`.

@@ -1,9 +1,11 @@
-# Governance Sandbox Web Demo UI/UX + Playwright Bridge
+# Governance Sandbox web-demo UI/UX + Playwright bridge
 
-Use this note when widening the governance-sandbox web demo from a single form-to-card path into a UI slice that still keeps replayable Playwright evidence.
+When governance-sandbox work reaches the first browser slice, keep one flow explicit: scenario form -> result card -> downloadable report artifact.
 
-## Keep both lanes visible
+Use the UI/UX notes to keep the form focused, the result card readable above the fold, and the primary action obvious.
+Use the Playwright notes to keep the same flow replayable with stable selectors, staged checkpoints, and recovery steps after a failed run.
 
-- UI/UX lane: keep the first screen obvious, label the primary action clearly, and show result-card status above the fold.
-- Playwright lane: keep one deterministic happy path, one artifact bundle, and one recovery note for reruns.
-- Handoff lane: every widened UI change should still point to the exact command, fixture, or report bundle that proves it works.
+Minimum proof:
+- one preset-aware scenario form
+- one visible result card with recommendation + report path
+- one reproducible browser replay or recovery note
