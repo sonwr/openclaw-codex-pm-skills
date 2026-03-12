@@ -26,6 +26,7 @@ If the workstream touches governance-sandbox scenario files or markdown/html rep
 If you need the shortest scenario-file -> JSON/Markdown/HTML replay path before the fuller proof loop, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_QUICKSTART.md` first.
 If you need a compact reminder to keep one scenario import tied to one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STACK_NOTE.md`.
 If you need a compact PM note for keeping scenario-file support and markdown/html report generation at the front of the queue, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_LANE.md`.
+If you need a one-screen PM reminder for the current governance-sandbox build order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact PM note for keeping one small validated improvement visible across all five active repos while governance-sandbox still stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder that repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) stay mandatory in every five-repo slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_NON_SKIP_RULE_NOTE.md`.
 If you need a compact PM reminder that repo 5 still stays scenario-file/report-first even while repo 4 and repo 5 remain mandatory in each active slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PRIORITY_PAIR_NOTE.md`.
