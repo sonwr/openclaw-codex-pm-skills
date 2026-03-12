@@ -66,6 +66,7 @@ If you need a compact scenario-authoring cue for `trait` / `persona` preset alia
 If you need the shortest PM-facing note for scenario-file input plus the default markdown/html/json report trio before broader demo work, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MINIMUM_BUNDLE_NOTE.md`.
 If you need the shortest reminder that `scenario_config` is also accepted as a scenario-file wrapper before widening import docs, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CONFIG_WRAPPER_NOTE.md`.
 If you need a shorter PM-facing cue for proving scenario-file input plus one markdown memo before widening the full report trio, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_MARKDOWN_NOTE.md`.
+If you need a compact PM note for keeping one imported scenario file tied to one generated JSON/Markdown/HTML bundle with replayable verification steps, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_VERIFICATION_LANE.md`.
 If you need a compact pre-merge check that the smallest acceptable governance-sandbox progress still means scenario import plus one validated report artifact, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MIN_PROGRESS_CHECK.md`.
 If you need a shorter proof card for the minimum acceptable scenario-file + JSON/Markdown/HTML bundle slice before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MINIMUM_PROGRESS_CARD.md`.
 If you need a shortest-path PM reminder for one scenario file feeding one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ENTRY_NOTE.md`.
