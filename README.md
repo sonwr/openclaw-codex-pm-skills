@@ -990,3 +990,5 @@ If you need a compact PM note for keeping one report audience phrased as watcher
 - Governance sandbox scenario/report bundle review note: `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_REVIEW.md`
 
 If you need a compact PM reminder to keep every active repo update gated by local validation before push, open `docs/PM_VALIDATE_THEN_PUSH_ACTIVE_REPOS_NOTE.md`.
+
+If you need a compact PM cue for treating commented JSONC scenario files as the same scenario-file-first proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSONC_REPORT_START_NOTE.md`.
