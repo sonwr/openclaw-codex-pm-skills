@@ -112,6 +112,7 @@ If you need the shortest PM-facing note for keeping scenario source plus the def
 If you need the shortest reminder that `scenario_config` is also accepted as a scenario-file wrapper before widening import docs, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CONFIG_WRAPPER_NOTE.md`.
 If you need a shorter PM-facing cue for proving scenario-file input plus one markdown memo before widening the full report trio, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_MARKDOWN_NOTE.md`.
 If you need a compact PM note for keeping one imported scenario file tied to one generated JSON/Markdown/HTML bundle with replayable verification steps, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_VERIFICATION_LANE.md`.
+If you need the shortest PM cue for the new `scenario_demo` wrapper before the broader demo-pack lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_DEMO_WRAPPER_NOTE.md`.
 If you need a compact PM note for the more explicit `report.outputs.bundle_basename` alias before widening governance-sandbox naming rules, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_BASENAME_ALIAS_NOTE.md`.
 If you need a compact pre-merge check that the smallest acceptable governance-sandbox progress still means scenario import plus one validated report artifact, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_MIN_PROGRESS_CHECK.md`.
 If you need one compact note for keeping scenario-file import, markdown/html report outputs, and report-priority wording aligned in the same smallest validated governance-sandbox slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_PRIORITY_STACK_NOTE.md`.
