@@ -91,6 +91,7 @@ If you need the matching PM note for `scenario_workbook_bundle` imports before w
 If you need the matching PM note for `scenario_playbook_bundle` imports before widening governance-sandbox fixture scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_PLAYBOOK_BUNDLE_NOTE.md`.
 If you need a compact PM note for keeping `proposal_copy_markdown` in the same scenario-file/report-first proof lane, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_COPY_MARKDOWN_ALIAS_NOTE.md`.
 If you need a compact PM note for flat scenario fixtures that put `proposal_copy_markdown` at the top level, open `docs/GOVERNANCE_SANDBOX_TOP_LEVEL_PROPOSAL_COPY_MARKDOWN_NOTE.md`.
+If you need a compact PM note for scenario fixtures that load longer proposal copy from a neighboring markdown file, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_MARKDOWN_FILE_NOTE.md`.
 If you need a compact handoff for proposal-object aliases that still keeps scenario import tied to the report bundle proof, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_ALIAS_HANDOFF.md`.
 If you need the smallest PM-facing scenario file -> one JSON/Markdown/HTML report bundle check before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_TO_REPORT_START.md`.
 If you need the shortest PM note for keeping one JSON or YAML scenario input tied to one validated markdown/html/json report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_BUNDLE_START_NOTE.md`.
