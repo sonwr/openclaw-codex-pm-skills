@@ -1106,3 +1106,4 @@ If you need a compact PM recheck note for keeping the repo-4/repo-5 phase-one sl
 docs/GOVERNANCE_SANDBOX_REPO45_PHASE_ONE_REPORT_PAIR_NOTE.md
 
 If you need a compact PM reminder that each five-repo pass should land one small validated change before any push claim, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATED_MICRO_SLICE_NOTE.md`.
+If you need the adjacent-markdown-file variant for the same scenario-file lane, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_MARKDOWN_PATH_ALIAS_NOTE.md`.
