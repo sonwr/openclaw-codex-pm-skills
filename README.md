@@ -194,6 +194,7 @@ If you need a compact PM reminder for the same five-repo loop to stay small, val
 If you need a compact PM reminder to recover browser automation by replaying one stable form-to-result-card slice before widening repo-4/repo-5 web work, open `docs/OPENCLAW_PM_REPO45_PLAYWRIGHT_RECOVERY_MINI_LOOP_NOTE.md`.
 
 If you need a compact PM note for keeping scenario-file input and markdown/html report output paired as the first delivery slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_NOTE.md`.
+If you need a compact PM gate for keeping repo 4 and repo 5 tied to one scenario-file import plus one regenerated report bundle before any push claim, open `docs/OPENCLAW_PM_REPO45_SCENARIO_FILE_REPORT_PAIR_GATE_NOTE.md`.
 If you need the matching one-line PM status cue for that same paired phase-one slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_STATUS_NOTE.md`.
 If you need the matching PM note for keeping that same phase-one pair visible in the scenario-file/report-first queue, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_PAIR_NOTE.md`.
 If you need a compact PM reminder for the current phase-one target (scenario file first, report bundle second), open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_NOTE.md`.
