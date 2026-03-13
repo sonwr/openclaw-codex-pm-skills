@@ -73,6 +73,7 @@ If the workstream needs reviewer-ready memo naming for governance-sandbox report
 If you need a compact pass over whether one scenario file already produces a reusable JSON/Markdown/HTML proof bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_CHECK.md`.
 If you need a short naming cue for keeping one scenario replay tied to one report bundle label across PM handoff copy, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_LABEL_NOTE.md`.
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
+If you need a compact PM note for carrying `report_synopsis` through the same governance-sandbox markdown/html/json memo-summary lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SYNOPSIS_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping multiline proposal copy and decision memos readable in generated HTML reports, open `docs/GOVERNANCE_SANDBOX_HTML_MULTILINE_REPORT_NOTE.md`.
 If you need a compact note for carrying `report.synopsis` into the same markdown/html/json memo summary lane, open `docs/GOVERNANCE_SANDBOX_REPORT_SYNOPSIS_ALIAS_NOTE.md`.
 If you need a compact PM note for carrying `report.description` from one imported scenario file into the generated markdown/html memo bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_DESCRIPTION_NOTE.md`.
@@ -88,6 +89,7 @@ If you need a one-line reviewer cue that keeps report subject, owner, queue, and
 If you need the matching path-aware handoff once that same summary also needs the saved artifact location, open `docs/CLI_SUMMARY_REPORT_STATUS_OWNER_QUEUE_PATH_NOTE.md`.
 If you need the same stdin path with a default report bundle handoff, open `docs/GOVERNANCE_SANDBOX_STDIN_REPORT_BUNDLE_NOTE.md`.
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
+If you need a compact PM note for carrying `report_synopsis` through the same governance-sandbox markdown/html/json memo-summary lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SYNOPSIS_ALIAS_NOTE.md`.
 If you need a short note for driving the default report bundle basename from `report.name`, open `docs/GOVERNANCE_SANDBOX_REPORT_NAME_ALIAS_NOTE.md`.
 If you need a short note for driving the same governance-sandbox report bundle from `report.output_slug` or `report.outputs.output_slug`, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_SLUG_ALIAS_NOTE.md`.
 If you need a quick note for `report.output_name` or top-level `report_name` bundle naming, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_NAME_ALIAS_NOTE.md`.
