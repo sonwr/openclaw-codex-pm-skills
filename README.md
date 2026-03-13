@@ -48,6 +48,7 @@ If you need a compact PM reminder to keep repo 4 and repo 5 visibly active in ev
 If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep scenario-case wrapper growth tied to the same scenario-file -> JSON/Markdown/HTML report proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CASE_WRAPPER_NOTE.md`.
 If you need a compact PM note for keeping scenario-file input work explicitly ahead of preset expansion and web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_FIRST_RULE.md`.
+If you need a compact repo-1 handoff note that keeps PM wording pointed at the same scenario-file -> report-bundle proof lane, open `docs/OPENCLAW_PM_GOVERNANCE_SCENARIO_REPORT_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping stakeholder trait preset growth queued behind scenario-file import and markdown/html/json report proof, open `docs/GOVERNANCE_SANDBOX_TRAIT_PRESET_PHASE_NOTE.md`.
 If you need the matching phase-one note that keeps scenario-file inputs, markdown/html report outputs, and preset-ready follow-up in one validated governance-sandbox slice, open `docs/GOVERNANCE_SANDBOX_TRAIT_PRESET_PHASE_ONE_NOTE.md`.
 If you need a compact PM note for the first trait-preset bundle (`dao`, `delegates`, `contributors`, `investors`, `community`) while scenario/report work stays first, open `docs/GOVERNANCE_SANDBOX_TRAIT_PRESET_BUNDLE_QUEUE_NOTE.md`.
