@@ -29,6 +29,7 @@ If you need a compact PM note for keeping scenario-file support and markdown/htm
 If you need a compact PM note for keeping the phase-one lane explicit as scenario file -> report bundle -> presets/demo, open `docs/OPENCLAW_PM_GOVERNANCE_PHASE_ONE_ALIAS_NOTE.md`.
 If you need a one-screen PM reminder for the current governance-sandbox build order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact maintainer loop for the current phase-one priority, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_LOOP.md`.
+If you need a compact PM status cue that keeps repo-1 handoff wording aligned with the repo-5 phase-one order, open `docs/GOVERNANCE_SANDBOX_PHASE_ONE_STATUS_LINE_NOTE.md`.
 If you need a compact PM reminder to validate the smallest repo-level slice before push, open `docs/OPENCLAW_PM_VALIDATE_THEN_PUSH_NOTE.md`.
 If you need a compact PM note for keeping one small validated improvement visible across all five active repos while governance-sandbox still stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep every repo active in the same five-repo pass while preserving the one-line report gate, open `docs/OPENCLAW_PM_FIVE_REPO_ACTIVE_CHECK_NOTE.md`.
