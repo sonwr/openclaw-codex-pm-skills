@@ -40,6 +40,7 @@ If you need a compact phase-one status reminder that keeps one scenario-file rep
 
 If you need a compact PM reminder to treat `report.output_label` as a stable governance-sandbox bundle-naming alias before widening web-demo scope, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_LABEL_ALIAS_NOTE.md`.
 If you need a compact PM reminder that repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) stay mandatory in every five-repo slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_NON_SKIP_RULE_NOTE.md`.
+If you need a compact PM reminder that repo 4 and repo 5 should both stay visibly active before any five-line progress report is posted, open `docs/OPENCLAW_PM_FIVE_REPO_REPO45_ALWAYS_ACTIVE_NOTE.md`.
 If you need the matching PM cue that repo 4 and repo 5 should still land one validated improvement each while repo 5 stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_VALIDATED_PROGRESS_NOTE.md`.
 If you need a compact PM reminder that repo 5 still stays scenario-file/report-first even while repo 4 and repo 5 remain mandatory in each active slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PRIORITY_PAIR_NOTE.md`.
 If you need a compact PM note for keeping the same five-repo loop to one short validated status line per repo, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ONE_LINE_PROGRESS_NOTE.md`.
