@@ -117,6 +117,7 @@ If you need a quick reminder to verify preset coverage before wiring a scenario 
 If you need a compact example scenario that proves preset-driven stakeholders plus a report bundle in one replay, open `docs/GOVERNANCE_SANDBOX_PRESET_BUNDLE_EXAMPLE_NOTE.md`.
 If you need a machine-readable preset catalog handoff for CLI, browser-form, or demo wiring, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_HANDOFF.md`.
 If you need the shortest preset-catalog cue before wiring one result card or browser form, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_RESULT_CARD_NOTE.md`.
+If you need a compact PM note for keeping scenario-file import, markdown/html/json report output, and the first preset-json handoff aligned, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRESET_JSON_BRIDGE_NOTE.md`.
 If you need a compact PM note for keeping preset-driven result-card work behind the same scenario-file -> report-bundle phase order, open `docs/GOVERNANCE_SANDBOX_PRESET_RESULT_CARD_PHASE_NOTE.md`.
 If you need the matching PM note for download-oriented report bundle paths before widening that first result-card flow, open `docs/GOVERNANCE_SANDBOX_REPORT_DOWNLOADS_ALIAS_PM_NOTE.md`.
 If you need a compact PM-facing start note for wiring `run --list-presets-json` into the first scenario form before wider web-demo work, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_FORM_START_NOTE.md`.
