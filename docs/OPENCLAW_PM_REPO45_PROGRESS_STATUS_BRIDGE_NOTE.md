@@ -1,3 +1,12 @@
-# OPENCLAW_PM_REPO45_PROGRESS_STATUS_BRIDGE_NOTE
+# Repo 4/5 progress-to-status bridge note
 
-Keep repo 4 and repo 5 visibly active in the same five-repo pass, but still end the maintainer update as one short validation-first status line per repo. Pair one small validated improvement in `oss-launchpad-cli` with one small validated improvement in `governance-sandbox`, then write the short report only after both repos have an honest commit-or-hold state.
+Keep repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) visibly active in every five-repo pass.
+
+For the short user-facing report, convert each repo's work into one honest line:
+
+1. name the repo,
+2. say whether there was a real change,
+3. state validation pass/fail,
+4. end with commit/push or the hold reason.
+
+Use this bridge after a small validated slice lands so repo-level progress turns into a stable one-line status without hiding repo 4/5 work.
