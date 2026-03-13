@@ -48,6 +48,7 @@ If you need a compact PM reminder to keep repo 4 and repo 5 visibly active in ev
 If you need a compact PM reminder that repo 4 and repo 5 should land together as the current phase-one pair while governance-sandbox stays scenario-file/report-first, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_PAIR_NOTE.md`.
 If you need a compact bridge from that repo-4/repo-5 pairing to the current governance-sandbox delivery ladder, open `docs/GOVERNANCE_SANDBOX_REPO45_PHASE_ONE_STATUS_BRIDGE.md`.
 If you need a compact PM reminder to keep repo 4 and repo 5 landing the same smallest validated progress pair before wider repo-1 handoff wording, open `docs/OPENCLAW_PM_REPO45_PROGRESS_PAIR_NOTE.md`.
+If you need a compact PM bridge from that repo-4/repo-5 progress pair to the final one-line validation status wording, open `docs/OPENCLAW_PM_REPO45_PROGRESS_STATUS_BRIDGE_NOTE.md`.
 If you need the matching repo-4/repo-5 gate for one-line validate-or-hold reporting before any push claim, open `docs/OPENCLAW_PM_REPO45_VALIDATE_HOLD_GATE_NOTE.md`.
 If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep scenario-case wrapper growth tied to the same scenario-file -> JSON/Markdown/HTML report proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CASE_WRAPPER_NOTE.md`.
