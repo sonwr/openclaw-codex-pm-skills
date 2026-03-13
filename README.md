@@ -192,6 +192,7 @@ If you need a compact PM note for keeping one imported fixture tied to one regen
 If you need a compact reminder to keep the first governance-sandbox web-demo form aligned with the exported preset catalog before widening scope, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PRESET_FORM_NOTE.md`.
 If you need a compact PM note for keeping one scenario-file replay tied to one generated markdown/html report artifact bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ARTIFACT_NOTE.md`.
 If you need a compact PM cue for scenario files that package the proposal itself as a structured object before markdown/html report generation, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_OBJECT_NOTE.md`.
+If you need the matching PM note for scenario bundles that load proposal copy from a referenced markdown/text file before the same report-bundle replay, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_FILE_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping the next alias addition tied to the same scenario-file plus JSON/Markdown/HTML report bundle proof, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ALIAS_QUEUE_NOTE.md`.
 If you want the shortest replay note before wiring that preset JSON into a scenario form or review bot, open `docs/GOVERNANCE_SANDBOX_PRESET_JSON_START_NOTE.md`.
 If you need the matching note for string-form stakeholder presets, open `docs/GOVERNANCE_SANDBOX_STRING_PRESET_NOTE.md`.
