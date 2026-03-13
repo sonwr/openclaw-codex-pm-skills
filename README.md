@@ -52,6 +52,7 @@ If you need a compact PM reminder to keep repo 4 and repo 5 landing the same sma
 If you need the smallest PM gate for repo-5 progress, open `docs/OPENCLAW_PM_GOVERNANCE_SCENARIO_REPORT_GATE_NOTE.md`.
 `.
 If you need a compact PM bridge from that repo-4/repo-5 progress pair to the final one-line validation status wording, open `docs/OPENCLAW_PM_REPO45_PROGRESS_STATUS_BRIDGE_NOTE.md`.
+If you need a compact PM note for keeping repo 4 active while repo 5 stays anchored to the scenario-file + report-output phase-one pair, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_PAIR_NOTE.md`.
 If you need the matching repo-4/repo-5 gate for one-line validate-or-hold reporting before any push claim, open `docs/OPENCLAW_PM_REPO45_VALIDATE_HOLD_GATE_NOTE.md`.
 If you need a compact PM bridge that keeps repo 4 and repo 5 explicitly tied to their validation result before any commit/push claim, open `docs/OPENCLAW_PM_REPO45_VALIDATE_STATUS_BRIDGE_NOTE.md`.
 If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
