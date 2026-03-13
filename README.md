@@ -1079,3 +1079,4 @@ If you need a compact PM reminder to validate the phase-one scenario-file/report
 
 If you need a compact note for accepting `.json5` scenario files while keeping markdown/html/json report bundles in the same phase-one lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON5_REPORT_NOTE.md`.
 If you need the matching PM note for direct `proposal_file` / `proposal_path` aliases that load proposal copy from a local file before the same report-bundle replay, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_FILE_DIRECT_ALIAS_NOTE.md`.
+If you need a compact PM reminder to keep repo 4 and repo 5 in the same validate-first streak during each five-repo pass, open `docs/OPENCLAW_PM_REPO45_VALIDATE_STREAK_NOTE.md`.
