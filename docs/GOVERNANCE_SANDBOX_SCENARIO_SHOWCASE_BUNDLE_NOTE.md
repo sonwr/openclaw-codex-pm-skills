@@ -1,0 +1,1 @@
+Keep `scenario_showcase` and `scenario_showcase_bundle` in the same small governance-sandbox proof lane: one imported scenario wrapper, one generated JSON/Markdown/HTML report bundle, and one validator pass before push.
