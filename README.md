@@ -168,6 +168,7 @@ If you need the matching compact reminder to keep the same five-repo pass report
 If you need a compact PM cue for the five-repo short report while governance-sandbox still stays scenario-file/report-first, open `docs/OPENCLAW_PM_FIVE_REPO_PHASE_ONE_STATUS_LINE_NOTE.md`.
 If you need a compact PM note for keeping repo order plus explicit hold reasons in that same five-repo status line, open `docs/OPENCLAW_PM_FIVE_REPO_STATUS_HOLD_ORDER_NOTE.md`.
 If you need a compact PM reminder that repos 4 and 5 must both stay active and validated before any push claim, open `docs/OPENCLAW_PM_REPO45_NON_SKIP_VALIDATION_NOTE.md`.
+If you need a compact PM cue for keeping repo 4 on one validator-backed UI/result-card slice while repo 5 lands one scenario-file/report slice in the same pass, open `docs/OPENCLAW_PM_REPO45_SMALL_SLICE_PAIR_NOTE.md`.
 If you need a compact PM reminder for the same five-repo loop to stay small, validated, and non-skipping across repos 4 and 5, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATE_LOOP_NOTE.md`.
 
 If you need a compact PM note for keeping scenario-file input and markdown/html report output paired as the first delivery slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_NOTE.md`.
