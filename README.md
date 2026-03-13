@@ -131,8 +131,8 @@ If you need a compact PM cue for the five-repo short report while governance-san
 If you need a compact PM reminder for the same five-repo loop to stay small, validated, and non-skipping across repos 4 and 5, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATE_LOOP_NOTE.md`.
 
 If you need a compact PM note for keeping scenario-file input and markdown/html report output paired as the first delivery slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_NOTE.md`.
-If you need the matching one-line PM status cue for that same paired phase-one slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_STATUS_NOTE.md
-docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_PAIR_NOTE.md`.
+If you need the matching one-line PM status cue for that same paired phase-one slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_STATUS_NOTE.md`.
+If you need the matching PM note for keeping that same phase-one pair visible in the scenario-file/report-first queue, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_PAIR_NOTE.md`.
 If you need a compact PM reminder for the current phase-one target (scenario file first, report bundle second), open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_NOTE.md`.
 If you need a compact PM checklist for the current governance-sandbox build order before widening scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact PM queueing note for keeping one scenario import and one markdown/html/json report bundle visible before broader review routing, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_QUEUE_NOTE.md`.
