@@ -1,5 +1,3 @@
-# GOVERNANCE_SANDBOX_WEB_DEMO_UI_PLAYWRIGHT_PHASE_NOTE
+# Governance sandbox web demo UI/Playwright phase note
 
-Keep the repo-5 delivery order explicit: scenario file import plus generated markdown/html/json reports stays first, and only then does the web demo widen under UI/UX and Playwright discipline.
-
-Use this note when repo-1 handoff wording needs one short reminder that the first web-demo slice should stay stability-first, reproducible, and visibly downstream from the validated scenario/report bundle.
+Keep the first governance-sandbox web demo behind the same phase order: scenario file input first, markdown/html/json report output second, preset shaping third, then one UI/UX-first result-card slice with Playwright-interactive stability and recovery checks before any wider browser polish.
