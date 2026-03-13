@@ -60,6 +60,7 @@ If you need the smallest PM gate for repo-4/repo-5 progress before any commit cl
 If you need the smallest PM gate for repo-5 progress, open `docs/OPENCLAW_PM_GOVERNANCE_SCENARIO_REPORT_GATE_NOTE.md`.
 If you need a compact PM bridge from that repo-4/repo-5 progress pair to the final one-line validation status wording, open `docs/OPENCLAW_PM_REPO45_PROGRESS_STATUS_BRIDGE_NOTE.md`.
 If you need a compact PM note for keeping repo 4 active while repo 5 stays anchored to the scenario-file + report-output phase-one pair, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_PAIR_NOTE.md`.
+If you need a compact PM note for the smallest acceptable repo-4/repo-5 phase-one pass, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_MINIMUM_PAIR_NOTE.md`.
 If you need an even smaller PM reminder to keep repo 4 and repo 5 moving together as one validated micro-slice before the five-line report, open `docs/OPENCLAW_PM_REPO45_PROGRESS_PAIR_SMALL_SLICE_NOTE.md`.
 If you need a compact PM note for keeping that repo-4/repo-5 pair tied to the same report-output alias and validation handoff, open `docs/OPENCLAW_PM_REPO45_REPORT_ALIAS_NOTE.md`.
 If you need the matching repo-4/repo-5 gate for one-line validate-or-hold reporting before any push claim, open `docs/OPENCLAW_PM_REPO45_VALIDATE_HOLD_GATE_NOTE.md`.
