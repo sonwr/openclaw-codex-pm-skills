@@ -1,0 +1,1 @@
+Keep repo 4 and repo 5 aligned around the same minimum believable slice: one scenario file replay plus one regenerated JSON/Markdown/HTML report bundle before widening web-demo polish or broader PM wording.
