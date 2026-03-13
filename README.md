@@ -136,6 +136,7 @@ If you need a one-line PM status cue for keeping that delivery ladder visible du
 If you need a compact PM reminder to keep repo 5 on scenario-file + markdown/html report proof while repo 4 stays visibly active in the same pass, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PHASE_ONE_BRIDGE_NOTE.md`.
 If you need a compact PM rule for the required five-line short report across the active repos, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_SHORT_REPORT_RULE.md`.
 If you need a shorter PM reminder for one-line repo status updates that still name change state, validation, and commit/push gate together, open `docs/OPENCLAW_PM_FIVE_REPO_SHORT_LINE_GATE_NOTE.md`.
+If you need the matching PM cue that the exact same five-line pass should name commit/push hold reasons only after validation reruns, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATE_THEN_HOLD_REASON_NOTE.md`.
 If you need a compact PM reminder to validate one small evidence-backed improvement in repo 1 before widening the five-repo pass, open `docs/OPENCLAW_PM_SMALL_VALIDATED_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep repos 4 and 5 moving through one small validated slice each before widening the pass, open `docs/OPENCLAW_PM_REPO45_SMALL_VALIDATED_SLICE_NOTE.md`.
 If you need a compact PM reminder to recheck the active repos in the same visible order before writing the five-line report, open `docs/OPENCLAW_PM_FIVE_REPO_RECHECK_ORDER_NOTE.md`.
