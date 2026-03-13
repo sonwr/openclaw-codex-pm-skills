@@ -265,6 +265,7 @@ If you need a compact signoff gate for deciding whether the next action is speci
 If you need a shorter report-scoped wording brief before that handoff sentence, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_REPORT_SCOPE_BRIEF.md`.
 If you need safer wording for PASS artifacts that still should not be called signoff-ready, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_BLOCKER_LANGUAGE.md`.
 If you need a one-screen matrix for judging whether the next action already has enough target/artifact support for replay, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_SUPPORT_MATRIX.md`.
+If you need a compact rule for keeping signoff `next_action` tied to the exact failed check or artifact path before claiming handoff-ready replay, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_NEXT_ACTION_ARTIFACT_RULE.md`.
 If you need a compact pre-handoff priority check for whether the next-action sentence names the hottest blocked lane and proof target, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_PRIORITY_CHECK.md`.
 If you need a compact evidence gate for deciding whether the next-action line already names the failed lane, stable target, and proof artifact, open `docs/WEB_QA_PLAYWRIGHT_NEXT_ACTION_EVIDENCE_GATE.md`.
 If you need a one-line status sentence once the next action is already known, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_NEXT_ACTION_STATUS_LINE.md`.
