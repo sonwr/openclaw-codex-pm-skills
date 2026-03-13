@@ -60,6 +60,7 @@ If you need a compact PM note for keeping repo 4 active while repo 5 stays ancho
 If you need a compact PM note for keeping that repo-4/repo-5 pair tied to the same report-output alias and validation handoff, open `docs/OPENCLAW_PM_REPO45_REPORT_ALIAS_NOTE.md`.
 If you need the matching repo-4/repo-5 gate for one-line validate-or-hold reporting before any push claim, open `docs/OPENCLAW_PM_REPO45_VALIDATE_HOLD_GATE_NOTE.md`.
 If you need a compact PM bridge that keeps repo 4 and repo 5 explicitly tied to their validation result before any commit/push claim, open `docs/OPENCLAW_PM_REPO45_VALIDATE_STATUS_BRIDGE_NOTE.md`.
+If you need a compact PM recheck note for keeping repo 4 and repo 5 active together while repo 5 stays scenario-file/report-first, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_RECHECK_NOTE.md`.
 If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep scenario-case wrapper growth tied to the same scenario-file -> JSON/Markdown/HTML report proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CASE_WRAPPER_NOTE.md`.
 If you need the matching compact PM note for imported scenario bundles that expose the source as `scenario_src` or `source_href`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_SHORT_ALIAS_NOTE.md`.
