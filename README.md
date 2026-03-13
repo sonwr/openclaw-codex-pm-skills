@@ -179,6 +179,7 @@ If you need a compact PM reminder to keep repos 4 and 5 moving through one small
 If you need a compact PM reminder to recheck the active repos in the same visible order before writing the five-line report, open `docs/OPENCLAW_PM_FIVE_REPO_RECHECK_ORDER_NOTE.md`.
 If you need a compact PM note for keeping that same recheck loop tied to repos 4 and 5 plus the validate-before-push gate, open `docs/OPENCLAW_PM_FIVE_REPO_RECHECK_VALIDATE_NOTE.md`.
 If you need the matching compact reminder to keep the same five-repo pass reportable in one short validated line per repo, open `docs/OPENCLAW_PM_FIVE_REPO_SHORT_REPORT_GATE_NOTE.md`.
+If you need the shortest repo-4/repo-5 reminder that the pass should still land one validated change each before the five-line report, open `docs/OPENCLAW_PM_REPO45_ONE_CHANGE_EACH_NOTE.md`.
 If you need a compact PM cue for the five-repo short report while governance-sandbox still stays scenario-file/report-first, open `docs/OPENCLAW_PM_FIVE_REPO_PHASE_ONE_STATUS_LINE_NOTE.md`.
 If you need a compact PM note for keeping repo order plus explicit hold reasons in that same five-repo status line, open `docs/OPENCLAW_PM_FIVE_REPO_STATUS_HOLD_ORDER_NOTE.md`.
 If you need a compact PM reminder that repos 4 and 5 must both stay active and validated before any push claim, open `docs/OPENCLAW_PM_REPO45_NON_SKIP_VALIDATION_NOTE.md`.
