@@ -99,6 +99,7 @@ If you need a compact reviewer-ready follow-up that keeps scenario source, owner
 If you need a compact rule for checking that scenario metadata and report artifact links stay readable together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_READABILITY_NOTE.md`.
 If you need a short maintainer cue for the new governance-sandbox report owner aliases before wider handoff wording, open `docs/GOVERNANCE_SANDBOX_REPORT_OWNER_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping scenario source, report basename, and report owner visible in one governance-sandbox handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_BASENAME_NOTE.md`.
+If you need a compact PM cue for keeping one validated governance-sandbox replay tied to the exact scenario fixture path, bundle basename, and report trio before widening the pass, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_FIXTURE_PROOF_NOTE.md`.
 If you need a short PM alias note for carrying `scenario_source` / `source_path` metadata through stdin-driven governance-sandbox markdown/html report bundles, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_ALIAS_NOTE.md`.
 If you need a compact PM note for the shorter `report.bundle_stem` alias before widening governance-sandbox report naming rules, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_STEM_ALIAS_NOTE.md`.
 If you need a compact rule for when nested source aliases should yield to the real scenario-file path, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_PRECEDENCE_NOTE.md`.
