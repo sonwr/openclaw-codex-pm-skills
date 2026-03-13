@@ -90,6 +90,7 @@ If you need one compact PM cue for keeping JSON/YAML scenario import tied to the
 If the workstream needs reviewer-ready memo naming for governance-sandbox report bundles, open `docs/GOVERNANCE_SANDBOX_REPORT_TITLE_HANDOFF.md` before changing scenario metadata or report examples.
 If you need a compact pass over whether one scenario file already produces a reusable JSON/Markdown/HTML proof bundle, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_CHECK.md`.
 If you need a short naming cue for keeping one scenario replay tied to one report bundle label across PM handoff copy, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_BUNDLE_LABEL_NOTE.md`.
+If you need a compact PM cue for keeping one imported scenario tied to one generated report basename before wider demo work, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_ALIAS_CUE.md`.
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
 If you need a compact PM note for carrying `report_synopsis` through the same governance-sandbox markdown/html/json memo-summary lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SYNOPSIS_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping multiline proposal copy and decision memos readable in generated HTML reports, open `docs/GOVERNANCE_SANDBOX_HTML_MULTILINE_REPORT_NOTE.md`.
