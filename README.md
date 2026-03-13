@@ -69,6 +69,7 @@ If you need the matching repo-4/repo-5 gate for one-line validate-or-hold report
 If you need a compact PM bridge that keeps repo 4 and repo 5 explicitly tied to their validation result before any commit/push claim, open `docs/OPENCLAW_PM_REPO45_VALIDATE_STATUS_BRIDGE_NOTE.md`.
 If you need a compact PM note for the current repo-4/repo-5 phase-one bugfix where nested scenario proposal text must outrank wrapper titles, open `docs/OPENCLAW_PM_REPO45_PROPOSAL_INPUT_PRECEDENCE_NOTE.md`.
 If you need a compact PM recheck note for keeping repo 4 and repo 5 active together while repo 5 stays scenario-file/report-first, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_RECHECK_NOTE.md`.
+If you need a compact PM reminder to keep repo 4 and repo 5 moving together through one small validated phase-one slice before the five-line report, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_PROGRESS_SYNC_NOTE.md`.
 If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep scenario-case wrapper growth tied to the same scenario-file -> JSON/Markdown/HTML report proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CASE_WRAPPER_NOTE.md`.
 If you need the matching PM reminder for stage-oriented wrapper exports like `scenario_stage_pack`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_STAGE_PACK_NOTE.md`.
