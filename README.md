@@ -299,7 +299,9 @@ If you need a compact note for the top-level `artifacts_root` alias before widen
 If you need a compact note for nested `report.outputs.report_output_directory` / `report.outputs.report_output_dir` aliases before widening scenario-to-report wiring, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_DIRECTORY_ALIASES_NOTE.md`.
 If you need a compact note for keeping `report.outputs.json` / `markdown` / `html` aliases together in one scenario fixture, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OUTPUTS_ALIAS_NOTE.md`.
 If you need the shortest note for nested `scenario.inputs` fixtures before widening governance-sandbox scenario replay coverage, open `docs/GOVERNANCE_SANDBOX_NESTED_SCENARIO_INPUTS_NOTE.md`.
-If you need a compact reminder that nested scenario fixtures can also keep report metadata under `inputs.report`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_NOTE.md`.
+If you need a compact reminder that nested scenario fixtures can also keep report metadata under `inputs.report`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_INPUTS_REPORT_NOTE.md
+If you need the matching handoff for the simple web demo result-card phase, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_HANDOFF.md`.
+`.
 If you need a short PM-facing note for bundle naming driven from `inputs.report.outputs.basename`, open `docs/GOVERNANCE_SANDBOX_INPUTS_REPORT_OUTPUTS_BASENAME_NOTE.md`.
 If you need a compact entry bar before expanding the governance-sandbox web demo beyond the first form and result-card slice, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_ENTRY_CHECK.md`.
 If you need a compact proof cue for scenario preset aliasing (`preset`/`group`/`trait`/`persona`) plus report summary aliases (`summary`/`brief`/`report_summary`), open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_PROOF.md`.

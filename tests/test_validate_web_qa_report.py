@@ -109,6 +109,14 @@ class ValidateWebQaReportTests(unittest.TestCase):
             (Path(__file__).resolve().parents[1] / "docs" / "GOVERNANCE_SANDBOX_WEB_DEMO_UI_UX_PLAYWRIGHT_HANDOFF.md").exists()
         )
 
+    def test_readme_mentions_governance_sandbox_web_demo_result_card_handoff(self) -> None:
+        readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
+
+        self.assertIn("docs/GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_HANDOFF.md", readme)
+        self.assertTrue(
+            (Path(__file__).resolve().parents[1] / "docs" / "GOVERNANCE_SANDBOX_WEB_DEMO_RESULT_CARD_HANDOFF.md").exists()
+        )
+
     def test_readme_mentions_governance_sandbox_scenario_inputs_report_note(self) -> None:
         readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8")
 
