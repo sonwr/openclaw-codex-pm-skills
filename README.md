@@ -191,6 +191,7 @@ If you need a compact PM reminder that repos 4 and 5 must both stay active and v
 If you need a compact PM cue for keeping repo 4 on one CLI alias slice while repo 5 lands one report-output alias slice in the same pass, open `docs/OPENCLAW_PM_REPO45_ALIAS_SLICE_NOTE.md`.
 If you need a compact PM cue for keeping repo 4 on one validator-backed UI/result-card slice while repo 5 lands one scenario-file/report slice in the same pass, open `docs/OPENCLAW_PM_REPO45_SMALL_SLICE_PAIR_NOTE.md`.
 If you need a compact PM reminder for the same five-repo loop to stay small, validated, and non-skipping across repos 4 and 5, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATE_LOOP_NOTE.md`.
+If you need a compact PM reminder to recover browser automation by replaying one stable form-to-result-card slice before widening repo-4/repo-5 web work, open `docs/OPENCLAW_PM_REPO45_PLAYWRIGHT_RECOVERY_MINI_LOOP_NOTE.md`.
 
 If you need a compact PM note for keeping scenario-file input and markdown/html report output paired as the first delivery slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_NOTE.md`.
 If you need the matching one-line PM status cue for that same paired phase-one slice, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_STATUS_NOTE.md`.
