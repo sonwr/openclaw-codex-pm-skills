@@ -58,6 +58,7 @@ If you need a compact PM reminder to prove one scenario-storyboard wrapper with 
 If you need a compact PM note for scenario-file alias growth that keeps preset maps, trait aliases, and report outputs in the same proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_ALIAS_EXPANSION_LANE.md`.
 If you need the matching PM note for design-studio exports that now arrive as `scenario_studio` or `scenario_studio_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_STUDIO_NOTE.md`.
 If you need a compact PM note for workshop exports that arrive as `scenario_workshop_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WORKSHOP_BUNDLE_NOTE.md`.
+If you need the matching PM note for notebook-style exports that arrive as `scenario_notebook` or `scenario_notebook_bundle`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_NOTEBOOK_WRAPPER_NOTE.md`.
 If you need the matching PM note for `scenario_workbook_bundle` imports before widening fixture reuse, open `docs/GOVERNANCE_SANDBOX_SCENARIO_WORKBOOK_BUNDLE_NOTE.md`.
 If you need a compact PM note for keeping `proposal_copy_markdown` in the same scenario-file/report-first proof lane, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_COPY_MARKDOWN_ALIAS_NOTE.md`.
 If you need a compact PM note for flat scenario fixtures that put `proposal_copy_markdown` at the top level, open `docs/GOVERNANCE_SANDBOX_TOP_LEVEL_PROPOSAL_COPY_MARKDOWN_NOTE.md`.
