@@ -84,6 +84,7 @@ If you need the matching PM note for the neutral `source_location` alias, open `
 If you need the repo-4/repo-5 handoff for the same neutral `source_location` alias before the five-line status handoff, open `docs/OPENCLAW_PM_REPO45_SOURCE_LOCATION_ALIAS_NOTE.md`.
 If you need a compact PM gate for keeping repo 4 and repo 5 tied to the same `scenario_src` / `source_href` proof before any commit or push claim, open `docs/OPENCLAW_PM_REPO45_SCENARIO_SOURCE_VALIDATE_GATE_NOTE.md`.
 If you need a compact PM note for keeping scenario-file input work explicitly ahead of preset expansion and web-demo scope, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_FIRST_RULE.md`.
+If you need a compact PM note for keeping `report_bundle_tag` aligned with the same scenario-file -> JSON/Markdown/HTML report bundle proof lane, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_TAG_ALIAS_NOTE.md`.
 If you need a compact repo-1 handoff note that keeps PM wording pointed at the same scenario-file -> report-bundle proof lane, open `docs/OPENCLAW_PM_GOVERNANCE_SCENARIO_REPORT_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping stakeholder trait preset growth queued behind scenario-file import and markdown/html/json report proof, open `docs/GOVERNANCE_SANDBOX_TRAIT_PRESET_PHASE_NOTE.md`.
 If you need a compact PM reminder that the first web-demo lane should inherit UI/UX and Playwright discipline only after the scenario-file + report bundle stays green, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_UI_PLAYWRIGHT_PHASE_NOTE.md`.
