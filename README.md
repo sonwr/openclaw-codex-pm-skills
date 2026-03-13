@@ -116,6 +116,7 @@ If you need the same stdin path with a default report bundle handoff, open `docs
 If you need a quick wording cue for report.description-driven memo summaries across markdown/html outputs, open `docs/GOVERNANCE_SANDBOX_REPORT_SUMMARY_ALIAS_NOTE.md`.
 If you need a compact PM note for carrying `report_synopsis` through the same governance-sandbox markdown/html/json memo-summary lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SYNOPSIS_ALIAS_NOTE.md`.
 If you need a short note for driving the default report bundle basename from `report.name`, open `docs/GOVERNANCE_SANDBOX_REPORT_NAME_ALIAS_NOTE.md`.
+If you need a compact PM note for the `report_bundle_id` basename alias before widening scenario/report naming rules, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_ID_ALIAS_NOTE.md`.
 If you need the shared report basename handoff that also accepts `report_bundle_name`, see `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_NAME_ALIAS_NOTE.md`.
 If you need a short note for driving the same governance-sandbox report bundle from `report.output_slug` or `report.outputs.output_slug`, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_SLUG_ALIAS_NOTE.md`.
 If you need a quick note for `report.output_name` or top-level `report_name` bundle naming, open `docs/GOVERNANCE_SANDBOX_REPORT_OUTPUT_NAME_ALIAS_NOTE.md`.
