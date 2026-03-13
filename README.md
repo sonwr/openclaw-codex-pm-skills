@@ -1045,3 +1045,5 @@ If you need a compact PM cue for treating commented JSONC scenario files as the 
 If you need a compact PM reminder to validate the phase-one scenario-file/report pair before push, open `docs/GOVERNANCE_SANDBOX_PRIORITY_PAIR_VALIDATE_THEN_PUSH_NOTE.md`.
 
 - `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STARTER_NOTE.md` — keep scenario-file imports tied to a visible JSON/Markdown/HTML report bundle start.
+
+If you need a compact note for accepting `.json5` scenario files while keeping markdown/html/json report bundles in the same phase-one lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON5_REPORT_NOTE.md`.
