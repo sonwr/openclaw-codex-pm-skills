@@ -52,6 +52,7 @@ If you need a compact PM reminder that repos 4 and 5 are mandatory every run, op
 If you need a compact PM reminder to keep repo 4 and repo 5 visibly active in every five-repo pass while repo 5 stays scenario/report-first, open `docs/GOVERNANCE_SANDBOX_ACTIVE_REPO_FOUR_FIVE_RULE.md`.
 If you need a compact PM reminder that repo 4 and repo 5 should land together as the current phase-one pair while governance-sandbox stays scenario-file/report-first, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_PAIR_NOTE.md`.
 If you need a compact bridge from that repo-4/repo-5 pairing to the current governance-sandbox delivery ladder, open `docs/GOVERNANCE_SANDBOX_REPO45_PHASE_ONE_STATUS_BRIDGE.md`.
+If you need a shorter PM alias for the same repo-4/repo-5 phase-one status loop before writing the five-line report, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_STATUS_ALIAS_NOTE.md`.
 If you need a compact PM reminder to keep repo 4 and repo 5 landing the same smallest validated progress pair before wider repo-1 handoff wording, open `docs/OPENCLAW_PM_REPO45_PROGRESS_PAIR_NOTE.md`.
 If you need the smallest PM gate for repo-4/repo-5 progress before any commit claim, open `docs/OPENCLAW_PM_REPO45_PROGRESS_PAIR_GATE_NOTE.md`.
 If you need the smallest PM gate for repo-5 progress, open `docs/OPENCLAW_PM_GOVERNANCE_SCENARIO_REPORT_GATE_NOTE.md`.
