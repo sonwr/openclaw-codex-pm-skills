@@ -148,6 +148,7 @@ If you need a compact PM reminder to validate one small evidence-backed improvem
 If you need a compact PM reminder to keep repos 4 and 5 moving through one small validated slice each before widening the pass, open `docs/OPENCLAW_PM_REPO45_SMALL_VALIDATED_SLICE_NOTE.md`.
 If you need a compact PM reminder to recheck the active repos in the same visible order before writing the five-line report, open `docs/OPENCLAW_PM_FIVE_REPO_RECHECK_ORDER_NOTE.md`.
 If you need a compact PM note for keeping that same recheck loop tied to repos 4 and 5 plus the validate-before-push gate, open `docs/OPENCLAW_PM_FIVE_REPO_RECHECK_VALIDATE_NOTE.md`.
+If you need the matching compact reminder to keep the same five-repo pass reportable in one short validated line per repo, open `docs/OPENCLAW_PM_FIVE_REPO_SHORT_REPORT_GATE_NOTE.md`.
 If you need a compact PM cue for the five-repo short report while governance-sandbox still stays scenario-file/report-first, open `docs/OPENCLAW_PM_FIVE_REPO_PHASE_ONE_STATUS_LINE_NOTE.md`.
 If you need a compact PM note for keeping repo order plus explicit hold reasons in that same five-repo status line, open `docs/OPENCLAW_PM_FIVE_REPO_STATUS_HOLD_ORDER_NOTE.md`.
 If you need a compact PM reminder for the same five-repo loop to stay small, validated, and non-skipping across repos 4 and 5, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATE_LOOP_NOTE.md`.
