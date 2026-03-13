@@ -1089,3 +1089,5 @@ If you need the matching PM note for direct `proposal_file` / `proposal_path` al
 If you need a compact PM reminder to keep repo 4 and repo 5 in the same validate-first streak during each five-repo pass, open `docs/OPENCLAW_PM_REPO45_VALIDATE_STREAK_NOTE.md`.
 
 If you need a compact PM status bridge that keeps repo 4 and repo 5 tied to the same validated micro-step before the five-line report, open `docs/OPENCLAW_PM_REPO45_PROGRESS_STATUS_BRIDGE_NOTE.md`.
+
+If you need a compact PM cue for keeping repo 4 and repo 5 aligned on one visible validation command each before the short report, open `docs/OPENCLAW_PM_REPO45_VALIDATE_COMMAND_PAIR_NOTE.md`.
