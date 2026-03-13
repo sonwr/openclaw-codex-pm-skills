@@ -1,10 +1,7 @@
-# Governance Sandbox Four/Five Non-Skip Rule Note
+# Governance Sandbox Repos 4 and 5 Non-Skip Rule
 
-When coordinating the five active repos, keep `oss-launchpad-cli` and `governance-sandbox` visible in every validated improvement slice.
-Treat repo 4 and repo 5 as mandatory check lanes, not optional follow-up work.
+Keep `oss-launchpad-cli` and `governance-sandbox` in every recurring five-repo improvement pass.
 
-Minimum maintainer cue:
-- confirm repo 4 status,
-- confirm repo 5 status,
-- land only validated changes,
-- keep governance-sandbox scenario-file/report work ahead of broader demo scope.
+- Treat repo 4 and repo 5 as mandatory slices, not optional backlog.
+- If time is tight, ship the smallest validated improvement instead of skipping them.
+- Only commit/push after validation passes for that repo.

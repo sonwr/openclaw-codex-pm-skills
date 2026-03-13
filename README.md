@@ -42,6 +42,7 @@ If you need the matching PM cue that repo 4 and repo 5 should still land one val
 If you need a compact PM reminder that repo 5 still stays scenario-file/report-first even while repo 4 and repo 5 remain mandatory in each active slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PRIORITY_PAIR_NOTE.md`.
 If you need a compact PM note for keeping the same five-repo loop to one short validated status line per repo, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ONE_LINE_PROGRESS_NOTE.md`.
 If you need a compact PM reminder that only fully validated repos should move to commit/push while the report still stays one line per repo, open `docs/OPENCLAW_PM_VALIDATED_COMMIT_GATE_NOTE.md`.
+If you need a compact PM reminder that repos 4 and 5 are mandatory every run, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_NON_SKIP_RULE_NOTE.md`.
 If you need a compact PM reminder to keep repo 4 and repo 5 visibly active in every five-repo pass while repo 5 stays scenario/report-first, open `docs/GOVERNANCE_SANDBOX_ACTIVE_REPO_FOUR_FIVE_RULE.md`.
 If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep scenario-case wrapper growth tied to the same scenario-file -> JSON/Markdown/HTML report proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CASE_WRAPPER_NOTE.md`.
