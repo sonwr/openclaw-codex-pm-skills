@@ -71,6 +71,7 @@ If you need a compact PM cue for keeping one imported scenario file tied to visi
 If you need the matching one-line maintainer update once that owner+summary pair is visible in the generated bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_OWNER_SUMMARY_STATUS_LINE.md`.
 If you need a compact PM cue for keeping one scenario file tied to a named markdown/html/json memo bundle with visible output paths, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ARTIFACT_NOTE.md`.
 If you need a compact PM review note for replaying one imported scenario file against one generated JSON/Markdown/HTML bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OUTPUT_REVIEW.md`.
+If you need a compact PM recheck before handoff, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_RECHECK_NOTE.md` to confirm one imported scenario still regenerates the same JSON/Markdown/HTML bundle before push.
 If you need a quick note for title-derived report bundle naming when no explicit basename is set, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md`.
 If you need a compact note for keeping governance-sandbox artifact paths visible in report metadata, open `docs/GOVERNANCE_SANDBOX_REPORT_ARTIFACT_PATHS.md`.
 If you need the shortest pipe-friendly scenario replay for governance-sandbox JSON/YAML input, open `docs/GOVERNANCE_SANDBOX_STDIN_SCENARIO_NOTE.md`.

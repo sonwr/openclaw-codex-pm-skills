@@ -1,0 +1,1 @@
+If you need a compact PM recheck before handoff, open `docs/GOVERNANCE_SANDBOX_REPORT_BUNDLE_RECHECK_NOTE.md` to confirm one imported scenario still regenerates the same JSON/Markdown/HTML bundle before push.
