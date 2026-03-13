@@ -67,6 +67,7 @@ If you need a compact PM note for keeping repo 4 active while repo 5 stays ancho
 If you need a compact PM cue for keeping the same repo-4/repo-5 phase-one pair aligned around the generated report directory alias before the five-line status handoff, open `docs/OPENCLAW_PM_REPO45_REPORTS_DIRECTORY_ALIAS_NOTE.md`.
 If you need a matching PM status cue for that same `reports_directory` phase-one handoff, open `docs/OPENCLAW_PM_REPO45_REPORTS_DIRECTORY_STATUS_NOTE.md`.
 If you need a compact PM cue for the same repo-4/repo-5 phase-one pair when governance-sandbox bundle names come from `report_bundle_code`, open `docs/OPENCLAW_PM_REPO45_REPORT_BUNDLE_CODE_ALIAS_NOTE.md`.
+If you need the matching PM cue that the same repo-4/repo-5 phase-one pair can report `reports_directory` together with validation-before-push status, open `docs/OPENCLAW_PM_REPO45_REPORTS_DIRECTORY_VALIDATE_STATUS_NOTE.md`.
 If you need a compact PM note for keeping download-oriented governance-sandbox bundles compatible with `report.outputs.downloads` and top-level `report_downloads`, open `docs/OPENCLAW_PM_REPO45_REPORT_DOWNLOADS_ALIAS_NOTE.md`.
 If you need a compact PM note for the smallest acceptable repo-4/repo-5 phase-one pass, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_MINIMUM_PAIR_NOTE.md`.
 If you need an even smaller PM reminder to keep repo 4 and repo 5 moving together as one validated micro-slice before the five-line report, open `docs/OPENCLAW_PM_REPO45_PROGRESS_PAIR_SMALL_SLICE_NOTE.md`.
