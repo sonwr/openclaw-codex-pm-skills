@@ -269,6 +269,7 @@ If you need a compact signoff-coverage decision card before handoff, open `docs/
 If you need a 60-second signoff-first scan before a deeper review, open `docs/WEB_QA_PLAYWRIGHT_SIGNOFF_FIRST_LOOK.md`.
 If you need a 60-second replay-readiness review before rerun or handoff, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_READINESS_QUICKCHECK.md`.
 If you need a compact reminder to keep scenario fixtures, browser targets, and saved report artifacts stable across reruns, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_INPUT_STABILITY.md`.
+If you need a compact bridge for keeping failed checks, stable target refs, and saved artifacts visible on one recovery card before a rerun, open `docs/WEB_QA_PLAYWRIGHT_RESULT_CARD_RECOVERY_BRIDGE.md`.
 If hotspot sections tie on replay blockers, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_HOTSPOT_TIEBREAK.md` before flattening the repair lane into a single winner.
 If you need a quick rule card for interpreting replay blocker totals before handoff, open `docs/WEB_QA_PLAYWRIGHT_REPLAY_BLOCKER_TOTALS.md`.
 If you need a compact owner-routing checklist before handoff, open `docs/WEB_QA_PLAYWRIGHT_OWNER_TRIAGE_CARD.md`.
