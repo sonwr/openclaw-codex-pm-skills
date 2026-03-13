@@ -104,6 +104,7 @@ If you need a compact replay gate for confirming the same scenario file still ow
 If you need a compact owner-facing sentence once one scenario replay already produced a shared JSON/Markdown/HTML bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_HANDOFF_NOTE.md`.
 If you need the shortest owner-first replay for one imported scenario plus one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_START.md`.
 If you need a compact reviewer-ready follow-up that keeps scenario source, owner/audience routing, and the generated JSON/Markdown/HTML bundle in one handoff lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_AUDIENCE_REVIEW_LOOP.md`.
+If you need a compact PM note for keeping the reviewer list visible in the same governance-sandbox report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_REVIEWER_LIST_NOTE.md`.
 If you need a compact rule for checking that scenario metadata and report artifact links stay readable together, open `docs/GOVERNANCE_SANDBOX_REPORT_METADATA_READABILITY_NOTE.md`.
 If you need a short maintainer cue for the new governance-sandbox report owner aliases before wider handoff wording, open `docs/GOVERNANCE_SANDBOX_REPORT_OWNER_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping scenario source, report basename, and report owner visible in one governance-sandbox handoff, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_OWNER_BASENAME_NOTE.md`.
