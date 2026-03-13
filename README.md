@@ -70,6 +70,7 @@ If you need a compact PM note for the current repo-4/repo-5 phase-one bugfix whe
 If you need a compact PM recheck note for keeping repo 4 and repo 5 active together while repo 5 stays scenario-file/report-first, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_RECHECK_NOTE.md`.
 If you need a compact PM reminder that repo 1 handoff wording should keep pointing at the same active scenario-file + report-bundle slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_ACTIVE_SLICE_NOTE.md`.
 If you need a compact PM reminder to keep scenario-case wrapper growth tied to the same scenario-file -> JSON/Markdown/HTML report proof lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CASE_WRAPPER_NOTE.md`.
+If you need the matching PM reminder for stage-oriented wrapper exports like `scenario_stage_pack`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_STAGE_PACK_NOTE.md`.
 If you need the matching compact PM note for imported scenario bundles that expose the source as `scenario_src` or `source_href`, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_SHORT_ALIAS_NOTE.md`.
 If you need the matching PM note for the neutral `source_location` alias, open `docs/GOVERNANCE_SANDBOX_SOURCE_LOCATION_ALIAS_NOTE.md`.
 If you need a compact PM gate for keeping repo 4 and repo 5 tied to the same `scenario_src` / `source_href` proof before any commit or push claim, open `docs/OPENCLAW_PM_REPO45_SCENARIO_SOURCE_VALIDATE_GATE_NOTE.md`.
