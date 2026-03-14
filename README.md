@@ -62,6 +62,7 @@ If you need the matching one-line push-status gate for repo 4 and repo 5 after v
 If you need the matching PM cue that repo 4 and repo 5 should still land one validated improvement each while repo 5 stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_VALIDATED_PROGRESS_NOTE.md`.
 If you need a compact PM reminder that repo 5 still stays scenario-file/report-first even while repo 4 and repo 5 remain mandatory in each active slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PRIORITY_PAIR_NOTE.md`.
 If you need a compact PM note for keeping the same five-repo loop to one short validated status line per repo, open `docs/GOVERNANCE_SANDBOX_FIVE_REPO_ONE_LINE_PROGRESS_NOTE.md`.
+If you need a compact PM reminder that the short five-repo report still must keep repo 4 and repo 5 visible on every pass, open `docs/OPENCLAW_PM_FIVE_REPO_SHORT_REPORT_FOUR_FIVE_GATE.md`.
 If you need a compact PM note for keeping the same five-repo pass small, validated, and explicitly active across repos 4 and 5, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATED_SLICE_NOTE.md`.
 If you need a compact PM reminder that only fully validated repos should move to commit/push while the report still stays one line per repo, open `docs/OPENCLAW_PM_VALIDATED_COMMIT_GATE_NOTE.md`.
 If you need the matching PM note that repo 4 and repo 5 must both land one validated micro-step in every five-repo pass, open `docs/OPENCLAW_PM_REPO45_EVERY_PASS_NOTE.md`.
