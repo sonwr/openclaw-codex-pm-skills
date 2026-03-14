@@ -37,6 +37,7 @@ If you need a compact PM note that repo-5 phase one should stay scenario-file ->
 If you need a compact PM note for keeping the phase-one lane explicit as scenario file -> report bundle -> presets/demo, open `docs/OPENCLAW_PM_GOVERNANCE_PHASE_ONE_ALIAS_NOTE.md`.
 If you need a compact PM replay note for the current repo-5 phase-one lane, open `docs/OPENCLAW_PM_GOVERNANCE_PHASE_ONE_REPLAY_LANE.md`.
 If you need a compact PM note for carrying repo-5 report bundle naming through `report_output_key` while repo 4 and repo 5 stay in the same validation-first pass, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_KEY_ALIAS_NOTE.md`.
+If you need a compact PM note for carrying repo-5 report bundle naming through `report_output_handle` while repo 4 and repo 5 stay in the same validation-first pass, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_HANDLE_ALIAS_NOTE.md`.
 If you need a one-screen PM reminder for the current governance-sandbox build order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact maintainer loop for the current phase-one priority, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_LOOP.md`.
 If you need a compact PM status cue that keeps repo-1 handoff wording aligned with the repo-5 phase-one order, open `docs/GOVERNANCE_SANDBOX_PHASE_ONE_STATUS_LINE_NOTE.md`.
@@ -56,6 +57,7 @@ If you need a compact PM reminder to keep the repo-4/repo-5 phase-one handoff al
 If you need a compact PM reminder that repo-4/repo-5 phase-one handoff may also carry the shared basename as `report_output_ref`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_REF_ALIAS_NOTE.md`.
 If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_code`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_CODE_ALIAS_NOTE.md`.
 If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_key` or nested `report.outputs.output_key`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_KEY_ALIAS_NOTE.md`.
+If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_handle` or nested `report.outputs.output_handle`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_HANDLE_ALIAS_NOTE.md`.
 If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_tag`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_TAG_ALIAS_NOTE.md`.
 If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_title`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_TITLE_ALIAS_NOTE.md`.
 If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_basename`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_BASENAME_ALIAS_NOTE.md`.
