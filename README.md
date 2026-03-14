@@ -38,6 +38,7 @@ If you need a compact PM rule for keeping the repo order visible while each line
 If you need a compact PM note for keeping governance-sandbox scenario-file/report-first progress paired with the same active five-repo slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PROGRESS_NOTE.md`.
 If you need an even shorter PM note for keeping each pass to one validated scenario/report-first slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SMALL_SLICE_NOTE.md`.
 If you need the matching one-line status cue for scenario-file import plus report refresh, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_SHORT_STATUS_NOTE.md`.
+If you need a compact PM cue that repo-5 phase one may also surface the same report basename through `report_bundle_alias`, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_ALIAS_LANE.md`.
 If you need a compact PM bridge that keeps repo-1 wording tied to the same repo-5 phase-one slice, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_STATUS_BRIDGE.md`.
 If you need a compact phase-one status reminder that keeps one scenario-file replay tied to one validated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_PHASE_ONE_STATUS_NOTE.md`.
 
