@@ -1,13 +1,8 @@
 # Governance sandbox repo-4/repo-5 phase-one status bridge
 
-Keep repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) visibly active in the same maintenance pass.
+Use this note when a PM handoff must keep repo 4 and repo 5 visible in the same small validated slice.
 
-Phase-one order stays:
-
-1. scenario-file input support
-2. markdown/html/json report bundle proof
-3. preset expansion
-4. web demo slice
-5. demo GIF
-
-Use this note when you need the shortest PM reminder that repo 5 stays scenario/report-first while repo 4 still lands one validated improvement in the same loop.
+Keep the bridge explicit:
+- repo 4 stays active with one small validated preset, README, or automation improvement
+- repo 5 stays phase-one first: scenario file input, then JSON/Markdown/HTML report output
+- only claim commit/push after the matching validation command stays green
