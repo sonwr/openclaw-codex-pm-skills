@@ -149,6 +149,7 @@ If you need a compact PM recheck before handoff, open `docs/GOVERNANCE_SANDBOX_R
 If you need a quick note for title-derived report bundle naming when no explicit basename is set, open `docs/GOVERNANCE_SANDBOX_REPORT_BASENAME_TITLE_FALLBACK.md`.
 If you need a compact note for keeping governance-sandbox artifact paths visible in report metadata, open `docs/GOVERNANCE_SANDBOX_REPORT_ARTIFACT_PATHS.md`.
 If you need the shortest pipe-friendly scenario replay for governance-sandbox JSON/YAML input, open `docs/GOVERNANCE_SANDBOX_STDIN_SCENARIO_NOTE.md`.
+If you need a compact PM handoff for stdin-fed YAML/JSON scenario replay plus one regenerated markdown/html/json bundle, open `docs/OPENCLAW_PM_GOVERNANCE_STDIN_REPORT_BUNDLE_NOTE.md`.
 If you need a one-line reviewer cue that keeps report subject, owner, queue, and bundle status aligned in the same saved summary handoff, open `docs/CLI_SUMMARY_REPORT_SUBJECT_OWNER_QUEUE_STATUS_NOTE.md`.
 If you need the matching path-aware handoff once that same summary also needs the saved artifact location, open `docs/CLI_SUMMARY_REPORT_STATUS_OWNER_QUEUE_PATH_NOTE.md`.
 If you need the same stdin path with a default report bundle handoff, open `docs/GOVERNANCE_SANDBOX_STDIN_REPORT_BUNDLE_NOTE.md`.
