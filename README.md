@@ -182,6 +182,7 @@ If you need the shortest PM-facing note for scenario-file input plus the default
 If you need a compact note for keeping the first governance-sandbox web demo recovery loop aligned with Playwright-interactive replay rules, open `docs/GOVERNANCE_SANDBOX_WEB_DEMO_PLAYWRIGHT_RECOVERY_NOTE.md`.
 If you need the shortest PM-facing note for keeping scenario source plus the default report trio in one replay line, open `docs/GOVERNANCE_SANDBOX_SCENARIO_SOURCE_TRIO_NOTE.md`.
 If you need the shortest reminder that `scenario_config` is also accepted as a scenario-file wrapper before widening import docs, open `docs/GOVERNANCE_SANDBOX_SCENARIO_CONFIG_WRAPPER_NOTE.md`.
+If you need a compact PM reminder that `proposal_input_file` still belongs to the same scenario-file -> JSON/Markdown/HTML report bundle proof loop, open `docs/GOVERNANCE_SANDBOX_PROPOSAL_INPUT_FILE_PM_NOTE.md`.
 If you need a shorter PM-facing cue for proving scenario-file input plus one markdown memo before widening the full report trio, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_MARKDOWN_NOTE.md`.
 If you need a compact PM note for keeping one imported scenario file tied to one generated JSON/Markdown/HTML bundle with replayable verification steps, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_VERIFICATION_LANE.md`.
 If you need the shortest PM cue for the new `scenario_demo` wrapper before the broader demo-pack lane, open `docs/GOVERNANCE_SANDBOX_SCENARIO_DEMO_WRAPPER_NOTE.md`.
