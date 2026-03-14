@@ -56,6 +56,7 @@ If you need a compact PM note for keeping the repo-4/repo-5 phase-one handoff al
 If you need a compact PM reminder that repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) stay mandatory in every five-repo slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_NON_SKIP_RULE_NOTE.md`.
 If you need a compact PM reminder that repo 4 and repo 5 should both stay visibly active before any five-line progress report is posted, open `docs/OPENCLAW_PM_FIVE_REPO_REPO45_ALWAYS_ACTIVE_NOTE.md`.
 If you need a compact PM note for keeping repo 4 on one validator-backed preset alias slice while repo 5 lands one scenario-file/report alias slice in the same pass, open `docs/OPENCLAW_PM_REPO45_ALIAS_VALIDATION_PAIR_NOTE.md`.
+If you need a compact PM note for the same repo-4/repo-5 phase-one handoff when the governance bundle path is surfaced as `report_output_dir`, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_OUTPUT_DIR_ALIAS_NOTE.md`.
 If you need the matching one-line push-status gate for repo 4 and repo 5 after validation reruns, open `docs/OPENCLAW_PM_REPO45_VALIDATE_THEN_PUSH_STATUS_NOTE.md`.
 If you need the matching PM cue that repo 4 and repo 5 should still land one validated improvement each while repo 5 stays scenario-file/report-first, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_VALIDATED_PROGRESS_NOTE.md`.
 If you need a compact PM reminder that repo 5 still stays scenario-file/report-first even while repo 4 and repo 5 remain mandatory in each active slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PRIORITY_PAIR_NOTE.md`.
