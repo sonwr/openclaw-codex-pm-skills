@@ -35,6 +35,7 @@ If you need a compact PM reminder that the same repo-5 phase-one pair still star
 If you need a compact PM note that repo-5 phase one should stay scenario-file -> markdown/html/json report bundle before trait presets or web demo polish, open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
 If you need a compact PM note for keeping the phase-one lane explicit as scenario file -> report bundle -> presets/demo, open `docs/OPENCLAW_PM_GOVERNANCE_PHASE_ONE_ALIAS_NOTE.md`.
 If you need a compact PM replay note for the current repo-5 phase-one lane, open `docs/OPENCLAW_PM_GOVERNANCE_PHASE_ONE_REPLAY_LANE.md`.
+If you need a compact PM note for carrying repo-5 report bundle naming through `report_output_key` while repo 4 and repo 5 stay in the same validation-first pass, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_KEY_ALIAS_NOTE.md`.
 If you need a one-screen PM reminder for the current governance-sandbox build order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact maintainer loop for the current phase-one priority, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_LOOP.md`.
 If you need a compact PM status cue that keeps repo-1 handoff wording aligned with the repo-5 phase-one order, open `docs/GOVERNANCE_SANDBOX_PHASE_ONE_STATUS_LINE_NOTE.md`.
