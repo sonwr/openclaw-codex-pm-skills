@@ -1,0 +1,1 @@
+Keep repo 4 and repo 5 in the same visible lane: rerun one validator-backed slice in repo 4, regenerate one scenario-file report bundle in repo 5, and only then claim commit/push readiness in the five-line report.

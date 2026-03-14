@@ -9,6 +9,8 @@ This project is designed for teams who want practical, reusable product-manageme
 - safe for collaborative use,
 - and realistic to maintain in open source.
 
+If you need a compact PM reminder to keep repo 4 validator proof and repo 5 scenario-report proof in the same validate-before-push streak, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_VALIDATE_STREAK_NOTE.md`.
+
 ## Fast validation
 
 Suggested PM loop: validate the repo first, update the prompt or evidence surface in a small slice, then rerun the validator before proposing handoff wording.
