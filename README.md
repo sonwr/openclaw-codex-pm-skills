@@ -1112,6 +1112,7 @@ If you need a compact PM reminder to keep repo 5 scenario/report-first while rep
 If you need a compact PM status bridge that keeps repo 4 and repo 5 tied to the same validated micro-step before the five-line report, open `docs/OPENCLAW_PM_REPO45_PROGRESS_STATUS_BRIDGE_NOTE.md`.
 
 If you need a compact PM cue for keeping repo 4 and repo 5 aligned on one visible validation command each before the short report, open `docs/OPENCLAW_PM_REPO45_VALIDATE_COMMAND_PAIR_NOTE.md`.
+If you need a compact PM note for keeping the repo-4/repo-5 pass tied to one scenario/report validation pair before the five-line report, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_VALIDATE_PAIR_NOTE.md`.
 If you need a compact PM recheck note for keeping the repo-4/repo-5 phase-one slice to one scenario-file import plus one regenerated report bundle before the five-line status handoff, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_RECHECK_STATUS_NOTE.md`.
 docs/GOVERNANCE_SANDBOX_REPO45_PHASE_ONE_REPORT_PAIR_NOTE.md
 
