@@ -1144,3 +1144,4 @@ If you need a compact PM reminder that every five-repo pass should land one smal
 
 If you need a compact PM note for keeping repo-4/repo-5 browser-proof scope limited to one stable scenario -> report -> result-card replay before widening flows, open `docs/OPENCLAW_PM_REPO45_PLAYWRIGHT_STAGE_GATE_NOTE.md`.
 If you need a compact repo-4/repo-5 cue for keeping repo 5 on scenario-file + Markdown/HTML report slices before repo 4 widens the first result-card demo, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_PHASE_ORDER_NOTE.md`.
+If you need a compact repo-5 gate for keeping future web-demo proof aligned with one stable scenario -> primary action -> result card replay, open `docs/GOVERNANCE_SANDBOX_SCENARIO_FILE_REPORT_UI_PLAYWRIGHT_GATE.md`.
