@@ -191,6 +191,7 @@ If you need a shortest-path PM reminder for one scenario file feeding one JSON/M
 
 If you need a compact PM cue for the current governance-sandbox build order (scenario file -> report bundle -> presets -> web demo -> demo GIF), open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
 If you need the matching repo-4/repo-5 reminder that preserves the same repo-5 phase-one delivery order inside the shared five-repo pass, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_DELIVERY_ORDER_NOTE.md`.
+If you need the matching repo-4/repo-5 reminder that the same phase-one delivery order still ends at validate-before-push, open `docs/OPENCLAW_PM_REPO45_PHASE_ONE_VALIDATE_THEN_PUSH_NOTE.md`.
 If you need a one-line PM status cue for keeping that delivery ladder visible during small validated slices, open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_STATUS_NOTE.md`.
 If you need a compact PM reminder to keep repo 5 on scenario-file + markdown/html report proof while repo 4 stays visibly active in the same pass, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_PHASE_ONE_BRIDGE_NOTE.md`.
 If you need a compact repo-4/repo-5 reminder that keeps scenario-file and report-first work visible in the same pass, open `docs/GOVERNANCE_SANDBOX_REPO45_SCENARIO_REPORT_FIRST_NOTE.md`.
