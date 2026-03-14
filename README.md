@@ -1133,3 +1133,4 @@ If you need the adjacent-markdown-file variant for the same scenario-file lane, 
 If you need a compact PM reminder that every five-repo pass should land one small validated improvement before any push claim, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATED_MICRO_SLICE_NOTE.md`.
 
 If you need a compact PM note for keeping repo-4/repo-5 browser-proof scope limited to one stable scenario -> report -> result-card replay before widening flows, open `docs/OPENCLAW_PM_REPO45_PLAYWRIGHT_STAGE_GATE_NOTE.md`.
+If you need a compact repo-4/repo-5 cue for keeping repo 5 on scenario-file + Markdown/HTML report slices before repo 4 widens the first result-card demo, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_PHASE_ORDER_NOTE.md`.

@@ -1,0 +1,1 @@
+Keep repo 4 and repo 5 in the same phase-one loop: repo 5 lands scenario-file plus Markdown/HTML report slices first, then repo 4 mirrors that state with one form, one primary action, and one reviewable result card before wider browser scope.
