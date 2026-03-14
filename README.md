@@ -29,6 +29,7 @@ If you need the shortest scenario-file -> JSON/Markdown/HTML replay path before 
 If you need a compact reminder to keep one scenario import tied to one JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_STACK_NOTE.md`.
 If you need a compact PM note for keeping scenario-file support and markdown/html report generation at the front of the queue, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PRIORITY_LANE.md`.
 If you need a compact PM reminder that the same repo-5 phase-one pair still starts with JSON/YAML scenario-file input and one regenerated JSON/Markdown/HTML report bundle, open `docs/GOVERNANCE_SANDBOX_SCENARIO_JSON_YAML_PRIORITY_NOTE.md`.
+If you need a compact PM note that repo-5 phase one should stay scenario-file -> markdown/html/json report bundle before trait presets or web demo polish, open `docs/GOVERNANCE_SANDBOX_DELIVERY_LADDER_NOTE.md`.
 If you need a compact PM note for keeping the phase-one lane explicit as scenario file -> report bundle -> presets/demo, open `docs/OPENCLAW_PM_GOVERNANCE_PHASE_ONE_ALIAS_NOTE.md`.
 If you need a one-screen PM reminder for the current governance-sandbox build order, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_CHECK.md`.
 If you need a compact maintainer loop for the current phase-one priority, open `docs/GOVERNANCE_SANDBOX_SCENARIO_REPORT_PHASE_ONE_LOOP.md`.
