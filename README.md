@@ -51,6 +51,7 @@ If you need a compact PM reminder to keep the repo-4/repo-5 phase-one handoff al
 If you need a compact PM reminder that repo-4/repo-5 phase-one handoff may also carry the shared basename as `report_output_ref`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_REF_ALIAS_NOTE.md`.
 If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_code`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_CODE_ALIAS_NOTE.md`.
 If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_tag`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_TAG_ALIAS_NOTE.md`.
+If you need a compact PM reminder that the same repo-4/repo-5 phase-one handoff may also name the shared bundle via `report_output_basename`, open `docs/OPENCLAW_PM_REPO45_REPORT_OUTPUT_BASENAME_ALIAS_NOTE.md`.
 If you need a compact PM note for keeping the repo-4/repo-5 phase-one handoff aligned with the same `source_path` scenario-file alias before the short five-line report, open `docs/OPENCLAW_PM_REPO45_SOURCE_PATH_ALIAS_NOTE.md`.
 If you need a compact PM reminder that repo 4 (`oss-launchpad-cli`) and repo 5 (`governance-sandbox`) stay mandatory in every five-repo slice, open `docs/GOVERNANCE_SANDBOX_FOUR_FIVE_NON_SKIP_RULE_NOTE.md`.
 If you need a compact PM reminder that repo 4 and repo 5 should both stay visibly active before any five-line progress report is posted, open `docs/OPENCLAW_PM_FIVE_REPO_REPO45_ALWAYS_ACTIVE_NOTE.md`.
