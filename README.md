@@ -10,6 +10,7 @@ This project is designed for teams who want practical, reusable product-manageme
 - and realistic to maintain in open source.
 
 If you need a compact PM reminder to keep repo 4 validator proof and repo 5 scenario-report proof in the same validate-before-push streak, open `docs/OPENCLAW_PM_REPO45_SCENARIO_REPORT_VALIDATE_STREAK_NOTE.md`.
+If you need a compact PM note for the new `stakeholder_types` scenario-file alias while repo 4 and repo 5 stay in the same phase-one validation loop, open `docs/OPENCLAW_PM_REPO45_STAKEHOLDER_TYPES_ALIAS_NOTE.md`.
 If you need a compact PM reminder to keep repo 4 and repo 5 in the same validate-before-push streak while preserving one-line report brevity, open `docs/OPENCLAW_PM_REPO45_VALIDATE_STREAK_SHORT_REPORT_NOTE.md`.
 
 ## Fast validation
