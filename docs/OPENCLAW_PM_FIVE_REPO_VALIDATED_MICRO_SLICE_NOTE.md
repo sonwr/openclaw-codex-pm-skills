@@ -1,3 +1,8 @@
-# OPENCLAW_PM_FIVE_REPO_VALIDATED_MICRO_SLICE_NOTE
+# OpenClaw PM Five-Repo Validated Micro Slice Note
 
-If you need a compact PM reminder that each five-repo pass should land one small validated change before any push claim, open `docs/OPENCLAW_PM_FIVE_REPO_VALIDATED_MICRO_SLICE_NOTE.md`.
+Keep each five-repo pass focused on one small validated improvement per repository before any commit/push claim.
+
+- Recheck all five repositories every pass.
+- Do not skip repo 4 or repo 5.
+- Treat repo 5 as scenario-file/report-first until that lane is comfortably stable.
+- If validation fails, hold the commit/push and report status only.
